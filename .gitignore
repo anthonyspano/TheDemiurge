@@ -1,0 +1,14 @@
+# Blanket ignore
+/*
+/*/
+
+# Whitelist:
+# Git meta files
+!.gitignore
+!.gitattributes
+!README.md
+
+# Directories/files
+!/ProjectSettings/
+!/Assets/
+
