@@ -103,6 +103,8 @@ public class PlayerManager : MonoBehaviour
 	public enum Direction {left, right, up, down};
 	public Direction pFacingDir;
 
+	public AnimationClip clip;
+	[HideInInspector] public float attackAnimLength;
 
 	private void Start()
 	{
@@ -136,6 +138,9 @@ public class PlayerManager : MonoBehaviour
 		// delete if old
 		boxCollider = GetComponent<BoxCollider2D>();
 		hitbox = transform.GetChild(3);
+
+		attackAnimLength = clip.length;
+
 	}
 
 	private void Awake()
@@ -182,11 +187,11 @@ public class PlayerManager : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if(collision.transform.CompareTag("Projectile"))
-		{
-			Instance.pHealth.Damage(20);
-			audioSource.PlayOneShot(hurt1, 0.7f);
-		}
+		// if(collision.transform.CompareTag("Projectile"))
+		// {
+		// 	Instance.pHealth.Damage(20);
+		// 	audioSource.PlayOneShot(hurt1, 0.7f);
+		// }
 		if(collision.transform.CompareTag("BigCultist"))
 		{
 			Instance.pHealth.Damage(70);
@@ -199,15 +204,15 @@ public class PlayerManager : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D col)
 	{
 
-		if(col.transform.CompareTag("RockShadow"))
-		{
-			wrongWayCount++;
-			// 24.5f
-			transform.position = new Vector3(-16.93f, transform.position.y, transform.position.z);
-			if(wrongWayCount > 2)
-				wrongWayPanel.gameObject.SetActive(true);
+		// if(col.transform.CompareTag("RockShadow"))
+		// {
+		// 	wrongWayCount++;
+		// 	// 24.5f
+		// 	transform.position = new Vector3(-16.93f, transform.position.y, transform.position.z);
+		// 	if(wrongWayCount > 2)
+		// 		wrongWayPanel.gameObject.SetActive(true);
 
-		}
+		// }
 	}
 
 	private void OnDamage(object sender, System.EventArgs e)
@@ -270,6 +275,7 @@ public class PlayerManager : MonoBehaviour
 		anim.SetBool("SecondAttack", false);
 		animFinished = true;
 		CanMove = true;
+
 	}
 
 	public bool AnimFinished()

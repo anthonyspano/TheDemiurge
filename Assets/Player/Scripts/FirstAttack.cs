@@ -49,9 +49,10 @@ namespace com.ultimate2d.combat
             }
             else
             {
+                Debug.Log(PlayerManager.Instance.attackAnimLength);
+                yield return new WaitForSeconds(PlayerManager.Instance.attackAnimLength);
                 PlayerManager.Instance.isBusy = false;
                 PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
-                PlayerManager.Instance.CanMove = true;
                 // time waiting until player can attack again after combo over
                 PlayerBattleSystem.SetState(new Begin(pbs));
                 //}

@@ -3,20 +3,36 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - UltBar
+  - Projectile
+  - Boss
+  - BigHurt
+  - RockShadow
+  - WrongWay
+  - Door
+  - Shooter
+  - PlayerAttack
+  - Power
+  - PlayerHurt
+  - BigCultist
+  - HitBox
+  - Wall
+  - PlayerHitBox
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Damage
   - Water
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Projectile
+  - Breakable Wall
   - 
   - 
   - 
@@ -40,4 +56,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2652213281
+    locked: 0
+  - name: Objects
+    uniqueID: 2893185
+    locked: 0
+  - name: GUI
+    uniqueID: 2927182533
     locked: 0

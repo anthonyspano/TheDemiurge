@@ -7,15 +7,8 @@ using UnityEngine;
 public class UltimateMove : MonoBehaviour
 {
     private UltimateBar ultBar;
-
-    public LayerMask layerMask;
-
     private bool ultReady;
-
-    //public int ultDamage; // 200
-
     public event EventHandler FireUltAnim;
-
 
     private void Start()
     {
