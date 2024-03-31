@@ -14,8 +14,11 @@ namespace com.ultimate2d.combat
             {
                 var direction = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) + PlayerManager.Instance.transform.position;
                 PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, direction, PlayerManager.Instance.moveSpeed * Time.deltaTime);
+                PlayerManager.Instance.anim.SetBool("isMoving", true);
                 yield return null;
             }
+
+            PlayerManager.Instance.anim.SetBool("isMoving", false);
 
             //PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
             //PlayerManager.Instance.isBusy = false;

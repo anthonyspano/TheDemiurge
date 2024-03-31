@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviour
 	public int ultAddedOnHit;
 
 	// animator
-	private Animator anim;
+	public Animator anim;
 	private bool animFinished;
 
 	// for damage
