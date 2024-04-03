@@ -106,6 +106,9 @@ public class PlayerManager : MonoBehaviour
 	public AnimationClip clip;
 	[HideInInspector] public float attackAnimLength;
 
+	// Animation control
+	[HideInInspector] public bool continueChain;
+
 	private void Start()
 	{
 		if(player == null)
@@ -283,6 +286,22 @@ public class PlayerManager : MonoBehaviour
 		return animFinished;
 	}
 
+	public void FinishAttackAnimation()
+	{
+		if(!continueChain)
+		{
+			// transition to idle state
+			anim.SetBool("isAttacking", false);
+			CanMove = true;
+			anim.Play("Player Idle", 0);
+			
+		}
+		else
+		{
+			continueChain = false;
+		}
+	}
+
 	public void FinishJumpAnimation()
 	{
 		anim.SetBool("isJumping", false);
@@ -318,6 +337,11 @@ public class PlayerManager : MonoBehaviour
 		yield return new WaitForSeconds(attackCooldownRate);
 		attackCooldown = 0;
 		attacking = false;
+	}
+
+	public void PlayAttackSound()
+	{
+		audioSource.Play();
 	}
 
 	public void PushBack()

@@ -21,7 +21,7 @@ public class NearMiss : MonoBehaviour
     {
         if (PlayerInput.Jump() && cooldownTimer <= 0)
         {
-            
+            PlayerManager.Instance.anim.SetBool("isAttacking", false);
             PlayerManager.Instance.CanMove = false;
             cooldownTimer = cooldownRate;
             CreateClone();

@@ -21,8 +21,6 @@ namespace com.ultimate2d.combat
         // close the loop according to notepad on desk
         public override IEnumerator Start()
         {
-            //yield return null;
-            //Debug.Log("READY");
             // wait for anykey
             yield return new WaitUntil(() => PlayerController.Instance.playerStatus != PlayerController.PlayerStatus.Idle);
             // grab key pressed from gamemanager

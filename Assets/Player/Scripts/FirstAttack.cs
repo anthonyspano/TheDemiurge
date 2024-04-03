@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace com.ultimate2d.combat
 {
+    // set attacking trigger back to bool
+    // animation event check after each "phase" of animation - if continuechain = false then play 'idle'
     public class FirstAttack : State
     {
         private bool continueChain = false;
@@ -17,49 +19,30 @@ namespace com.ultimate2d.combat
         public override IEnumerator Start() 
         {
             PlayerManager.Instance.CanMove = false;
-            // play slash anim
-            //if(!PlayerManager.Instance.GetComponent<AudioSource>().isPlaying)
-                
-            //PlayerManager.Instance.GetComponent<Animator>().SetBool("isAttacking", true);
-            PlayerManager.Instance.GetComponent<Animator>().SetTrigger("Attacking");
-            
-
+            PlayerManager.Instance.GetComponent<Animator>().SetBool("isAttacking", true);
             yield return null;
-            PlayerManager.Instance.GetComponent<AudioSource>().Play();
+
             // scoot towards last move
             var newPos = PlayerManager.Instance.transform.position + PlayerManager.Instance.LastMove * PlayerManager.Instance.AttackMoveDistance;
             //Debug.Log(PlayerManager.Instance.LastMove * PlayerManager.Instance.AttackMoveDistance);
             PlayerManager.Instance.transform.position = Vector3.Lerp(PlayerManager.Instance.transform.position, newPos, 0.8f);
 
-            // while(PlayerManager.Instance.GetComponent<Animator>().GetBool("IsAttacking") == true)
-            // {
-            //     if(PlayerInput.Slash()) 
-            //         continueChain = true;
-            //     yield return null;
-            // }
-            //yield return new WaitForSeconds(0.117f); // current length of all attack anims
-            //yield return new WaitForSeconds(PlayerManager.Instance.cooldownRate); // arbitrary wait to read player input
-   
-            if(continueChain)
+            while(PlayerManager.Instance.GetComponent<Animator>().GetBool("isAttacking") == true)
             {
-                continueChain = false;
+                if(PlayerInput.Slash())
+                { 
+                    PlayerManager.Instance.continueChain = true;
+                    Debug.Log("next attack!");
+                }
                 yield return null;
-                PlayerBattleSystem.SetState(new SecondAttack(PlayerBattleSystem));
-                
             }
-            else
-            {
-                Debug.Log(PlayerManager.Instance.attackAnimLength);
-                yield return new WaitForSeconds(PlayerManager.Instance.attackAnimLength);
-                PlayerManager.Instance.isBusy = false;
-                PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
-                // time waiting until player can attack again after combo over
-                PlayerBattleSystem.SetState(new Begin(pbs));
-                //}
-            }   
+
+            PlayerManager.Instance.isBusy = false;
+            PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
+
+            PlayerBattleSystem.SetState(new Begin(pbs));
+
                 
-
-
 
 
         }
