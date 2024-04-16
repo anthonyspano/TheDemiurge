@@ -25,6 +25,7 @@ namespace com.ultimate2d.combat
             yield return new WaitUntil(() => PlayerController.Instance.playerStatus != PlayerController.PlayerStatus.Idle);
             // grab key pressed from gamemanager
             yield return null;
+            PlayerManager.Instance.GetComponent<Animator>().SetBool("isBusy", false);
             switch(PlayerController.Instance.playerStatus) // create different begin classes based on detected input
             {
                 case PlayerController.PlayerStatus.Move:

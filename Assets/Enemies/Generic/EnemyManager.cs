@@ -73,11 +73,9 @@ namespace com.ultimate2d.combat
             CanMove = true;
         }
 
-        private Animator anim;
-
         void Start()
         {
-            anim = GetComponent<Animator>();
+
         }
 
         public Vector2 PlayerFacingVector()

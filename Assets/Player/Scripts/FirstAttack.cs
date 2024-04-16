@@ -22,6 +22,7 @@ namespace com.ultimate2d.combat
             PlayerManager.Instance.GetComponent<Animator>().SetBool("isAttacking", true);
             yield return null;
 
+            PlayerManager.Instance.GetComponent<Animator>().SetBool("isBusy", true);
             // scoot towards last move
             var newPos = PlayerManager.Instance.transform.position + PlayerManager.Instance.LastMove * PlayerManager.Instance.AttackMoveDistance;
             //Debug.Log(PlayerManager.Instance.LastMove * PlayerManager.Instance.AttackMoveDistance);

@@ -90,6 +90,9 @@ public class PlayerManager : MonoBehaviour
 		set { canMove = value; }
 	}
 
+	[Range(0.01f, 0.99f)]
+	public float verticalRunMod;
+
 	private Transform hitbox;
 	private BoxCollider2D boxCollider;
 
@@ -195,17 +198,23 @@ public class PlayerManager : MonoBehaviour
 		// 	Instance.pHealth.Damage(20);
 		// 	audioSource.PlayOneShot(hurt1, 0.7f);
 		// }
-		if(collision.transform.CompareTag("BigCultist"))
-		{
-			Instance.pHealth.Damage(70);
-			audioSource.PlayOneShot(hurt1, 0.7f);
-		}
+		// if(collision.transform.CompareTag("BigCultist"))
+		// {
+		// 	Instance.pHealth.Damage(70);
+		// 	audioSource.PlayOneShot(hurt1, 0.7f);
+		// }
 
 		
 	}
 
 	private void OnTriggerEnter2D(Collider2D col)
 	{
+
+		if(col.transform.CompareTag("BigCultist"))
+		{
+			Instance.pHealth.Damage(70);
+			audioSource.PlayOneShot(hurt1, 0.7f);
+		}
 
 		// if(col.transform.CompareTag("RockShadow"))
 		// {
@@ -294,7 +303,6 @@ public class PlayerManager : MonoBehaviour
 			anim.SetBool("isAttacking", false);
 			CanMove = true;
 			anim.Play("Player Idle", 0);
-			
 		}
 		else
 		{
