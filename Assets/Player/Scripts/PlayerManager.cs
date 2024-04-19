@@ -218,6 +218,12 @@ public class PlayerManager : MonoBehaviour
 			audioSource.PlayOneShot(hurt1, 0.7f);
 		}
 
+		if(col.transform.CompareTag("Projectile"))
+		{
+			Instance.pHealth.Damage(40);
+			audioSource.PlayOneShot(hurt1, 0.7f);
+		}
+
 		// if(col.transform.CompareTag("RockShadow"))
 		// {
 		// 	wrongWayCount++;

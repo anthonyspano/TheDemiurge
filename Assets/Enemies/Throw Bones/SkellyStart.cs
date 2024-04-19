@@ -19,7 +19,7 @@ namespace com.ultimate2d.combat
             yield return new WaitUntil(() => sbs.em.PlayerIsInRange(sbs.em.pursuitRange));
 
             // throw boomerang
-            Debug.Log("Throwing you a bone!");
+            SkellyBattleSystem.SetState(new ThrowBone(SkellyBattleSystem));
 
             // laugh
             Debug.Log("Hahahaha!");
