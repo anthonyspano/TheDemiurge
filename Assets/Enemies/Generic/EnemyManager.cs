@@ -105,10 +105,16 @@ namespace com.ultimate2d.combat
             }
 
 
-
-
         }
 
+        public bool PlayerIsInRange(float range)
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range, enemyLayerMask);
+            if(colliders.Length > 0) 
+                return true;
+            
+            return false;
+        }
 
 
     }

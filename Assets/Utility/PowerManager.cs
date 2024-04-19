@@ -41,22 +41,14 @@ public class PowerManager : MonoBehaviour
     // make position of beam be position of RotateAroundPlayer
     private void Update()
     {
-
+        // move this to AddUlt
         if(ultimateCharge.GetUlt() >= ultCost)
         {
             powerIcon.color = new Color(1,1,1, 1f);
         }
         else
-            powerIcon.color = new Color(0,0,0, .80f);
-
-        if(PlayerInput.Ultimate() && ultimateCharge.GetUlt() > ultCost)
         {
-            //Debug.Log("ultimate");
-            ultimateCharge.AddUlt(-ultCost);
-            BeamSetup();
-            anim.Play("BeamAttack");
-            PlayerManager.Instance.CanMove = false;
-            StartCoroutine("PushBack"); // being pushed back during the ultimate
+            powerIcon.color = new Color(0,0,0, .80f);
 
             // do damage to area
             // var hits = Physics2D.OverlapCircleAll(transform.position, range, PlayerManager.Instance.enemyLayerMask);
@@ -71,6 +63,16 @@ public class PowerManager : MonoBehaviour
             // }       
         }
 
+    }
+
+    public void FireUltimate()
+    {
+        ultimateCharge.AddUlt(-ultCost);
+        BeamSetup();
+        anim.Play("BeamAttack");
+        PlayerManager.Instance.anim.SetBool("isBeaming", true);
+        PlayerManager.Instance.CanMove = false;
+        StartCoroutine("PushBack"); // being pushed back during the ultimate
     }
 
     private void LateUpdate()
@@ -165,13 +167,16 @@ public class PowerManager : MonoBehaviour
             yield return null;
         }
 
+        PlayerManager.Instance.anim.SetBool("isBeaming", false);
         yield return null;
     }
     public void StopAnimation()
     {
         PlayerManager.Instance.CanMove = true;
+        PlayerManager.Instance.isBusy = false;
         anim.SetBool("IsBeaming", false);
         anim.Play("Empty");
+        PlayerManager.Instance.ultReady = false;
 
     }
 

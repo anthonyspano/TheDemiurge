@@ -37,6 +37,7 @@ public class PlayerManager : MonoBehaviour
 	public UltimateBar ultBar;
 	public float invulnAfterHit;
 	public int ultAddedOnHit;
+	public bool ultReady;
 
 	// animator
 	public Animator anim;
@@ -122,8 +123,9 @@ public class PlayerManager : MonoBehaviour
 		var healthBar = GameObject.Find("PlayerHealthBar").GetComponent<HealthBar>();
 		healthBar.Setup(pHealth);
 
-		// ult amt start of scene
+		// ultimate 
 		//ultBar.SetUlt(0);
+		ultBar.OnUltReady += UltIsReady;
 
 		// death event
 		pHealth.OnHealthChanged += OnDamage;
@@ -364,6 +366,16 @@ public class PlayerManager : MonoBehaviour
 	{
 		Gizmos.color = Color.red;
 		Gizmos.DrawLine(transform.position, transform.position + LastMove * drawMagnitude);
+	}
+
+	private void UltIsReady(object sender, EventArgs e)
+	{
+		ultReady = true;
+	}
+
+	public void FireUltimate()
+	{
+		GetComponentInChildren<PowerManager>().FireUltimate();
 	}
 	
 

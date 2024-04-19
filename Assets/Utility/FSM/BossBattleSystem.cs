@@ -8,7 +8,7 @@ namespace com.ultimate2d.combat
     public class BossBattleSystem : StateMachine
     {
         [HideInInspector]
-        public EnemyManager _enemyManager;
+        public EnemyManager em;
         private HealthBar healthBar;
         private Transform player;
         public Transform Player
@@ -33,20 +33,13 @@ namespace com.ultimate2d.combat
 
         private void Start()
         {
-            _enemyManager = GetComponent<EnemyManager>();
+            em = GetComponent<EnemyManager>();
             healthBar = GameObject.Find("BossHealthBar").GetComponent<HealthBar>();
             healthBar.Setup(transform.GetComponentInChildren<BossTakeDamage>().healthSystem);
             SetState(new BossEngage(this));
         }
 
-        public bool PlayerIsInRange(float range)
-        {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range, _enemyManager.enemyLayerMask);
-            if(colliders.Length > 0) 
-                return true;
-            
-            return false;
-        }
+
 
 
 

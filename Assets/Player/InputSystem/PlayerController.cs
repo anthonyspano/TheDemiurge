@@ -21,7 +21,7 @@ namespace com.ultimate2d.combat
 
         public float movementSpeed;
 
-        public enum PlayerStatus {Idle, Move, Dodge, Attack};
+        public enum PlayerStatus {Idle, Move, Dodge, Attack, Ultimate};
         public PlayerStatus playerStatus;
 
         private void Awake()
@@ -45,6 +45,7 @@ namespace com.ultimate2d.combat
             playerInputActions.Player.Enable();
             playerInputActions.Player.Dodge.performed += Dodge;
             playerInputActions.Player.Attack.performed += Attack;
+            playerInputActions.Player.Ultimate.performed += Ultimate;
             //playerInputActions.Keyboard.Movement.performed += Movement;
             
             //playerInputActions.Player.Movement.performed += c => Debug.Log(c.ReadValue<Vector2>());
@@ -68,6 +69,17 @@ namespace com.ultimate2d.combat
             //     Debug.Log(value1);
             
 
+        }
+
+        public void Ultimate(InputAction.CallbackContext context)
+        {
+            //Debug.Log(context.ReadValueAsObject());
+            Debug.Log("Ultimate attack!");
+            if(!PlayerManager.Instance.isBusy)
+            {
+                PlayerManager.Instance.isBusy = true;
+                playerStatus = PlayerStatus.Ultimate;
+            }
         }
 
         public void Dodge(InputAction.CallbackContext context)
@@ -94,8 +106,6 @@ namespace com.ultimate2d.combat
 
         public void Attack(InputAction.CallbackContext context)
         {
-            // start Attack cooldown
-            // player manager subscribes to this event
 
             if(!PlayerManager.Instance.isBusy)
             {
@@ -103,6 +113,8 @@ namespace com.ultimate2d.combat
                 playerStatus = PlayerStatus.Attack;
             }
         }
+
+
     }
 
 }
