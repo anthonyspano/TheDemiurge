@@ -19,6 +19,9 @@ namespace com.ultimate2d.combat
         private PlayerInputActions playerInputActions;
         private Vector2 inputVector;
 
+        // input buffer
+        PlayerInputBuffer _playerInputBuffer;
+
         public float movementSpeed;
 
         public enum PlayerStatus {Idle, Move, Dodge, Attack, Ultimate};
@@ -49,6 +52,8 @@ namespace com.ultimate2d.combat
             //playerInputActions.Keyboard.Movement.performed += Movement;
             
             //playerInputActions.Player.Movement.performed += c => Debug.Log(c.ReadValue<Vector2>());
+
+            _playerInputBuffer = PlayerManager.Instance.GetComponent<PlayerInputBuffer>();
         }
 
         private void FixedUpdate()
@@ -107,11 +112,16 @@ namespace com.ultimate2d.combat
         public void Attack(InputAction.CallbackContext context)
         {
 
-            if(!PlayerManager.Instance.isBusy)
-            {
-                PlayerManager.Instance.isBusy = true;
-                playerStatus = PlayerStatus.Attack;
-            }
+            // if(!PlayerManager.Instance.isBusy)
+            // {
+            //     PlayerManager.Instance.isBusy = true;
+            //     playerStatus = PlayerStatus.Attack;
+            // }
+
+            // input buffering
+            Debug.Log("adding 1");
+            _playerInputBuffer.Add(PlayerStatus.Attack);
+
         }
 
 

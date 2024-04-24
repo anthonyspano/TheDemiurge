@@ -305,9 +305,11 @@ public class PlayerManager : MonoBehaviour
 
 	public void FinishAttackAnimation()
 	{
+		Debug.Log(continueChain);
 		if(!continueChain)
 		{
 			// transition to idle state
+			isBusy = false; // temp for input buff
 			anim.SetBool("isAttacking", false);
 			CanMove = true;
 			anim.Play("Player Idle", 0);
@@ -382,6 +384,14 @@ public class PlayerManager : MonoBehaviour
 	public void FireUltimate()
 	{
 		GetComponentInChildren<PowerManager>().FireUltimate();
+	}
+
+
+	public void TestAttack()
+	{
+		
+		anim.SetBool("isAttacking", true);
+
 	}
 	
 

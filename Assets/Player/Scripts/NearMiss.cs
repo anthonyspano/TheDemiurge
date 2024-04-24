@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.UI;
+//using Unity.PlasticSCM.Editor.UI;
 using UnityEngine;
 
 namespace com.ultimate2d.combat
