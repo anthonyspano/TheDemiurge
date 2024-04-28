@@ -120,7 +120,8 @@ namespace com.ultimate2d.combat
 
             // input buffering
             Debug.Log("adding 1");
-            _playerInputBuffer.Add(PlayerStatus.Attack);
+            // take frame/timestamp that the button was pressed
+            _playerInputBuffer.Add(Time.frameCount, PlayerStatus.Attack); // add(k,v)
 
         }
 

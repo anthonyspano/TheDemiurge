@@ -1,46 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Microsoft.VisualStudio.Utilities;
 
-public class InputCircularBuffer : MonoBehaviour
+namespace com.ultimate2d.combat
 {
-    CircularBuffer<Dictionary> InputBuffer;
 
-    void Start()
+
+    public class InputCircularBuffer : MonoBehaviour
     {
-        InputBuffer = new CircularBuffer<Dictionary>();
-    }
+        Dictionary<int, PlayerController.PlayerStatus> InputBuffer;
 
-    void Update()
-    {
-
-        if(!PlayerManager.Instance.isBusy)
+        void Start()
         {
-            switch(InputBuffer[0])
+            InputBuffer = new Dictionary<int, PlayerController.PlayerStatus>();
+        }
+
+        void Update()
+        {
+
+            if(!PlayerManager.Instance.isBusy)
             {
-                case PlayerController.PlayerStatus.Attack:
-                    //Debug.Log("attacking now");
-                    PlayerManager.Instance.isBusy = true;
-                    PlayerManager.Instance.TestAttack();
-                    break;
+                // key - frame, value - status
+                // get first key of dictionary
+                // switch(InputBuffer[key])
+            
+                //int frame;
+                switch(InputBuffer[0])
+                {
+                    case PlayerController.PlayerStatus.Attack:
+                        //Debug.Log("attacking now");
+                        PlayerManager.Instance.isBusy = true;
+                        PlayerManager.Instance.TestAttack();
+                        break;
 
-                case PlayerController.PlayerStatus.Ultimate:
-                    //perform ultimate
-                    break;
+                    case PlayerController.PlayerStatus.Ultimate:
+                        //perform ultimate
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
+
+                Debug.Log(InputBuffer.Count);
+                //InputBuffer.RemoveAt(0);
+            
             }
 
-            Debug.Log(InputBuffer.Count);
-            //InputBuffer.RemoveAt(0);
-        
+
+
         }
 
 
-
     }
-
 
 }
