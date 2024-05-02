@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// input buffer using a dictionary
 namespace com.ultimate2d.combat
 {
 
 
     public class InputCircularBuffer : MonoBehaviour
     {
+        // <K: frame, V: PlayerStatus>
         Dictionary<int, PlayerController.PlayerStatus> InputBuffer;
 
         void Start()
@@ -21,7 +23,7 @@ namespace com.ultimate2d.combat
             if(!PlayerManager.Instance.isBusy)
             {
                 // key - frame, value - status
-                // get first key of dictionary
+                // check dictionary for most recent frame
                 // switch(InputBuffer[key])
             
                 //int frame;

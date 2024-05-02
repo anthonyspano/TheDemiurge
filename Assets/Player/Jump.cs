@@ -29,7 +29,6 @@ namespace com.ultimate2d.combat
             //PlayerManager.Instance.StartJumpCD();
             
             // perform jump
-            
             PlayerManager.Instance.CanMove = false;
             var direction = PlayerManager.Instance.LastMove;
             // while animator is playing clip, add force

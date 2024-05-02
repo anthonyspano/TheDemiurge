@@ -1,17 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static com.ultimate2d.combat.PlayerController;
 
+// test class that uses a list for the buffer
 namespace com.ultimate2d.combat
 {
+    public class InputBufferMemory
+    {
+        public int frame;
+        public PlayerController.PlayerStatus action;
+
+        public InputBufferMemory(int i, PlayerController.PlayerStatus a)
+        {
+            frame = i;
+            action = a;
+        }
+    }
+
     // record player inputs into a buffer and execute the nearest one available
     public class PlayerInputBuffer : MonoBehaviour
     {
-        List<PlayerController.PlayerStatus> InputBuffer;
+        List<InputBufferMemory> InputBuffer;
 
         void Start()
         {
-            InputBuffer = new List<PlayerController.PlayerStatus>();
+            InputBuffer = new List<InputBufferMemory>();
         }
 
         void Update()
@@ -19,35 +33,46 @@ namespace com.ultimate2d.combat
             // execute input if not currently executing
             if(!PlayerManager.Instance.isBusy)
             {
+                PlayerManager.Instance.isBusy = true;
                 if(InputBuffer.Count > 0)
                 {
-                    switch(InputBuffer[0])
+                    switch(InputBuffer[0].action)
                     {
                         case PlayerController.PlayerStatus.Attack:
-                            //Debug.Log("attacking now");
-                            PlayerManager.Instance.isBusy = true;
-                            PlayerManager.Instance.TestAttack();
+                            PlayerController.Instance.playerStatus = PlayerStatus.Attack;
+                            PlayerManager.Instance.anim.SetBool("isAttacking", true);
                             break;
 
                         case PlayerController.PlayerStatus.Ultimate:
-                            //perform ultimate
+                            if(PlayerManager.Instance.ultReady)
+                            { 
+                                PlayerController.Instance.playerStatus = PlayerStatus.Ultimate;
+                                PlayerManager.Instance.FireUltimate();
+                            }
+
                             break;
 
                         default:
+                            PlayerManager.Instance.isBusy = false;
                             break;
                     }
 
-                    Debug.Log(InputBuffer.Count);
                     InputBuffer.RemoveAt(0);
                 }
             }
 
         }
 
-        public void Add(PlayerController.PlayerStatus s)
+        public void Add(InputBufferMemory ibm)
         {
-            InputBuffer.Add(s);
+            // if size > x, removeat(x)
+            InputBuffer.Add(ibm);
 
+        }
+
+        public void Cleanup()
+        {
+            // remove cache every few seconds
         }
 
 

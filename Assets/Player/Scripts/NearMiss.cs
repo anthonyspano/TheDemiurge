@@ -22,7 +22,7 @@ public class NearMiss : MonoBehaviour
         if (PlayerInput.Jump() && cooldownTimer <= 0)
         {
             PlayerManager.Instance.anim.SetBool("isAttacking", false);
-            PlayerManager.Instance.CanMove = false;
+            PlayerManager.Instance.isBusy = true;
             cooldownTimer = cooldownRate;
             CreateClone();
             // Dash
@@ -74,6 +74,8 @@ public class NearMiss : MonoBehaviour
             PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, finalSpace, PlayerManager.Instance.JumpSpeed * Time.deltaTime);
             yield return null;
         }
+
+        PlayerManager.Instance.isBusy = false;
         
     }
     

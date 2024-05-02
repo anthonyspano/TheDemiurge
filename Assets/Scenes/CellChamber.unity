@@ -4527,12 +4527,10 @@ GameObject:
   - component: {fileID: 464829522}
   - component: {fileID: 464829519}
   - component: {fileID: 464829532}
-  - component: {fileID: 464829533}
   - component: {fileID: 464829534}
   - component: {fileID: 464829535}
   - component: {fileID: 464829536}
   - component: {fileID: 464829537}
-  - component: {fileID: 464829538}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: PlayerAttack
@@ -4891,18 +4889,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &464829533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464829516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6794909a095625140acd5aeb37da7c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &464829534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5002,18 +4988,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 030b26aa7542ed94c859570473025900, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &464829538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464829516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856acc717efa1a4db84acd7dfe76f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &477850553
