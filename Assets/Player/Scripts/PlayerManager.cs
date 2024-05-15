@@ -312,6 +312,7 @@ public class PlayerManager : MonoBehaviour
 			isBusy = false; // temp for input buff
 			anim.SetBool("isAttacking", false);
 			CanMove = true;
+			PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
 			anim.Play("Player Idle", 0);
 		}
 		else
