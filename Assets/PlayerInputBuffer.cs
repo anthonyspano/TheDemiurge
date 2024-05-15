@@ -46,7 +46,23 @@ namespace com.ultimate2d.combat
                         case PlayerController.PlayerStatus.Attack:
                             PlayerController.Instance.playerStatus = PlayerStatus.Attack;
                             // Play attack animation once based on player's current direction
-                            PlayerManager.Instance.anim.SetBool("isAttacking", true);
+                            switch(PlayerManager.Instance.pFacingDir)
+                            {
+                                case PlayerManager.Direction.right:
+                                    PlayerManager.Instance.anim.Play("Player_Atk_Right");
+                                    break;
+                                case PlayerManager.Direction.left:
+                                    PlayerManager.Instance.anim.Play("Player_Atk_Left");
+                                    break;
+                                case PlayerManager.Direction.down:
+                                    PlayerManager.Instance.anim.Play("Player_Atk_Down");
+                                    break;
+                                case PlayerManager.Direction.up:
+                                    PlayerManager.Instance.anim.Play("Player_Atk_Up");
+                                    break;                                                                        
+                                default:
+                                    break;
+                            }
                             break;
 
                         case PlayerController.PlayerStatus.Ultimate:

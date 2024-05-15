@@ -65,7 +65,6 @@ namespace com.ultimate2d.combat
             {
                 if(inputVector != new Vector2(0, 0))
                 {
-                    Debug.Log("moving");
                     // create  move direction
                     var direction = new Vector3(inputVector.x, inputVector.y * PlayerManager.Instance.verticalRunMod, 0) + PlayerManager.Instance.transform.position;
                     // multiply move vector by speed 
