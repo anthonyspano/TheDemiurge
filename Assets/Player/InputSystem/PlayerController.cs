@@ -156,6 +156,7 @@ namespace com.ultimate2d.combat
             // take frame/timestamp that the button was pressed
 
            _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.Attack)); 
+           
 
         }
 

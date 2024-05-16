@@ -42,6 +42,7 @@ public class PlayerManager : MonoBehaviour
 	// animator
 	public Animator anim;
 	private bool animFinished;
+	private int attackIteration = 0;
 
 	// for damage
 	[Header("Damage")]
@@ -143,10 +144,11 @@ public class PlayerManager : MonoBehaviour
 		// audio
 		audioSource = GetComponent<AudioSource>();
 
-		// delete if old
+		// collision
 		boxCollider = GetComponent<BoxCollider2D>();
 		hitbox = transform.GetChild(3);
 
+		// animation
 		attackAnimLength = clip.length;
 
 	}
@@ -305,20 +307,39 @@ public class PlayerManager : MonoBehaviour
 
 	public void FinishAttackAnimation()
 	{
-		Debug.Log(continueChain);
-		if(!continueChain)
+		attackIteration++;
+		//Debug.Log(continueChain);
+		if(!ContinueChain()) // attack chain ends
 		{
 			// transition to idle state
-			isBusy = false; // temp for input buff
-			anim.SetBool("isAttacking", false);
+			attackIteration = 0;
+			isBusy = false; 
 			CanMove = true;
 			PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
 			anim.Play("Player Idle", 0);
 		}
-		else
+
+	}
+
+	private bool ContinueChain()
+	{
+		if(attackIteration >= 3) // hard cap on attack chain
+			return false;
+
+		bool cc = false;
+		
+		foreach(InputBufferMemory i in PlayerInputBuffer.Instance.InputBuffer)
 		{
-			continueChain = false;
+			Debug.Log("polling");
+			if(i.action == PlayerController.PlayerStatus.Attack)
+			{
+				
+				cc = true;
+				PlayerInputBuffer.Instance.InputBuffer.Remove(i);
+			}
 		}
+		
+		return cc;
 	}
 
 	public void FinishJumpAnimation()

@@ -21,10 +21,28 @@ namespace com.ultimate2d.combat
     // record player inputs into a buffer and execute the nearest one available
     public class PlayerInputBuffer : MonoBehaviour
     {
-        List<InputBufferMemory> InputBuffer;
+        private static PlayerInputBuffer _instance;
+        public static PlayerInputBuffer Instance
+        {
+            get { return _instance; }
+        }
+        public List<InputBufferMemory> InputBuffer;
         public int bufferSize; // size of the ring buffer
         public float bufferExpiration; // amount of frames before an input is allowed to stay in the buffer
         public float bufferCleanupTime; // amount of time (seconds) before the buffer gets checked again
+
+        void Awake()
+        {
+            // singleton
+            if(_instance != null && _instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                _instance = this;
+            }
+        }
 
         void Start()
         {
@@ -34,7 +52,6 @@ namespace com.ultimate2d.combat
 
         void Update()
         {
-            Debug.Log(PlayerManager.Instance.isBusy);
             // execute input if not currently executing
             if(!PlayerManager.Instance.isBusy)
             {
@@ -44,6 +61,7 @@ namespace com.ultimate2d.combat
                     switch(InputBuffer[0].action)
                     {
                         case PlayerController.PlayerStatus.Attack:
+                            PlayerManager.Instance.isBusy = true;
                             PlayerController.Instance.playerStatus = PlayerStatus.Attack;
                             // Play attack animation once based on player's current direction
                             switch(PlayerManager.Instance.pFacingDir)
@@ -69,6 +87,7 @@ namespace com.ultimate2d.combat
                             if(PlayerManager.Instance.ultReady)
                             { 
                                 PlayerController.Instance.playerStatus = PlayerStatus.Ultimate;
+                                PlayerManager.Instance.isBusy = true;
                                 PlayerManager.Instance.FireUltimate();
                             }
 
