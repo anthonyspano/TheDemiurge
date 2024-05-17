@@ -321,21 +321,21 @@ public class PlayerManager : MonoBehaviour
 
 	}
 
-	private bool ContinueChain()
+	private bool ContinueChain() // goes to idle after second attack
 	{
 		if(attackIteration >= 3) // hard cap on attack chain
 			return false;
 
 		bool cc = false;
 		
-		foreach(InputBufferMemory i in PlayerInputBuffer.Instance.InputBuffer)
+		for (int i = 0; i < PlayerInputBuffer.Instance.InputBuffer.Count; i++)
 		{
 			Debug.Log("polling");
-			if(i.action == PlayerController.PlayerStatus.Attack)
-			{
-				
+			if(PlayerInputBuffer.Instance.InputBuffer[i].action == PlayerController.PlayerStatus.Attack)
+			{	
 				cc = true;
-				PlayerInputBuffer.Instance.InputBuffer.Remove(i);
+				PlayerInputBuffer.Instance.InputBuffer.RemoveAt(i);
+				i--;
 			}
 		}
 		

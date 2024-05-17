@@ -116,14 +116,18 @@ namespace com.ultimate2d.combat
 
         }
 
-        public IEnumerator Cleanup()
+        public IEnumerator Cleanup() 
         {
             // remove stale cache every second - bufferExpiration
-            foreach (InputBufferMemory buffer in InputBuffer)
+            for (int i = 0; i < InputBuffer.Count; i++)
             {
-                if(Time.frameCount - buffer.frame > bufferExpiration)
-                    InputBuffer.Remove(buffer);
+                if(Time.frameCount - InputBuffer[i].frame > bufferExpiration)
+                {
+                    InputBuffer.RemoveAt(i);
+                    i--;
+                }
             }
+
 
             yield return new WaitForSeconds(bufferCleanupTime);
 
