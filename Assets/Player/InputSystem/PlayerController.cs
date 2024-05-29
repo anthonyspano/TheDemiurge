@@ -24,7 +24,7 @@ namespace com.ultimate2d.combat
 
         public float movementSpeed;
 
-        public enum PlayerStatus {Idle, Move, Dodge, Attack, Ultimate};
+        public enum PlayerStatus {Idle, Move, Dodge, Attack, Ultimate, Neutral};
         public PlayerStatus playerStatus;
 
         private void Awake()

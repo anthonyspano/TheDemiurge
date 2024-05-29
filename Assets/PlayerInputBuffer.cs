@@ -31,6 +31,8 @@ namespace com.ultimate2d.combat
         public float bufferExpiration; // amount of frames before an input is allowed to stay in the buffer
         public float bufferCleanupTime; // amount of time (seconds) before the buffer gets checked again
 
+        private int index = 0; 
+
         void Awake()
         {
             // singleton
@@ -47,7 +49,11 @@ namespace com.ultimate2d.combat
         void Start()
         {
             InputBuffer = new List<InputBufferMemory>();
-            StartCoroutine("Cleanup");
+
+            for(int i = bufferSize; i > 0; i--)
+            {
+                InputBuffer.Add(new InputBufferMemory(0, PlayerController.PlayerStatus.Neutral));
+            }
         }
 
         void Update()
@@ -98,46 +104,26 @@ namespace com.ultimate2d.combat
                             break;
                     }
 
-                    InputBuffer.RemoveAt(0);
+                    Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Neutral));
                 }
             }
+            // else if(attack anim is playing), set continue chain to true
+            // set isAttacking to true at beginning of attack, then false when it is exiting
+            else if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Attack)
+            {
+                PlayerManager.Instance.continueChain = true;
+            }
+
 
         }
 
         public void Add(InputBufferMemory ibm)
         {
-            // if size > x, removeat(x)
-            if(InputBuffer.Count > bufferSize)
-            {
-                InputBuffer.RemoveAt(0);
-            }
-            else
-                InputBuffer.Add(ibm);
+            index++;
+            index = index % bufferSize;
+            InputBuffer[index] = ibm;
 
         }
-
-        public IEnumerator Cleanup() 
-        {
-            // remove stale cache every second - bufferExpiration
-            for (int i = 0; i < InputBuffer.Count; i++)
-            {
-                if(Time.frameCount - InputBuffer[i].frame > bufferExpiration)
-                {
-                    InputBuffer.RemoveAt(i);
-                    i--;
-                }
-            }
-
-
-            yield return new WaitForSeconds(bufferCleanupTime);
-
-            StartCoroutine("Cleanup");
-        }
-
-
-
-
-
 
 
     }
