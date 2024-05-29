@@ -28,8 +28,6 @@ namespace com.ultimate2d.combat
         }
         public List<InputBufferMemory> InputBuffer;
         public int bufferSize; // size of the ring buffer
-        public float bufferExpiration; // amount of frames before an input is allowed to stay in the buffer
-        public float bufferCleanupTime; // amount of time (seconds) before the buffer gets checked again
 
         private int index = 0; 
 
@@ -100,16 +98,20 @@ namespace com.ultimate2d.combat
 
                     default:
                         PlayerManager.Instance.isBusy = false;
+                        Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Neutral));
                         break;
                 }
-
-                Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Neutral));
+                
                 
             }
             else if(InputBuffer[index % bufferSize].action == PlayerController.PlayerStatus.Attack)
             {
                 PlayerManager.Instance.continueChain = true;
+                index++;
             }
+
+
+
 
 
         }

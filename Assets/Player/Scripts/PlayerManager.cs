@@ -292,15 +292,15 @@ public class PlayerManager : MonoBehaviour
 	}
 
 	// State pattern anim control
-	public void FinishAnimation()
-	{
-		anim.Play("Player Idle", 0);
-		anim.SetBool("isAttacking", false);
-		anim.SetBool("SecondAttack", false);
-		animFinished = true;
-		CanMove = true;
+	// public void FinishAnimation()
+	// {
+	// 	anim.Play("Player Idle", 0);
+	// 	anim.SetBool("isAttacking", false);
+	// 	anim.SetBool("SecondAttack", false);
+	// 	animFinished = true;
+	// 	CanMove = true;
 
-	}
+	// }
 
 	public bool AnimFinished()
 	{
@@ -314,15 +314,15 @@ public class PlayerManager : MonoBehaviour
 		{
 			continueChain = false;
 		}
-		//Debug.Log(continueChain);
+		
 		if(!continueChain) // attack chain ends
 		{
 			// transition to idle state
+			anim.Play("Player Idle", 0);
 			attackIteration = 0;
 			isBusy = false; 
 			CanMove = true;
 			PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
-			anim.Play("Player Idle", 0);
 			StartCoroutine("AttackCooldown");
 		}
 
