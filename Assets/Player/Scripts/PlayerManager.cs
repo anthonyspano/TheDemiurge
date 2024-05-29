@@ -105,6 +105,8 @@ public class PlayerManager : MonoBehaviour
 		set { lastMove = value; }
 	}
 
+	public bool attackCooldownEnabled;
+
 	public enum Direction {left, right, up, down};
 	public Direction pFacingDir;
 
@@ -308,7 +310,7 @@ public class PlayerManager : MonoBehaviour
 	public void FinishAttackAnimation()
 	{
 		attackIteration++;
-		if(attackIteration > 3)
+		if(attackIteration >= 3)
 		{
 			continueChain = false;
 		}
@@ -321,30 +323,10 @@ public class PlayerManager : MonoBehaviour
 			CanMove = true;
 			PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
 			anim.Play("Player Idle", 0);
+			StartCoroutine("AttackCooldown");
 		}
 
 	}
-
-	// private bool ContinueChain() // goes to idle after second attack
-	// {
-	// 	if(attackIteration >= 3) // hard cap on attack chain
-	// 		return false;
-
-	// 	bool cc = false;
-		
-	// 	for (int i = 0; i < PlayerInputBuffer.Instance.InputBuffer.Count; i++)
-	// 	{
-	// 		Debug.Log("polling");
-	// 		if(PlayerInputBuffer.Instance.InputBuffer[i].action == PlayerController.PlayerStatus.Attack)
-	// 		{	
-	// 			cc = true;
-	// 			//PlayerInputBuffer.Instance.InputBuffer.Add(i);
-	// 			i--;
-	// 		}
-	// 	}
-		
-	// 	return cc;
-	// }
 
 	public void FinishJumpAnimation()
 	{
@@ -352,7 +334,6 @@ public class PlayerManager : MonoBehaviour
 	}
 
 	private bool jumping;
-	private bool attacking;
 
 	public void StartJumpCD()
 	{
@@ -377,10 +358,11 @@ public class PlayerManager : MonoBehaviour
 
 	private IEnumerator AttackCooldown()
 	{
-		attacking = true;
+		attackCooldownEnabled = true;
 		yield return new WaitForSeconds(attackCooldownRate);
+		continueChain = false;
 		attackCooldown = 0;
-		attacking = false;
+		attackCooldownEnabled = false;
 	}
 
 	public void PlayAttackSound()

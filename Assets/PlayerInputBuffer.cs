@@ -61,55 +61,52 @@ namespace com.ultimate2d.combat
             // execute input if not currently executing
             if(!PlayerManager.Instance.isBusy)
             {
-
-                if(InputBuffer.Count > 0)
+                switch(InputBuffer[index % bufferSize].action)
                 {
-                    switch(InputBuffer[0].action)
-                    {
-                        case PlayerController.PlayerStatus.Attack:
+                    case PlayerController.PlayerStatus.Attack:
+                        if(PlayerManager.Instance.attackCooldownEnabled) 
+                            break;
+                        PlayerManager.Instance.isBusy = true;
+                        PlayerController.Instance.playerStatus = PlayerStatus.Attack;
+                        // Play attack animation once based on player's current direction
+                        switch(PlayerManager.Instance.pFacingDir)
+                        {
+                            case PlayerManager.Direction.right:
+                                PlayerManager.Instance.anim.Play("Player_Atk_Right");
+                                break;
+                            case PlayerManager.Direction.left:
+                                PlayerManager.Instance.anim.Play("Player_Atk_Left");
+                                break;
+                            case PlayerManager.Direction.down:
+                                PlayerManager.Instance.anim.Play("Player_Atk_Down");
+                                break;
+                            case PlayerManager.Direction.up:
+                                PlayerManager.Instance.anim.Play("Player_Atk_Up");
+                                break;                                                                        
+                            default:
+                                break;
+                        }
+                        break;
+
+                    case PlayerController.PlayerStatus.Ultimate:
+                        if(PlayerManager.Instance.ultReady)
+                        { 
+                            PlayerController.Instance.playerStatus = PlayerStatus.Ultimate;
                             PlayerManager.Instance.isBusy = true;
-                            PlayerController.Instance.playerStatus = PlayerStatus.Attack;
-                            // Play attack animation once based on player's current direction
-                            switch(PlayerManager.Instance.pFacingDir)
-                            {
-                                case PlayerManager.Direction.right:
-                                    PlayerManager.Instance.anim.Play("Player_Atk_Right");
-                                    break;
-                                case PlayerManager.Direction.left:
-                                    PlayerManager.Instance.anim.Play("Player_Atk_Left");
-                                    break;
-                                case PlayerManager.Direction.down:
-                                    PlayerManager.Instance.anim.Play("Player_Atk_Down");
-                                    break;
-                                case PlayerManager.Direction.up:
-                                    PlayerManager.Instance.anim.Play("Player_Atk_Up");
-                                    break;                                                                        
-                                default:
-                                    break;
-                            }
-                            break;
+                            PlayerManager.Instance.FireUltimate();
+                        }
 
-                        case PlayerController.PlayerStatus.Ultimate:
-                            if(PlayerManager.Instance.ultReady)
-                            { 
-                                PlayerController.Instance.playerStatus = PlayerStatus.Ultimate;
-                                PlayerManager.Instance.isBusy = true;
-                                PlayerManager.Instance.FireUltimate();
-                            }
+                        break;
 
-                            break;
-
-                        default:
-                            PlayerManager.Instance.isBusy = false;
-                            break;
-                    }
-
-                    Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Neutral));
+                    default:
+                        PlayerManager.Instance.isBusy = false;
+                        break;
                 }
+
+                Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Neutral));
+                
             }
-            // else if(attack anim is playing), set continue chain to true
-            // set isAttacking to true at beginning of attack, then false when it is exiting
-            else if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Attack)
+            else if(InputBuffer[index % bufferSize].action == PlayerController.PlayerStatus.Attack)
             {
                 PlayerManager.Instance.continueChain = true;
             }
