@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace com.ultimate2d.combat
@@ -15,6 +16,11 @@ namespace com.ultimate2d.combat
         public override IEnumerator Start()
         {
             Debug.Log("Throwing you a bone!");
+            // anim
+            sbs.GetComponent<Animator>().Play("Attack");
+
+            yield return null;
+            yield return new WaitUntil(() => !sbs.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Attack"));
 
             // instantiate bone object
             Transform bonerangPrefab = Resources.Load<Transform>("Bonerang");
@@ -22,29 +28,22 @@ namespace com.ultimate2d.combat
             Physics2D.IgnoreCollision(bonerang.GetComponent<BoxCollider2D>(), sbs.transform.Find("Hitbox").GetComponent<BoxCollider2D>());
 
             // launch bone directly behind player
-            Vector2 targetPos = PlayerManager.Instance.transform.position;
-            while(bonerang.transform.XandY() != targetPos)
-            {
-                bonerang.transform.position = Vector2.MoveTowards(bonerang.transform.position, targetPos, 0.1f);
-                yield return null;
-
-            }
+            bonerang.GetComponent<Bonerang>().Target = PlayerManager.Instance.transform.position;
+            yield return new WaitUntil(() => bonerang.position == bonerang.GetComponent<Bonerang>().Target);
 
             // bonerang hovers
             yield return new WaitForSeconds(1);
 
             // have bone return to skelly
-            targetPos = sbs.transform.position;
+            bonerang.GetComponent<Bonerang>().Target = sbs.transform.position;
             Physics2D.IgnoreCollision(bonerang.GetComponent<BoxCollider2D>(), sbs.transform.Find("Hitbox").GetComponent<BoxCollider2D>(), false);
-            while(bonerang.transform.XandY() != targetPos)
-            {
-                bonerang.transform.position = Vector2.MoveTowards(bonerang.transform.position, targetPos, 0.1f);
-                yield return null;
-            }
+
+            yield return new WaitUntil(() => Vector3.Distance(bonerang.position, sbs.transform.position) < 5f);
+            
 
 
-
-            yield break;
+            Debug.Log("attempting to try again");
+            SkellyBattleSystem.SetState(new SkellyStart(SkellyBattleSystem));
         }
 
 

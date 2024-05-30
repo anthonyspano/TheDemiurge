@@ -6,6 +6,7 @@ namespace com.ultimate2d.combat
 {
     public class SkellyBattleSystem : StateMachine
     {
+        [HideInInspector]
         public EnemyManager em;
         void Start()
         {
