@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour
     private Object prompt;
     bool once;
 
-    protected void OnCollisionStay2D(Collision2D col)
+    protected void OnTriggerStay2D(Collider2D col)
     {
         // prompt comes up
         // generate image
@@ -31,7 +31,7 @@ public class Interactable : MonoBehaviour
 
     }
 
-    void OnCollisionExit2D(Collision2D col)
+    void OnTriggerExit2D(Collider2D col)
     {
         Destroy(prompt);
         once = false;

@@ -41,8 +41,6 @@ namespace com.ultimate2d.combat
             yield return new WaitUntil(() => Vector3.Distance(bonerang.position, sbs.transform.position) < 5f);
             
 
-
-            Debug.Log("attempting to try again");
             SkellyBattleSystem.SetState(new SkellyStart(SkellyBattleSystem));
         }
 
