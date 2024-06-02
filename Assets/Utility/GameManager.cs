@@ -71,15 +71,48 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject skelly;
+    public GameObject emptyskelly;
     public void BeginLevel()
     {
         // keep json file of enemies and positions they need to spawn
+
         
         // spawn two skellies to left and right of player for now
-        Debug.Log("spawning");
-        GameObject.Instantiate(skelly, PlayerManager.Instance.transform.position + new Vector3(6, 0, 0), Quaternion.identity);
-        Debug.Log("spawning");
-        GameObject.Instantiate(skelly, PlayerManager.Instance.transform.position + new Vector3(-6, 0, 0), Quaternion.identity);
+        StartCoroutine("SpawnEnemies");
+
+
+    }
+
+    private IEnumerator SpawnEnemies()
+    {
+        // make placeholders for each one that fade from a glowing white
+        var s1 = GameObject.Instantiate(emptyskelly, PlayerManager.Instance.transform.position + new Vector3(6, 0, 0), Quaternion.identity);
+        var s2 = GameObject.Instantiate(emptyskelly, PlayerManager.Instance.transform.position + new Vector3(-6, 0, 0), Quaternion.identity);
+
+        SpriteRenderer sr1 = s1.GetComponent<SpriteRenderer>();
+        SpriteRenderer sr2 = s2.GetComponent<SpriteRenderer>();
+        sr1.color = Color.black;
+        sr2.color = Color.black;
+        var increment = new Color(0.01f, 0.01f, 0.01f);
+
+        while(sr1.color != Color.white)
+        {
+            sr1.color += increment;
+            if(sr1.color.b >= 1f)
+                sr1.color = Color.white;
+
+            sr2.color = sr1.color;
+            yield return null;
+        }
+        
+
+
+        // spawning
+        GameObject.Instantiate(skelly, s1.transform.position, Quaternion.identity);
+        GameObject.Instantiate(skelly, s2.transform.position, Quaternion.identity);
+
+        Destroy(s1);
+        Destroy(s2);
 
     }
 }
