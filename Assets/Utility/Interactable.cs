@@ -7,7 +7,8 @@ public class Interactable : MonoBehaviour
 
     public Object icon;
     private Object prompt;
-    bool once;
+    protected bool once;
+    protected bool interacted;
 
     protected void OnTriggerStay2D(Collider2D col)
     {
@@ -19,9 +20,9 @@ public class Interactable : MonoBehaviour
             prompt = GameObject.Instantiate(icon, transform.position + new Vector3(1,1,50), Quaternion.identity);
         }
 
-        if(PlayerInput.Interact())
+        if(PlayerInput.Interact() && !interacted)
         {
-
+            interacted = true;
             // remove prompt
             once = false;
             Object.Destroy(prompt);
