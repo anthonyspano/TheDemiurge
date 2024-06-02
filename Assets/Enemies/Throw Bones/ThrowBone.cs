@@ -15,7 +15,7 @@ namespace com.ultimate2d.combat
 
         public override IEnumerator Start()
         {
-            Debug.Log("Throwing you a bone!");
+            
             // anim
             sbs.GetComponent<Animator>().Play("Attack");
 

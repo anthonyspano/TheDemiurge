@@ -51,8 +51,8 @@ public class EnemyTakeDamage : MonoBehaviour
     {
         // disable further movements
         // enemy manager
-        transform.parent.GetComponent<BlockBattleSystem>().CanMove = false;
-        transform.parent.GetComponent<BlockBattleSystem>().Dead = true;
+        // transform.parent.GetComponent<BlockBattleSystem>().CanMove = false;
+        // transform.parent.GetComponent<BlockBattleSystem>().Dead = true;
         
 
         // play death anim
@@ -77,10 +77,20 @@ public class EnemyTakeDamage : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    // private void OnCollisionEnter2D(Collision2D col)
+    // {
+    //     var myCollider = col.GetContact(0);
+    //     if(col.GetContact(0).collider.transform.CompareTag("PlayerAttack"))
+    //     {
+    //         healthSystem.Damage(PlayerManager.Instance.Attack);
+    //         PlayerManager.Instance.ultBar.AddUlt(PlayerManager.Instance.ultAddedOnHit); // consider source
+    //     }
+    // }
+
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        var myCollider = col.GetContact(0);
-        if(col.GetContact(0).collider.transform.CompareTag("PlayerAttack"))
+        Debug.Log(col.transform.name);
+        if(col.transform.CompareTag("PlayerAttack"))
         {
             healthSystem.Damage(PlayerManager.Instance.Attack);
             PlayerManager.Instance.ultBar.AddUlt(PlayerManager.Instance.ultAddedOnHit); // consider source

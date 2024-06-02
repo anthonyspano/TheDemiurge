@@ -57,6 +57,10 @@ namespace com.ultimate2d.combat
         void Update()
         {
             // execute input if not currently executing
+            // every frame either 
+            // a) execute an action, 
+            // b) 
+
             if(!PlayerManager.Instance.isBusy)
             {
                 switch(InputBuffer[index % bufferSize].action)
@@ -93,15 +97,14 @@ namespace com.ultimate2d.combat
                             PlayerManager.Instance.isBusy = true;
                             PlayerManager.Instance.FireUltimate();
                         }
-
                         break;
 
                     default:
                         PlayerManager.Instance.isBusy = false;
-                        Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Neutral));
                         break;
                 }
                 
+                Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Neutral));
                 
             }
             else if(InputBuffer[index % bufferSize].action == PlayerController.PlayerStatus.Attack)

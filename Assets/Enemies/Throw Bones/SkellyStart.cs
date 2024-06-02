@@ -16,7 +16,7 @@ namespace com.ultimate2d.combat
         public override IEnumerator Start()
         {
             // wait until player is in range
-            Debug.Log("waiting");
+            
             yield return new WaitUntil(() => sbs.em.PlayerIsInRange(sbs.em.pursuitRange));
 
             // throw boomerang
