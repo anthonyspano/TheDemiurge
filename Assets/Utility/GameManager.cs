@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public Text timerText;
 
+    public ScoreManagerSO _scoreManager;
 
     private static GameManager _instance;
     public static GameManager Instance
@@ -124,8 +125,13 @@ public class GameManager : MonoBehaviour
         PlayerManager.Instance.killCount++;
         if(PlayerManager.Instance.killCount >= 2)
         {
+            // save game data into scriptable object
+            _scoreManager.time = timerText.text;
+
+            // _scoreManager.damageTaken = 
+            // _scoreManager.damageDealt = 
+
             // go to score screen
-            Debug.Log("end game");
             SceneManager.LoadScene("ScoreScreen");
         }
     }
