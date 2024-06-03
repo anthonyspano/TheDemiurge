@@ -59,6 +59,8 @@ public class EnemyTakeDamage : MonoBehaviour
         anim.Play("enemy_death", 0);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length); 
 
+        GameManager.Instance.EnemyDeathCount();
+
 
         Destroy(transform.parent.gameObject);
     }

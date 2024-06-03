@@ -116,6 +116,9 @@ public class PlayerManager : MonoBehaviour
 	// Animation control
 	[HideInInspector] public bool continueChain;
 
+	// for game manager
+	public int killCount = 0;
+
 	private void Start()
 	{
 		if(player == null)

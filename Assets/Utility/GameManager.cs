@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public Text timerText;
 
+
     private static GameManager _instance;
     public static GameManager Instance
     {
@@ -46,7 +47,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.Escape))
+
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
@@ -114,5 +116,17 @@ public class GameManager : MonoBehaviour
         Destroy(s1);
         Destroy(s2);
 
+    }
+
+    public void EnemyDeathCount()
+    {
+        Debug.Log(PlayerManager.Instance.killCount);
+        PlayerManager.Instance.killCount++;
+        if(PlayerManager.Instance.killCount >= 2)
+        {
+            // go to score screen
+            Debug.Log("end game");
+            SceneManager.LoadScene("ScoreScreen");
+        }
     }
 }
