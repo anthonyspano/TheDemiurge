@@ -9,16 +9,8 @@ public class ActivateLevel : Interactable
     {
         // tell game manager to start the level
         Debug.Log("starting level");
-        GameManager.Instance.BeginLevel();
-    
-        StartCoroutine("Reset");
-        
+        GameManager.Instance.BeginLevel();        
         
     }
 
-    private IEnumerator Reset()
-    {
-        yield return new WaitForSeconds(3);
-        interacted = false;
-    }
 }
