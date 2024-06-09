@@ -79,25 +79,24 @@ public class EnemyTakeDamage : MonoBehaviour
         }
     }
 
-    // private void OnCollisionEnter2D(Collision2D col)
-    // {
-    //     var myCollider = col.GetContact(0);
-    //     if(col.GetContact(0).collider.transform.CompareTag("PlayerAttack"))
-    //     {
-    //         healthSystem.Damage(PlayerManager.Instance.Attack);
-    //         PlayerManager.Instance.ultBar.AddUlt(PlayerManager.Instance.ultAddedOnHit); // consider source
-    //     }
-    // }
-
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log(col.transform.name);
-        if(col.transform.CompareTag("PlayerAttack"))
+        if(col.GetContact(0).collider.transform.CompareTag("PlayerAttack"))
         {
             healthSystem.Damage(PlayerManager.Instance.Attack);
             PlayerManager.Instance.ultBar.AddUlt(PlayerManager.Instance.ultAddedOnHit); // consider source
         }
     }
+
+    // private void OnTriggerEnter2D(Collider2D col)
+    // {
+    //     Debug.Log(col.transform.name);
+    //     if(col.transform.CompareTag("PlayerAttack"))
+    //     {
+    //         healthSystem.Damage(PlayerManager.Instance.Attack);
+    //         PlayerManager.Instance.ultBar.AddUlt(PlayerManager.Instance.ultAddedOnHit); // consider source
+    //     }
+    // }
 }
 
 }

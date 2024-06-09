@@ -200,23 +200,7 @@ public class PlayerManager : MonoBehaviour
 
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		// if(collision.transform.CompareTag("Projectile"))
-		// {
-		// 	Instance.pHealth.Damage(20);
-		// 	audioSource.PlayOneShot(hurt1, 0.7f);
-		// }
-		// if(collision.transform.CompareTag("BigCultist"))
-		// {
-		// 	Instance.pHealth.Damage(70);
-		// 	audioSource.PlayOneShot(hurt1, 0.7f);
-		// }
-
-		
-	}
-
-	private void OnTriggerEnter2D(Collider2D col)
+	private void OnCollisionEnter2D(Collision2D col)
 	{
 
 		if(col.transform.CompareTag("BigCultist"))
@@ -231,15 +215,6 @@ public class PlayerManager : MonoBehaviour
 			audioSource.PlayOneShot(hurt1, 0.7f);
 		}
 
-		// if(col.transform.CompareTag("RockShadow"))
-		// {
-		// 	wrongWayCount++;
-		// 	// 24.5f
-		// 	transform.position = new Vector3(-16.93f, transform.position.y, transform.position.z);
-		// 	if(wrongWayCount > 2)
-		// 		wrongWayPanel.gameObject.SetActive(true);
-
-		// }
 	}
 
 	private void OnDamage(object sender, System.EventArgs e)
