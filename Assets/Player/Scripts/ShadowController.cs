@@ -2,41 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShadowController : MonoBehaviour
+namespace com.ultimate2d.combat
 {
-	private UltimateBar ultBar;
-
-	private void Start()
+	public class ShadowController : MonoBehaviour
 	{
-		ultBar = PlayerManager.Instance.ultBar;
-	}
-	
-    // private void OnTriggerEnter2D(Collider2D other)
-	// {
-	// 	if(other.gameObject.CompareTag("HitBox"))
-	// 	{
-	// 		Debug.Log("shadow hit");
-	// 		ultBar.AddUlt(20);
-	// 		Destroy(gameObject);
-	// 	}
-	// }
+		private UltimateBar ultBar;
 
-	private void OnCollisionEnter2D(Collision2D other)
-	{
-
-		if(other.gameObject.CompareTag("HitBox"))
+		private void Start()
 		{
-			Debug.Log("shadow hit");
-			ultBar.AddUlt(20);
-			Destroy(gameObject);
+			ultBar = PlayerManager.Instance.ultBar;
 		}
-		if(other.gameObject.CompareTag("BigCultist"))
+		
+		// private void OnTriggerEnter2D(Collider2D other)
+		// {
+		// 	if(other.gameObject.CompareTag("HitBox"))
+		// 	{
+		// 		Debug.Log("shadow hit");
+		// 		ultBar.AddUlt(20);
+		// 		Destroy(gameObject);
+		// 	}
+		// }
+
+		private void OnCollisionEnter2D(Collision2D other)
 		{
-			Debug.Log("shadow hit");
-			ultBar.AddUlt(20);
-			Destroy(gameObject);
+
+			if(other.gameObject.CompareTag("HitBox"))
+			{
+				Debug.Log("shadow hit");
+				ultBar.AddUlt(20);
+				Destroy(gameObject);
+			}
+			if(other.gameObject.CompareTag("BigCultist"))
+			{
+				Debug.Log("shadow hit");
+				ultBar.AddUlt(20);
+				Destroy(gameObject);
+			}
 		}
+
+
 	}
-
-
 }

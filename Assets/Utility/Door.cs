@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : Interactable
+namespace com.ultimate2d.combat
 {
-    void Start()
+    public class Door : Interactable
     {
-        audioSource = GetComponent<AudioSource>();
-    }
-    public AudioSource audioSource;
-    protected override void Trigger()
-    {
-        audioSource.Play();
+        void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+        public AudioSource audioSource;
+        protected override void Trigger()
+        {
+            audioSource.Play();
 
-        var doorExit = transform.GetChild(0);
-        PlayerManager.Instance.transform.position = doorExit.position;
+            var doorExit = transform.GetChild(0);
+            PlayerManager.Instance.transform.position = doorExit.position;
 
+        }
     }
 }

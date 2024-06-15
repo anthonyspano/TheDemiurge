@@ -89,6 +89,16 @@ namespace com.ultimate2d.combat
             _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.Ultimate));
         }
 
+
+        public void Attack(InputAction.CallbackContext context)
+        {
+            // take frame/timestamp that the button was pressed
+
+           _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.Attack)); 
+           
+
+        }
+
         // public void Dodge(InputAction.CallbackContext context)
         // {
         //     // started, performed, canceled
@@ -133,32 +143,9 @@ namespace com.ultimate2d.combat
 
         public void Movement(InputAction.CallbackContext context)
         {
-            //Debug.Log(context.ReadValue<Vector2>());
-            //var input = context.ReadValue<Vector2>();
-            // if(input.x > 0.1f || input.y > 0.1f)
-            // {
-            //     if(playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.Move)
-            //     {
-            //         Debug.Log("moving");
-            //         // create  move direction
-            //         var direction = new Vector3(input.x, input.y * PlayerManager.Instance.verticalRunMod, 0) + PlayerManager.Instance.transform.position;
-            //         // multiply move vector by speed 
-            //         PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, direction, PlayerManager.Instance.moveSpeed * Time.deltaTime);
-            //         PlayerManager.Instance.anim.SetBool("isMoving", true);
-
-            //     }
-            
-            // }
-        }
-
-        public void Attack(InputAction.CallbackContext context)
-        {
-            // take frame/timestamp that the button was pressed
-
-           _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.Attack)); 
-           
 
         }
+
 
 
     }

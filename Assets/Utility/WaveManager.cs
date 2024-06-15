@@ -4,61 +4,64 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class WaveManager : MonoBehaviour
+namespace com.ultimate2d.combat
 {
-    public GameObject DoorOpenPrompt;
-
-    public GameObject[] Rooms;
-    public GameObject[] Doors;
-    
-    public int currentRoom; 
-    private int aliveEnemies;
-
-    public Text youWinText;
-
-    private void Start()
+    public class WaveManager : MonoBehaviour
     {
-        currentRoom = 0;
-    }
+        public GameObject DoorOpenPrompt;
 
-    void Update()
-    {
+        public GameObject[] Rooms;
+        public GameObject[] Doors;
+        
+        public int currentRoom; 
+        private int aliveEnemies;
 
-        try
+        public Text youWinText;
+
+        private void Start()
         {
-            aliveEnemies = Rooms[currentRoom].gameObject.transform.childCount;
-        }
-        catch (Exception e)
-        {
-            Debug.Log("index out of bounds dummy");
-
+            currentRoom = 0;
         }
 
+        void Update()
+        {
 
-        if(aliveEnemies == 0)
-        {  
-            if(currentRoom < 2)
+            try
             {
-                // unlock door to next room
-                Doors[currentRoom].transform.GetChild(0).gameObject.SetActive(true);
-                DoorOpenPrompt.gameObject.SetActive(true);
-
-                currentRoom++;
+                aliveEnemies = Rooms[currentRoom].gameObject.transform.childCount;
             }
-            else
+            catch (Exception e)
             {
-                // you win screen
-                youWinText.gameObject.SetActive(true);
+                Debug.Log("index out of bounds dummy");
 
-                // record time on clock
-                string time = GameObject.Find("GameManager").GetComponent<GameManager>().timerText.text;
-                youWinText.text += "\n" + time;
-
-                Destroy(this);
             }
 
+
+            if(aliveEnemies == 0)
+            {  
+                if(currentRoom < 2)
+                {
+                    // unlock door to next room
+                    Doors[currentRoom].transform.GetChild(0).gameObject.SetActive(true);
+                    DoorOpenPrompt.gameObject.SetActive(true);
+
+                    currentRoom++;
+                }
+                else
+                {
+                    // you win screen
+                    youWinText.gameObject.SetActive(true);
+
+                    // record time on clock
+                    string time = GameObject.Find("GameManager").GetComponent<GameManager>().timerText.text;
+                    youWinText.text += "\n" + time;
+
+                    Destroy(this);
+                }
+
+            }
+
+
         }
-
-
     }
 }

@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivateLevel : Interactable
+namespace com.ultimate2d.combat
 {
-
-    protected override void Trigger()
+    public class ActivateLevel : Interactable
     {
-        // tell game manager to start the level
-        Debug.Log("starting level");
-        GameManager.Instance.BeginLevel();        
-        
-    }
 
+        protected override void Trigger()
+        {
+            // tell game manager to start the level
+            Debug.Log("starting level");
+            GameManager.Instance.BeginLevel();        
+            
+        }
+
+    }
 }

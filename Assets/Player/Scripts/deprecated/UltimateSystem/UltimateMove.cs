@@ -3,60 +3,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class UltimateMove : MonoBehaviour
+namespace com.ultimate2d.combat
 {
-    private UltimateBar ultBar;
-    private bool ultReady;
-    public event EventHandler FireUltAnim;
-
-    private void Start()
+    public class UltimateMove : MonoBehaviour
     {
-        ultBar = PlayerManager.Instance.GetComponent<UltimateBar>();
-        ultBar.OnUltReady += ReadyUlt;
+        private UltimateBar ultBar;
+        private bool ultReady;
+        public event EventHandler FireUltAnim;
 
-
-    }
-
-    private void ReadyUlt(object sender, EventArgs e)
-    {
-        // see PowerManager.cs
-
-        //ultReady = true;
-
-        // light up icon
-
-    }
-    
-    private void Update()
-    {
-        // Debug Only
-        if (Input.GetKeyDown(KeyCode.F))
+        private void Start()
         {
-            ultBar.AddUlt(100);
+            ultBar = PlayerManager.Instance.GetComponent<UltimateBar>();
+            ultBar.OnUltReady += ReadyUlt;
+
+
         }
 
-        if (ultReady && PlayerInput.Ultimate())
+        private void ReadyUlt(object sender, EventArgs e)
         {
-            Debug.Log("Ultimate!");
-            ultReady = false;
-            UseUlt();
-        }
-    }
-    
-    private void UseUlt()
-    {
+            // see PowerManager.cs
 
-        // play ult anim
-        if(FireUltAnim != null) FireUltAnim(this, EventArgs.Empty);
+            //ultReady = true;
+
+            // light up icon
+
+        }
         
-        // empty ult bar
-        ultBar.SetUlt(0);
+        private void Update()
+        {
+            // Debug Only
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                ultBar.AddUlt(100);
+            }
 
-        // disable icon
+            if (ultReady && PlayerInput.Ultimate())
+            {
+                Debug.Log("Ultimate!");
+                ultReady = false;
+                UseUlt();
+            }
+        }
+        
+        private void UseUlt()
+        {
+
+            // play ult anim
+            if(FireUltAnim != null) FireUltAnim(this, EventArgs.Empty);
+            
+            // empty ult bar
+            ultBar.SetUlt(0);
+
+            // disable icon
+
+
+        }
 
 
     }
-
-
 }

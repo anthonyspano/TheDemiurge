@@ -2,33 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(UltimateBar))]
-public class PlayerShootProjectile : LaunchProjectile
+namespace com.ultimate2d.combat
 {
-	private UltimateBar ultBar;
-    public int ultChargeAmt;
-
-    public float bulletSpeed;
-    public Transform bulletPrefab;
-    
-    private PlayerAim myAim;
-    public float crosshairSize;
-    
-    private void Start()
+    [RequireComponent(typeof(UltimateBar))]
+    public class PlayerShootProjectile : LaunchProjectile
     {
-	    myAim = GetComponent<PlayerAim>();
-	    //ultBar = GameObject.Find("UltBar").GetComponent<UltimateBar>();
-    }
+        private UltimateBar ultBar;
+        public int ultChargeAmt;
 
-    private void Update()
-    {
-	    if (PlayerInput.Shoot())
-	    {
-            var pos = transform.position + PlayerManager.Instance.LastMove.normalized;
-		    Fire(bulletPrefab, pos, pos - transform.position, bulletSpeed);
-	    }
-	    
-    }
+        public float bulletSpeed;
+        public Transform bulletPrefab;
+        
+        private PlayerAim myAim;
+        public float crosshairSize;
+        
+        private void Start()
+        {
+            myAim = GetComponent<PlayerAim>();
+            //ultBar = GameObject.Find("UltBar").GetComponent<UltimateBar>();
+        }
 
-    
+        private void Update()
+        {
+            if (PlayerInput.Shoot())
+            {
+                var pos = transform.position + PlayerManager.Instance.LastMove.normalized;
+                Fire(bulletPrefab, pos, pos - transform.position, bulletSpeed);
+            }
+            
+        }
+
+        
+    }
 }

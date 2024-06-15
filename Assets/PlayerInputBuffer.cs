@@ -26,10 +26,11 @@ namespace com.ultimate2d.combat
         {
             get { return _instance; }
         }
+        
         public List<InputBufferMemory> InputBuffer;
         public int bufferSize; // size of the ring buffer
 
-        private int index = 0; 
+        public int index = 0; 
 
         void Awake()
         {
@@ -74,13 +75,13 @@ namespace com.ultimate2d.combat
                         switch(PlayerManager.Instance.pFacingDir)
                         {
                             case PlayerManager.Direction.right:
-                                PlayerManager.Instance.anim.Play("Player_Atk_Right");
+                                PlayerManager.Instance.anim.Play("v-attack-dr-1");
                                 break;
                             case PlayerManager.Direction.left:
                                 PlayerManager.Instance.anim.Play("Player_Atk_Left");
                                 break;
                             case PlayerManager.Direction.down:
-                                PlayerManager.Instance.anim.Play("Player_Atk_Down");
+                                PlayerManager.Instance.anim.Play("v-attack-dr-1");
                                 break;
                             case PlayerManager.Direction.up:
                                 PlayerManager.Instance.anim.Play("Player_Atk_Up");
