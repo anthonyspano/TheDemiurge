@@ -44,7 +44,6 @@ namespace com.ultimate2d.combat
 		// animator
 		public Animator anim;
 		private bool animFinished;
-		private int attackIteration = 0;
 
 		// for damage
 		[Header("Damage")]
@@ -291,42 +290,37 @@ namespace com.ultimate2d.combat
 
 		public void FinishAttackAnimation()
 		{
-			// attackIteration++;
-			// if(attackIteration >= 3)
-			// {
-			// 	continueChain = false;
-			// }
-
-			StartCoroutine("NextAttack");
-			
-			// if(!continueChain) // attack chain ends
-			// {
-			// transition to idle state
 			anim.Play("Player Idle", 0);
-			attackIteration = 0;
-			isBusy = false; 
-			CanMove = true;
+			//isBusy = false; 
+			//CanMove = true;
 			PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
-				//StartCoroutine("AttackCooldown");
-			//}
+		
+		}
 
+		public void StartNextAttack()
+		{
+			StartCoroutine("NextAttack");
 		}
 
 		private IEnumerator NextAttack()
 		{
+			Debug.Log(anim.GetCurrentAnimatorStateInfo(0).IsName("v-attack-dr-1"));
+			int currentState = anim.GetCurrentAnimatorStateInfo(0).shortNameHash;
 			float secondsPassed = 0;
 
 			while(secondsPassed < inputWindow)
 			{
+				
 				secondsPassed += Time.deltaTime;
 				if(PlayerInputBuffer.Instance.InputBuffer[PlayerInputBuffer.Instance.index % PlayerInputBuffer.Instance.bufferSize].action == PlayerController.PlayerStatus.Attack) 
 				{
+					Debug.Log("phase two");
 					// play the NEXT animation
 					// reference a list of animations of what would be the next one played
 					
 					// get the next animation state hash given the current one 
 					AnimatorHashRef animRef = new AnimatorHashRef();
-					string nextAnim = animRef.GetNextState(anim.GetCurrentAnimatorStateInfo(0).shortNameHash);
+					string nextAnim = animRef.GetNextState(currentState);
 
 					if(nextAnim == "")
 					{
@@ -334,8 +328,9 @@ namespace com.ultimate2d.combat
 						StartCoroutine("AttackCooldown");
 					}
 					else
-					{
+					{	
 						// play that animation
+						Debug.Log("made it");
 						isBusy = true;
 						CanMove = false;
 						anim.Play(nextAnim);

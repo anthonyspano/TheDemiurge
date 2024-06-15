@@ -21,7 +21,7 @@ namespace com.ultimate2d.combat
         // close the loop according to notepad on desk
         public override IEnumerator Start()
         {
-            // wait for anykey
+            // TODO: wait until Input Buffer does not have a neutral action
             yield return new WaitUntil(() => PlayerController.Instance.playerStatus != PlayerController.PlayerStatus.Idle);
             // grab key pressed from gamemanager
             yield return null;
