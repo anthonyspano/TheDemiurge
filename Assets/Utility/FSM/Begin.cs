@@ -22,17 +22,12 @@ namespace com.ultimate2d.combat
         public override IEnumerator Start()
         {
             // TODO: wait until Input Buffer does not have a neutral action
-            yield return new WaitUntil(() => PlayerController.Instance.playerStatus != PlayerController.PlayerStatus.Idle);
+            yield return new WaitUntil(() => PlayerInputBuffer.Instance.InputBuffer[PlayerInputBuffer.Instance.index % PlayerInputBuffer.Instance.bufferSize].action != PlayerController.PlayerStatus.Neutral);
             // grab key pressed from gamemanager
             yield return null;
             PlayerManager.Instance.GetComponent<Animator>().SetBool("isBusy", false);
-            switch(PlayerController.Instance.playerStatus) // create different begin classes based on detected input
-            {
-                case PlayerController.PlayerStatus.Move:
-                
-                    PlayerBattleSystem.SetState(new PlayerRun(PlayerBattleSystem));
-                    break;
-                    
+            switch(PlayerInputBuffer.Instance.InputBuffer[PlayerInputBuffer.Instance.index % PlayerInputBuffer.Instance.bufferSize].action)
+            {       
                 case PlayerController.PlayerStatus.Attack:
                     if(PlayerManager.Instance.attackCooldown <= 0)
                     {
@@ -50,7 +45,6 @@ namespace com.ultimate2d.combat
                     break;
 
                 case PlayerController.PlayerStatus.Ultimate:
-                    // if player has enough ultimate charge
                     if(PlayerManager.Instance.ultReady)
                     {
                         // use ult - function in playermanager 
@@ -74,10 +68,6 @@ namespace com.ultimate2d.combat
                     break;
 
             }
-
-            //Debug.Log("Oops! You're not supposed to be here!");
-            // yield return new WaitUntil(() => PlayerInput.Slash());
-            //PlayerBattleSystem.SetState(new FirstAttack(PlayerBattleSystem));
 
 
             

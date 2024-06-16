@@ -62,57 +62,57 @@ namespace com.ultimate2d.combat
             // a) execute an action, 
             // b) 
 
-            if(!PlayerManager.Instance.isBusy)
-            {
-                switch(InputBuffer[index % bufferSize].action)
-                {
-                    case PlayerController.PlayerStatus.Attack:
-                        if(PlayerManager.Instance.attackCooldownEnabled) 
-                            break;
-                        PlayerManager.Instance.isBusy = true;
-                        PlayerController.Instance.playerStatus = PlayerStatus.Attack;
-                        // Play attack animation once based on player's current direction
-                        switch(PlayerManager.Instance.pFacingDir)
-                        {
-                            case PlayerManager.Direction.right:
-                                PlayerManager.Instance.anim.Play("v-attack-dr-1");
-                                break;
-                            case PlayerManager.Direction.left:
-                                PlayerManager.Instance.anim.Play("Player_Atk_Left");
-                                break;
-                            case PlayerManager.Direction.down:
-                                PlayerManager.Instance.anim.Play("v-attack-dr-1");
-                                break;
-                            case PlayerManager.Direction.up:
-                                PlayerManager.Instance.anim.Play("Player_Atk_Up");
-                                break;                                                                        
-                            default:
-                                break;
-                        }
-                        break;
+            // if(!PlayerManager.Instance.isBusy)
+            // {
+            //     switch(InputBuffer[index % bufferSize].action)
+            //     {
+            //         case PlayerController.PlayerStatus.Attack:
+            //             if(PlayerManager.Instance.attackCooldownEnabled) 
+            //                 break;
+            //             PlayerManager.Instance.isBusy = true;
+            //             PlayerController.Instance.playerStatus = PlayerStatus.Attack;
+            //             // Play attack animation once based on player's current direction
+            //             switch(PlayerManager.Instance.pFacingDir)
+            //             {
+            //                 case PlayerManager.Direction.right:
+            //                     PlayerManager.Instance.anim.Play("v-attack-dr-1");
+            //                     break;
+            //                 case PlayerManager.Direction.left:
+            //                     PlayerManager.Instance.anim.Play("Player_Atk_Left");
+            //                     break;
+            //                 case PlayerManager.Direction.down:
+            //                     PlayerManager.Instance.anim.Play("v-attack-dr-1");
+            //                     break;
+            //                 case PlayerManager.Direction.up:
+            //                     PlayerManager.Instance.anim.Play("Player_Atk_Up");
+            //                     break;                                                                        
+            //                 default:
+            //                     break;
+            //             }
+            //             break;
 
-                    case PlayerController.PlayerStatus.Ultimate:
-                        if(PlayerManager.Instance.ultReady)
-                        { 
-                            PlayerController.Instance.playerStatus = PlayerStatus.Ultimate;
-                            PlayerManager.Instance.isBusy = true;
-                            PlayerManager.Instance.FireUltimate();
-                        }
-                        break;
+            //         case PlayerController.PlayerStatus.Ultimate:
+            //             if(PlayerManager.Instance.ultReady)
+            //             { 
+            //                 PlayerController.Instance.playerStatus = PlayerStatus.Ultimate;
+            //                 PlayerManager.Instance.isBusy = true;
+            //                 PlayerManager.Instance.FireUltimate();
+            //             }
+            //             break;
 
-                    default:
-                        PlayerManager.Instance.isBusy = false;
-                        break;
-                }
+            //         default:
+            //             PlayerManager.Instance.isBusy = false;
+            //             break;
+            //     }
                 
-                Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Neutral));
+            Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Neutral));
                 
-            }
-            else if(InputBuffer[index % bufferSize].action == PlayerController.PlayerStatus.Attack)
-            {
-                PlayerManager.Instance.continueChain = true;
-                index++;
-            }
+            // }
+            // else if(InputBuffer[index % bufferSize].action == PlayerController.PlayerStatus.Attack)
+            // {
+            //     PlayerManager.Instance.continueChain = true;
+            //     index++;
+            // }
 
 
 
