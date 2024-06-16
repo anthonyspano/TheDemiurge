@@ -16,28 +16,20 @@ namespace com.ultimate2d.combat
             
         }
 
-        
 
-        // close the loop according to notepad on desk
         public override IEnumerator Start()
         {
-            Debug.Log("waiting");
-            // TODO: wait until Input Buffer does not have a neutral action
+            // wait until Input Buffer contains player input
             yield return new WaitUntil(() => PlayerInputBuffer.Instance.GetCommand() != PlayerController.PlayerStatus.Neutral);
-            Debug.Log("passed");
-            // grab key pressed from gamemanager
-            yield return null;
-            PlayerManager.Instance.GetComponent<Animator>().SetBool("isBusy", false);
+
             switch(PlayerInputBuffer.Instance.GetCommand())
             {       
                 case PlayerController.PlayerStatus.Attack:
                     if(PlayerManager.Instance.attackCooldown <= 0)
                     {
-                        // start cooldown timer
-                        PlayerManager.Instance.attackCooldown = PlayerManager.Instance.attackCooldownRate;
+                        // start cooldown timer and attack
                         PlayerManager.Instance.StartAttackCD();
-                        Debug.Log("Attacking");
-                        PlayerBattleSystem.SetState(new FirstAttack(PlayerBattleSystem));
+                        PlayerBattleSystem.SetState(new PlayerAttack(PlayerBattleSystem));
                     }
                     else 
                     {

@@ -272,17 +272,6 @@ namespace com.ultimate2d.combat
 			SceneManager.LoadScene("CellChamber", LoadSceneMode.Single);
 		}
 
-		// State pattern anim control
-		// public void FinishAnimation()
-		// {
-		// 	anim.Play("Player Idle", 0);
-		// 	anim.SetBool("isAttacking", false);
-		// 	anim.SetBool("SecondAttack", false);
-		// 	animFinished = true;
-		// 	CanMove = true;
-
-		// }
-
 		public bool AnimFinished()
 		{
 			return animFinished;
@@ -290,9 +279,7 @@ namespace com.ultimate2d.combat
 
 		public void FinishAttackAnimation()
 		{
-			anim.Play("Player Idle", 0);
-			//isBusy = false; 
-			//CanMove = true;
+			anim.Play("Player Idle");
 			PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
 		
 		}
@@ -304,7 +291,6 @@ namespace com.ultimate2d.combat
 
 		private IEnumerator NextAttack()
 		{
-			Debug.Log(anim.GetCurrentAnimatorStateInfo(0).IsName("v-attack-dr-1"));
 			int currentState = anim.GetCurrentAnimatorStateInfo(0).shortNameHash;
 			float secondsPassed = 0;
 
@@ -312,12 +298,8 @@ namespace com.ultimate2d.combat
 			{
 				
 				secondsPassed += Time.deltaTime;
-				if(PlayerInputBuffer.Instance.InputBuffer[PlayerInputBuffer.Instance.index % PlayerInputBuffer.Instance.bufferSize].action == PlayerController.PlayerStatus.Attack) 
+				if(PlayerInputBuffer.Instance.GetCommand() == PlayerController.PlayerStatus.Attack) 
 				{
-					Debug.Log("phase two");
-					// play the NEXT animation
-					// reference a list of animations of what would be the next one played
-					
 					// get the next animation state hash given the current one 
 					AnimatorHashRef animRef = new AnimatorHashRef();
 					string nextAnim = animRef.GetNextState(currentState);
@@ -330,7 +312,6 @@ namespace com.ultimate2d.combat
 					else
 					{	
 						// play that animation
-						Debug.Log("made it");
 						isBusy = true;
 						CanMove = false;
 						anim.Play(nextAnim);
@@ -365,7 +346,7 @@ namespace com.ultimate2d.combat
 
 		public void StartAttackCD()
 		{
-			//if(!attacking)
+			attackCooldown = attackCooldownRate;
 			StartCoroutine("AttackCooldown");
 			
 		}

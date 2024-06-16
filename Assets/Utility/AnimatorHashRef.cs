@@ -17,7 +17,6 @@ namespace com.ultimate2d.combat
         {
             nextAnimDict = new Dictionary<int, string>();
 
-            //nextAnimDict.Add(1072997824, "v-attack-dr-1"); // hash for idle, string for atk 1
             nextAnimDict.Add(1072997824, "v-attack-dr-2"); // hash for atk1, string for atk 2
 
         }
