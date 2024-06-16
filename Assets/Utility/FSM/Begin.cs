@@ -21,12 +21,14 @@ namespace com.ultimate2d.combat
         // close the loop according to notepad on desk
         public override IEnumerator Start()
         {
+            Debug.Log("waiting");
             // TODO: wait until Input Buffer does not have a neutral action
-            yield return new WaitUntil(() => PlayerInputBuffer.Instance.InputBuffer[PlayerInputBuffer.Instance.index % PlayerInputBuffer.Instance.bufferSize].action != PlayerController.PlayerStatus.Neutral);
+            yield return new WaitUntil(() => PlayerInputBuffer.Instance.GetCommand() != PlayerController.PlayerStatus.Neutral);
+            Debug.Log("passed");
             // grab key pressed from gamemanager
             yield return null;
             PlayerManager.Instance.GetComponent<Animator>().SetBool("isBusy", false);
-            switch(PlayerInputBuffer.Instance.InputBuffer[PlayerInputBuffer.Instance.index % PlayerInputBuffer.Instance.bufferSize].action)
+            switch(PlayerInputBuffer.Instance.GetCommand())
             {       
                 case PlayerController.PlayerStatus.Attack:
                     if(PlayerManager.Instance.attackCooldown <= 0)

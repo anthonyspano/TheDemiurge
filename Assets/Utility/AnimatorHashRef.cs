@@ -11,13 +11,14 @@ namespace com.ultimate2d.combat
 
         // int - short name hash of prior animation state
         // string - string of the following animation state (return null if no following state)
-        Dictionary<int, string> dict;
+        Dictionary<int, string> nextAnimDict;
 
         public AnimatorHashRef()
         {
-            dict = new Dictionary<int, string>();
+            nextAnimDict = new Dictionary<int, string>();
 
-            dict.Add(1072997824, "v-attack-dr-2"); // hash for atk1, string for atk 2
+            //nextAnimDict.Add(1072997824, "v-attack-dr-1"); // hash for idle, string for atk 1
+            nextAnimDict.Add(1072997824, "v-attack-dr-2"); // hash for atk1, string for atk 2
 
         }
 
@@ -25,12 +26,37 @@ namespace com.ultimate2d.combat
         {
             try
             {
-                return dict[hash];
+                return nextAnimDict[hash];
             }
             catch(Exception e)
             {
                 return "";
             }
+
+
+        }
+
+        public string GetFirstAttackState()
+        {
+            // helper method to identify correct attack anim to play from idle
+            switch(PlayerManager.Instance.pFacingDir)
+            {
+                case PlayerManager.Direction.right:
+                    return "v-attack-dr-1";
+                case PlayerManager.Direction.left:
+                    return "v-attack-dl-1";
+                case PlayerManager.Direction.up:
+                    return "v-attack-dl-1";
+                case PlayerManager.Direction.down:
+                    return "v-attack-dr-1";
+
+                default:
+                    Debug.Log("Player direction null");
+                    return null;
+                    break;
+            }
+
+            
 
 
         }

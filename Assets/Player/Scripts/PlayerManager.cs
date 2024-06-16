@@ -179,7 +179,7 @@ namespace com.ultimate2d.combat
 
 		void Update()
 		{
-			
+
 			var x = Input.GetAxis("Horizontal");
 			var y = Input.GetAxis("Vertical");
 			if(Mathf.Abs(x) > 0.1f || Mathf.Abs(y) > 0.1f)

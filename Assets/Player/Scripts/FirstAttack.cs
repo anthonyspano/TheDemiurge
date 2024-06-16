@@ -21,8 +21,8 @@ namespace com.ultimate2d.combat
             PlayerManager.Instance.CanMove = false;
             // play appropriate attack
             //                     var nextAttack = new AnimatorHashRef()
-            PlayerManager.Instance.GetComponent<Animator>().Play("attack1");
-            // yield return null;
+            PlayerManager.Instance.GetComponent<Animator>().Play(new AnimatorHashRef().GetFirstAttackState());
+            yield return null;
 
             // PlayerManager.Instance.GetComponent<Animator>().SetBool("isBusy", true);
             // // scoot towards last move

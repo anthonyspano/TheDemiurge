@@ -55,7 +55,7 @@ namespace com.ultimate2d.combat
             }
         }
 
-        void Update()
+        void LateUpdate()
         {
             // execute input if not currently executing
             // every frame either 
@@ -105,7 +105,7 @@ namespace com.ultimate2d.combat
             //             break;
             //     }
                 
-            Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Neutral));
+
                 
             // }
             // else if(InputBuffer[index % bufferSize].action == PlayerController.PlayerStatus.Attack)
@@ -116,7 +116,8 @@ namespace com.ultimate2d.combat
 
 
 
-
+            if(!NeutralFrameExists(InputBuffer))
+                Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Neutral));
 
         }
 
@@ -126,6 +127,23 @@ namespace com.ultimate2d.combat
             index = index % bufferSize;
             InputBuffer[index] = ibm;
 
+        }
+
+        private bool NeutralFrameExists(List<InputBufferMemory> ibm)
+        {
+            for(int i = 0; i < ibm.Count; i++)
+            {
+                if(ibm[i].frame == Time.frameCount)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public PlayerStatus GetCommand()
+        {
+            //Debug.Log(Instance.InputBuffer[index].action);
+            return InputBuffer[index].action;
         }
 
 
