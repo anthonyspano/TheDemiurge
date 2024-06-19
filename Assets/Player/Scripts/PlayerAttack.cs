@@ -22,6 +22,7 @@ namespace com.ultimate2d.combat
 
             PlayerManager.Instance.GetComponent<Animator>().Play(new AnimatorHashRef().GetFirstAttackState());
             yield return null;
+            Debug.Log(PlayerManager.Instance.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).shortNameHash);
 
             yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
             PlayerBattleSystem.SetState(new Begin(pbs));

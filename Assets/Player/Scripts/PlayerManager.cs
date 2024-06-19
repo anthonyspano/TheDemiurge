@@ -109,7 +109,7 @@ namespace com.ultimate2d.combat
 
 		public bool attackCooldownEnabled;
 
-		public enum Direction {left, right, up, down};
+		public enum Direction {DownLeft, DownRight, UpLeft, UpRight};
 		public Direction pFacingDir;
 
 		public AnimationClip clip;
@@ -190,17 +190,16 @@ namespace com.ultimate2d.combat
 			anim.SetFloat("MoveY", LastMove.y);
 
 			float facingDir = Mathf.Atan2(LastMove.y, LastMove.x) * Mathf.Rad2Deg;
-			if(facingDir < 45 && facingDir >= -45) // facing right
-				pFacingDir = Direction.right;
-			else if(facingDir < 135 && facingDir >= 45) // facing up
-				pFacingDir = Direction.up;
-			else if(facingDir >= -135 && facingDir < -45) // facing down
-				pFacingDir = Direction.down;
-			else if(facingDir >= 135 || facingDir < -135) // facing left	
-			{
-				pFacingDir = Direction.left;
-			}
-
+			if(facingDir < 90 && facingDir >= 0) 
+				pFacingDir = Direction.UpRight; // player face
+			else if(facingDir >= 90 && facingDir <= 180) 
+				pFacingDir = Direction.UpLeft;
+			else if(facingDir >= -90 && facingDir < 0) 
+				pFacingDir = Direction.DownRight;
+			else if(facingDir >= -180 || facingDir < -90) 
+				pFacingDir = Direction.DownLeft;
+			
+			Debug.Log(pFacingDir);
 		}
 
 		private void OnCollisionEnter2D(Collision2D col)
