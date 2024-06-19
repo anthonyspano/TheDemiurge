@@ -20,6 +20,7 @@ namespace com.ultimate2d.combat
             nextAnimDict.Add(1072997824, "v-attack-dr-2"); // hash for atk1, string for atk 2
             nextAnimDict.Add(692857786, "v-attack-dl-2"); 
             nextAnimDict.Add(-1041687744, "v-attack-ul-2"); 
+            nextAnimDict.Add(-682519238, "v-attack-ur-2"); 
 
         }
 

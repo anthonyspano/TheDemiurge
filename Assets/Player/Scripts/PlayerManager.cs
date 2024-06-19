@@ -199,7 +199,7 @@ namespace com.ultimate2d.combat
 			else if(facingDir >= -180 || facingDir < -90) 
 				pFacingDir = Direction.DownLeft;
 			
-			Debug.Log(pFacingDir);
+			
 		}
 
 		private void OnCollisionEnter2D(Collision2D col)
