@@ -204,17 +204,27 @@ namespace com.ultimate2d.combat
 
 		private void OnCollisionEnter2D(Collision2D col)
 		{
+			
+
 
 			if(col.transform.CompareTag("BigCultist"))
 			{
-				Instance.pHealth.Damage(70);
-				audioSource.PlayOneShot(hurt1, 0.7f);
+				if(col.GetContact(0).collider.transform.CompareTag("PlayerHitBox"))
+				{
+					Instance.pHealth.Damage(70);
+					audioSource.PlayOneShot(hurt1, 0.7f);
+				}
+
 			}
 
 			if(col.transform.CompareTag("Projectile"))
 			{
-				Instance.pHealth.Damage(40);
-				audioSource.PlayOneShot(hurt1, 0.7f);
+				//Debug.Log(col.GetContact(0).otherCollider.transform.name);
+				if(col.GetContact(0).otherCollider.transform.CompareTag("PlayerHitBox"))
+				{
+					Instance.pHealth.Damage(40);
+					audioSource.PlayOneShot(hurt1, 0.7f);
+				}
 			}
 
 		}

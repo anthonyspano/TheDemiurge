@@ -28,6 +28,7 @@ namespace com.ultimate2d.combat
                     if(PlayerManager.Instance.attackCooldown <= 0)
                     {
                         // start cooldown timer and attack
+                        //PlayerManager.Instance.CanMove = false;
                         PlayerManager.Instance.StartAttackCD();
                         PlayerBattleSystem.SetState(new PlayerAttack(PlayerBattleSystem));
                     }

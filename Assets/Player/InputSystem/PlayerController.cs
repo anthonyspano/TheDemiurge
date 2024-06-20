@@ -62,6 +62,7 @@ namespace com.ultimate2d.combat
             // move
             inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
             if(playerStatus == PlayerStatus.Idle)
+            //if(PlayerManager.Instance.CanMove)
             {
                 if(inputVector != new Vector2(0, 0))
                 {
