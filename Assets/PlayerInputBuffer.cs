@@ -32,6 +32,8 @@ namespace com.ultimate2d.combat
 
         public int index = 0; 
 
+        public int InputBufferWindow;
+
         void Awake()
         {
             // singleton
@@ -73,14 +75,19 @@ namespace com.ultimate2d.combat
         {
             int reader = index;
 
+            if(framesToRead >= InputBuffer.Count)
+                framesToRead = InputBuffer.Count;
+
             for(int i = framesToRead; i > 0; i--)
             {
                 if(InputBuffer[reader].action != PlayerController.PlayerStatus.Neutral)
                     return InputBuffer[reader].action;
 
                 reader--;
-                if(reader < 0) reader = InputBuffer.Count;
+                if(reader < 0) reader = InputBuffer.Count - 1;
             }
+
+            return PlayerController.PlayerStatus.Neutral;
         }
 
 

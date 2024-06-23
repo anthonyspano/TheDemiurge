@@ -94,7 +94,6 @@ namespace com.ultimate2d.combat
         public void Attack(InputAction.CallbackContext context)
         {
             // take frame/timestamp that the button was pressed
-            Debug.Log("button hit");
            _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.Attack)); 
            
 

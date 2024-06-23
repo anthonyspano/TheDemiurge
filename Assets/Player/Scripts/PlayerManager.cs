@@ -307,7 +307,7 @@ namespace com.ultimate2d.combat
 			{
 				
 				secondsPassed += Time.deltaTime;
-				if(PlayerInputBuffer.Instance.GetCommand() == PlayerController.PlayerStatus.Attack) 
+				if(PlayerInputBuffer.Instance.GetCommand(PlayerInputBuffer.Instance.InputBufferWindow) == PlayerController.PlayerStatus.Attack) 
 				{
 					// get the next animation state hash given the current one 
 					AnimatorHashRef animRef = new AnimatorHashRef();

@@ -20,9 +20,9 @@ namespace com.ultimate2d.combat
         public override IEnumerator Start()
         {
             // wait until Input Buffer contains player input
-            yield return new WaitUntil(() => PlayerInputBuffer.Instance.GetCommand() != PlayerController.PlayerStatus.Neutral);
-
-            switch(PlayerInputBuffer.Instance.GetCommand())
+            yield return new WaitUntil(() => PlayerInputBuffer.Instance.GetCommand(PlayerInputBuffer.Instance.InputBufferWindow) != PlayerController.PlayerStatus.Neutral); // 300 frames looking backwards
+            Debug.Log("button hit");
+            switch(PlayerInputBuffer.Instance.GetCommand(PlayerInputBuffer.Instance.InputBufferWindow))
             {       
                 case PlayerController.PlayerStatus.Attack:
                     if(PlayerManager.Instance.attackCooldown <= 0)
