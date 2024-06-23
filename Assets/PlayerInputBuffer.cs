@@ -55,7 +55,7 @@ namespace com.ultimate2d.combat
             }
         }
 
-        void LateUpdate()
+        void FixedUpdate()
         {
             Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Neutral));
 
@@ -69,9 +69,18 @@ namespace com.ultimate2d.combat
 
         }
 
-        public PlayerStatus GetCommand()
+        public PlayerStatus GetCommand(int framesToRead) // did I do this input in the last 100 frames?
         {
-            return InputBuffer[index].action;
+            int reader = index;
+
+            for(int i = framesToRead; i > 0; i--)
+            {
+                if(InputBuffer[reader].action != PlayerController.PlayerStatus.Neutral)
+                    return InputBuffer[reader].action;
+
+                reader--;
+                if(reader < 0) reader = InputBuffer.Count;
+            }
         }
 
 
