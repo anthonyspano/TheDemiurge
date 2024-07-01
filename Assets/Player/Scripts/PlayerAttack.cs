@@ -22,14 +22,8 @@ namespace com.ultimate2d.combat
         {
             
             playerAnim.Play(new AnimatorHashRef().GetFirstAttackState());
-            yield return null;
-            
-            //yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
-            
+           
             yield return new WaitUntil(() => PlayerManager.Instance.nextMoveReady);
-
-            PlayerManager.Instance.nextMoveReady = false;
-            
 
             if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Attack)
             {
@@ -37,7 +31,8 @@ namespace com.ultimate2d.combat
                 playerAnim.Play(new AnimatorHashRef().GetNextState(playerAnim.GetCurrentAnimatorStateInfo(0).shortNameHash));
                 yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
             }
-
+           
+            PlayerManager.Instance.nextMoveReady = false;
             playerAnim.Play("Player Idle");
             PlayerManager.Instance.StartAttackCD();
 
