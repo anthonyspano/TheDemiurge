@@ -16,7 +16,7 @@ public class Interactable : MonoBehaviour
 
     }
 
-    protected void OnTriggerStay2D(Collider2D col)
+    protected void OnCollisionStay2D(Collision2D col)
     {
 
         if(PlayerInput.Interact() && !interacted)

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 86b38f40d6dfa144593b7d5f6f9bb104
+guid: fc1fd007e2aec8346b7e7896ba8d7e95
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,33 +123,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vagabond-attack-down-right_0
+      name: attack-down-right_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 82
-        width: 60
-        height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ab7c059ccb499d49989f15e3dd4dd66
-      internalID: 1093660136
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vagabond-attack-down-right_1
-      rect:
-        serializedVersion: 2
-        x: 72
+        x: 0
         y: 80
-        width: 56
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -158,19 +137,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0556be4a2d2bde4bb26c5fa9423db17
-      internalID: -246207992
+      spriteID: 260d1c36a287848418d84af5fc992f31
+      internalID: 1222626194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-down-right_2
+      name: attack-down-right_1
       rect:
         serializedVersion: 2
-        x: 135
+        x: 64
         y: 80
-        width: 57
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -179,19 +158,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 526b79864df875f49b7c2bbed8081b9d
-      internalID: 848041957
+      spriteID: 1b8d3b9b563314942a692b932d026c3d
+      internalID: -304711168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-down-right_3
+      name: attack-down-right_2
       rect:
         serializedVersion: 2
-        x: 199
+        x: 128
         y: 80
-        width: 57
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -200,19 +179,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d23407d7754fcbb4393da2bf28601803
-      internalID: -1000928365
+      spriteID: 01b85be7424ff3d48854fe7c9e639273
+      internalID: 1606838037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-down-right_4
+      name: attack-down-right_3
       rect:
         serializedVersion: 2
-        x: 263
+        x: 192
         y: 80
-        width: 57
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -221,19 +200,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35e7c294c5308864db93e26e46abe7d6
-      internalID: 1125897166
+      spriteID: f917f65bbc422df41b5cfce9b9a3b766
+      internalID: 1402965806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-down-right_5
+      name: attack-down-right_4
       rect:
         serializedVersion: 2
-        x: 327
+        x: 256
         y: 80
-        width: 57
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -242,19 +221,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2a592a531e1b9d4c9c2947ab21ce937
-      internalID: 1850061272
+      spriteID: d0753df7568d92a4399a6052ad594c06
+      internalID: 1130162777
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-down-right_6
+      name: attack-down-right_5
       rect:
         serializedVersion: 2
-        x: 391
+        x: 320
         y: 80
-        width: 57
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -263,19 +242,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 935dcbb8bab10a041b30d46cf61e8aea
-      internalID: 1771116532
+      spriteID: f1a063fc6099549429fdd6cbc78787d6
+      internalID: 1833675995
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-down-right_7
+      name: attack-down-right_6
       rect:
         serializedVersion: 2
-        x: 451
+        x: 384
         y: 80
-        width: 61
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -284,19 +263,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb71d5f2a3ce66d409e282537a84f49d
-      internalID: -878721542
+      spriteID: 2770ca95e67f634418ee111825f7fbda
+      internalID: -1935810301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-down-right_8
+      name: attack-down-right_7
       rect:
         serializedVersion: 2
-        x: 514
+        x: 448
         y: 80
-        width: 62
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -305,19 +284,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21204564f0afef24195c343aa8f6f290
-      internalID: -130107270
+      spriteID: 43e3e34caded5cc4b926e2a324a66d5f
+      internalID: 181237531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-down-right_9
+      name: attack-down-right_8
       rect:
         serializedVersion: 2
-        x: 578
+        x: 512
         y: 80
-        width: 62
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -326,19 +305,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f238ffe562b34d49ab092a1d653ab96
-      internalID: 664629668
+      spriteID: 557af9039e989c948b63ed407dabc7eb
+      internalID: -1755331273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-down-right_10
+      name: attack-down-right_9
       rect:
         serializedVersion: 2
-        x: 641
+        x: 576
         y: 80
-        width: 63
+        width: 64
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -347,8 +326,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 614292b78d20f3447a44cf0482a4de98
-      internalID: 1123252029
+      spriteID: fa12cd17dee6bc744adfdef324f1ab9a
+      internalID: -1587921368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack-down-right_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 80
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f78068b125b4174894cfdae40540eba
+      internalID: -2087058058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack-down-right_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 80
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71a98b632823d1a4f9d81aa4fcd62555
+      internalID: -259877043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack-down-right_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 80
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b1b9399d178ae14ab9fc595887c5a2b
+      internalID: -1886418150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack-down-right_13
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 80
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 783c9e1fa404a644a878dbf5d5ef7aa7
+      internalID: -544931786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack-down-right_14
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 80
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2250518d1f3bfeb46b649cba0f001408
+      internalID: -1071188267
       vertices: []
       indices: 
       edges: []
@@ -364,17 +448,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      vagabond-attack-down-right_0: 1093660136
-      vagabond-attack-down-right_1: -246207992
-      vagabond-attack-down-right_10: 1123252029
-      vagabond-attack-down-right_2: 848041957
-      vagabond-attack-down-right_3: -1000928365
-      vagabond-attack-down-right_4: 1125897166
-      vagabond-attack-down-right_5: 1850061272
-      vagabond-attack-down-right_6: 1771116532
-      vagabond-attack-down-right_7: -878721542
-      vagabond-attack-down-right_8: -130107270
-      vagabond-attack-down-right_9: 664629668
+      attack-down-right_0: 1222626194
+      attack-down-right_1: -304711168
+      attack-down-right_10: -2087058058
+      attack-down-right_11: -259877043
+      attack-down-right_12: -1886418150
+      attack-down-right_13: -544931786
+      attack-down-right_14: -1071188267
+      attack-down-right_2: 1606838037
+      attack-down-right_3: 1402965806
+      attack-down-right_4: 1130162777
+      attack-down-right_5: 1833675995
+      attack-down-right_6: -1935810301
+      attack-down-right_7: 181237531
+      attack-down-right_8: -1755331273
+      attack-down-right_9: -1587921368
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

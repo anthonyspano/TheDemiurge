@@ -44,6 +44,7 @@ namespace com.ultimate2d.combat
 		// animator
 		public Animator anim;
 		private bool animFinished;
+		public bool nextMoveReady;
 
 		// for damage
 		[Header("Damage")]
@@ -106,8 +107,6 @@ namespace com.ultimate2d.combat
 			get { return lastMove; }
 			set { lastMove = value; }
 		}
-
-		public bool attackCooldownEnabled;
 
 		public enum Direction {DownLeft, DownRight, UpLeft, UpRight};
 		public Direction pFacingDir;
@@ -288,9 +287,21 @@ namespace com.ultimate2d.combat
 
 		public void FinishAttackAnimation()
 		{
-			anim.Play("Player Idle");
-			PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
-		
+			
+			// checks player input buffer for continue chain. If not, set playerStatus to Idle
+			int currentState = anim.GetCurrentAnimatorStateInfo(0).shortNameHash;
+			AnimatorHashRef animRef = new AnimatorHashRef();
+			if(PlayerInputBuffer.Instance.GetCommand() == PlayerController.PlayerStatus.Attack && animRef.GetNextState(currentState) != "")
+				PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Attack;
+			else
+			{
+				PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
+			}
+
+			Debug.Log("ready");
+			nextMoveReady = true;
+
+
 		}
 
 		public void StartNextAttack()
@@ -362,11 +373,8 @@ namespace com.ultimate2d.combat
 
 		private IEnumerator AttackCooldown()
 		{
-			attackCooldownEnabled = true;
 			yield return new WaitForSeconds(attackCooldownRate);
-			continueChain = false;
 			attackCooldown = 0;
-			attackCooldownEnabled = false;
 		}
 
 		public void PlayAttackSound()

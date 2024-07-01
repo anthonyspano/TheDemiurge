@@ -38,7 +38,7 @@ namespace com.ultimate2d.combat
             bonerang.GetComponent<Bonerang>().Target = sbs.transform.position;
             Physics2D.IgnoreCollision(bonerang.GetComponent<BoxCollider2D>(), sbs.transform.Find("Hitbox").GetComponent<BoxCollider2D>(), false);
 
-            yield return new WaitUntil(() => Vector3.Distance(bonerang.position, sbs.transform.position) < 5f);
+            yield return new WaitUntil(() => Vector3.Distance(bonerang.position, sbs.transform.position) < 1f);
             
 
             SkellyBattleSystem.SetState(new SkellyStart(SkellyBattleSystem));

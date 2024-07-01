@@ -11,26 +11,41 @@ namespace com.ultimate2d.combat
     {
         private bool continueChain = false;
         private PlayerBattleSystem pbs;
+        private Animator playerAnim;
 
         public PlayerAttack(PlayerBattleSystem playerBattleSystem) : base(playerBattleSystem)
         {
             pbs = playerBattleSystem;
+            playerAnim = PlayerManager.Instance.GetComponent<Animator>();
         }
         public override IEnumerator Start() 
         {
             
-            PlayerManager.Instance.GetComponent<Animator>().Play(new AnimatorHashRef().GetFirstAttackState());
+            playerAnim.Play(new AnimatorHashRef().GetFirstAttackState());
             yield return null;
             
-            Debug.Log(PlayerManager.Instance.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).shortNameHash);
+            //yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
 
-            yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
-            
+            yield return new WaitUntil(() => PlayerManager.Instance.nextMoveReady);
+
+            PlayerManager.Instance.nextMoveReady = false;
+
+            if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Attack)
+            {
+                Debug.Log("next attack firing");
+                playerAnim.Play(new AnimatorHashRef().GetNextState(playerAnim.GetCurrentAnimatorStateInfo(0).shortNameHash));
+                yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
+            }
+
+            playerAnim.Play("Player Idle");
+
             PlayerBattleSystem.SetState(new Begin(pbs));
 
                 
 
 
         }
+
+
     }
 }

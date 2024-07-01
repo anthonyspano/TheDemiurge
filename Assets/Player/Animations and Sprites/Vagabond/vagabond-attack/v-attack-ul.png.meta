@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6d5dd9ff248d30842b09dda1048ef73c
+guid: f392fa7f1d1d78c42abcabf1005f6500
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,232 +123,337 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vagabond-attack-up-left_0
+      name: attack-up-left_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 74
-        width: 60
-        height: 54
+        y: 69
+        width: 61
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 493b315afdb7a5b44ac448f4c068a4f3
-      internalID: -1563921421
+      spriteID: 2af6c5c4697dad2479289b3f1e02afdd
+      internalID: 318176078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-up-left_1
+      name: attack-up-left_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 74
-        width: 60
-        height: 54
+        y: 69
+        width: 61
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd2a037e31005974d8ec69b5f82a9ce6
-      internalID: -325832730
+      spriteID: 80f9cbfd748fd624f8519f8d0d621a09
+      internalID: 2083906476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-up-left_2
+      name: attack-up-left_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 74
-        width: 60
-        height: 54
+        y: 69
+        width: 61
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b40255114eee41b448ee5b836841c501
-      internalID: 1913310889
+      spriteID: d73b17c3e2301104f9c72f9aadbda830
+      internalID: -1959033762
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-up-left_3
+      name: attack-up-left_3
       rect:
         serializedVersion: 2
         x: 192
-        y: 74
-        width: 60
-        height: 54
+        y: 69
+        width: 61
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a80054f228617fe48ab75712033e1131
-      internalID: -1202686920
+      spriteID: 79cd1c3bf5a4af64d853b56c76cc5adc
+      internalID: -1492268878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-up-left_4
+      name: attack-up-left_4
       rect:
         serializedVersion: 2
         x: 256
-        y: 74
-        width: 60
-        height: 54
+        y: 69
+        width: 61
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 111a65b875865f8428439b96c49ab33b
-      internalID: -1817761972
+      spriteID: 9ca53a71b4c037a47b500cbd2f77592c
+      internalID: 1780201327
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-up-left_5
+      name: attack-up-left_5
       rect:
         serializedVersion: 2
         x: 320
-        y: 74
-        width: 60
-        height: 54
+        y: 69
+        width: 61
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a6cb8850d25cd346963e1ca49164610
-      internalID: 960464752
+      spriteID: 2140c1f59c4ddf746a3ecf6558eeee5f
+      internalID: -103435160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-up-left_6
+      name: attack-up-left_6
       rect:
         serializedVersion: 2
         x: 384
-        y: 74
-        width: 60
-        height: 54
+        y: 69
+        width: 61
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21d8795ca3fb30b4084d2216d71eca6a
-      internalID: 2133493933
+      spriteID: b95a5a3d7ebb4e4469cdbeea5370f57a
+      internalID: 1073217859
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-up-left_7
+      name: attack-up-left_7
       rect:
         serializedVersion: 2
         x: 448
-        y: 74
-        width: 60
-        height: 54
+        y: 69
+        width: 61
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a9b59d47b0b33548bb4e4827e7cbe87
-      internalID: -1090406274
+      spriteID: 8c6d254b5d12ec44aa6aeface1ade356
+      internalID: -2130619959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-up-left_8
+      name: attack-up-left_8
       rect:
         serializedVersion: 2
         x: 512
-        y: 74
-        width: 60
-        height: 54
+        y: 69
+        width: 61
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7908cab46facf841bb8b3a49ba4b1e4
-      internalID: -180706833
+      spriteID: 243ad1bc8e12ffa429e3883503179e51
+      internalID: -810266488
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-up-left_9
+      name: attack-up-left_9
       rect:
         serializedVersion: 2
         x: 576
-        y: 74
-        width: 60
-        height: 54
+        y: 69
+        width: 61
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34ddea8be6b278142a52106c2508f97c
-      internalID: -341714119
+      spriteID: 96ae85d9a49c2194d80c49ebb51464a0
+      internalID: -1276804899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vagabond-attack-up-left_10
+      name: attack-up-left_10
       rect:
         serializedVersion: 2
         x: 640
-        y: 74
-        width: 60
-        height: 54
+        y: 69
+        width: 61
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b180717891e94b84793d3f1948bb0274
-      internalID: 1794930113
+      spriteID: f3d9b4f9f954c1f44a07a703f8d466d9
+      internalID: 813148983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack-up-left_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 69
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05108f7d20945c546918497618570955
+      internalID: -1180915763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack-up-left_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 69
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a864c48b7e5ea2a4c8a7d36d9e4565ff
+      internalID: -1638933856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack-up-left_13
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 69
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55064efbe18e3184ba984369946b207d
+      internalID: 477347777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack-up-left_14
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 69
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55de12cbf16d0b1408021b0a4c52943d
+      internalID: -1548705862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: attack-up-left_15
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 69
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 454d5aca23fd3ea498644039fe8671d5
+      internalID: -813385372
       vertices: []
       indices: 
       edges: []
@@ -364,17 +469,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      vagabond-attack-up-left_0: -1563921421
-      vagabond-attack-up-left_1: -325832730
-      vagabond-attack-up-left_10: 1794930113
-      vagabond-attack-up-left_2: 1913310889
-      vagabond-attack-up-left_3: -1202686920
-      vagabond-attack-up-left_4: -1817761972
-      vagabond-attack-up-left_5: 960464752
-      vagabond-attack-up-left_6: 2133493933
-      vagabond-attack-up-left_7: -1090406274
-      vagabond-attack-up-left_8: -180706833
-      vagabond-attack-up-left_9: -341714119
+      attack-up-left_0: 318176078
+      attack-up-left_1: 2083906476
+      attack-up-left_10: 813148983
+      attack-up-left_11: -1180915763
+      attack-up-left_12: -1638933856
+      attack-up-left_13: 477347777
+      attack-up-left_14: -1548705862
+      attack-up-left_15: -813385372
+      attack-up-left_2: -1959033762
+      attack-up-left_3: -1492268878
+      attack-up-left_4: 1780201327
+      attack-up-left_5: -103435160
+      attack-up-left_6: 1073217859
+      attack-up-left_7: -2130619959
+      attack-up-left_8: -810266488
+      attack-up-left_9: -1276804899
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

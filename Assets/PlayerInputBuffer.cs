@@ -28,11 +28,11 @@ namespace com.ultimate2d.combat
         }
         
         public List<InputBufferMemory> InputBuffer;
-        public int bufferSize; // size of the ring buffer
+        public int bufferSize; // 150
 
         public int index = 0; 
 
-        public int InputBufferWindow;
+        public int InputBufferWindow; // how far to look back in the input buffer
 
         void Awake()
         {
@@ -69,6 +69,11 @@ namespace com.ultimate2d.combat
             index = index % bufferSize;
             InputBuffer[index] = ibm;
 
+        }
+
+        public PlayerStatus GetCommand()
+        {
+            return GetCommand(InputBufferWindow);
         }
 
         public PlayerStatus GetCommand(int framesToRead) // did I do this input in the last 100 frames?

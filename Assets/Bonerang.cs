@@ -28,7 +28,7 @@ public class Bonerang : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         if((enemyLayer.value & (1 << col.gameObject.layer)) > 0)
             Destroy(gameObject);
