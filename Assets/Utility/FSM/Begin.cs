@@ -30,7 +30,7 @@ namespace com.ultimate2d.combat
                         // start cooldown timer and attack
                         //PlayerManager.Instance.CanMove = false;
                         PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Attack;
-                        PlayerManager.Instance.StartAttackCD();
+                        Debug.Log("starting");
                         PlayerBattleSystem.SetState(new PlayerAttack(PlayerBattleSystem));
                     }
                     else 

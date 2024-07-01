@@ -298,7 +298,6 @@ namespace com.ultimate2d.combat
 				PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
 			}
 
-			Debug.Log("ready");
 			nextMoveReady = true;
 
 

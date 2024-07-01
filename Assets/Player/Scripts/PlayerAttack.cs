@@ -25,19 +25,22 @@ namespace com.ultimate2d.combat
             yield return null;
             
             //yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
-
+            
             yield return new WaitUntil(() => PlayerManager.Instance.nextMoveReady);
 
             PlayerManager.Instance.nextMoveReady = false;
+            
 
             if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Attack)
             {
-                Debug.Log("next attack firing");
+                Debug.Log("here");
                 playerAnim.Play(new AnimatorHashRef().GetNextState(playerAnim.GetCurrentAnimatorStateInfo(0).shortNameHash));
                 yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
             }
 
             playerAnim.Play("Player Idle");
+            PlayerManager.Instance.StartAttackCD();
+
 
             PlayerBattleSystem.SetState(new Begin(pbs));
 
