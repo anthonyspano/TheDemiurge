@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace com.ultimate2d.combat
 {
@@ -65,6 +66,9 @@ namespace com.ultimate2d.combat
                     break;
 
             }
+
+            // replace current command with neutral after execution
+            PlayerInputBuffer.Instance.SetCurrentFrame(PlayerController.PlayerStatus.Neutral);
 
 
             

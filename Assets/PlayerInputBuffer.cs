@@ -71,6 +71,11 @@ namespace com.ultimate2d.combat
 
         }
 
+        public void SetCurrentFrame(PlayerController.PlayerStatus playerStatus)
+        {
+            InputBuffer[index].action = playerStatus;
+        }
+
         public PlayerStatus GetCommand()
         {
             return GetCommand(InputBufferWindow);
