@@ -25,18 +25,23 @@ namespace com.ultimate2d.combat
             // instantiate bone object
             Transform bonerangPrefab = Resources.Load<Transform>("Bonerang");
             Transform bonerang = GameObject.Instantiate(bonerangPrefab, sbs.transform.position, Quaternion.identity);
-            Physics2D.IgnoreCollision(bonerang.GetComponent<BoxCollider2D>(), sbs.transform.Find("Hitbox").GetComponent<BoxCollider2D>());
+            Physics2D.IgnoreLayerCollision(sbs.gameObject.layer, sbs.gameObject.layer, true);
 
             // launch bone directly behind player
-            bonerang.GetComponent<Bonerang>().Target = PlayerManager.Instance.transform.position;
-            yield return new WaitUntil(() => bonerang.position == bonerang.GetComponent<Bonerang>().Target);
+            var myBonerang = bonerang.GetComponent<Bonerang>();
+            myBonerang.Target = PlayerManager.Instance.transform.position;
+            yield return new WaitUntil(() => bonerang.position == myBonerang.Target);
 
             // bonerang hovers
             yield return new WaitForSeconds(1);
 
             // have bone return to skelly
-            bonerang.GetComponent<Bonerang>().Target = sbs.transform.position;
             Physics2D.IgnoreCollision(bonerang.GetComponent<BoxCollider2D>(), sbs.transform.Find("Hitbox").GetComponent<BoxCollider2D>(), false);
+            myBonerang.owner = sbs.transform;
+            myBonerang.isReturning = true;
+            
+
+            
 
             yield return new WaitUntil(() => Vector3.Distance(bonerang.position, bonerang.GetComponent<Bonerang>().Target) < 1f);
 

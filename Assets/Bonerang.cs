@@ -14,17 +14,25 @@ public class Bonerang : MonoBehaviour
 
     }
 
+    public Transform owner;
+    public bool isReturning;
+
     void Update()
     {
         transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
 
         // move bonerang towards position given by ThrowBone.cs
+        if(isReturning)
+            target = owner.position;
         if(transform.position != target)
         {
             transform.position = Vector2.MoveTowards(transform.position, target, 0.1f);
 
         }
 
+        if(owner)
+            if(transform.position == owner.position)
+                Destroy(gameObject);
 
     }
 
@@ -32,6 +40,11 @@ public class Bonerang : MonoBehaviour
     {
         if((enemyLayer.value & (1 << col.gameObject.layer)) > 0)
             Destroy(gameObject);
+    }
+
+    public void SetTarget(ref int pos)
+    {
+        Debug.Log(pos);
     }
 
 

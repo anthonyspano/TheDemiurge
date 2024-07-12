@@ -45,7 +45,9 @@ namespace com.ultimate2d.combat
                 case PlayerController.PlayerStatus.Ultimate:
                     if(PlayerManager.Instance.ultReady)
                     {
+                        PlayerManager.Instance.isBusy = true;
                         // use ult - function in playermanager 
+                        Debug.Log("here");
                         PlayerManager.Instance.FireUltimate();
                         yield return new WaitUntil(() => !PlayerManager.Instance.isBusy);
                         PlayerBattleSystem.SetState(new Begin(PlayerBattleSystem));
