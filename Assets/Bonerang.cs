@@ -23,16 +23,26 @@ public class Bonerang : MonoBehaviour
 
         // move bonerang towards position given by ThrowBone.cs
         if(isReturning)
+        {
+            
             target = owner.position;
+            if(owner)
+            {
+                if(Vector3.Distance(transform.position, owner.position) < 0.1f)
+                    Destroy(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
         if(transform.position != target)
         {
             transform.position = Vector2.MoveTowards(transform.position, target, 0.1f);
 
         }
 
-        if(owner)
-            if(transform.position == owner.position)
-                Destroy(gameObject);
+
 
     }
 
@@ -40,11 +50,6 @@ public class Bonerang : MonoBehaviour
     {
         if((enemyLayer.value & (1 << col.gameObject.layer)) > 0)
             Destroy(gameObject);
-    }
-
-    public void SetTarget(ref int pos)
-    {
-        Debug.Log(pos);
     }
 
 
