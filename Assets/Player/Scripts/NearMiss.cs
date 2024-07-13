@@ -24,7 +24,7 @@ public class NearMiss : MonoBehaviour
             PlayerManager.Instance.anim.SetBool("isAttacking", false);
             PlayerManager.Instance.isBusy = true;
             cooldownTimer = cooldownRate;
-            CreateClone();
+            //CreateClone();
             // Dash
             StartCoroutine("Dash");
             

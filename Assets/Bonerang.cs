@@ -31,10 +31,10 @@ public class Bonerang : MonoBehaviour
                 if(Vector3.Distance(transform.position, owner.position) < 0.1f)
                     Destroy(gameObject);
             }
-            else
-            {
-                Destroy(gameObject);
-            }
+            // else
+            // {
+            //     Destroy(gameObject);
+            // }
         }
         if(transform.position != target)
         {
@@ -42,6 +42,10 @@ public class Bonerang : MonoBehaviour
 
         }
 
+        if(!owner)
+        {
+            Destroy(gameObject);
+        }
 
 
     }

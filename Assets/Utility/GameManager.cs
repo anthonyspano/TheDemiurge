@@ -102,11 +102,17 @@ namespace com.ultimate2d.combat
             // make placeholders for each one that fade from a glowing white
             var s1 = GameObject.Instantiate(emptyskelly, PlayerManager.Instance.transform.position + new Vector3(6, 0, 0), Quaternion.identity);
             var s2 = GameObject.Instantiate(emptyskelly, PlayerManager.Instance.transform.position + new Vector3(-6, 0, 0), Quaternion.identity);
+            var s3 = GameObject.Instantiate(emptyskelly, PlayerManager.Instance.transform.position + new Vector3(-6, 2, 0), Quaternion.identity);
+            var s4 = GameObject.Instantiate(emptyskelly, PlayerManager.Instance.transform.position + new Vector3(-6, -2, 0), Quaternion.identity);
 
             SpriteRenderer sr1 = s1.GetComponent<SpriteRenderer>();
             SpriteRenderer sr2 = s2.GetComponent<SpriteRenderer>();
+            SpriteRenderer sr3 = s2.GetComponent<SpriteRenderer>();
+            SpriteRenderer sr4 = s2.GetComponent<SpriteRenderer>();
             sr1.color = Color.black;
             sr2.color = Color.black;
+            sr3.color = Color.black;
+            sr4.color = Color.black;
             var increment = new Color(0.01f, 0.01f, 0.01f);
 
             while(sr1.color != Color.white)
@@ -116,6 +122,8 @@ namespace com.ultimate2d.combat
                     sr1.color = Color.white;
 
                 sr2.color = sr1.color;
+                sr3.color = sr1.color;
+                sr4.color = sr1.color;
                 yield return null;
             }
             
@@ -124,17 +132,21 @@ namespace com.ultimate2d.combat
             // spawning
             GameObject.Instantiate(skelly, s1.transform.position, Quaternion.identity);
             GameObject.Instantiate(skelly, s2.transform.position, Quaternion.identity);
+            GameObject.Instantiate(skelly, s3.transform.position, Quaternion.identity);
+            GameObject.Instantiate(skelly, s4.transform.position, Quaternion.identity);
 
             Destroy(s1);
             Destroy(s2);
+            Destroy(s3);
+            Destroy(s4);
 
         }
 
         public void EnemyDeathCount()
         {
-            Debug.Log(PlayerManager.Instance.killCount);
+            
             PlayerManager.Instance.killCount++;
-            if(PlayerManager.Instance.killCount >= 2)
+            if(PlayerManager.Instance.killCount >= 4)
             {
                 // save game data into scriptable object
                 _scoreManager.time = timerText.text;
