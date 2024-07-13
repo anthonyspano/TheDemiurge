@@ -12,22 +12,25 @@ namespace com.ultimate2d.combat
         private bool continueChain = false;
         private PlayerBattleSystem pbs;
         private Animator playerAnim;
+        private AudioSource playerAudio;
 
         public PlayerAttack(PlayerBattleSystem playerBattleSystem) : base(playerBattleSystem)
         {
             pbs = playerBattleSystem;
             playerAnim = PlayerManager.Instance.GetComponent<Animator>();
+            playerAudio = PlayerManager.Instance.GetComponent<AudioSource>();
         }
         public override IEnumerator Start() 
         {
             
             playerAnim.Play(new AnimatorHashRef().GetFirstAttackState());
+            playerAudio.Play();
            
             yield return new WaitUntil(() => PlayerManager.Instance.nextMoveReady);
 
             if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Attack)
             {
-                Debug.Log("here");
+              
                 playerAnim.Play(new AnimatorHashRef().GetNextState(playerAnim.GetCurrentAnimatorStateInfo(0).shortNameHash));
                 yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
             }

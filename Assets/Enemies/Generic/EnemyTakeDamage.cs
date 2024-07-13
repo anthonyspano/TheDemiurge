@@ -34,11 +34,14 @@ public class EnemyTakeDamage : MonoBehaviour
 		{
 			// Death sequence
 			//anim.SetBool("isDead", true);
-            StartCoroutine("Death");
+            //StartCoroutine("Death");
+            GameManager.Instance.EnemyDeathCount();
+            Destroy(transform.parent.gameObject);
 		}
         else 
         {
             StartCoroutine(FlashRed());
+            transform.parent.GetComponent<AudioSource>().PlayOneShot(em.hurtSound, 0.8f);
             if(healthSystem.GetHealth() < 50)
             {
                 em.timeToReact = true;

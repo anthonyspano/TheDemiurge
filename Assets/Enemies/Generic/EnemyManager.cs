@@ -20,7 +20,9 @@ namespace com.ultimate2d.combat
         public float pursuitRange;
         public float attackRange;
 
+        // audio
         public AudioClip attackSound;
+        public AudioClip hurtSound;
 
         public static Transform AttackBox;
 

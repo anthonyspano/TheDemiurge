@@ -26,6 +26,7 @@ namespace com.ultimate2d.combat
             Transform bonerangPrefab = Resources.Load<Transform>("Bonerang");
             Transform bonerang = GameObject.Instantiate(bonerangPrefab, sbs.transform.position, Quaternion.identity);
             Physics2D.IgnoreLayerCollision(sbs.gameObject.layer, sbs.gameObject.layer, true);
+            sbs.GetComponent<AudioSource>().PlayOneShot(sbs.GetComponent<EnemyManager>().attackSound, 0.8f);
 
             // launch bone directly behind player
             var myBonerang = bonerang.GetComponent<Bonerang>();

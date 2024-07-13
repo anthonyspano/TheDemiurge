@@ -23,6 +23,10 @@ namespace com.ultimate2d.combat
             get { return _instance; }
         }
 
+        // audio
+        AudioSource audioSource;
+        Toggle toggle;
+
         void Awake()
         {
             // values = (int[])System.Enum.GetValues(typeof(KeyCode));
@@ -45,6 +49,11 @@ namespace com.ultimate2d.combat
         void Start()
         {
             Application.targetFrameRate = 60;
+
+            audioSource = GetComponent<AudioSource>();
+            audioSource.loop = toggle.isOn;
+            audioSource.Play();
+
 
         }
 
