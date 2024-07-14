@@ -22,22 +22,24 @@ namespace com.ultimate2d.combat
         }
         public override IEnumerator Start() 
         {
-            
+            Debug.Log("attacking");
             playerAnim.Play(new AnimatorHashRef().GetFirstAttackState());
             playerAudio.Play();
-           
-            yield return new WaitUntil(() => PlayerManager.Instance.nextMoveReady);
 
-            if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Attack)
-            {
-              
-                playerAnim.Play(new AnimatorHashRef().GetNextState(playerAnim.GetCurrentAnimatorStateInfo(0).shortNameHash));
-                yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
-            }
+            yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
            
-            PlayerManager.Instance.nextMoveReady = false;
-            playerAnim.Play("Player Idle");
-            PlayerManager.Instance.StartAttackCD();
+            // yield return new WaitUntil(() => PlayerManager.Instance.nextMoveReady);
+
+            // if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Attack)
+            // {
+              
+            //     playerAnim.Play(new AnimatorHashRef().GetNextState(playerAnim.GetCurrentAnimatorStateInfo(0).shortNameHash));
+            //     yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
+            // }
+           
+            // PlayerManager.Instance.nextMoveReady = false;
+
+            //PlayerManager.Instance.StartAttackCD();
 
 
             PlayerBattleSystem.SetState(new Begin(pbs));

@@ -6,15 +6,6 @@
             "id": "16c5ed50-b6d1-44ee-bc50-29111964616a",
             "actions": [
                 {
-                    "name": "Dodge",
-                    "type": "Button",
-                    "id": "527593ee-6cea-4d79-a86f-ad5e7962494d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Movement",
                     "type": "Value",
                     "id": "89a61bda-16ee-42f2-84ed-4ab3dbf27d5c",
@@ -40,31 +31,27 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "JumpAttack",
+                    "type": "Button",
+                    "id": "936a7b27-7391-4c9c-8110-01d019b64b24",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sweep",
+                    "type": "Button",
+                    "id": "ce9ca68e-3b98-4be1-80e2-3003759e2229",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "a810e9c7-4361-4d8a-9e2e-35ba08b7d286",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Dodge",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "043126e1-a2a7-424e-a486-311d3fa1d026",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Dodge",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "WASD",
                     "id": "5e309500-bb4d-43a1-8c6e-b5e1bb3b467d",
@@ -205,6 +192,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Ultimate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a2c2ffe-dae5-451f-88c9-97b284a335cb",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "JumpAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f5d4703d-22e7-4468-a5a6-b0ed41856438",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Sweep",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

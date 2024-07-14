@@ -41,22 +41,65 @@ namespace com.ultimate2d.combat
         public string GetFirstAttackState()
         {
             // helper method to identify correct attack anim to play from idle
-            switch(PlayerManager.Instance.pFacingDir)
+            switch(PlayerInputBuffer.Instance.GetCommand())
             {
-                case PlayerManager.Direction.DownRight:
-                    return "v-attack-dr-1";
-                case PlayerManager.Direction.DownLeft:
-                    return "v-attack-dl-1";
-                case PlayerManager.Direction.UpRight:
-                    return "v-attack-ur-1";
-                case PlayerManager.Direction.UpLeft:
-                    return "v-attack-ul-1";
+                case PlayerController.PlayerStatus.LightAttack:
+                    switch(PlayerManager.Instance.pFacingDir)
+                    {
+                        case PlayerManager.Direction.DownRight:
+                            return "v-attack-dr-1";
+                        case PlayerManager.Direction.DownLeft:
+                            return "v-attack-dl-1";
+                        case PlayerManager.Direction.UpRight:
+                            return "v-attack-ur-1";
+                        case PlayerManager.Direction.UpLeft:
+                            return "v-attack-ul-1";
 
+                        default:
+                            Debug.Log("Player direction null");
+                            return null;
+                            
+                    }
+                case PlayerController.PlayerStatus.Sweep:
+                    switch(PlayerManager.Instance.pFacingDir)
+                    {
+                        case PlayerManager.Direction.DownRight:
+                            return "";
+                        case PlayerManager.Direction.DownLeft:
+                            return "v-attack-dl-1";
+                        case PlayerManager.Direction.UpRight:
+                            return "v-attack-ur-1";
+                        case PlayerManager.Direction.UpLeft:
+                            return "v-attack-ul-1";
+
+                        default:
+                            Debug.Log("Player direction null");
+                            return null;
+                            break;
+                    }
+                case PlayerController.PlayerStatus.JumpAttack:
+                    switch(PlayerManager.Instance.pFacingDir)
+                    {
+                        case PlayerManager.Direction.DownRight:
+                            return "v-jumpattack-dr";
+                        case PlayerManager.Direction.DownLeft:
+                            return "v-jumpattack-dl";
+                        case PlayerManager.Direction.UpRight:
+                            return "v-attack-ur-1";
+                        case PlayerManager.Direction.UpLeft:
+                            return "v-attack-ul-1";
+
+                        default:
+                            Debug.Log("Player direction null");
+                            return null;
+                            break;
+                    }
                 default:
-                    Debug.Log("Player direction null");
                     return null;
                     break;
+
             }
+
 
             
 

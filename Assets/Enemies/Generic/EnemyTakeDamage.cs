@@ -93,7 +93,6 @@ public class EnemyTakeDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(col.transform.name);
         if(col.transform.CompareTag("PlayerHitBox"))
         {
             healthSystem.Damage(PlayerManager.Instance.Attack);

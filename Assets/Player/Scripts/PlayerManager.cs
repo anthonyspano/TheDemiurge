@@ -204,7 +204,7 @@ namespace com.ultimate2d.combat
 		private void OnCollisionEnter2D(Collision2D col)
 		{
 			
-
+			Debug.Log("hit");
 
 			if(col.transform.CompareTag("BigCultist"))
 			{
@@ -287,60 +287,27 @@ namespace com.ultimate2d.combat
 
 		public void FinishAttackAnimation()
 		{
+			PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
+			anim.Play("Player Idle");
+		}
+
+		// public void FinishComboAnimation()
+		// {
 			
-			// checks player input buffer for continue chain. If not, set playerStatus to Idle
-			int currentState = anim.GetCurrentAnimatorStateInfo(0).shortNameHash;
-			AnimatorHashRef animRef = new AnimatorHashRef();
-			if(PlayerInputBuffer.Instance.GetCommand() == PlayerController.PlayerStatus.Attack && animRef.GetNextState(currentState) != "")
-				PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Attack;
-			else
-			{
-				PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
-			}
+		// 	// checks player input buffer for continue chain. If not, set playerStatus to Idle
+		// 	int currentState = anim.GetCurrentAnimatorStateInfo(0).shortNameHash;
+		// 	AnimatorHashRef animRef = new AnimatorHashRef();
+		// 	if(PlayerInputBuffer.Instance.GetCommand() == PlayerController.PlayerStatus.Attack && animRef.GetNextState(currentState) != "")
+		// 		PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Attack;
+		// 	else
+		// 	{
+		// 		PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
+		// 	}
 
-			nextMoveReady = true;
+		// 	nextMoveReady = true;
 
 
-		}
-
-		public void StartNextAttack()
-		{
-			StartCoroutine("NextAttack");
-		}
-
-		private IEnumerator NextAttack()
-		{
-			int currentState = anim.GetCurrentAnimatorStateInfo(0).shortNameHash;
-			float secondsPassed = 0;
-
-			while(secondsPassed < inputWindow)
-			{
-				
-				secondsPassed += Time.deltaTime;
-				if(PlayerInputBuffer.Instance.GetCommand(PlayerInputBuffer.Instance.InputBufferWindow) == PlayerController.PlayerStatus.Attack) 
-				{
-					// get the next animation state hash given the current one 
-					AnimatorHashRef animRef = new AnimatorHashRef();
-					string nextAnim = animRef.GetNextState(currentState);
-
-					if(nextAnim == "")
-					{
-						secondsPassed = inputWindow;
-						StartCoroutine("AttackCooldown");
-					}
-					else
-					{	
-						// play that animation
-						isBusy = true;
-						CanMove = false;
-						anim.Play(nextAnim);
-					}
-
-				}
-				yield return null;
-			}
-		}
-
+		// }
 
 		public void FinishJumpAnimation()
 		{
@@ -405,6 +372,10 @@ namespace com.ultimate2d.combat
 			GetComponentInChildren<PowerManager>().FireUltimate();
 		}
 		
+		public void LogAnimationID()
+		{
+			Debug.Log(anim.GetCurrentAnimatorStateInfo(0).shortNameHash);
+		}
 
 
 	}

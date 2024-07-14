@@ -28,15 +28,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             ""id"": ""16c5ed50-b6d1-44ee-bc50-29111964616a"",
             ""actions"": [
                 {
-                    ""name"": ""Dodge"",
-                    ""type"": ""Button"",
-                    ""id"": ""527593ee-6cea-4d79-a86f-ad5e7962494d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Movement"",
                     ""type"": ""Value"",
                     ""id"": ""89a61bda-16ee-42f2-84ed-4ab3dbf27d5c"",
@@ -62,31 +53,27 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JumpAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""936a7b27-7391-4c9c-8110-01d019b64b24"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sweep"",
+                    ""type"": ""Button"",
+                    ""id"": ""ce9ca68e-3b98-4be1-80e2-3003759e2229"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""a810e9c7-4361-4d8a-9e2e-35ba08b7d286"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Dodge"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""043126e1-a2a7-424e-a486-311d3fa1d026"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""Dodge"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""WASD"",
                     ""id"": ""5e309500-bb4d-43a1-8c6e-b5e1bb3b467d"",
@@ -229,6 +216,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Ultimate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a2c2ffe-dae5-451f-88c9-97b284a335cb"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""JumpAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5d4703d-22e7-4468-a5a6-b0ed41856438"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Sweep"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -320,10 +329,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Ultimate = m_Player.FindAction("Ultimate", throwIfNotFound: true);
+        m_Player_JumpAttack = m_Player.FindAction("JumpAttack", throwIfNotFound: true);
+        m_Player_Sweep = m_Player.FindAction("Sweep", throwIfNotFound: true);
         // Keyboard
         m_Keyboard = asset.FindActionMap("Keyboard", throwIfNotFound: true);
         m_Keyboard_Movement = m_Keyboard.FindAction("Movement", throwIfNotFound: true);
@@ -388,18 +398,20 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_Dodge;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Ultimate;
+    private readonly InputAction m_Player_JumpAttack;
+    private readonly InputAction m_Player_Sweep;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Ultimate => m_Wrapper.m_Player_Ultimate;
+        public InputAction @JumpAttack => m_Wrapper.m_Player_JumpAttack;
+        public InputAction @Sweep => m_Wrapper.m_Player_Sweep;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -409,9 +421,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-            @Dodge.started += instance.OnDodge;
-            @Dodge.performed += instance.OnDodge;
-            @Dodge.canceled += instance.OnDodge;
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
@@ -421,13 +430,16 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Ultimate.started += instance.OnUltimate;
             @Ultimate.performed += instance.OnUltimate;
             @Ultimate.canceled += instance.OnUltimate;
+            @JumpAttack.started += instance.OnJumpAttack;
+            @JumpAttack.performed += instance.OnJumpAttack;
+            @JumpAttack.canceled += instance.OnJumpAttack;
+            @Sweep.started += instance.OnSweep;
+            @Sweep.performed += instance.OnSweep;
+            @Sweep.canceled += instance.OnSweep;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
-            @Dodge.started -= instance.OnDodge;
-            @Dodge.performed -= instance.OnDodge;
-            @Dodge.canceled -= instance.OnDodge;
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
@@ -437,6 +449,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Ultimate.started -= instance.OnUltimate;
             @Ultimate.performed -= instance.OnUltimate;
             @Ultimate.canceled -= instance.OnUltimate;
+            @JumpAttack.started -= instance.OnJumpAttack;
+            @JumpAttack.performed -= instance.OnJumpAttack;
+            @JumpAttack.canceled -= instance.OnJumpAttack;
+            @Sweep.started -= instance.OnSweep;
+            @Sweep.performed -= instance.OnSweep;
+            @Sweep.canceled -= instance.OnSweep;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -520,10 +538,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     }
     public interface IPlayerActions
     {
-        void OnDodge(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnUltimate(InputAction.CallbackContext context);
+        void OnJumpAttack(InputAction.CallbackContext context);
+        void OnSweep(InputAction.CallbackContext context);
     }
     public interface IKeyboardActions
     {
