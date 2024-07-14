@@ -219,7 +219,7 @@ namespace com.ultimate2d.combat
 			if(col.transform.CompareTag("Projectile"))
 			{
 				//Debug.Log(col.GetContact(0).otherCollider.transform.name);
-				if(col.GetContact(0).otherCollider.transform.CompareTag("PlayerHitBox"))
+				if(col.GetContact(0).otherCollider.transform.CompareTag("PlayerAttack"))
 				{
 					Instance.pHealth.Damage(40);
 					audioSource.PlayOneShot(hurt1, 0.7f);

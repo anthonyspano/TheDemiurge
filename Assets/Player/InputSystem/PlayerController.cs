@@ -18,6 +18,7 @@ namespace com.ultimate2d.combat
         private Animator anim;
         private PlayerInputActions playerInputActions;
         private Vector2 inputVector;
+        public float DeadZone;
 
         // input buffer
         PlayerInputBuffer _playerInputBuffer;
@@ -64,7 +65,8 @@ namespace com.ultimate2d.combat
             if(playerStatus == PlayerStatus.Idle)
             //if(PlayerManager.Instance.CanMove)
             {
-                if(inputVector != new Vector2(0, 0))
+                //if(inputVector != new Vector2(0, 0))  
+                if(inputVector.magnitude > DeadZone)
                 {
                     // create  move direction
                     var direction = new Vector3(inputVector.x, inputVector.y * PlayerManager.Instance.verticalRunMod, 0) + PlayerManager.Instance.transform.position;
