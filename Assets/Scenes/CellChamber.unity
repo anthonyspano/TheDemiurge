@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 0
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
@@ -1052,6 +1053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 0
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
@@ -1284,6 +1286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 7
   attackRange: 1.5
   attackSound: {fileID: 0}
@@ -1512,6 +1515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 7
   attackRange: 1.5
   attackSound: {fileID: 0}
@@ -2200,6 +2204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 0
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
@@ -2614,6 +2619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 7
   attackRange: 1.5
   attackSound: {fileID: 0}
@@ -3451,6 +3457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 7
   attackRange: 1.5
   attackSound: {fileID: 0}
@@ -4376,6 +4383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 0
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
@@ -25268,7 +25276,7 @@ GameObject:
   - component: {fileID: 566796995}
   m_Layer: 0
   m_Name: TilemapObjects
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27998,6 +28006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 7
   attackRange: 1.5
   attackSound: {fileID: 0}
@@ -28609,6 +28618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 7
   attackRange: 1.5
   attackSound: {fileID: 0}
@@ -30083,6 +30093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 7
   attackRange: 1.5
   attackSound: {fileID: 0}
@@ -30641,6 +30652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 0
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
@@ -31032,6 +31044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 0
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
@@ -31315,6 +31328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 7
   attackRange: 1.5
   attackSound: {fileID: 0}
@@ -31542,6 +31556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 7
   attackRange: 1.5
   attackSound: {fileID: 0}
@@ -32252,6 +32267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 0
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
@@ -33077,6 +33093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 0
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
@@ -33386,6 +33403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 7
   attackRange: 1.5
   attackSound: {fileID: 0}
@@ -35325,6 +35343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 0
   pursuitRange: 0
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}

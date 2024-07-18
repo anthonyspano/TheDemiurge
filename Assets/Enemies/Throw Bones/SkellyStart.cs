@@ -15,15 +15,12 @@ namespace com.ultimate2d.combat
 
         public override IEnumerator Start()
         {
-            // wait until player is in range
-            
-            yield return new WaitUntil(() => sbs.em.PlayerIsInRange(sbs.em.pursuitRange));
-
             // throw boomerang
             SkellyBattleSystem.SetState(new SkellyMove(SkellyBattleSystem));
 
             // laugh
             //Debug.Log("Hahahaha!");
+            yield return null;
 
             
         }

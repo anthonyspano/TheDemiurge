@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 2191292244990205317}
   - component: {fileID: 3736508423718750188}
   - component: {fileID: 1110466864021530747}
-  - component: {fileID: 5758995083552192725}
   m_Layer: 9
   m_Name: Skelly1
   m_TagString: Enemy
@@ -127,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
+  RetreatRange: 4
   pursuitRange: 7
   attackRange: 1.5
   attackSound: {fileID: 8300000, guid: 32d363e2f1eb50f4b93ecd591ae1e078, type: 3}
@@ -327,18 +327,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5758995083552192725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 345762456135121310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75eb3f15e82a2a41899778e0c38d44e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8650873917238573830
 GameObject:
   m_ObjectHideFlags: 0

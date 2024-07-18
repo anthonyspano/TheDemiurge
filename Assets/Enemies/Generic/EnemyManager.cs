@@ -14,7 +14,7 @@ namespace com.ultimate2d.combat
         public static float atkSpeed;
         private static float moveSpeed;
 
-        private static float retreatRange;
+        public float RetreatRange;
         private static bool canMove = true;
 
         public float pursuitRange;
@@ -29,12 +29,6 @@ namespace com.ultimate2d.combat
         // Reaction Attack
         public bool timeToReact;
         public bool ReactOnce;
-
-        public float RetreatRange
-        {
-            get { return retreatRange; }
-            set { retreatRange = value; }
-        }
         
         protected float Damage
         {
