@@ -30,7 +30,7 @@ namespace com.ultimate2d.combat
         public bool timeToReact;
         public bool ReactOnce;
 
-        public static float RetreatRange
+        public float RetreatRange
         {
             get { return retreatRange; }
             set { retreatRange = value; }
