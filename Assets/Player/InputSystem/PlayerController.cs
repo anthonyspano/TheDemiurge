@@ -17,7 +17,10 @@ namespace com.ultimate2d.combat
 
         private Animator anim;
         private PlayerInputActions playerInputActions;
-        private Vector2 inputVector;
+        private Vector2 inputVector; 
+        private Vector2 currentInputVector = Vector2.zero; 
+        private Vector2 smoothInputVelocity; 
+        public float acceleration;
         public float DeadZone;
 
         // input buffer
@@ -62,21 +65,32 @@ namespace com.ultimate2d.combat
         private void FixedUpdate()
         {
             // move
-            inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
+
             if(playerStatus == PlayerStatus.Idle)
             {
-                if(inputVector.magnitude > DeadZone)
+                inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
+                // if(inputVector.magnitude > DeadZone)
+                // {
+                //     // create  move direction
+                //     var direction = new Vector3(inputVector.x, inputVector.y * PlayerManager.Instance.verticalRunMod, 0) + PlayerManager.Instance.transform.position;
+                //     // multiply move vector by speed 
+                //     PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, direction, PlayerManager.Instance.moveSpeed * Time.deltaTime);
+                //     PlayerManager.Instance.anim.SetBool("isMoving", true);
+                // }
+                // else
+                // {
+                //     PlayerManager.Instance.anim.SetBool("isMoving", false);
+                // }
+
+                currentInputVector = Vector2.SmoothDamp(currentInputVector, inputVector, ref smoothInputVelocity, acceleration);
+                
+                if(currentInputVector.magnitude > DeadZone)
                 {
-                    // create  move direction
-                    var direction = new Vector3(inputVector.x, inputVector.y * PlayerManager.Instance.verticalRunMod, 0) + PlayerManager.Instance.transform.position;
-                    // multiply move vector by speed 
-                    PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, direction, PlayerManager.Instance.moveSpeed * Time.deltaTime);
+                    PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, (Vector2)PlayerManager.Instance.transform.position + currentInputVector, PlayerManager.Instance.moveSpeed * Time.deltaTime);
                     PlayerManager.Instance.anim.SetBool("isMoving", true);
                 }
                 else
-                {
                     PlayerManager.Instance.anim.SetBool("isMoving", false);
-                }
 
             }
 

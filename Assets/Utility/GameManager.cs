@@ -25,7 +25,6 @@ namespace com.ultimate2d.combat
 
         // audio
         AudioSource audioSource;
-        Toggle toggle;
 
         void Awake()
         {
@@ -51,7 +50,7 @@ namespace com.ultimate2d.combat
             Application.targetFrameRate = 60;
 
             audioSource = GetComponent<AudioSource>();
-            audioSource.loop = toggle.isOn;
+            audioSource.loop = true;
             audioSource.Play();
 
 
