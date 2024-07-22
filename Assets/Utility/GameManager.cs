@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 namespace com.ultimate2d.combat
 {
@@ -22,6 +23,10 @@ namespace com.ultimate2d.combat
         {
             get { return _instance; }
         }
+
+        // enemy spawner
+        private List<Vector3> spawnPositions;
+        public int enemiesToSpawn = 4;
 
         // audio
         AudioSource audioSource;
@@ -52,6 +57,13 @@ namespace com.ultimate2d.combat
             audioSource = GetComponent<AudioSource>();
             audioSource.loop = true;
             audioSource.Play();
+
+            // populate Spawn Positions list
+            spawnPositions = new List<Vector3>();
+            spawnPositions.Add(new Vector3(3, 0, 0) + PlayerManager.Instance.transform.position);
+            spawnPositions.Add(new Vector3(-3, 0, 0) + PlayerManager.Instance.transform.position);
+            spawnPositions.Add(new Vector3(0, -3, 0) + PlayerManager.Instance.transform.position);
+            spawnPositions.Add(new Vector3(0, 3, 0) + PlayerManager.Instance.transform.position);
 
 
         }
@@ -98,46 +110,36 @@ namespace com.ultimate2d.combat
 
         private IEnumerator SpawnEnemies()
         {
-            // make placeholders for each one that fade from a glowing white
-            var s1 = GameObject.Instantiate(emptyskelly, PlayerManager.Instance.transform.position + new Vector3(6, 0, 0), Quaternion.identity);
-            // var s2 = GameObject.Instantiate(emptyskelly, PlayerManager.Instance.transform.position + new Vector3(-6, 0, 0), Quaternion.identity);
-            // var s3 = GameObject.Instantiate(emptyskelly, PlayerManager.Instance.transform.position + new Vector3(-6, 2, 0), Quaternion.identity);
-            // var s4 = GameObject.Instantiate(emptyskelly, PlayerManager.Instance.transform.position + new Vector3(-6, -2, 0), Quaternion.identity);
-
-            SpriteRenderer sr1 = s1.GetComponent<SpriteRenderer>();
-            // SpriteRenderer sr2 = s2.GetComponent<SpriteRenderer>();
-            // SpriteRenderer sr3 = s2.GetComponent<SpriteRenderer>();
-            // SpriteRenderer sr4 = s2.GetComponent<SpriteRenderer>();
-            sr1.color = Color.black;
-            // sr2.color = Color.black;
-            // sr3.color = Color.black;
-            // sr4.color = Color.black;
-            var increment = new Color(0.01f, 0.01f, 0.01f);
-
-            while(sr1.color != Color.white)
+            for(int i = 0; i < enemiesToSpawn; i++)
             {
-                sr1.color += increment;
-                if(sr1.color.b >= 1f)
-                    sr1.color = Color.white;
+                try
+                {
+                    GameObject.Instantiate(skelly, spawnPositions[i], Quaternion.identity);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e);
+                }
 
-                // sr2.color = sr1.color;
-                // sr3.color = sr1.color;
-                // sr4.color = sr1.color;
-                yield return null;
+                yield return new WaitForSeconds(0.3f);
+
             }
+
+            yield return null;
             
+            // make placeholders for each one that fade from a glowing white
+            //sr1.color = Color.black;
+            // var increment = new Color(0.01f, 0.01f, 0.01f);
 
+            // while(sr1.color != Color.white)
+            // {
+            //     sr1.color += increment;
+            //     if(sr1.color.b >= 1f)
+            //         sr1.color = Color.white;
 
-            // spawning
-            GameObject.Instantiate(skelly, s1.transform.position, Quaternion.identity);
-            // GameObject.Instantiate(skelly, s2.transform.position, Quaternion.identity);
-            // GameObject.Instantiate(skelly, s3.transform.position, Quaternion.identity);
-            // GameObject.Instantiate(skelly, s4.transform.position, Quaternion.identity);
-
-            Destroy(s1);
-            // Destroy(s2);
-            // Destroy(s3);
-            // Destroy(s4);
+            //     yield return null;
+            // }
+            
 
         }
 
