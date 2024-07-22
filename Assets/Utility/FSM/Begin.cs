@@ -23,12 +23,15 @@ namespace com.ultimate2d.combat
             // wait until Input Buffer contains player input
             yield return new WaitUntil(() => PlayerInputBuffer.Instance.GetCommand() != PlayerController.PlayerStatus.Neutral); 
             
-            if(PlayerInputBuffer.Instance.GetCommand() == PlayerController.PlayerStatus.LightAttack ||
-               PlayerInputBuffer.Instance.GetCommand() == PlayerController.PlayerStatus.JumpAttack)
+            PlayerController.Instance.playerStatus = PlayerInputBuffer.Instance.GetCommand();
+            if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.LightAttack) 
             {       
-                PlayerController.Instance.playerStatus = PlayerInputBuffer.Instance.GetCommand();
                 PlayerBattleSystem.SetState(new PlayerAttack(PlayerBattleSystem));                
 
+            }
+            if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.JumpAttack)
+            {
+                PlayerBattleSystem.SetState(new JumpAttack(PlayerBattleSystem));
             }
             if(PlayerInputBuffer.Instance.GetCommand() == PlayerController.PlayerStatus.Ultimate)
             {

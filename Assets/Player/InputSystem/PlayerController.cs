@@ -31,6 +31,9 @@ namespace com.ultimate2d.combat
         public enum PlayerStatus {Idle, Move, LightAttack, Ultimate, Sweep, JumpAttack, Neutral};
         public PlayerStatus playerStatus;
 
+        // jump attack
+        public float jumpTime;
+
         private void Awake()
         {
             // singleton
@@ -55,6 +58,7 @@ namespace com.ultimate2d.combat
             playerInputActions.Player.Attack.performed += Attack;
             playerInputActions.Player.Ultimate.performed += Ultimate;
             playerInputActions.Player.Movement.performed += Movement;
+            //playerInputActions.Player.JumpAttack.duration
 
             
             //playerInputActions.Player.Movement.performed += c => Debug.Log(c.ReadValue<Vector2>());
@@ -94,7 +98,22 @@ namespace com.ultimate2d.combat
 
             }
 
-            
+            // jump attack air time
+            if(Input.GetKeyDown(KeyCode.JoystickButton2))
+                jumpTime = 0;
+            // if(Input.GetKeyUp(KeyCode.JoystickButton2))
+            // {
+            //     jumpTime = Time.time - jumpTime;
+            //     Debug.Log(jumpTime);
+            // }
+
+            if(Input.GetKey(KeyCode.JoystickButton2))
+            {
+                jumpTime += Time.deltaTime;
+                //Debug.Log(jumpTime);
+
+
+            }
 
         }
 
@@ -123,13 +142,18 @@ namespace com.ultimate2d.combat
         public void JumpAttack(InputAction.CallbackContext context)
         {
             _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.JumpAttack)); 
-            Debug.Log("jump!");
+            
+            Debug.Log("jump attacking");
+            //buttonHeldTime = context;
+            //StartCoroutine("ButtonHeldTime");
+            // get airtime by how long player presses the button
         }
 
         public void Movement(InputAction.CallbackContext context)
         {
             // see fixed update
         }
+
 
 
 

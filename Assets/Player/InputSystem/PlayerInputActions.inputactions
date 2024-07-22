@@ -199,6 +199,17 @@
                     "name": "",
                     "id": "8a2c2ffe-dae5-451f-88c9-97b284a335cb",
                     "path": "<Gamepad>/buttonWest",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "JumpAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0469732d-8959-4ce6-ba9a-8dc925ce33a7",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
