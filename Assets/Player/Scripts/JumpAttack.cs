@@ -21,20 +21,24 @@ namespace com.ultimate2d.combat
         public override IEnumerator Start()
         {
 
-            
             playerAnim.Play(new AnimatorHashRef().GetFirstAttackState());
-            Debug.Log(Time.time);
             playerAudio.Play();
 
             playerAnim.SetBool("inAir", true);
-            yield return new WaitUntil(() => playerAnim.GetCurrentAnimatorStateInfo(0).IsName("v-jumpattack-dr-hold"));
-            Debug.Log(Time.time);
+            
+            yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.InAir);
+            //Debug.Log(PlayerController.Instance.jumpTime);
+            if(PlayerController.Instance.jumpTime > 0.1f)
+                yield return new WaitForSeconds(0.5f);
+            //Debug.Log(PlayerController.Instance.jumpTime);
             //yield return new WaitUntil(() => (!PlayerController.Instance.inAir));
             yield return new WaitForSeconds(PlayerController.Instance.jumpTime);
             playerAnim.SetBool("inAir", false);
+            
 
 
-            yield return null;
+            yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
+
         }
 
 

@@ -28,7 +28,7 @@ namespace com.ultimate2d.combat
 
         public float movementSpeed;
 
-        public enum PlayerStatus {Idle, Move, LightAttack, Ultimate, Sweep, JumpAttack, Neutral};
+        public enum PlayerStatus {Idle, Move, LightAttack, Ultimate, Sweep, JumpAttack, Neutral, InAir};
         public PlayerStatus playerStatus;
 
         // jump attack
@@ -70,7 +70,7 @@ namespace com.ultimate2d.combat
         {
             // move
 
-            if(playerStatus == PlayerStatus.Idle)
+            if(playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.InAir)
             {
                 inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
                 // if(inputVector.magnitude > DeadZone)
@@ -100,18 +100,16 @@ namespace com.ultimate2d.combat
 
             // jump attack air time
             if(Input.GetKeyDown(KeyCode.JoystickButton2))
+            {
                 jumpTime = 0;
-            // if(Input.GetKeyUp(KeyCode.JoystickButton2))
-            // {
-            //     jumpTime = Time.time - jumpTime;
-            //     Debug.Log(jumpTime);
-            // }
+
+                // use Time.time - Time.time instead
+            }
 
             if(Input.GetKey(KeyCode.JoystickButton2))
             {
                 jumpTime += Time.deltaTime;
-                //Debug.Log(jumpTime);
-
+                Debug.Log(jumpTime);
 
             }
 
@@ -143,10 +141,6 @@ namespace com.ultimate2d.combat
         {
             _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.JumpAttack)); 
             
-            Debug.Log("jump attacking");
-            //buttonHeldTime = context;
-            //StartCoroutine("ButtonHeldTime");
-            // get airtime by how long player presses the button
         }
 
         public void Movement(InputAction.CallbackContext context)
@@ -154,7 +148,10 @@ namespace com.ultimate2d.combat
             // see fixed update
         }
 
-
+        public void SetPlayerInAir()
+        {
+            playerStatus = PlayerStatus.InAir;
+        }
 
 
     }
