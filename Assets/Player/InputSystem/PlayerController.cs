@@ -33,6 +33,7 @@ namespace com.ultimate2d.combat
 
         // jump attack
         public float jumpTime;
+        private float startTime;
 
         private void Awake()
         {
@@ -101,15 +102,16 @@ namespace com.ultimate2d.combat
             // jump attack air time
             if(Input.GetKeyDown(KeyCode.JoystickButton2))
             {
-                jumpTime = 0;
+                startTime = Time.time;
 
-                // use Time.time - Time.time instead
             }
 
             if(Input.GetKey(KeyCode.JoystickButton2))
             {
-                jumpTime += Time.deltaTime;
-                Debug.Log(jumpTime);
+                jumpTime = Time.time - startTime;
+                if(jumpTime > 0.4f)
+                    jumpTime = 0.4f;
+                
 
             }
 

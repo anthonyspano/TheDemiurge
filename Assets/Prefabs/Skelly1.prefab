@@ -125,7 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLayerMask: 256
-  RetreatRange: 4
+  moveSpeed: 4
+  RetreatRange: 3
   pursuitRange: 7
   attackRange: 1.5
   attackSound: {fileID: 8300000, guid: 32d363e2f1eb50f4b93ecd591ae1e078, type: 3}

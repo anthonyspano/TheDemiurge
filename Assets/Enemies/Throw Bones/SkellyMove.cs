@@ -42,8 +42,7 @@ namespace com.ultimate2d.combat
                 while(Vector2.Distance(sbs.transform.position, targetPos) > 0.1f)
                 {
                     // move to target
-                    Debug.Log("moving away");
-                    sbs.transform.position = Vector2.MoveTowards(sbs.transform.position, targetPos, 0.1f);
+                    sbs.transform.position = Vector2.MoveTowards(sbs.transform.position, targetPos, em.moveSpeed * Time.deltaTime);
                     yield return null;
                 }
 

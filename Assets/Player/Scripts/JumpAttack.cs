@@ -29,9 +29,9 @@ namespace com.ultimate2d.combat
             yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.InAir);
             //Debug.Log(PlayerController.Instance.jumpTime);
             if(PlayerController.Instance.jumpTime > 0.1f)
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.125f);
             //Debug.Log(PlayerController.Instance.jumpTime);
-            //yield return new WaitUntil(() => (!PlayerController.Instance.inAir));
+            Debug.Log(PlayerController.Instance.jumpTime);
             yield return new WaitForSeconds(PlayerController.Instance.jumpTime);
             playerAnim.SetBool("inAir", false);
             

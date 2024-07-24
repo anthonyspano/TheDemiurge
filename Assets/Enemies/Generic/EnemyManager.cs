@@ -12,7 +12,7 @@ namespace com.ultimate2d.combat
         private static float fovRange;
         private static float damage;
         public static float atkSpeed;
-        private static float moveSpeed;
+        public float moveSpeed;
 
         public float RetreatRange;
         private static bool canMove = true;
@@ -39,11 +39,6 @@ namespace com.ultimate2d.combat
         {
             get { return atkSpeed; }
             set { atkSpeed = value; }
-        }
-        protected float MoveSpeed
-        {
-            get { return moveSpeed; }
-            set { moveSpeed = value; }
         }
         public static float FoVRange
         {
