@@ -21,6 +21,7 @@ namespace com.ultimate2d.combat
         public override IEnumerator Start()
         {
             // wait until Input Buffer contains player input
+            //yield return new WaitUntil(() => PlayerController.Instance.playerStatus.CommandReady());
             yield return new WaitUntil(() => PlayerInputBuffer.Instance.GetCommand() != PlayerController.PlayerStatus.Neutral); 
             
             PlayerController.Instance.playerStatus = PlayerInputBuffer.Instance.GetCommand();
@@ -50,6 +51,10 @@ namespace com.ultimate2d.combat
                     PlayerBattleSystem.SetState(new Begin(PlayerBattleSystem));
                 }
 
+            }
+            if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Falling)
+            {
+                PlayerBattleSystem.SetState(new Falling(PlayerBattleSystem));
             }
             else
             {

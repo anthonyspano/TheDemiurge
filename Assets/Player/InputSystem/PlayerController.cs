@@ -28,7 +28,7 @@ namespace com.ultimate2d.combat
 
         public float movementSpeed;
 
-        public enum PlayerStatus {Idle, Move, LightAttack, Ultimate, Sweep, JumpAttack, Neutral, InAir};
+        public enum PlayerStatus {Idle, Move, LightAttack, Ultimate, Sweep, JumpAttack, Neutral, InAir, Falling};
         public PlayerStatus playerStatus;
 
         // jump attack
@@ -115,6 +115,11 @@ namespace com.ultimate2d.combat
 
             }
 
+            // if(playerStatus == PlayerStatus.Falling)
+            // {
+
+            // }
+
         }
 
         public void Ultimate(InputAction.CallbackContext context)
@@ -153,6 +158,18 @@ namespace com.ultimate2d.combat
         public void SetPlayerInAir()
         {
             playerStatus = PlayerStatus.InAir;
+        }
+
+        public bool CommandReady()
+        {
+            if(playerStatus != PlayerStatus.Idle ||
+               playerStatus != PlayerStatus.Neutral)
+            {
+                return true;
+            }
+
+
+            return false;
         }
 
 

@@ -7,33 +7,25 @@ namespace com.ultimate2d.combat
     public class FallIntoPit : MonoBehaviour
     {
 
-        void Start()
+        public int fallDamage;
+        private Collider2D col;
+
+
+
+        void OnTriggerEnter2D(Collider2D collider)
         {
-
-
-        }
-
-
-
-
-        // find the center of the collider to determine which edge player entered
-        // center = position of object
-        void OnTriggerEnter2D(Collider2D col)
-        {
-            if(col.gameObject.CompareTag("PlayerAttack"))
+            if(collider.gameObject.CompareTag("PlayerAttack"))
             {
-                // Player respawns out of pit 
-                //PlayerManager.Instance.transform.position = col.GetContacts(0)
-                // get the side which the player entered
-                
-                var difference = col.ClosestPoint(PlayerManager.Instance.transform.position) - (Vector2)transform.position;
-                PlayerManager.Instance.transform.position = col.ClosestPoint(PlayerManager.Instance.transform.position) + difference * 1.5f;
+                //Debug.Log("falling");
+                // player falling
+                //PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Falling;
 
+                // add command into player input buffer
+                PlayerInputBuffer.Instance.Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Falling));
 
+                col = collider;
 
-
-                // player takes damage
-
+                StartCoroutine("FallingSequence");
 
 
             }
@@ -41,5 +33,24 @@ namespace com.ultimate2d.combat
 
         }
 
+        IEnumerator FallingSequence()
+        {
+
+            yield return null;
+
+            yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
+
+            var difference = col.ClosestPoint(PlayerManager.Instance.transform.position) - (Vector2)transform.position;
+            PlayerManager.Instance.transform.position = col.ClosestPoint(PlayerManager.Instance.transform.position) + difference * 0.9f;
+
+            // player takes damage
+            PlayerManager.Instance.pHealth.Damage(fallDamage);
+
+        }
+
+
+
     }
+
+
 }
