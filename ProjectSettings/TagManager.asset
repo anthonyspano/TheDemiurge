@@ -20,6 +20,7 @@ TagManager:
   - HitBox
   - Wall
   - PlayerHitBox
+  - Pit
   layers:
   - Default
   - TransparentFX
