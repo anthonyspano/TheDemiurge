@@ -26,9 +26,10 @@ namespace com.ultimate2d.combat
                 Vector2 directionToPlayer = (PlayerManager.Instance.transform.position - sbs.transform.position).normalized;
                 distanceToTravel = em.RetreatRange;
                 // if there is a wall, then cut target position short (raycast)
-                RaycastHit2D hit = Physics2D.Raycast(sbs.transform.position, directionToPlayer * new Vector2(-1,-1), em.RetreatRange);
+                RaycastHit2D hit = Physics2D.Raycast(sbs.transform.position, directionToPlayer * new Vector2(-1,-1), em.RetreatRange, 1 << 12);
                 if(hit)
                 {
+                    Debug.Log(hit.collider.name);
                     if(hit.collider.CompareTag("Wall"))
                     {
                         distanceToTravel = hit.distance;
@@ -39,8 +40,10 @@ namespace com.ultimate2d.combat
                 targetPos =  (Vector2)sbs.transform.position + distanceToTravel * directionToPlayer * new Vector2(-1,-1);
 
                 // while not at target position 
-                while(Vector2.Distance(sbs.transform.position, targetPos) > 0.1f)
+                while(Vector2.Distance(sbs.transform.position, targetPos) > 1f)
                 {
+                    // Debug.Log("target: " + targetPos);
+                    // Debug.Log("current: " + sbs.transform.position);
                     // move to target
                     sbs.transform.position = Vector2.MoveTowards(sbs.transform.position, targetPos, em.moveSpeed * Time.deltaTime);
                     yield return null;
@@ -61,6 +64,7 @@ namespace com.ultimate2d.combat
                 }
 
             }
+
 
             SkellyBattleSystem.SetState(new ThrowBone(SkellyBattleSystem));
 
