@@ -20,7 +20,6 @@ namespace com.ultimate2d.combat
 
         public override IEnumerator Start()
         {
-
             playerAnim.Play(new AnimatorHashRef().GetFirstAttackState());
             playerAudio.Play();
 

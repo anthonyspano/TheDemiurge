@@ -11,13 +11,13 @@ public class DamageOverTime : MonoBehaviour
         try {
         col.gameObject.GetComponentInChildren<BossTakeDamage>().healthSystem.Damage(5);
         } catch (System.Exception) {
-            Debug.Log("Not a boss");
+            //Debug.Log("Not a boss");
         }
         
         try {
            col.gameObject.GetComponentInChildren<EnemyTakeDamage>().healthSystem.Damage(5);
         } catch (System.Exception) {
-            Debug.Log("boss");
+            //Debug.Log("boss");
         } 
         
 

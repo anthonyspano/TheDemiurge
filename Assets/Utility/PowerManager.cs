@@ -67,6 +67,7 @@ public class PowerManager : MonoBehaviour
 
     public void FireUltimate()
     {
+        //Debug.Log("firing!");
         ultimateCharge.AddUlt(-ultCost);
         BeamSetup();
         anim.Play("BeamAttack");

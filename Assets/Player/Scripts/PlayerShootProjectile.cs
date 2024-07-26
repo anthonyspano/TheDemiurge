@@ -24,11 +24,11 @@ namespace com.ultimate2d.combat
 
         private void Update()
         {
-            if (PlayerInput.Shoot())
-            {
-                var pos = transform.position + PlayerManager.Instance.LastMove.normalized;
-                Fire(bulletPrefab, pos, pos - transform.position, bulletSpeed);
-            }
+            // if (PlayerInput.Shoot())
+            // {
+            //     var pos = transform.position + PlayerManager.Instance.LastMove.normalized;
+            //     Fire(bulletPrefab, pos, pos - transform.position, bulletSpeed);
+            // }
             
         }
 

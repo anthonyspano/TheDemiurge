@@ -23,8 +23,9 @@ namespace com.ultimate2d.combat
             // wait until Input Buffer contains player input
             //yield return new WaitUntil(() => PlayerController.Instance.playerStatus.CommandReady());
             yield return new WaitUntil(() => PlayerInputBuffer.Instance.GetCommand() != PlayerController.PlayerStatus.Neutral); 
-            
+
             PlayerController.Instance.playerStatus = PlayerInputBuffer.Instance.GetCommand();
+            PlayerInputBuffer.Instance.SetCurrentFrame(PlayerController.PlayerStatus.Neutral);
             if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.LightAttack) 
             {       
                 PlayerBattleSystem.SetState(new PlayerAttack(PlayerBattleSystem));                
@@ -34,12 +35,14 @@ namespace com.ultimate2d.combat
             {
                 PlayerBattleSystem.SetState(new JumpAttack(PlayerBattleSystem));
             }
-            if(PlayerInputBuffer.Instance.GetCommand() == PlayerController.PlayerStatus.Ultimate)
+            if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Ultimate)
             {
                 if(PlayerManager.Instance.ultReady)
                 {
                     PlayerManager.Instance.isBusy = true;
+                    
                     // use ult - function in playermanager 
+                   // Debug.Log("telling child to fire");
                     PlayerManager.Instance.FireUltimate();
                     yield return new WaitUntil(() => !PlayerManager.Instance.isBusy);
                     PlayerBattleSystem.SetState(new Begin(PlayerBattleSystem));
@@ -66,7 +69,7 @@ namespace com.ultimate2d.combat
             }
 
             // replace current command with neutral after execution
-            PlayerInputBuffer.Instance.SetCurrentFrame(PlayerController.PlayerStatus.Neutral);
+            //PlayerInputBuffer.Instance.SetCurrentFrame(PlayerController.PlayerStatus.Neutral);
 
 
             

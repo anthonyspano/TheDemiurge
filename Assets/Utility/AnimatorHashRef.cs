@@ -41,7 +41,7 @@ namespace com.ultimate2d.combat
         public string GetFirstAttackState()
         {
             // helper method to identify correct attack anim to play from idle
-            switch(PlayerInputBuffer.Instance.GetCommand())
+            switch(PlayerController.Instance.playerStatus)
             {
                 case PlayerController.PlayerStatus.LightAttack:
                     switch(PlayerManager.Instance.pFacingDir)

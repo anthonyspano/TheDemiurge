@@ -115,16 +115,19 @@ namespace com.ultimate2d.combat
 
             }
 
-            // if(playerStatus == PlayerStatus.Falling)
-            // {
-
-            // }
 
         }
 
         public void Ultimate(InputAction.CallbackContext context)
         {
+            
             _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.Ultimate));
+
+            // for(int i = 0; i<_playerInputBuffer.InputBuffer.Count; i++)
+            // {
+            //     if(_playerInputBuffer.InputBuffer[i].action == PlayerStatus.Ultimate)
+            //         Debug.Log("ULTIMATE REGISTERED");
+            // }
         }
 
 
