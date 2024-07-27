@@ -107,10 +107,12 @@ namespace com.ultimate2d.combat
             }
 
             if(Input.GetKey(KeyCode.JoystickButton2))
-            {
+            {  
                 jumpTime = Time.time - startTime;
-                if(jumpTime > 0.4f)
-                    jumpTime = 0.4f;
+                Debug.Log("jump time: " + jumpTime);
+
+                if(jumpTime > PlayerManager.Instance.MaxJumpTime)
+                    jumpTime = PlayerManager.Instance.MaxJumpTime;
                 
 
             }

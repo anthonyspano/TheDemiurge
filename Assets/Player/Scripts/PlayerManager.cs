@@ -60,6 +60,7 @@ namespace com.ultimate2d.combat
 		public float jumpCooldownRate;
 		public float jumpCooldown;
 		public float JumpDistance;
+		public float MaxJumpTime;
 		public float JumpSpeed;
 		public float MDD;
 		public float AttackMoveDistance;

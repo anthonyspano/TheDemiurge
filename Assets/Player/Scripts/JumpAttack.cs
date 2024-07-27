@@ -25,13 +25,12 @@ namespace com.ultimate2d.combat
 
             playerAnim.SetBool("inAir", true);
             
-            yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.InAir);
-            //Debug.Log(PlayerController.Instance.jumpTime);
-            if(PlayerController.Instance.jumpTime > 0.1f)
-                yield return new WaitForSeconds(0.125f);
+            //yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.InAir);
+            yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.JoystickButton2) || PlayerController.Instance.jumpTime >= PlayerManager.Instance.MaxJumpTime);
+
             //Debug.Log(PlayerController.Instance.jumpTime);
             Debug.Log(PlayerController.Instance.jumpTime);
-            yield return new WaitForSeconds(PlayerController.Instance.jumpTime);
+            //yield return new WaitForSeconds(PlayerController.Instance.jumpTime);
             playerAnim.SetBool("inAir", false);
             
 
