@@ -27,6 +27,8 @@ namespace com.ultimate2d.combat
         // enemy spawner
         private List<Vector3> spawnPositions;
         public int enemiesToSpawn = 4;
+        private enum CurrentWave {First, Second, Third};
+        private CurrentWave currentWave;
 
         // audio
         AudioSource audioSource;
@@ -64,6 +66,10 @@ namespace com.ultimate2d.combat
             spawnPositions.Add(new Vector3(-3, 0, 0) + PlayerManager.Instance.transform.position);
             spawnPositions.Add(new Vector3(0, -3, 0) + PlayerManager.Instance.transform.position);
             spawnPositions.Add(new Vector3(0, 3, 0) + PlayerManager.Instance.transform.position);
+            spawnPositions.Add(new Vector3(4, 0, 0) + PlayerManager.Instance.transform.position);
+            spawnPositions.Add(new Vector3(-4, 0, 0) + PlayerManager.Instance.transform.position);
+            spawnPositions.Add(new Vector3(0, -4, 0) + PlayerManager.Instance.transform.position);
+            spawnPositions.Add(new Vector3(0, 4, 0) + PlayerManager.Instance.transform.position);
 
 
         }
@@ -147,7 +153,7 @@ namespace com.ultimate2d.combat
         {
             
             PlayerManager.Instance.killCount++;
-            if(PlayerManager.Instance.killCount >= 4)
+            if(PlayerManager.Instance.killCount >= 14)
             {
                 // save game data into scriptable object
                 _scoreManager.time = timerText.text;
@@ -158,6 +164,14 @@ namespace com.ultimate2d.combat
                 // go to score screen
                 SceneManager.LoadScene("ScoreScreen");
             }
+            else if(PlayerManager.Instance.killCount >= 3)
+            {
+                enemiesToSpawn++; 
+                if(enemiesToSpawn > 4) enemiesToSpawn = 4;
+                StartCoroutine("SpawnEnemies");
+            }
+            else
+                enemiesToSpawn = 2;
         }
     }
 }
