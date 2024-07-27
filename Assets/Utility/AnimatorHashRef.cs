@@ -85,9 +85,9 @@ namespace com.ultimate2d.combat
                         case PlayerManager.Direction.DownLeft:
                             return "v-jumpattack-dl";
                         case PlayerManager.Direction.UpRight:
-                            return "v-attack-ur-1";
+                            return "v-jumpattack-ur";
                         case PlayerManager.Direction.UpLeft:
-                            return "v-attack-ul-1";
+                            return "v-jumpattack-ul";
 
                         default:
                             Debug.Log("Player direction null");
