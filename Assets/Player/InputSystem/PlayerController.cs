@@ -67,6 +67,29 @@ namespace com.ultimate2d.combat
             _playerInputBuffer = PlayerManager.Instance.GetComponent<PlayerInputBuffer>();
         }
 
+        void Update()
+        {
+            // jump attack air time
+            if(Input.GetKeyDown(KeyCode.JoystickButton2))
+            {
+                startTime = Time.time;
+                Debug.Log("starting");
+            }
+
+            if(Input.GetKey(KeyCode.JoystickButton2))
+            {  
+                jumpTime = Time.time - startTime;
+                Debug.Log("jump time: " + jumpTime);
+
+                if(jumpTime > PlayerManager.Instance.MaxJumpTime)
+                    jumpTime = PlayerManager.Instance.MaxJumpTime;
+                
+
+            }
+
+
+        }
+
         private void FixedUpdate()
         {
             // move
@@ -99,23 +122,7 @@ namespace com.ultimate2d.combat
 
             }
 
-            // jump attack air time
-            if(Input.GetKeyDown(KeyCode.JoystickButton2))
-            {
-                startTime = Time.time;
 
-            }
-
-            if(Input.GetKey(KeyCode.JoystickButton2))
-            {  
-                jumpTime = Time.time - startTime;
-                Debug.Log("jump time: " + jumpTime);
-
-                if(jumpTime > PlayerManager.Instance.MaxJumpTime)
-                    jumpTime = PlayerManager.Instance.MaxJumpTime;
-                
-
-            }
 
 
         }

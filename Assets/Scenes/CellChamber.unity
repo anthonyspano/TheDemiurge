@@ -4736,7 +4736,7 @@ MonoBehaviour:
   jumpCooldownRate: 1
   jumpCooldown: 0
   JumpDistance: 25
-  MaxJumpTime: 2
+  MaxJumpTime: 0.5
   JumpSpeed: 4
   MDD: 0.2
   AttackMoveDistance: 1.3
