@@ -26,17 +26,12 @@ namespace com.ultimate2d.combat
             
             anim.Play("Falling");
 
-
-            // simulate falling (probably better through animation and keeping player still)
-            rb.gravityScale = 4;
             bc.enabled = false;
+            yield return null;
 
+            yield return new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("Falling"));
 
-            yield return new WaitForSeconds(1f);
-            rb.gravityScale = 0;
             bc.enabled = true;
-
-            anim.Play("Player Idle");
             PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
 
             PlayerBattleSystem.SetState(new Begin(PlayerBattleSystem));
