@@ -16,7 +16,7 @@ namespace com.ultimate2d.combat
 
 
         private Animator anim;
-        private PlayerInputActions playerInputActions;
+        public PlayerInputActions playerInputActions;
         private Vector2 inputVector; 
         private Vector2 currentInputVector = Vector2.zero; 
         private Vector2 smoothInputVelocity; 
@@ -34,6 +34,8 @@ namespace com.ultimate2d.combat
         // jump attack
         public float jumpTime;
         private float startTime;
+
+        private Vector2 moveDirection;
 
         private void Awake()
         {
@@ -69,6 +71,7 @@ namespace com.ultimate2d.combat
 
         void Update()
         {
+            //Debug.Log(playerInputActions.Player.Movement.ReadValue<Vector2>());
             // jump attack air time
             if(Input.GetKeyDown(KeyCode.JoystickButton2))
             {
@@ -87,33 +90,21 @@ namespace com.ultimate2d.combat
 
             }
 
-
-        }
-
-        private void FixedUpdate()
-        {
-            // move
-
             if(playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.InAir)
             {
-                inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
-                // if(inputVector.magnitude > DeadZone)
+                // if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
                 // {
-                //     // create  move direction
-                //     var direction = new Vector3(inputVector.x, inputVector.y * PlayerManager.Instance.verticalRunMod, 0) + PlayerManager.Instance.transform.position;
-                //     // multiply move vector by speed 
-                //     PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, direction, PlayerManager.Instance.moveSpeed * Time.deltaTime);
-                //     PlayerManager.Instance.anim.SetBool("isMoving", true);
-                // }
-                // else
-                // {
-                //     PlayerManager.Instance.anim.SetBool("isMoving", false);
+                //     currentInputVector = new Vector2(Input.GetAxis("Horizontal"),  Input.GetAxis("Vertical"));
+
                 // }
 
-                currentInputVector = Vector2.SmoothDamp(currentInputVector, inputVector, ref smoothInputVelocity, acceleration);
-                
+                currentInputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
+                //inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
+                //currentInputVector = Vector2.SmoothDamp(currentInputVector, inputVector, ref smoothInputVelocity, acceleration);
+                //Debug.Log(currentInputVector);
                 if(currentInputVector.magnitude > DeadZone)
                 {
+   
                     PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, (Vector2)PlayerManager.Instance.transform.position + currentInputVector, PlayerManager.Instance.moveSpeed * Time.deltaTime);
                     PlayerManager.Instance.anim.SetBool("isMoving", true);
                 }
@@ -121,6 +112,40 @@ namespace com.ultimate2d.combat
                     PlayerManager.Instance.anim.SetBool("isMoving", false);
 
             }
+
+        }
+
+        private void FixedUpdate()
+        {
+            // move
+
+            // if(playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.InAir)
+            // {
+            //     inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
+                // // if(inputVector.magnitude > DeadZone)
+                // // {
+                // //     // create  move direction
+                // //     var direction = new Vector3(inputVector.x, inputVector.y * PlayerManager.Instance.verticalRunMod, 0) + PlayerManager.Instance.transform.position;
+                // //     // multiply move vector by speed 
+                // //     PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, direction, PlayerManager.Instance.moveSpeed * Time.deltaTime);
+                // //     PlayerManager.Instance.anim.SetBool("isMoving", true);
+                // // }
+                // // else
+                // // {
+                // //     PlayerManager.Instance.anim.SetBool("isMoving", false);
+                // // }
+
+            //     currentInputVector = Vector2.SmoothDamp(currentInputVector, inputVector, ref smoothInputVelocity, acceleration);
+                
+            //     if(currentInputVector.magnitude > DeadZone)
+            //     {
+            //         PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, (Vector2)PlayerManager.Instance.transform.position + currentInputVector, PlayerManager.Instance.moveSpeed * Time.deltaTime);
+            //         PlayerManager.Instance.anim.SetBool("isMoving", true);
+            //     }
+            //     else
+            //         PlayerManager.Instance.anim.SetBool("isMoving", false);
+
+            // }
 
 
 
@@ -171,6 +196,13 @@ namespace com.ultimate2d.combat
         {
             playerStatus = PlayerStatus.InAir;
         }
+
+        public void SetPlayerNeutral()
+		{
+			playerStatus = PlayerStatus.Neutral;
+            PlayerManager.Instance.anim.SetBool("isMoving", false);
+            PlayerManager.Instance.anim.Play("Player Idle");
+		}
 
         public bool CommandReady()
         {

@@ -30,12 +30,20 @@ namespace com.ultimate2d.combat
             yield return null;
 
             yield return new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("Falling"));
-
-            bc.enabled = true;
+            pbs.transform.position = PlayerManager.Instance.PitSpawnPoint;
+            Debug.Log("actual: " + pbs.transform.position);
+            
+            //yield return new WaitUntil(() => PlayerController.Instance.playerInputActions.Player.Movement.ReadValue<Vector2>().magnitude != 0);
+            //yield return null;
+            PlayerManager.Instance.pHealth.Damage(20);
+            
+            yield return new WaitForSeconds(0.6f);
             PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
+            bc.enabled = true;
 
             PlayerBattleSystem.SetState(new Begin(PlayerBattleSystem));
         }
+
 
 
     }

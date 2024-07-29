@@ -115,6 +115,8 @@ namespace com.ultimate2d.combat
 		public AnimationClip clip;
 		[HideInInspector] public float attackAnimLength;
 
+		public Vector2 PitSpawnPoint;
+
 		// Animation control
 		[HideInInspector] public bool continueChain;
 
@@ -226,6 +228,42 @@ namespace com.ultimate2d.combat
 					audioSource.PlayOneShot(hurt1, 0.7f);
 				}
 			}
+
+		}
+
+		private void OnTriggerEnter2D(Collider2D col)
+		{
+			
+			if(col.gameObject.CompareTag("Respawn"))
+			{
+				Debug.Log(col.gameObject.name);
+				//PitSpawnPoint = col.ClosestPoint(PlayerManager.Instance.transform.position);
+				PitSpawnPoint = Physics2D.ClosestPoint(transform.position, col);
+				Debug.Log("outer point: " + PlayerManager.Instance.PitSpawnPoint);
+				// deactivate collider until player leaves
+				col.enabled = false;
+				StartCoroutine(ToggleSpawnCollider(col));
+
+				List<int> num = new List<int>();
+				num.Add(1);
+				num.Add(3);
+				num.Add(2);
+
+				for(int i = 0; i<num.Count; i++)
+					Debug.Log(num[i]);
+
+
+				
+			}
+		}
+
+		private IEnumerator ToggleSpawnCollider(Collider2D col)
+		{
+
+
+			// wait until player is x distance from spawn point
+			yield return new WaitUntil(() => Vector2.Distance(transform.position, PitSpawnPoint) > 4);
+			col.enabled = true;
 
 		}
 

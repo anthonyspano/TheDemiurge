@@ -23,28 +23,21 @@ namespace com.ultimate2d.combat
                 // add command into player input buffer
                 PlayerInputBuffer.Instance.Add(new InputBufferMemory(Time.frameCount, PlayerController.PlayerStatus.Falling));
 
-                col = collider;
+                //var spawnCollider = GameObject.Find("PitExit");
+                
+                // get the difference between the player and center of the pit
+                var difference = PlayerManager.Instance.transform.position - transform.position;
+                Debug.Log("magnitude: " + difference.magnitude);
+                
+                // if difference < x, make 5x
+                if(difference.magnitude < 1) difference *= 7;
 
-                StartCoroutine("FallingSequence");
+                // spawn player in opposite direction away from center
+                PlayerManager.Instance.PitSpawnPoint = PlayerManager.Instance.transform.position + difference;
 
 
             }
 
-
-        }
-
-        IEnumerator FallingSequence()
-        {
-
-            yield return null;
-
-            yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
-
-            var difference = col.ClosestPoint(PlayerManager.Instance.transform.position) - (Vector2)transform.position;
-            PlayerManager.Instance.transform.position = col.ClosestPoint(PlayerManager.Instance.transform.position) + difference * 0.9f;
-
-            // player takes damage
-            PlayerManager.Instance.pHealth.Damage(fallDamage);
 
         }
 
