@@ -8,9 +8,9 @@ namespace com.ultimate2d.combat
     public abstract class State
     {
         protected BlockBattleSystem BlockBattleSystem;
-        protected PlayerBattleSystem PlayerBattleSystem;
+        protected PlayerStateMachine _playerStateMachine;
         protected BossBattleSystem BossBattleSystem;
-        protected SkellyBattleSystem SkellyBattleSystem;
+        protected EnemyStateMachine _enemyStateMachine;
 
         public State(BlockBattleSystem blockBattleSystem)
         {
@@ -18,9 +18,9 @@ namespace com.ultimate2d.combat
 
         }
 
-        public State(PlayerBattleSystem playerBattleSystem)
+        public State(PlayerStateMachine playerStateMachine)
         {
-            PlayerBattleSystem  = playerBattleSystem;
+            _playerStateMachine  = playerStateMachine;
         }
 
         public State(BossBattleSystem bossBattleSystem)
@@ -28,9 +28,9 @@ namespace com.ultimate2d.combat
             BossBattleSystem = bossBattleSystem;
         }
 
-        public State(SkellyBattleSystem skellyBattleSystem)
+        public State(EnemyStateMachine enemyStateMachine)
         {
-            SkellyBattleSystem = skellyBattleSystem;
+            _enemyStateMachine = enemyStateMachine;
         }
         
         public virtual IEnumerator Start()

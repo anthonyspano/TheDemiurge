@@ -6,7 +6,11 @@ namespace com.ultimate2d.combat
 {
     public class PlayerRun : State
     {
-        public PlayerRun(PlayerBattleSystem playerBattleSystem) : base(playerBattleSystem) { }
+        PlayerStateMachine psm;
+        public PlayerRun(PlayerStateMachine playerStateMachine) : base(playerStateMachine) 
+        {
+            psm = playerStateMachine;
+        }
 
         public override IEnumerator Start()
         {
@@ -25,7 +29,7 @@ namespace com.ultimate2d.combat
             //PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
             //PlayerManager.Instance.isBusy = false;
 
-            PlayerBattleSystem.SetState(new Begin(PlayerBattleSystem));
+            _playerStateMachine.SetState(new Begin(psm));
 
         }
     }

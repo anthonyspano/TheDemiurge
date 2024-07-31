@@ -10,19 +10,16 @@ namespace com.ultimate2d.combat
         private Animator anim;
         private Rigidbody2D rb;
 
-        private PlayerBattleSystem pbs;
+        private PlayerStateMachine psm;
         private bool once;
 
-        public Jump(PlayerBattleSystem playerBattleSystem) : base(playerBattleSystem)
+        public Jump(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
         {
-            pbs = playerBattleSystem;
-            anim = pbs.GetComponent<Animator>();
-            rb = pbs.GetComponent<Rigidbody2D>();
+            psm = playerStateMachine;
+            anim = psm.GetComponent<Animator>();
+            rb = psm.GetComponent<Rigidbody2D>();
         }
 
-        // 1 adjust
-        // animation too long
-        // move less
         public override IEnumerator Start()
         {
             // start cooldown of jump
@@ -82,7 +79,7 @@ namespace com.ultimate2d.combat
             PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
             PlayerManager.Instance.isBusy = false;
 
-            PlayerBattleSystem.SetState(new Begin(PlayerBattleSystem));
+            _playerStateMachine.SetState(new Begin(psm));
 
         }
 

@@ -7,15 +7,15 @@ namespace com.ultimate2d.combat
 
     public class JumpAttack : State
     {
-        PlayerBattleSystem pbs;
+        PlayerStateMachine psm;
         Animator playerAnim;
         AudioSource playerAudio;
 
-        public JumpAttack(PlayerBattleSystem playerBattleSystem) : base(playerBattleSystem)
+        public JumpAttack(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
         {
-            pbs = playerBattleSystem;
-            playerAnim = pbs.GetComponent<Animator>();
-            playerAudio = pbs.GetComponent<AudioSource>();
+            psm = playerStateMachine;
+            playerAnim = psm.GetComponent<Animator>();
+            playerAudio = psm.GetComponent<AudioSource>();
         }
 
         public override IEnumerator Start()
@@ -36,6 +36,8 @@ namespace com.ultimate2d.combat
 
 
             yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
+
+            _playerStateMachine.SetState(new Begin(psm));
 
         }
 

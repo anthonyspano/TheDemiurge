@@ -6,17 +6,17 @@ namespace com.ultimate2d.combat
 {
     public class SkellyStart : State
     {
-        private SkellyBattleSystem sbs;
+        private EnemyStateMachine esm;
         
-        public SkellyStart(SkellyBattleSystem skellyBattleSystem) : base(skellyBattleSystem)
+        public SkellyStart(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
         {
-            sbs = skellyBattleSystem;
+            esm = enemyStateMachine;
         }
 
         public override IEnumerator Start()
         {
             // throw boomerang
-            SkellyBattleSystem.SetState(new SkellyMove(SkellyBattleSystem));
+            _enemyStateMachine.SetState(new SkellyMove(esm));
 
             // laugh
             //Debug.Log("Hahahaha!");

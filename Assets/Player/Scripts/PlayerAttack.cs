@@ -10,39 +10,26 @@ namespace com.ultimate2d.combat
     public class PlayerAttack : State
     {
         private bool continueChain = false;
-        private PlayerBattleSystem pbs;
+        private PlayerStateMachine psm;
         private Animator playerAnim;
         private AudioSource playerAudio;
 
-        public PlayerAttack(PlayerBattleSystem playerBattleSystem) : base(playerBattleSystem)
+        public PlayerAttack(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
         {
-            pbs = playerBattleSystem;
+            psm = playerStateMachine;
             playerAnim = PlayerManager.Instance.GetComponent<Animator>();
             playerAudio = PlayerManager.Instance.GetComponent<AudioSource>();
         }
         public override IEnumerator Start() 
         {
-            Debug.Log("attacking");
+            Debug.Log("light attack");
             playerAnim.Play(new AnimatorHashRef().GetFirstAttackState());
             playerAudio.Play();
 
             yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
-           
-            // yield return new WaitUntil(() => PlayerManager.Instance.nextMoveReady);
-
-            // if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Attack)
-            // {
-              
-            //     playerAnim.Play(new AnimatorHashRef().GetNextState(playerAnim.GetCurrentAnimatorStateInfo(0).shortNameHash));
-            //     yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
-            // }
-           
-            // PlayerManager.Instance.nextMoveReady = false;
-
-            //PlayerManager.Instance.StartAttackCD();
 
 
-            PlayerBattleSystem.SetState(new Begin(pbs));
+            _playerStateMachine.SetState(new Begin(psm));
 
                 
 

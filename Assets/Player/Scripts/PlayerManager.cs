@@ -12,7 +12,7 @@ namespace com.ultimate2d.combat
 {
 	public class PlayerManager : MonoBehaviour
 	{
-		public float drawMagnitude;
+		public float drawMagnitude; // to help fix cursor bug
 		
 		// singleton
 		private static PlayerManager _instance;
@@ -44,7 +44,6 @@ namespace com.ultimate2d.combat
 		// animator
 		public Animator anim;
 		private bool animFinished;
-		public bool nextMoveReady;
 
 		// for damage
 		[Header("Damage")]
@@ -231,32 +230,6 @@ namespace com.ultimate2d.combat
 
 		}
 
-		private void OnTriggerEnter2D(Collider2D col)
-		{
-			
-			if(col.gameObject.CompareTag("Respawn"))
-			{
-				Debug.Log(col.gameObject.name);
-				//PitSpawnPoint = col.ClosestPoint(PlayerManager.Instance.transform.position);
-				PitSpawnPoint = Physics2D.ClosestPoint(transform.position, col);
-				Debug.Log("outer point: " + PlayerManager.Instance.PitSpawnPoint);
-				// deactivate collider until player leaves
-				col.enabled = false;
-				StartCoroutine(ToggleSpawnCollider(col));
-
-				List<int> num = new List<int>();
-				num.Add(1);
-				num.Add(3);
-				num.Add(2);
-
-				for(int i = 0; i<num.Count; i++)
-					Debug.Log(num[i]);
-
-
-				
-			}
-		}
-
 		private IEnumerator ToggleSpawnCollider(Collider2D col)
 		{
 
@@ -330,23 +303,6 @@ namespace com.ultimate2d.combat
 			anim.Play("Player Idle");
 		}
 
-		// public void FinishComboAnimation()
-		// {
-			
-		// 	// checks player input buffer for continue chain. If not, set playerStatus to Idle
-		// 	int currentState = anim.GetCurrentAnimatorStateInfo(0).shortNameHash;
-		// 	AnimatorHashRef animRef = new AnimatorHashRef();
-		// 	if(PlayerInputBuffer.Instance.GetCommand() == PlayerController.PlayerStatus.Attack && animRef.GetNextState(currentState) != "")
-		// 		PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Attack;
-		// 	else
-		// 	{
-		// 		PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
-		// 	}
-
-		// 	nextMoveReady = true;
-
-
-		// }
 
 		public void FinishJumpAnimation()
 		{

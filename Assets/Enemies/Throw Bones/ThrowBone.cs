@@ -7,30 +7,30 @@ namespace com.ultimate2d.combat
 {
     public class ThrowBone : State
     {
-        private SkellyBattleSystem sbs;
-        public ThrowBone(SkellyBattleSystem skellyBattleSystem) : base(skellyBattleSystem)
+        private EnemyStateMachine esm;
+        public ThrowBone(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
         {
-            sbs = skellyBattleSystem;
+            esm = enemyStateMachine;
         }
 
         public override IEnumerator Start()
         {
             
             // anim
-            sbs.GetComponent<Animator>().Play("Attack");
+            esm.GetComponent<Animator>().Play("Attack");
 
             yield return null;
-            yield return new WaitUntil(() => !sbs.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Attack"));
+            yield return new WaitUntil(() => !esm.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Attack"));
 
             // instantiate bone object
             Transform bonerangPrefab = Resources.Load<Transform>("Bonerang");
-            Transform bonerang = GameObject.Instantiate(bonerangPrefab, sbs.transform.position, Quaternion.identity);
-            Physics2D.IgnoreLayerCollision(sbs.gameObject.layer, sbs.gameObject.layer, true);
-            sbs.GetComponent<AudioSource>().PlayOneShot(sbs.GetComponent<EnemyManager>().attackSound, 0.8f);
+            Transform bonerang = GameObject.Instantiate(bonerangPrefab, esm.transform.position, Quaternion.identity);
+            Physics2D.IgnoreLayerCollision(esm.gameObject.layer, esm.gameObject.layer, true);
+            esm.GetComponent<AudioSource>().PlayOneShot(esm.GetComponent<EnemyManager>().attackSound, 0.8f);
 
             // launch bone directly behind player
             var myBonerang = bonerang.GetComponent<Bonerang>();
-            myBonerang.owner = sbs.transform;
+            myBonerang.owner = esm.transform;
             myBonerang.Target = PlayerManager.Instance.transform.position;
 
             yield return new WaitUntil(() => bonerang.position == myBonerang.Target);
@@ -39,7 +39,7 @@ namespace com.ultimate2d.combat
             yield return new WaitForSeconds(1);
 
             // have bone return to skelly
-            Physics2D.IgnoreCollision(bonerang.GetComponent<BoxCollider2D>(), sbs.transform.GetComponent<BoxCollider2D>(), false);
+            Physics2D.IgnoreCollision(bonerang.GetComponent<BoxCollider2D>(), esm.transform.GetComponent<BoxCollider2D>(), false);
             myBonerang.isReturning = true;
             
             
@@ -52,7 +52,7 @@ namespace com.ultimate2d.combat
             yield return new WaitForSeconds(UnityEngine.Random.Range(0.25f, 1.25f));
             
 
-            SkellyBattleSystem.SetState(new SkellyStart(SkellyBattleSystem));
+            _enemyStateMachine.SetState(new SkellyStart(esm));
         }
 
 

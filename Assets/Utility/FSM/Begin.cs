@@ -7,13 +7,13 @@ namespace com.ultimate2d.combat
 {
     public class Begin : State
     {
-        PlayerBattleSystem pbs;
+        PlayerStateMachine psm;
         AudioSource audio;
         EnemyManager em;
 
-        public Begin(PlayerBattleSystem playerBattleSystem) : base(playerBattleSystem)
+        public Begin(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
         {
-            pbs = playerBattleSystem;
+            psm = playerStateMachine;
             
         }
 
@@ -28,49 +28,42 @@ namespace com.ultimate2d.combat
             PlayerInputBuffer.Instance.SetCurrentFrame(PlayerController.PlayerStatus.Neutral);
             if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.LightAttack) 
             {       
-                PlayerBattleSystem.SetState(new PlayerAttack(PlayerBattleSystem));                
+                _playerStateMachine.SetState(new PlayerAttack(psm));                
 
             }
             if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.JumpAttack)
             {
-                PlayerBattleSystem.SetState(new JumpAttack(PlayerBattleSystem));
+                _playerStateMachine.SetState(new JumpAttack(psm));
             }
             if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Ultimate)
             {
                 if(PlayerManager.Instance.ultReady)
                 {
                     PlayerManager.Instance.isBusy = true;
-                    
-                    // use ult - function in playermanager 
-                   // Debug.Log("telling child to fire");
                     PlayerManager.Instance.FireUltimate();
                     yield return new WaitUntil(() => !PlayerManager.Instance.isBusy);
-                    PlayerBattleSystem.SetState(new Begin(PlayerBattleSystem));
+                    _playerStateMachine.SetState(new Begin(psm));
                     
                 }
                 else
                 {   
                     PlayerManager.Instance.isBusy = false;
-                    PlayerBattleSystem.SetState(new Begin(PlayerBattleSystem));
+                    _playerStateMachine.SetState(new Begin(psm));
                 }
 
             }
             if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Falling)
             {
-                PlayerBattleSystem.SetState(new Falling(PlayerBattleSystem));
+                _playerStateMachine.SetState(new Falling(psm));
             }
             else
             {
                 PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
                 PlayerManager.Instance.isBusy = false;
-                PlayerBattleSystem.SetState(new Begin(PlayerBattleSystem));
+                _playerStateMachine.SetState(new Begin(psm));
             
 
             }
-
-            // replace current command with neutral after execution
-            //PlayerInputBuffer.Instance.SetCurrentFrame(PlayerController.PlayerStatus.Neutral);
-
 
             
         }

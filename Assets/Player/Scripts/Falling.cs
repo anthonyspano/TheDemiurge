@@ -7,17 +7,17 @@ namespace com.ultimate2d.combat
 
     public class Falling : State
     {
-        PlayerBattleSystem pbs;
+        PlayerStateMachine psm;
         Animator anim;
         Rigidbody2D rb;
         BoxCollider2D bc;
 
-        public Falling(PlayerBattleSystem playerBattleSystem) : base(playerBattleSystem) 
+        public Falling(PlayerStateMachine playerStateMachine) : base(playerStateMachine) 
         {
-            pbs = playerBattleSystem; 
-            anim = pbs.GetComponent<Animator>();
-            rb = pbs.GetComponent<Rigidbody2D>();  
-            bc = pbs.GetComponent<BoxCollider2D>();
+            psm = playerStateMachine; 
+            anim = psm.GetComponent<Animator>();
+            rb = psm.GetComponent<Rigidbody2D>();  
+            bc = psm.GetComponent<BoxCollider2D>();
 
         }
 
@@ -30,8 +30,8 @@ namespace com.ultimate2d.combat
             yield return null;
 
             yield return new WaitUntil(() => !anim.GetCurrentAnimatorStateInfo(0).IsName("Falling"));
-            pbs.transform.position = PlayerManager.Instance.PitSpawnPoint;
-            Debug.Log("actual: " + pbs.transform.position);
+            psm.transform.position = PlayerManager.Instance.PitSpawnPoint;
+            Debug.Log("actual: " + psm.transform.position);
             
             //yield return new WaitUntil(() => PlayerController.Instance.playerInputActions.Player.Movement.ReadValue<Vector2>().magnitude != 0);
             //yield return null;
@@ -41,7 +41,7 @@ namespace com.ultimate2d.combat
             PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
             bc.enabled = true;
 
-            PlayerBattleSystem.SetState(new Begin(PlayerBattleSystem));
+            _playerStateMachine.SetState(new Begin(psm));
         }
 
 

@@ -6,15 +6,15 @@ namespace com.ultimate2d.combat
 {
     public class BlockStatusCheck : State
     {
-        PlayerBattleSystem pbs;
+        PlayerStateMachine psm;
         EnemyManager em;
         int myHealth;
 
-        public BlockStatusCheck(PlayerBattleSystem playerBattleSystem) : base(playerBattleSystem)
+        public BlockStatusCheck(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
         {
-            pbs = playerBattleSystem;
-            em = pbs.GetComponent<EnemyManager>();
-            myHealth = pbs.GetComponent<EnemyTakeDamage>().healthSystem.GetHealth();
+            psm = playerStateMachine;
+            em = psm.GetComponent<EnemyManager>();
+            myHealth = psm.GetComponent<EnemyTakeDamage>().healthSystem.GetHealth();
             
         }
 
@@ -24,7 +24,7 @@ namespace com.ultimate2d.combat
         {
             // 80% of max health
             // make this an enum status so it can be turned off
-            if(myHealth < pbs.GetComponent<EnemyTakeDamage>().maxHealth * .8f)
+            if(myHealth < psm.GetComponent<EnemyTakeDamage>().maxHealth * .8f)
             {
                 // do spin attack
             }

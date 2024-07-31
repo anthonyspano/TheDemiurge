@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace com.ultimate2d.combat
 {
-    public class SkellyBattleSystem : StateMachine
+    public class EnemyStateMachine : StateMachine
     {
         [HideInInspector]
         public EnemyManager em;

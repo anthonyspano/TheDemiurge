@@ -5,7 +5,7 @@ using UnityEngine;
 namespace com.ultimate2d.combat
 {
 
-    public class PlayerBattleSystem : StateMachine
+    public class PlayerStateMachine : StateMachine
     {
 
         void Start()

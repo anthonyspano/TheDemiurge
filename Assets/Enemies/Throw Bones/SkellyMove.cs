@@ -6,27 +6,27 @@ namespace com.ultimate2d.combat
 {
     public class SkellyMove : State
     {
-        private SkellyBattleSystem sbs;
+        private EnemyStateMachine esm;
         private EnemyManager em;
         private Vector2 targetPos;
         private float distanceToTravel;
         
-        public SkellyMove(SkellyBattleSystem skellyBattleSystem) : base(skellyBattleSystem)
+        public SkellyMove(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
         {
-            sbs = skellyBattleSystem;
-            em = sbs.GetComponent<EnemyManager>();
+            esm = enemyStateMachine;
+            em = esm.GetComponent<EnemyManager>();
         }
 
         public override IEnumerator Start()
         {        
-            float distanceToPlayer = Vector2.Distance(sbs.transform.position, PlayerManager.Instance.transform.position);
+            float distanceToPlayer = Vector2.Distance(esm.transform.position, PlayerManager.Instance.transform.position);
             // if too close to player, move away
             if(distanceToPlayer < 5)
             {
-                Vector2 directionToPlayer = (PlayerManager.Instance.transform.position - sbs.transform.position).normalized;
+                Vector2 directionToPlayer = (PlayerManager.Instance.transform.position - esm.transform.position).normalized;
                 distanceToTravel = em.RetreatRange;
                 // if there is a wall, then cut target position short (raycast)
-                RaycastHit2D hit = Physics2D.Raycast(sbs.transform.position, directionToPlayer * new Vector2(-1,-1), em.RetreatRange, 1 << 12);
+                RaycastHit2D hit = Physics2D.Raycast(esm.transform.position, directionToPlayer * new Vector2(-1,-1), em.RetreatRange, 1 << 12);
                 if(hit)
                 {
                     Debug.Log(hit.collider.name);
@@ -37,15 +37,15 @@ namespace com.ultimate2d.combat
                 }
 
                 // get target pos
-                targetPos =  (Vector2)sbs.transform.position + distanceToTravel * directionToPlayer * new Vector2(-1,-1);
+                targetPos =  (Vector2)esm.transform.position + distanceToTravel * directionToPlayer * new Vector2(-1,-1);
 
                 // while not at target position 
-                while(Vector2.Distance(sbs.transform.position, targetPos) > 1f)
+                while(Vector2.Distance(esm.transform.position, targetPos) > 1f)
                 {
                     // Debug.Log("target: " + targetPos);
-                    // Debug.Log("current: " + sbs.transform.position);
+                    // Debug.Log("current: " + esm.transform.position);
                     // move to target
-                    sbs.transform.position = Vector2.MoveTowards(sbs.transform.position, targetPos, em.moveSpeed * Time.deltaTime);
+                    esm.transform.position = Vector2.MoveTowards(esm.transform.position, targetPos, em.moveSpeed * Time.deltaTime);
                     yield return null;
                 }
 
@@ -57,15 +57,15 @@ namespace com.ultimate2d.combat
                 // while not in range of player 
                 while(distanceToPlayer > 10)
                 {
-                    sbs.transform.position = Vector2.MoveTowards(sbs.transform.position, PlayerManager.Instance.transform.position, 0.1f);
-                    distanceToPlayer = Vector2.Distance(sbs.transform.position, PlayerManager.Instance.transform.position);
+                    esm.transform.position = Vector2.MoveTowards(esm.transform.position, PlayerManager.Instance.transform.position, 0.1f);
+                    distanceToPlayer = Vector2.Distance(esm.transform.position, PlayerManager.Instance.transform.position);
                     yield return null;
                 }
 
             }
 
 
-            SkellyBattleSystem.SetState(new ThrowBone(SkellyBattleSystem));
+            _enemyStateMachine.SetState(new ThrowBone(esm));
 
         }
 
