@@ -8,9 +8,11 @@ namespace com.ultimate2d.combat
     public class ThrowBone : State
     {
         private EnemyStateMachine esm;
+        private AudioSource e_audioManager;
         public ThrowBone(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
         {
             esm = enemyStateMachine;
+            e_audioManager = esm.transform.GetComponent<AudioSource>();
         }
 
         public override IEnumerator Start()
@@ -26,7 +28,9 @@ namespace com.ultimate2d.combat
             Transform bonerangPrefab = Resources.Load<Transform>("Bonerang");
             Transform bonerang = GameObject.Instantiate(bonerangPrefab, esm.transform.position, Quaternion.identity);
             Physics2D.IgnoreLayerCollision(esm.gameObject.layer, esm.gameObject.layer, true);
-            esm.GetComponent<AudioSource>().PlayOneShot(esm.GetComponent<EnemyManager>().attackSound, 0.8f);
+            // have enemyaudiomanager play all enemy sounds to prevent clipping
+
+            e_audioManager.GetComponent<AudioSource>().PlayOneShot(esm.GetComponent<EnemyManager>().attackSound, 0.7f);
 
             // launch bone directly behind player
             var myBonerang = bonerang.GetComponent<Bonerang>();
@@ -34,9 +38,6 @@ namespace com.ultimate2d.combat
             myBonerang.Target = PlayerManager.Instance.transform.position;
 
             yield return new WaitUntil(() => bonerang.position == myBonerang.Target);
-
-            // bonerang hovers
-            yield return new WaitForSeconds(1);
 
             // have bone return to skelly
             Physics2D.IgnoreCollision(bonerang.GetComponent<BoxCollider2D>(), esm.transform.GetComponent<BoxCollider2D>(), false);

@@ -25,6 +25,7 @@ namespace com.ultimate2d.combat
         {
             
             anim.Play("Falling");
+            PlayerManager.Instance.GetComponent<AudioSource>().PlayOneShot(PlayerManager.Instance.falling1, 0.7f);
 
             bc.enabled = false;
             yield return null;

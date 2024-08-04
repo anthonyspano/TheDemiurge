@@ -72,6 +72,7 @@ namespace com.ultimate2d.combat
 		public AudioClip slash1;
 		public AudioClip hurt1;
 		private AudioSource audioSource;
+		public AudioClip falling1;
 
 		// death screen
 		[Header("Death Screen")]

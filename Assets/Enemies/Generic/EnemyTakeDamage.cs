@@ -16,9 +16,11 @@ public class EnemyTakeDamage : MonoBehaviour
 
     private Animator anim;
     private EnemyManager em;
+    private AudioSource enemyAudioManager;
     private void Awake() 
     {
         anim = transform.parent.GetComponent<Animator>();
+        enemyAudioManager = transform.parent.GetComponent<AudioSource>();
         
         // health
         healthSystem = new HealthSystem(maxHealth, 0f);
@@ -33,15 +35,14 @@ public class EnemyTakeDamage : MonoBehaviour
     	if(healthSystem.GetHealth() <= 0)
 		{
 			// Death sequence
-			//anim.SetBool("isDead", true);
-            //StartCoroutine("Death");
-            GameManager.Instance.EnemyDeathCount();
-            Destroy(transform.parent.gameObject);
+            enemyAudioManager.PlayOneShot(em.hurtSound, 0.8f);
+			anim.Play("skelly-death");
+            
 		}
         else 
         {
             StartCoroutine(FlashRed());
-            transform.parent.GetComponent<AudioSource>().PlayOneShot(em.hurtSound, 0.8f);
+            
             if(healthSystem.GetHealth() < 50)
             {
                 em.timeToReact = true;
@@ -50,23 +51,6 @@ public class EnemyTakeDamage : MonoBehaviour
 
 	}
 
-    IEnumerator Death()
-    {
-        // disable further movements
-        // enemy manager
-        // transform.parent.GetComponent<BlockBattleSystem>().CanMove = false;
-        // transform.parent.GetComponent<BlockBattleSystem>().Dead = true;
-        
-
-        // play death anim
-        anim.Play("enemy_death", 0);
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length); 
-
-        GameManager.Instance.EnemyDeathCount();
-
-
-        Destroy(transform.parent.gameObject);
-    }
 
     public IEnumerator FlashRed()
     {

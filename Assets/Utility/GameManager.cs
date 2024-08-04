@@ -153,7 +153,8 @@ namespace com.ultimate2d.combat
         {
             
             PlayerManager.Instance.killCount++;
-            if(PlayerManager.Instance.killCount >= 14)
+            Debug.Log(PlayerManager.Instance.killCount);
+            if(PlayerManager.Instance.killCount >= 20)
             {
                 // save game data into scriptable object
                 _scoreManager.time = timerText.text;

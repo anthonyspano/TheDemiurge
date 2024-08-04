@@ -107,6 +107,16 @@ namespace com.ultimate2d.combat
             return false;
         }
 
+    public void Death()
+    {
+        // disable further movements
+        // enemy manager
+        // transform.parent.GetComponent<BlockBattleSystem>().CanMove = false;
+        // transform.parent.GetComponent<BlockBattleSystem>().Dead = true;
+        GameManager.Instance.EnemyDeathCount();
+        Destroy(gameObject);
+    }
+
 
     }
 
