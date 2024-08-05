@@ -76,13 +76,11 @@ namespace com.ultimate2d.combat
             if(Input.GetKeyDown(KeyCode.JoystickButton2))
             {
                 startTime = Time.time;
-                Debug.Log("starting");
             }
 
             if(Input.GetKey(KeyCode.JoystickButton2))
             {  
                 jumpTime = Time.time - startTime;
-                Debug.Log("jump time: " + jumpTime);
 
                 if(jumpTime > PlayerManager.Instance.MaxJumpTime)
                     jumpTime = PlayerManager.Instance.MaxJumpTime;

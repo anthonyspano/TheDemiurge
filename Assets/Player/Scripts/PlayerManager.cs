@@ -367,6 +367,11 @@ namespace com.ultimate2d.combat
 		{
 			GetComponentInChildren<PowerManager>().FireUltimate();
 		}
+
+		public void FinishUltimateAnimation()
+		{
+			anim.SetBool("isBeaming", false);
+		}
 		
 		public void LogAnimationID()
 		{

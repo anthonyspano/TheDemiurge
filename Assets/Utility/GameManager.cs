@@ -15,6 +15,7 @@ namespace com.ultimate2d.combat
         public static KeyCode playerInput;
 
         public Text timerText;
+        private bool timerEnabled = true;
 
         public ScoreManagerSO _scoreManager;
 
@@ -25,10 +26,12 @@ namespace com.ultimate2d.combat
         }
 
         // enemy spawner
-        private List<Vector3> spawnPositions;
+        public List<Vector3> spawnPositions;
         public int enemiesToSpawn = 4;
         private enum CurrentWave {First, Second, Third};
         private CurrentWave currentWave;
+        int numberOfEnemies = 4;
+        private int maxWaves = 4;
 
         // audio
         AudioSource audioSource;
@@ -70,6 +73,10 @@ namespace com.ultimate2d.combat
             spawnPositions.Add(new Vector3(-4, 0, 0) + PlayerManager.Instance.transform.position);
             spawnPositions.Add(new Vector3(0, -4, 0) + PlayerManager.Instance.transform.position);
             spawnPositions.Add(new Vector3(0, 4, 0) + PlayerManager.Instance.transform.position);
+            spawnPositions.Add(new Vector3(2, 0, 0) + PlayerManager.Instance.transform.position);
+            spawnPositions.Add(new Vector3(-2, 0, 0) + PlayerManager.Instance.transform.position);
+            spawnPositions.Add(new Vector3(0, -2, 0) + PlayerManager.Instance.transform.position);
+            spawnPositions.Add(new Vector3(0, 2, 0) + PlayerManager.Instance.transform.position);
 
 
         }
@@ -93,7 +100,8 @@ namespace com.ultimate2d.combat
             //     }
             // }  
 
-            timerText.text = Time.timeSinceLevelLoad.ToString();      
+            if(timerEnabled)
+                timerText.text = Time.timeSinceLevelLoad.ToString();      
         }
 
         public void GameStart()
@@ -109,12 +117,12 @@ namespace com.ultimate2d.combat
 
             
             // spawn two skellies to left and right of player for now
-            StartCoroutine("SpawnEnemies");
+            StartCoroutine(EnemyWaveManager());
 
 
         }
 
-        private IEnumerator SpawnEnemies()
+        private IEnumerator SpawnEnemies(int enemiesToSpawn)
         {
             for(int i = 0; i < enemiesToSpawn; i++)
             {
@@ -124,7 +132,7 @@ namespace com.ultimate2d.combat
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(e);
+                    i = 0;
                 }
 
                 yield return new WaitForSeconds(0.3f);
@@ -149,30 +157,61 @@ namespace com.ultimate2d.combat
 
         }
 
-        public void EnemyDeathCount()
+        private IEnumerator EnemyWaveManager()
         {
+            for(int i=0; i<maxWaves; i++)
+            {
+                Debug.Log("spawning more enemies");
+                StartCoroutine(SpawnEnemies(numberOfEnemies));
+                yield return new WaitForSeconds(6f);
+                numberOfEnemies += 4;
+            }
+
+            SceneManager.LoadScene("ScoreScreen");
             
-            PlayerManager.Instance.killCount++;
-            Debug.Log(PlayerManager.Instance.killCount);
-            if(PlayerManager.Instance.killCount >= 20)
-            {
-                // save game data into scriptable object
-                _scoreManager.time = timerText.text;
+        }
 
-                // _scoreManager.damageTaken = 
-                // _scoreManager.damageDealt = 
+        // public void EnemyDeathCount()
+        // {
+        //     // spawn enemies based on time           
+        //     PlayerManager.Instance.killCount++;
+        //     Debug.Log(PlayerManager.Instance.killCount);
+        //     if(PlayerManager.Instance.killCount >= 20)
+        //     {
+        //         // save game data into scriptable object?
+        //         _scoreManager.time = timerText.text;
 
-                // go to score screen
-                SceneManager.LoadScene("ScoreScreen");
-            }
-            else if(PlayerManager.Instance.killCount >= 3)
-            {
-                enemiesToSpawn++; 
-                if(enemiesToSpawn > 4) enemiesToSpawn = 4;
-                StartCoroutine("SpawnEnemies");
-            }
-            else
-                enemiesToSpawn = 2;
+        //         // stop game timer
+        //         timerEnabled = false;
+
+        //         // kill rest of enemies
+        //         var enemiesAliveCurrently = GameObject.FindGameObjectsWithTag("Enemy");
+        //         for(int i=0; i<enemiesAliveCurrently.Count; i++)
+        //         {
+        //             enemiesAliveCurrently(i).GetComponent<EnemyTakeDamage>().healthSystem.Damage(1000000);
+        //         }
+
+        //         // _scoreManager.damageTaken = 
+        //         // _scoreManager.damageDealt = 
+
+        //         // go to score screen after x seconds
+        //         StartCoroutine("EndGame");
+                
+        //     }
+        //     else if(PlayerManager.Instance.killCount >= 3)
+        //     {
+        //         enemiesToSpawn++; 
+        //         if(enemiesToSpawn > 4) enemiesToSpawn = 4;
+        //         StartCoroutine("SpawnEnemies");
+        //     }
+        //     else
+        //         enemiesToSpawn = 2;
+        // }
+
+        private IEnumerator EndGame()
+        {
+            yield return new WaitForSeconds(3f);
+            SceneManager.LoadScene("ScoreScreen");
         }
     }
 }

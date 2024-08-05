@@ -22,7 +22,7 @@ namespace com.ultimate2d.combat
         }
         public override IEnumerator Start() 
         {
-            Debug.Log("light attack");
+            
             playerAnim.Play(new AnimatorHashRef().GetFirstAttackState());
             playerAudio.Play();
 

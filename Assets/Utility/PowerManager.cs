@@ -168,14 +168,14 @@ public class PowerManager : MonoBehaviour
             yield return null;
         }
 
-        PlayerManager.Instance.anim.SetBool("isBeaming", false);
-        yield return null;
+        transform.parent.GetComponent<Animator>().SetBool("isBeaming", false);
     }
     public void StopAnimation()
     {
         PlayerManager.Instance.CanMove = true;
         PlayerManager.Instance.isBusy = false;
         anim.SetBool("IsBeaming", false);
+        transform.parent.GetComponent<Animator>().SetBool("isBeaming", false);
         anim.Play("Empty");
         PlayerManager.Instance.ultReady = false;
 
