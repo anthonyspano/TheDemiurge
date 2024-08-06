@@ -29,7 +29,6 @@ namespace com.ultimate2d.combat
             yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.JoystickButton2) || PlayerController.Instance.jumpTime >= PlayerManager.Instance.MaxJumpTime);
 
             //Debug.Log(PlayerController.Instance.jumpTime);
-            Debug.Log(PlayerController.Instance.jumpTime);
             //yield return new WaitForSeconds(PlayerController.Instance.jumpTime);
             playerAnim.SetBool("inAir", false);
             

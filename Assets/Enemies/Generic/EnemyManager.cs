@@ -113,7 +113,7 @@ namespace com.ultimate2d.combat
         // enemy manager
         // transform.parent.GetComponent<BlockBattleSystem>().CanMove = false;
         // transform.parent.GetComponent<BlockBattleSystem>().Dead = true;
-        //GameManager.Instance.EnemyDeathCount();
+        GameManager.Instance.EnemyDeathCount();
         Destroy(gameObject);
     }
 

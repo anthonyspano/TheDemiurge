@@ -29,7 +29,6 @@ namespace com.ultimate2d.combat
                 RaycastHit2D hit = Physics2D.Raycast(esm.transform.position, directionToPlayer * new Vector2(-1,-1), em.RetreatRange, 1 << 12);
                 if(hit)
                 {
-                    Debug.Log(hit.collider.name);
                     if(hit.collider.CompareTag("Wall"))
                     {
                         distanceToTravel = hit.distance;

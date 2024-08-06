@@ -15,7 +15,7 @@ namespace com.ultimate2d.combat
         public static KeyCode playerInput;
 
         public Text timerText;
-        private bool timerEnabled = true;
+        private bool timerEnabled;
 
         public ScoreManagerSO _scoreManager;
 
@@ -42,6 +42,7 @@ namespace com.ultimate2d.combat
             // keys = new bool[values.Length];
 
             timerText.text = "0";
+            timerEnabled = true;
 
             // singleton
             if (_instance != null && _instance != this)
@@ -132,7 +133,7 @@ namespace com.ultimate2d.combat
                 }
                 catch (Exception e)
                 {
-                    i = 0;
+                    i = enemiesToSpawn - spawnPositions.Count;
                 }
 
                 yield return new WaitForSeconds(0.3f);
@@ -163,18 +164,19 @@ namespace com.ultimate2d.combat
             {
                 Debug.Log("spawning more enemies");
                 StartCoroutine(SpawnEnemies(numberOfEnemies));
-                yield return new WaitForSeconds(6f);
+                yield return new WaitForSeconds(3f);
                 numberOfEnemies += 4;
             }
+            Debug.Log("ending game");
 
-            SceneManager.LoadScene("ScoreScreen");
+            StartCoroutine(EndGame());
             
         }
 
-        // public void EnemyDeathCount()
-        // {
+        public void EnemyDeathCount()
+        {
         //     // spawn enemies based on time           
-        //     PlayerManager.Instance.killCount++;
+             PlayerManager.Instance.killCount++;
         //     Debug.Log(PlayerManager.Instance.killCount);
         //     if(PlayerManager.Instance.killCount >= 20)
         //     {
@@ -184,12 +186,7 @@ namespace com.ultimate2d.combat
         //         // stop game timer
         //         timerEnabled = false;
 
-        //         // kill rest of enemies
-        //         var enemiesAliveCurrently = GameObject.FindGameObjectsWithTag("Enemy");
-        //         for(int i=0; i<enemiesAliveCurrently.Count; i++)
-        //         {
-        //             enemiesAliveCurrently(i).GetComponent<EnemyTakeDamage>().healthSystem.Damage(1000000);
-        //         }
+
 
         //         // _scoreManager.damageTaken = 
         //         // _scoreManager.damageDealt = 
@@ -206,11 +203,35 @@ namespace com.ultimate2d.combat
         //     }
         //     else
         //         enemiesToSpawn = 2;
-        // }
+        }
 
         private IEnumerator EndGame()
         {
-            yield return new WaitForSeconds(3f);
+            timerEnabled = false;
+            _scoreManager.time = timerText.text;
+
+            // kill rest of enemies
+            GameObject[] enemiesAliveCurrently = new GameObject[20];
+            enemiesAliveCurrently = GameObject.FindGameObjectsWithTag("Enemy");
+            for(int i=0; i<enemiesAliveCurrently.Length; i++)
+            {
+                try
+                {
+                    enemiesAliveCurrently[i].GetComponent<EnemyTakeDamage>().healthSystem.Damage(1000000);
+                    // Debug.Log(enemiesAliveCurrently[i].transform.name);
+                    // Debug.Log(enemiesAliveCurrently[i].GetComponent<EnemyTakeDamage>());
+                }
+                catch(Exception e)
+                { 
+                    //Debug.Log("no more enemies left");
+                    Debug.Log(enemiesAliveCurrently[i].transform.name);
+                }
+
+
+            }
+            
+
+            yield return new WaitForSeconds(2.5f);
             SceneManager.LoadScene("ScoreScreen");
         }
     }
