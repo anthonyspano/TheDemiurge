@@ -31,7 +31,7 @@ namespace com.ultimate2d.combat
         private enum CurrentWave {First, Second, Third};
         private CurrentWave currentWave;
         int numberOfEnemies = 4;
-        private int maxWaves = 4;
+        public int maxWaves;
 
         // audio
         AudioSource audioSource;
@@ -112,9 +112,11 @@ namespace com.ultimate2d.combat
 
         public GameObject skelly;
         public GameObject emptyskelly;
+
+        // activated by in-game book object
         public void BeginLevel()
         {
-            // keep json file of enemies and positions they need to spawn
+            // TBI: keep json file of enemies and positions they need to spawn
 
             
             // spawn two skellies to left and right of player for now
@@ -125,6 +127,7 @@ namespace com.ultimate2d.combat
 
         private IEnumerator SpawnEnemies(int enemiesToSpawn)
         {
+            // TBI: spawn on points bordering the screen?
             for(int i = 0; i < enemiesToSpawn; i++)
             {
                 try
@@ -158,19 +161,48 @@ namespace com.ultimate2d.combat
 
         }
 
+        private float timeInCurrentWave;
+        public float waveTimeLimit = 20;
+
         private IEnumerator EnemyWaveManager()
         {
             for(int i=0; i<maxWaves; i++)
             {
+                timeInCurrentWave = 0;
                 Debug.Log("spawning more enemies");
                 StartCoroutine(SpawnEnemies(numberOfEnemies));
-                yield return new WaitForSeconds(3f);
-                numberOfEnemies += 4;
+                
+                yield return new WaitUntil(() => AllEnemiesAreDead()); // || OutOfTime());
+                numberOfEnemies += 5;
             }
             Debug.Log("ending game");
 
-            StartCoroutine(EndGame());
+            StartCoroutine(EndWave());
             
+        }
+
+        private bool AllEnemiesAreDead()
+        {
+
+            var enemiesAliveCurrently = GameObject.FindGameObjectsWithTag("Enemy");
+            if(enemiesAliveCurrently.Length > 0)
+                return false;
+
+            return true;
+            
+        }
+
+        private bool OutOfTime()
+        {
+            // returns true if timer has exceeded wave limit
+            timeInCurrentWave += Time.deltaTime;
+            if(timeInCurrentWave > waveTimeLimit)
+            {
+                Debug.Log("out of time");
+                return true;
+            }
+
+            return false;
         }
 
         public void EnemyDeathCount()
@@ -205,26 +237,27 @@ namespace com.ultimate2d.combat
         //         enemiesToSpawn = 2;
         }
 
-        private IEnumerator EndGame()
+        private IEnumerator EndWave()
         {
             timerEnabled = false;
             _scoreManager.time = timerText.text;
 
             // kill rest of enemies
-            GameObject[] enemiesAliveCurrently = new GameObject[20];
-            enemiesAliveCurrently = GameObject.FindGameObjectsWithTag("Enemy");
+            //GameObject[] enemiesAliveCurrently = new GameObject[20];
+            var enemiesAliveCurrently = GameObject.FindGameObjectsWithTag("Enemy");
             for(int i=0; i<enemiesAliveCurrently.Length; i++)
             {
                 try
                 {
-                    enemiesAliveCurrently[i].GetComponent<EnemyTakeDamage>().healthSystem.Damage(1000000);
+                    //enemiesAliveCurrently[i].GetComponent<EnemyTakeDamage>().healthSystem.Damage(1000000);
+                    enemiesAliveCurrently[i].GetComponent<Animator>().SetBool("BlowUp", true);
                     // Debug.Log(enemiesAliveCurrently[i].transform.name);
                     // Debug.Log(enemiesAliveCurrently[i].GetComponent<EnemyTakeDamage>());
                 }
                 catch(Exception e)
                 { 
                     //Debug.Log("no more enemies left");
-                    Debug.Log(enemiesAliveCurrently[i].transform.name);
+                    //Debug.Log(enemiesAliveCurrently[i].transform.name);
                 }
 
 
@@ -232,7 +265,10 @@ namespace com.ultimate2d.combat
             
 
             yield return new WaitForSeconds(2.5f);
+            
             SceneManager.LoadScene("ScoreScreen");
+
+            
         }
     }
 }

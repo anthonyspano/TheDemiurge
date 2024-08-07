@@ -318,6 +318,7 @@ MonoBehaviour:
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!95 &897382
@@ -1060,6 +1061,7 @@ MonoBehaviour:
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!95 &47060020
@@ -1294,6 +1296,7 @@ MonoBehaviour:
   attackRange: 1.5
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!114 &47717059
@@ -1524,6 +1527,7 @@ MonoBehaviour:
   attackRange: 1.5
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!61 &62772413
@@ -2214,6 +2218,7 @@ MonoBehaviour:
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!95 &159061686
@@ -2630,6 +2635,7 @@ MonoBehaviour:
   attackRange: 1.5
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!114 &223290825
@@ -3469,6 +3475,7 @@ MonoBehaviour:
   attackRange: 1.5
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!114 &334989226
@@ -4396,6 +4403,7 @@ MonoBehaviour:
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!95 &439741154
@@ -25933,9 +25941,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1399758057}
   _scoreManager: {fileID: 11400000, guid: 5cf3168ece9f9314db5c61d4d16b3e50, type: 2}
+  spawnPositions: []
   enemiesToSpawn: 4
+  maxWaves: 3
   skelly: {fileID: 345762456135121310, guid: a933b9e9787d2094ab2f32a3e320cab6, type: 3}
   emptyskelly: {fileID: 3836489214419812792, guid: 3bada36827c81564b85e1f0f27fcf058, type: 3}
+  waveTimeLimit: 15
 --- !u!4 &709968312
 Transform:
   m_ObjectHideFlags: 0
@@ -26622,6 +26633,7 @@ MonoBehaviour:
   attackRange: 1.5
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!114 &896795186
@@ -27235,6 +27247,7 @@ MonoBehaviour:
   attackRange: 1.5
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!114 &965904414
@@ -28709,6 +28722,7 @@ MonoBehaviour:
   attackRange: 1.5
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!114 &1387808000
@@ -29269,6 +29283,7 @@ MonoBehaviour:
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!95 &1463035040
@@ -29662,6 +29677,7 @@ MonoBehaviour:
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!95 &1466940308
@@ -29947,6 +29963,7 @@ MonoBehaviour:
   attackRange: 1.5
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!114 &1512951915
@@ -30176,6 +30193,7 @@ MonoBehaviour:
   attackRange: 1.5
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!114 &1545918847
@@ -30564,6 +30582,7 @@ MonoBehaviour:
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!95 &1587493521
@@ -31391,6 +31410,7 @@ MonoBehaviour:
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!95 &1642665402
@@ -31702,6 +31722,7 @@ MonoBehaviour:
   attackRange: 1.5
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!114 &1687252400
@@ -33643,6 +33664,7 @@ MonoBehaviour:
   attackRange: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!95 &1919277497

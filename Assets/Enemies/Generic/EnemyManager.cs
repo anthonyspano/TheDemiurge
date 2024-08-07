@@ -23,6 +23,7 @@ namespace com.ultimate2d.combat
         // audio
         public AudioClip attackSound;
         public AudioClip hurtSound;
+        public AudioClip explosionSound;
 
         public static Transform AttackBox;
 
@@ -66,7 +67,7 @@ namespace com.ultimate2d.combat
 
         void Start()
         {
-
+            
         }
 
         public Vector2 PlayerFacingVector()
@@ -114,6 +115,16 @@ namespace com.ultimate2d.combat
         // transform.parent.GetComponent<BlockBattleSystem>().CanMove = false;
         // transform.parent.GetComponent<BlockBattleSystem>().Dead = true;
         GameManager.Instance.EnemyDeathCount();
+        Destroy(gameObject);
+    }
+
+    public void ExplosionSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(explosionSound, 0.7f);
+    }
+
+    public void BlowUp()
+    {
         Destroy(gameObject);
     }
 
