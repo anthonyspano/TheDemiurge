@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace com.ultimate2d.combat
 {
+    // player controller using custom input system
     public class PlayerController : MonoBehaviour
     {
         // singleton
@@ -16,7 +17,6 @@ namespace com.ultimate2d.combat
 
 
         private Animator anim;
-        public PlayerInputActions playerInputActions;
         private Vector2 inputVector; 
         private Vector2 currentInputVector = Vector2.zero; 
         private Vector2 smoothInputVelocity; 
@@ -35,7 +35,6 @@ namespace com.ultimate2d.combat
         public float jumpTime;
         private float startTime;
 
-        private Vector2 moveDirection;
 
         private void Awake()
         {
@@ -53,142 +52,59 @@ namespace com.ultimate2d.combat
 
             playerStatus = PlayerStatus.Idle;
 
-            playerInputActions = new PlayerInputActions();
-            // playerInputActions.Keyboard.Enable();
-            playerInputActions.Player.Enable();
-            playerInputActions.Player.JumpAttack.performed += JumpAttack;
-            playerInputActions.Player.Sweep.performed += Sweep;
-            playerInputActions.Player.Attack.performed += Attack;
-            playerInputActions.Player.Ultimate.performed += Ultimate;
-            playerInputActions.Player.Movement.performed += Movement;
-            //playerInputActions.Player.JumpAttack.duration
-
-            
-            //playerInputActions.Player.Movement.performed += c => Debug.Log(c.ReadValue<Vector2>());
-
             _playerInputBuffer = PlayerManager.Instance.GetComponent<PlayerInputBuffer>();
         }
 
         void Update()
         {
-            //Debug.Log(playerInputActions.Player.Movement.ReadValue<Vector2>());
-            // jump attack air time
-            if(Input.GetKeyDown(KeyCode.JoystickButton2))
+            if(PlayerInput.Ultimate())
+            {
+                _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.Ultimate));
+            }
+            if(PlayerInput.JumpAttackDown())
             {
                 startTime = Time.time;
+                _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.JumpAttack)); 
             }
 
-            if(Input.GetKey(KeyCode.JoystickButton2))
-            {  
+            if(PlayerInput.JumpAttackHold())
+            {                
                 jumpTime = Time.time - startTime;
-
-                if(jumpTime > PlayerManager.Instance.MaxJumpTime)
-                    jumpTime = PlayerManager.Instance.MaxJumpTime;
-                
-
             }
 
             if(playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.InAir)
             {
-                // if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-                // {
-                //     currentInputVector = new Vector2(Input.GetAxis("Horizontal"),  Input.GetAxis("Vertical"));
-
-                // }
-
-                currentInputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
-                //inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
-                //currentInputVector = Vector2.SmoothDamp(currentInputVector, inputVector, ref smoothInputVelocity, acceleration);
-                //Debug.Log(currentInputVector);
+                Vector2 currentInputVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                 if(currentInputVector.magnitude > DeadZone)
                 {
-   
-                    PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, (Vector2)PlayerManager.Instance.transform.position + currentInputVector, PlayerManager.Instance.moveSpeed * Time.deltaTime);
+                    // movement dampering
+                    //inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
+                    //currentInputVector = Vector2.SmoothDamp(currentInputVector, inputVector, ref smoothInputVelocity, acceleration);
+                    
+                    PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, 
+                                                                                    (Vector2)PlayerManager.Instance.transform.position + currentInputVector, 
+                                                                                    PlayerManager.Instance.moveSpeed * Time.deltaTime);
                     PlayerManager.Instance.anim.SetBool("isMoving", true);
+
                 }
                 else
                     PlayerManager.Instance.anim.SetBool("isMoving", false);
+
+                
+
+
 
             }
 
         }
 
-        private void FixedUpdate()
-        {
-            // move
+        // public void Sweep(InputAction.CallbackContext context)
+        // {
+        //     // take frame/timestamp that the button was pressed
+        //    _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.Sweep)); 
+        //    Debug.Log("sweep!");
 
-            // if(playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.InAir)
-            // {
-            //     inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
-                // // if(inputVector.magnitude > DeadZone)
-                // // {
-                // //     // create  move direction
-                // //     var direction = new Vector3(inputVector.x, inputVector.y * PlayerManager.Instance.verticalRunMod, 0) + PlayerManager.Instance.transform.position;
-                // //     // multiply move vector by speed 
-                // //     PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, direction, PlayerManager.Instance.moveSpeed * Time.deltaTime);
-                // //     PlayerManager.Instance.anim.SetBool("isMoving", true);
-                // // }
-                // // else
-                // // {
-                // //     PlayerManager.Instance.anim.SetBool("isMoving", false);
-                // // }
-
-            //     currentInputVector = Vector2.SmoothDamp(currentInputVector, inputVector, ref smoothInputVelocity, acceleration);
-                
-            //     if(currentInputVector.magnitude > DeadZone)
-            //     {
-            //         PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, (Vector2)PlayerManager.Instance.transform.position + currentInputVector, PlayerManager.Instance.moveSpeed * Time.deltaTime);
-            //         PlayerManager.Instance.anim.SetBool("isMoving", true);
-            //     }
-            //     else
-            //         PlayerManager.Instance.anim.SetBool("isMoving", false);
-
-            // }
-
-
-
-
-        }
-
-        public void Ultimate(InputAction.CallbackContext context)
-        {
-            
-            _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.Ultimate));
-
-            // for(int i = 0; i<_playerInputBuffer.InputBuffer.Count; i++)
-            // {
-            //     if(_playerInputBuffer.InputBuffer[i].action == PlayerStatus.Ultimate)
-            //         Debug.Log("ULTIMATE REGISTERED");
-            // }
-        }
-
-
-        public void Attack(InputAction.CallbackContext context)
-        {
-            // take frame/timestamp that the button was pressed
-           _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.LightAttack)); 
-           
-
-        }
-
-        public void Sweep(InputAction.CallbackContext context)
-        {
-            // take frame/timestamp that the button was pressed
-           _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.Sweep)); 
-           Debug.Log("sweep!");
-
-        }
-
-        public void JumpAttack(InputAction.CallbackContext context)
-        {
-            _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.JumpAttack)); 
-            
-        }
-
-        public void Movement(InputAction.CallbackContext context)
-        {
-            // see fixed update
-        }
+        // }
 
         public void SetPlayerInAir()
         {

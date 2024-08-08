@@ -6,8 +6,8 @@ public class PlayerInput : MonoBehaviour
 {
     public static string x = "Horizontal";
     public static string y = "Vertical";
-    private static KeyCode c_jump = KeyCode.JoystickButton2; // X
-    private static KeyCode k_jump = KeyCode.Space;
+    private static KeyCode c_jumpAttack = KeyCode.JoystickButton2; // X
+    private static KeyCode k_jumpAttack = KeyCode.V;
     private static KeyCode c_shoot = KeyCode.JoystickButton3; // Y
     private static KeyCode k_shoot = KeyCode.J;
     private static int c_ultimate = 355; // RB
@@ -16,14 +16,29 @@ public class PlayerInput : MonoBehaviour
     private static KeyCode k_slash = KeyCode.K;
 
     private static KeyCode c_interact = KeyCode.JoystickButton1; // B
-    private static KeyCode k_interact = KeyCode.I;
+    private static KeyCode k_interact = KeyCode.B;
 
-    public static bool Jump() 
+    public static bool JumpAttackDown() 
     {
-        if(Input.GetKeyDown(k_jump) || Input.GetKeyDown(c_jump))
+        if(Input.GetKeyDown(k_jumpAttack) || Input.GetKeyDown(c_jumpAttack))
             return true;
         return false;
     }
+
+    public static bool JumpAttackHold() 
+    {
+        if(Input.GetKey(k_jumpAttack) || Input.GetKey(c_jumpAttack))
+            return true;
+        return false;
+    }
+
+    public static bool JumpAttackUp() 
+    {
+        if(Input.GetKeyUp(k_jumpAttack) || Input.GetKeyUp(c_jumpAttack))
+            return true;
+        return false;
+    }
+
 
     public static bool Shoot()
     {
