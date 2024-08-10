@@ -21,7 +21,7 @@ namespace com.ultimate2d.combat
         public override IEnumerator Start()
         {
             // wait until Input Buffer contains player input
-            //yield return new WaitUntil(() => PlayerController.Instance.playerStatus.CommandReady());
+            //yield return new WaitForSeconds(PlayerManager.Instance.attackCooldownRate);
             yield return new WaitUntil(() => PlayerInputBuffer.Instance.GetCommand() != PlayerController.PlayerStatus.Neutral); 
 
             PlayerController.Instance.playerStatus = PlayerInputBuffer.Instance.GetCommand();

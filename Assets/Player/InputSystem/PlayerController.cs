@@ -78,7 +78,6 @@ namespace com.ultimate2d.combat
                 if(currentInputVector.magnitude > DeadZone)
                 {
                     // movement dampering
-                    //inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
                     //currentInputVector = Vector2.SmoothDamp(currentInputVector, inputVector, ref smoothInputVelocity, acceleration);
                     
                     PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, 
