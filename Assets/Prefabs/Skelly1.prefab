@@ -129,8 +129,10 @@ MonoBehaviour:
   RetreatRange: 5
   pursuitRange: 7
   attackRange: 1.5
+  throwSpeed: 0.00055
   attackSound: {fileID: 8300000, guid: 32d363e2f1eb50f4b93ecd591ae1e078, type: 3}
   hurtSound: {fileID: 8300000, guid: d522b1f700e01e1499d091a1a6a64234, type: 3}
+  explosionSound: {fileID: 0}
   timeToReact: 0
   ReactOnce: 0
 --- !u!61 &1052310401623389828

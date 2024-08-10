@@ -14,9 +14,6 @@ namespace com.ultimate2d.combat
 
         public static KeyCode playerInput;
 
-        public Text timerText;
-        private bool timerEnabled;
-
         public ScoreManagerSO _scoreManager;
 
         private static GameManager _instance;
@@ -35,6 +32,12 @@ namespace com.ultimate2d.combat
 
         // audio
         AudioSource audioSource;
+
+        // UI
+        public Text timerText;
+        private bool timerEnabled;
+        public Text waveInfo;
+
 
         void Awake()
         {
@@ -116,11 +119,24 @@ namespace com.ultimate2d.combat
         // activated by in-game book object
         public void BeginLevel()
         {
+            StartCoroutine(ToggleWavePrompt());
             // TBI: keep json file of enemies and positions they need to spawn
 
             
             // spawn two skellies to left and right of player for now
             StartCoroutine(EnemyWaveManager());
+
+
+        }
+
+        private IEnumerator ToggleWavePrompt()
+        {
+            waveInfo.gameObject.SetActive(true);
+            
+            yield return new WaitForSeconds(2.5f);
+
+            waveInfo.gameObject.SetActive(false);
+
 
 
         }
@@ -168,12 +184,14 @@ namespace com.ultimate2d.combat
         {
             for(int i=0; i<maxWaves; i++)
             {
+                waveInfo.text = "Wave " + (i+1).ToString() + "/" + maxWaves.ToString();
+                StartCoroutine(ToggleWavePrompt());
                 timeInCurrentWave = 0;
                 Debug.Log("spawning more enemies");
                 StartCoroutine(SpawnEnemies(numberOfEnemies));
                 
                 yield return new WaitUntil(() => AllEnemiesAreDead()); // || OutOfTime());
-                numberOfEnemies += 5;
+                numberOfEnemies += 3;
             }
             Debug.Log("ending game");
 
@@ -240,7 +258,9 @@ namespace com.ultimate2d.combat
         private IEnumerator EndWave()
         {
             timerEnabled = false;
-            _scoreManager.time = timerText.text;
+            _scoreManager.time = timerText.text; 
+            Debug.Log(maxWaves);
+            _scoreManager.wavesCompleted = maxWaves; 
 
             // kill rest of enemies
             //GameObject[] enemiesAliveCurrently = new GameObject[20];
@@ -269,6 +289,11 @@ namespace com.ultimate2d.combat
             SceneManager.LoadScene("ScoreScreen");
 
             
+        }
+
+        public void Quit()
+        {
+            Application.Quit();
         }
     }
 }

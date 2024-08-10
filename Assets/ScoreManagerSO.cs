@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ScoreManagerSO : ScriptableObject
 {
     public string time;
+    public int wavesCompleted;
     public float damageTaken;
     public float damageDealt;
 

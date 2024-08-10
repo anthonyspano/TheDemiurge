@@ -19,6 +19,7 @@ namespace com.ultimate2d.combat
 
         public float pursuitRange;
         public float attackRange;
+        public float throwSpeed;
 
         // audio
         public AudioClip attackSound;
@@ -65,11 +66,6 @@ namespace com.ultimate2d.combat
             CanMove = true;
         }
 
-        void Start()
-        {
-            
-        }
-
         public Vector2 PlayerFacingVector()
         {
             // the direction the enemy is facing is the 
@@ -108,25 +104,25 @@ namespace com.ultimate2d.combat
             return false;
         }
 
-    public void Death()
-    {
-        // disable further movements
-        // enemy manager
-        // transform.parent.GetComponent<BlockBattleSystem>().CanMove = false;
-        // transform.parent.GetComponent<BlockBattleSystem>().Dead = true;
-        GameManager.Instance.EnemyDeathCount();
-        Destroy(gameObject);
-    }
+        public void Death()
+        {
+            // disable further movements
+            // enemy manager
+            // transform.parent.GetComponent<BlockBattleSystem>().CanMove = false;
+            // transform.parent.GetComponent<BlockBattleSystem>().Dead = true;
+            GameManager.Instance.EnemyDeathCount();
+            Destroy(gameObject);
+        }
 
-    public void ExplosionSound()
-    {
-        GetComponent<AudioSource>().PlayOneShot(explosionSound, 0.7f);
-    }
+        public void ExplosionSound()
+        {
+            GetComponent<AudioSource>().PlayOneShot(explosionSound, 0.7f);
+        }
 
-    public void BlowUp()
-    {
-        Destroy(gameObject);
-    }
+        public void BlowUp()
+        {
+            Destroy(gameObject);
+        }
 
 
     }
