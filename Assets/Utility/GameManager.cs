@@ -100,7 +100,8 @@ namespace com.ultimate2d.combat
             //     if(keys[i])
             //     {
             //         playerInput = (KeyCode)values[i];
-            //         //Debug.Log((int)playerInput);
+            //         Debug.Log(playerInput);
+            //         Debug.Log((int)playerInput);
             //     }
             // }  
 

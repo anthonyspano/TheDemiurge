@@ -18,6 +18,8 @@ public class PlayerInput : MonoBehaviour
     private static KeyCode c_interact = KeyCode.JoystickButton1; // B
     private static KeyCode k_interact = KeyCode.B;
 
+    private static KeyCode c_promptControls = KeyCode.JoystickButton7;
+
     public static bool JumpAttackDown() 
     {
         if(Input.GetKeyDown(k_jumpAttack) || Input.GetKeyDown(c_jumpAttack))
@@ -63,6 +65,13 @@ public class PlayerInput : MonoBehaviour
     public static bool Interact()
     {
         if(Input.GetKey(c_interact) || Input.GetKey(k_interact))
+            return true;
+        return false;
+    }
+
+    public static bool PromptControls()
+    {
+        if(Input.GetKeyDown(c_promptControls))
             return true;
         return false;
     }

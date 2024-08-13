@@ -23,6 +23,9 @@ namespace com.ultimate2d.combat
         public float acceleration;
         public float DeadZone;
 
+        public GameObject tutorialScreen;
+        private bool isOpened;
+
         // input buffer
         PlayerInputBuffer _playerInputBuffer;
 
@@ -57,6 +60,11 @@ namespace com.ultimate2d.combat
 
         void Update()
         {
+            if(PlayerInput.PromptControls())
+            {
+                isOpened = !isOpened;
+                PromptScreenToggle();
+            }
             if(PlayerInput.Ultimate())
             {
                 _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.Ultimate));
@@ -129,6 +137,18 @@ namespace com.ultimate2d.combat
             return false;
         }
 
+        private void PromptScreenToggle()
+        {
+            // pause game
+
+
+            //bring up screen
+            if(isOpened)
+                tutorialScreen.SetActive(true);
+            else
+                tutorialScreen.SetActive(false);
+
+        }
 
     }
 
