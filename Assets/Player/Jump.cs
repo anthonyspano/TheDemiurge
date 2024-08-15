@@ -23,7 +23,7 @@ namespace com.ultimate2d.combat
         public override IEnumerator Start()
         {
             // start cooldown of jump
-            //PlayerManager.Instance.StartJumpCD();
+            PlayerManager.Instance.StartJumpCD();
             
             // perform jump
             PlayerManager.Instance.CanMove = false;
@@ -34,7 +34,7 @@ namespace com.ultimate2d.combat
             // while player isn't at intended final space after jump
             Vector2 finalSpace = PlayerManager.Instance.transform.position + direction * PlayerManager.Instance.JumpDistance;
             anim.Play("Player_Jump", 0);
-            while(Mathf.Abs((PlayerManager.Instance.transform.XandY() - finalSpace).magnitude) > 0.1f)
+            while(Mathf.Abs((PlayerManager.Instance.transform.XandY() - finalSpace).magnitude) > 0.4f)
             {
                 // raycast into wall, if going to hit wall, then stop at wall
                 RaycastHit2D hit = Physics2D.Raycast(PlayerManager.Instance.transform.position, direction, 0.5f);

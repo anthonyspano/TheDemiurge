@@ -22,11 +22,18 @@ namespace com.ultimate2d.combat
         }
         public override IEnumerator Start() 
         {
-            
-            playerAnim.Play(new AnimatorHashRef().GetFirstAttackState());
+            string attackAnimation = new AnimatorHashRef().GetFirstAttackState();
+            playerAnim.Play(attackAnimation);
             playerAudio.Play();
 
-            yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
+            //yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
+            // check to see if player animator is currently playing the chosen attack animation
+            yield return new WaitUntil(() => !PlayerManager.Instance.anim.GetCurrentAnimatorStateInfo(0).IsName(attackAnimation));
+
+            yield return null;
+            yield return null;
+            yield return null;
+            
 
 
             _playerStateMachine.SetState(new Begin(psm));

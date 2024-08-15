@@ -28,14 +28,20 @@ namespace com.ultimate2d.combat
             PlayerInputBuffer.Instance.SetCurrentFrame(PlayerController.PlayerStatus.Neutral);
             if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.LightAttack) 
             {       
+                Debug.Log("light attack");
                 _playerStateMachine.SetState(new PlayerAttack(psm));                
 
             }
-            if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.JumpAttack)
+            // else if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.JumpAttack)
+            // {
+            //     _playerStateMachine.SetState(new JumpAttack(psm));
+            // }
+            else if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Dash)
             {
-                _playerStateMachine.SetState(new JumpAttack(psm));
+                Debug.Log("dash");
+                _playerStateMachine.SetState(new Jump(psm));
             }
-            if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Ultimate)
+            else if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Ultimate)
             {
                 if(PlayerManager.Instance.ultReady)
                 {
@@ -52,12 +58,13 @@ namespace com.ultimate2d.combat
                 }
 
             }
-            if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Falling)
+            else if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Falling)
             {
                 _playerStateMachine.SetState(new Falling(psm));
             }
             else
             {
+                Debug.Log("resetting");
                 PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
                 PlayerManager.Instance.isBusy = false;
                 _playerStateMachine.SetState(new Begin(psm));

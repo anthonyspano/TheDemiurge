@@ -15,8 +15,11 @@ public class PlayerInput : MonoBehaviour
     private static KeyCode c_slash = KeyCode.JoystickButton0; // A
     private static KeyCode k_slash = KeyCode.K;
 
-    private static KeyCode c_interact = KeyCode.JoystickButton1; // B
-    private static KeyCode k_interact = KeyCode.B;
+    private static KeyCode c_interact = KeyCode.JoystickButton3; // Y
+    private static KeyCode k_interact = KeyCode.I;
+
+    private static KeyCode c_dash = KeyCode.JoystickButton1; // B
+    private static KeyCode k_dash = KeyCode.B;
 
     private static KeyCode c_promptControls = KeyCode.JoystickButton7;
 
@@ -55,7 +58,7 @@ public class PlayerInput : MonoBehaviour
             return true;
         return false;
     }
-    public static bool Slash()
+    public static bool LightAttack()
     {
         if(Input.GetKeyDown(k_slash) || Input.GetKeyDown(c_slash))
             return true;
@@ -72,6 +75,13 @@ public class PlayerInput : MonoBehaviour
     public static bool PromptControls()
     {
         if(Input.GetKeyDown(c_promptControls))
+            return true;
+        return false;
+    }
+
+    public static bool Dash()
+    {
+        if(Input.GetKeyDown(c_dash) || Input.GetKeyDown(k_dash))
             return true;
         return false;
     }

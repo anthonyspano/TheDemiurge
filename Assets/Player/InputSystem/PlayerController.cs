@@ -31,7 +31,7 @@ namespace com.ultimate2d.combat
 
         public float movementSpeed;
 
-        public enum PlayerStatus {Idle, Move, LightAttack, Ultimate, Sweep, JumpAttack, Neutral, InAir, Falling};
+        public enum PlayerStatus {Idle, Move, LightAttack, Ultimate, Sweep, JumpAttack, Neutral, InAir, Falling, Dash};
         public PlayerStatus playerStatus;
 
         // jump attack
@@ -97,11 +97,20 @@ namespace com.ultimate2d.combat
                 else
                     PlayerManager.Instance.anim.SetBool("isMoving", false);
 
-                
-
-
-
             }
+                
+            if(PlayerInput.LightAttack())
+            {
+                _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.LightAttack));
+            }
+
+            if(PlayerInput.Dash())
+            {
+                SetDashReady();
+            }
+
+
+            
 
         }
 
@@ -139,14 +148,25 @@ namespace com.ultimate2d.combat
 
         private void PromptScreenToggle()
         {
-            // pause game
-
-
-            //bring up screen
+            //bring up button layout gui
             if(isOpened)
                 tutorialScreen.SetActive(true);
             else
                 tutorialScreen.SetActive(false);
+
+        }
+
+        private void SetDashReady()
+        {
+            // interrupting dash
+            //anim.SetBool("isDashing", true);
+            // Debug.Log("here");
+            // var temp = new Dash();
+            // StartCoroutine(temp.ExecuteDash());
+            
+
+            // no interrupt dash
+            _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.Dash));
 
         }
 
