@@ -80,7 +80,7 @@ namespace com.ultimate2d.combat
                 jumpTime = Time.time - startTime;
             }
 
-            if(playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.InAir)
+            if(playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.InAir || playerStatus == PlayerStatus.Dash)
             {
                 Vector2 currentInputVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                 if(currentInputVector.magnitude > DeadZone)

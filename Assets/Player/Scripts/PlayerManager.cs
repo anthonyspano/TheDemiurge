@@ -64,7 +64,10 @@ namespace com.ultimate2d.combat
 		public float MDD;
 		public float AttackMoveDistance;
 		private RotateAroundPlayer playerAim;
-		public float moveSpeed;
+		public float runSpeed;
+		[HideInInspector] public float moveSpeed;
+		public float dashSpeed;
+		public float dashLength;
 		private float inputWindow = 1f;
 
 		// audio
@@ -127,6 +130,8 @@ namespace com.ultimate2d.combat
 		{
 			if(player == null)
 				player = GameObject.Find("Player");
+
+			moveSpeed = runSpeed;
 
 			// health
 			pHealth = new HealthSystem(maxHealth, invulnAfterHit);

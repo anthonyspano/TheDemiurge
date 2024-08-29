@@ -4680,7 +4680,10 @@ MonoBehaviour:
   JumpSpeed: 4
   MDD: 0.2
   AttackMoveDistance: 1.3
+  runSpeed: 7
   moveSpeed: 7
+  dashSpeed: 20
+  dashLength: 0.14
   slash1: {fileID: 8300000, guid: 045ad82e118921a428488577eb38d79a, type: 3}
   hurt1: {fileID: 8300000, guid: 3374377e45532b04d95d1c767cc42ff1, type: 3}
   falling1: {fileID: 8300000, guid: 4916e345652367743a4bf4e5994017b8, type: 3}
