@@ -10,6 +10,7 @@ namespace com.ultimate2d.combat
         private Animator anim;
         private Rigidbody2D rb;
         private BoxCollider2D bc;
+        private SpriteRenderer sr;
 
         private PlayerStateMachine psm;
         private bool once;
@@ -20,17 +21,20 @@ namespace com.ultimate2d.combat
             anim = psm.GetComponent<Animator>();
             rb = psm.GetComponent<Rigidbody2D>();
             bc = psm.GetComponent<BoxCollider2D>();
+            sr = psm.GetComponent<SpriteRenderer>();
         }
 
         public override IEnumerator Start()
         {
             PlayerManager.Instance.moveSpeed = PlayerManager.Instance.dashSpeed;
             bc.enabled = false;
+            sr.color = new Color(255f, 255f, 255f, 0.3f);
 
             yield return new WaitForSeconds(PlayerManager.Instance.dashLength);
 
             PlayerManager.Instance.moveSpeed = PlayerManager.Instance.runSpeed;
             bc.enabled = true;
+            sr.color = new Color(255f, 255f, 255f, 1f);
 
             // end jump endeavors
             PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
