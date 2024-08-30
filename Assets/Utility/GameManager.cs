@@ -82,7 +82,7 @@ namespace com.ultimate2d.combat
             spawnPositions.Add(new Vector3(0, -2, 0) + PlayerManager.Instance.transform.position);
             spawnPositions.Add(new Vector3(0, 2, 0) + PlayerManager.Instance.transform.position);
 
-
+            
         }
 
         void Update()
@@ -117,9 +117,32 @@ namespace com.ultimate2d.combat
         public GameObject skelly;
         public GameObject emptyskelly;
 
-        // activated by in-game book object
-        public void BeginLevel()
+        public Text bookDialogue;
+        private string levelDialogue = "I wonder if they still think about me...";
+
+        public void StartBeginLevel()
         {
+            StartCoroutine(BeginLevel());
+        }
+
+        // activated by in-game book object
+        public IEnumerator BeginLevel()
+        {
+            // show book dialogue
+            // for(int i = 0; i < levelDialogue.Length; i++)
+            // {
+            int i = 0;
+            string temp = "";
+            while(bookDialogue.text.Length < levelDialogue.Length)
+            {
+                bookDialogue.text += levelDialogue[i];
+                i+=1;
+                yield return new WaitForSeconds(0.08f);
+            
+            }
+
+            Debug.Log("passed");
+
             StartCoroutine(ToggleWavePrompt());
             // TBI: keep json file of enemies and positions they need to spawn
 
@@ -127,7 +150,8 @@ namespace com.ultimate2d.combat
             // spawn two skellies to left and right of player for now
             StartCoroutine(EnemyWaveManager());
 
-
+            yield return new WaitForSeconds(1f);
+            bookDialogue.text = "";
         }
 
         private IEnumerator ToggleWavePrompt()

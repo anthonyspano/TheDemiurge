@@ -11,7 +11,7 @@ namespace com.ultimate2d.combat
         {
             // tell game manager to start the level
             Debug.Log("starting level");
-            GameManager.Instance.BeginLevel(); 
+            GameManager.Instance.StartBeginLevel(); 
 
             Destroy(gameObject);       
             

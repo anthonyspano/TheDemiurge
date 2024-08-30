@@ -28,7 +28,7 @@ namespace com.ultimate2d.combat
         {
             PlayerManager.Instance.moveSpeed = PlayerManager.Instance.dashSpeed;
             bc.enabled = false;
-            sr.color = new Color(255f, 255f, 255f, 0.3f);
+            sr.color = new Color(255f, 255f, 255f, 0.25f);
 
             yield return new WaitForSeconds(PlayerManager.Instance.dashLength);
 
