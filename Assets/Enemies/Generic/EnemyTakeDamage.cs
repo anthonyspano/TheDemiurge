@@ -14,8 +14,15 @@ public class EnemyTakeDamage : MonoBehaviour
 
     public int ultAddedOnHit;
 
+    public float cleavePushBack;
+
     private Animator anim;
     private EnemyManager em;
+<<<<<<< Updated upstream
+=======
+    private AudioSource enemyAudioManager;
+
+>>>>>>> Stashed changes
     private void Awake() 
     {
         anim = transform.parent.GetComponent<Animator>();
@@ -82,14 +89,6 @@ public class EnemyTakeDamage : MonoBehaviour
         }
     }
 
-    // private void OnCollisionEnter2D(Collision2D col)
-    // {
-    //     if(col.GetContact(0).collider.transform.CompareTag("PlayerHitBox"))
-    //     {
-    //         healthSystem.Damage(PlayerManager.Instance.Attack);
-    //         PlayerManager.Instance.ultBar.AddUlt(PlayerManager.Instance.ultAddedOnHit); // consider source
-    //     }
-    // }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -98,6 +97,7 @@ public class EnemyTakeDamage : MonoBehaviour
         {
             healthSystem.Damage(PlayerManager.Instance.Attack);
             PlayerManager.Instance.ultBar.AddUlt(ultAddedOnHit); // consider source
+            
         }
     }
 }

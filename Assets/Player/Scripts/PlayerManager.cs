@@ -31,6 +31,7 @@ namespace com.ultimate2d.combat
 		public Transform pfHealthBar;
 		public HealthSystem pHealth;
 		public float positionOffset;
+		public bool invulnerable;
 
 		// ultimate
 		[Header("Ultimate")]
@@ -204,7 +205,12 @@ namespace com.ultimate2d.combat
 		private void OnCollisionEnter2D(Collision2D col)
 		{
 			
+<<<<<<< Updated upstream
 
+=======
+			if(invulnerable)
+				return;
+>>>>>>> Stashed changes
 
 			if(col.transform.CompareTag("BigCultist"))
 			{
