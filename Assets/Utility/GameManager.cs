@@ -116,6 +116,7 @@ namespace com.ultimate2d.combat
 
         public GameObject skelly;
         public GameObject emptyskelly;
+        public GameObject meleeEnemy;
 
         public Text bookDialogue;
         private string levelDialogue = "I wonder if they still think about me...";
@@ -168,12 +169,30 @@ namespace com.ultimate2d.combat
 
         private IEnumerator SpawnEnemies(int enemiesToSpawn)
         {
+            System.Random rand = new System.Random();
+            
             // TBI: spawn on points bordering the screen?
             for(int i = 0; i < enemiesToSpawn; i++)
             {
                 try
                 {
-                    GameObject.Instantiate(skelly, spawnPositions[i], Quaternion.identity);
+                    // randomly pick between skelly and charger
+
+                    int enemyChoice = rand.Next(1,3);
+                    Debug.Log(enemyChoice);
+                    switch(enemyChoice)
+                    {
+                        case 1:
+                            GameObject.Instantiate(skelly, spawnPositions[i], Quaternion.identity);
+                            break;
+                        case 2:
+                            GameObject.Instantiate(meleeEnemy, spawnPositions[i], Quaternion.identity);
+                            break;
+                        default:
+                            Debug.Log("Random function out of range");
+                            break;
+                    }
+                    
                 }
                 catch (Exception e)
                 {

@@ -21,6 +21,7 @@ TagManager:
   - Wall
   - PlayerHitBox
   - Pit
+  - Charger
   layers:
   - Default
   - TransparentFX

@@ -28,7 +28,6 @@ namespace com.ultimate2d.combat
             PlayerInputBuffer.Instance.SetCurrentFrame(PlayerController.PlayerStatus.Neutral);
             if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.LightAttack) 
             {       
-                Debug.Log("light attack");
                 _playerStateMachine.SetState(new PlayerAttack(psm));                
 
             }

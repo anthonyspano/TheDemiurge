@@ -36,7 +36,8 @@ public class EnemyTakeDamage : MonoBehaviour
 		{
 			// Death sequence
             enemyAudioManager.PlayOneShot(em.hurtSound, 0.8f);
-			anim.Play("skelly-death");
+			anim.SetBool("isDead", true);
+            Debug.Log("dead");
             
 		}
         else 

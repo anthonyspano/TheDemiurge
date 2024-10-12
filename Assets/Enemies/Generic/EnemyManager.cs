@@ -124,6 +124,10 @@ namespace com.ultimate2d.combat
             Destroy(gameObject);
         }
 
+        public void PlayIdleAnimation()
+        {
+            GetComponent<Animator>().Play("Idle");
+        }
 
     }
 

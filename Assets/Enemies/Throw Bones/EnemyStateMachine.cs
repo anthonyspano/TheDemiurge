@@ -8,10 +8,15 @@ namespace com.ultimate2d.combat
     {
         [HideInInspector]
         public EnemyManager em;
+
         void Start()
         {
             em = GetComponent<EnemyManager>();
-            SetState(new SkellyStart(this));  
+            if(em.gameObject.CompareTag("Enemy"))
+                SetState(new SkellyStart(this));  
+            else if(em.gameObject.CompareTag("Charger"))
+                SetState(new ChargerStart(this));
+
         }
 
 
