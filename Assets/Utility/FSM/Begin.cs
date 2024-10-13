@@ -47,6 +47,7 @@ namespace com.ultimate2d.combat
                     PlayerManager.Instance.isBusy = true;
                     PlayerManager.Instance.FireUltimate();
                     yield return new WaitUntil(() => !PlayerManager.Instance.isBusy);
+                    PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
                     _playerStateMachine.SetState(new Begin(psm));
                     
                 }
