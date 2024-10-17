@@ -317,6 +317,8 @@ MonoBehaviour:
   pursuitRange: 0
   attackRange: 0
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -1049,6 +1051,8 @@ MonoBehaviour:
   pursuitRange: 0
   attackRange: 0
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -1285,6 +1289,8 @@ MonoBehaviour:
   pursuitRange: 7
   attackRange: 1.5
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -1517,6 +1523,8 @@ MonoBehaviour:
   pursuitRange: 7
   attackRange: 1.5
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -2209,6 +2217,8 @@ MonoBehaviour:
   pursuitRange: 0
   attackRange: 0
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -2627,6 +2637,8 @@ MonoBehaviour:
   pursuitRange: 7
   attackRange: 1.5
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -3468,6 +3480,8 @@ MonoBehaviour:
   pursuitRange: 7
   attackRange: 1.5
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -3987,7 +4001,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5507500742621004254, guid: b009f1aab095061488ab1b5695ec5f63, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734783714529370422, guid: b009f1aab095061488ab1b5695ec5f63, type: 3}
+      propertyPath: leapingSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734783714529370422, guid: b009f1aab095061488ab1b5695ec5f63, type: 3}
+      propertyPath: leapingDistance
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 8140932059563175544, guid: b009f1aab095061488ab1b5695ec5f63, type: 3}
       propertyPath: m_RootOrder
@@ -4465,6 +4487,8 @@ MonoBehaviour:
   pursuitRange: 0
   attackRange: 0
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -26908,6 +26932,8 @@ MonoBehaviour:
   pursuitRange: 7
   attackRange: 1.5
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -27523,6 +27549,8 @@ MonoBehaviour:
   pursuitRange: 7
   attackRange: 1.5
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -28922,6 +28950,8 @@ MonoBehaviour:
   pursuitRange: 7
   attackRange: 1.5
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -29484,6 +29514,8 @@ MonoBehaviour:
   pursuitRange: 0
   attackRange: 0
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -29879,6 +29911,8 @@ MonoBehaviour:
   pursuitRange: 0
   attackRange: 0
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -30246,6 +30280,8 @@ MonoBehaviour:
   pursuitRange: 7
   attackRange: 1.5
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -30477,6 +30513,8 @@ MonoBehaviour:
   pursuitRange: 7
   attackRange: 1.5
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -30867,6 +30905,8 @@ MonoBehaviour:
   pursuitRange: 0
   attackRange: 0
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -31696,6 +31736,8 @@ MonoBehaviour:
   pursuitRange: 0
   attackRange: 0
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -32009,6 +32051,8 @@ MonoBehaviour:
   pursuitRange: 7
   attackRange: 1.5
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}
@@ -34032,6 +34076,8 @@ MonoBehaviour:
   pursuitRange: 0
   attackRange: 0
   throwSpeed: 0
+  leapingDistance: 0
+  leapingSpeed: 0
   attackSound: {fileID: 8300000, guid: b8909d36c3b18cf40902069ab0ec671d, type: 3}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 0}

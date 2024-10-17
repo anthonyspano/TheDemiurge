@@ -18,7 +18,7 @@ namespace com.ultimate2d.combat
             yield return new WaitUntil(() => esm.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle"));
 
             yield return new WaitForSeconds(1.3f);
-            _enemyStateMachine.SetState(new ChargerMove(esm));
+            _enemyStateMachine.SetState(new MeleeEnemyAttackLeap(esm));
 
 
             

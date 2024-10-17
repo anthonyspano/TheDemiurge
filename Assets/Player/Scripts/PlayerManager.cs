@@ -211,16 +211,11 @@ namespace com.ultimate2d.combat
 
 		private void OnCollisionEnter2D(Collision2D col)
 		{
-			
-			//Debug.Log("hit");
 
-			if(col.transform.CompareTag("BigCultist"))
+			if(col.transform.CompareTag("Charger"))
 			{
-				if(col.GetContact(0).collider.transform.CompareTag("PlayerHitBox"))
-				{
 					Instance.pHealth.Damage(70);
 					audioSource.PlayOneShot(hurt1, 0.7f);
-				}
 
 			}
 

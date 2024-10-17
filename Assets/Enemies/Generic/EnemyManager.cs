@@ -21,6 +21,9 @@ namespace com.ultimate2d.combat
         public float attackRange;
         public float throwSpeed;
 
+        public float leapingDistance;
+        public float leapingSpeed;
+
         // audio
         public AudioClip attackSound;
         public AudioClip hurtSound;
@@ -126,7 +129,8 @@ namespace com.ultimate2d.combat
 
         public void PlayIdleAnimation()
         {
-            GetComponent<Animator>().Play("Idle");
+            GetComponent<Animator>().SetBool("isAttacking", false);
+            GetComponent<Animator>().SetBool("isRunning", false);
         }
 
     }
