@@ -107,16 +107,6 @@ namespace com.ultimate2d.combat
             return false;
         }
 
-        public void Death()
-        {
-            // disable further movements
-            // enemy manager
-            // transform.parent.GetComponent<BlockBattleSystem>().CanMove = false;
-            // transform.parent.GetComponent<BlockBattleSystem>().Dead = true;
-            GameManager.Instance.currentPlayerScore += 10; // enemy type properties 
-            Destroy(gameObject);
-        }
-
         public void ExplosionSound()
         {
             GetComponent<AudioSource>().PlayOneShot(explosionSound, 0.7f);
@@ -124,6 +114,7 @@ namespace com.ultimate2d.combat
 
         public void BlowUp()
         {
+            GameManager.Instance.currentPlayerScore += 10;
             Destroy(gameObject);
         }
 

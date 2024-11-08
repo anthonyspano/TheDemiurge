@@ -288,9 +288,6 @@ namespace com.ultimate2d.combat
 			// reset scene after timer
 			StartCoroutine("ScoreScreen");
 
-			// save score properties to SO
-
-
 
 		}
 

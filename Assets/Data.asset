@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef5a2249ab21e24ab494324ff728ffc, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  time: 0
-  damageTaken: 0
-  damageDealt: 0
+  highScores:
+  - playerName: anthony
+    score: 40

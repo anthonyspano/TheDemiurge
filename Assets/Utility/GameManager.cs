@@ -38,6 +38,7 @@ namespace com.ultimate2d.combat
 
         // score
         public int currentPlayerScore;
+        public HighScoreData highScoreData;
 
 
         void Awake()
@@ -45,8 +46,8 @@ namespace com.ultimate2d.combat
             // values = (int[])System.Enum.GetValues(typeof(KeyCode));
             // keys = new bool[values.Length];
 
-            timerText.text = "0";
-            timerEnabled = true;
+            //timerText.text = "0";
+            //timerEnabled = true;
 
             // singleton
             if (_instance != null && _instance != this)
@@ -330,6 +331,9 @@ namespace com.ultimate2d.combat
 
             }
             
+            // set score to be added to scriptable object
+            highScoreData.AddScore("", currentPlayerScore);
+
 
             yield return new WaitForSeconds(2.5f);
             

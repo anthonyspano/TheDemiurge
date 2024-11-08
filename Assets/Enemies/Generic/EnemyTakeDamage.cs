@@ -35,7 +35,7 @@ public class EnemyTakeDamage : MonoBehaviour
     	if(healthSystem.GetHealth() <= 0)
 		{
 			// Death sequence
-            enemyAudioManager.PlayOneShot(em.hurtSound, 0.8f);
+            // tbi: play explosion sound
 			anim.SetBool("isDead", true);
             Debug.Log("dead");
             
