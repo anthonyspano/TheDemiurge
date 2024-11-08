@@ -14,8 +14,6 @@ namespace com.ultimate2d.combat
 
         public static KeyCode playerInput;
 
-        public ScoreManagerSO _scoreManager;
-
         private static GameManager _instance;
         public static GameManager Instance
         {
@@ -37,6 +35,9 @@ namespace com.ultimate2d.combat
         public Text timerText;
         private bool timerEnabled;
         public Text waveInfo;
+
+        // score
+        public int currentPlayerScore;
 
 
         void Awake()
@@ -106,7 +107,9 @@ namespace com.ultimate2d.combat
             // }  
 
             if(timerEnabled)
-                timerText.text = Time.timeSinceLevelLoad.ToString();      
+                timerText.text = Time.timeSinceLevelLoad.ToString(); 
+
+                 
         }
 
         public void GameStart()
@@ -270,7 +273,10 @@ namespace com.ultimate2d.combat
         public void EnemyDeathCount()
         {
         //     // spawn enemies based on time           
-             PlayerManager.Instance.killCount++;
+            PlayerManager.Instance.killCount++;
+
+            
+
         //     Debug.Log(PlayerManager.Instance.killCount);
         //     if(PlayerManager.Instance.killCount >= 20)
         //     {
@@ -302,9 +308,6 @@ namespace com.ultimate2d.combat
         private IEnumerator EndWave()
         {
             timerEnabled = false;
-            _scoreManager.time = timerText.text; 
-            Debug.Log(maxWaves);
-            _scoreManager.wavesCompleted = maxWaves; 
 
             // kill rest of enemies
             //GameObject[] enemiesAliveCurrently = new GameObject[20];

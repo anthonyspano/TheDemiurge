@@ -4001,7 +4001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5507500742621004254, guid: b009f1aab095061488ab1b5695ec5f63, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6734783714529370422, guid: b009f1aab095061488ab1b5695ec5f63, type: 3}
       propertyPath: leapingSpeed

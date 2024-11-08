@@ -120,6 +120,8 @@ namespace com.ultimate2d.combat
 
 		public Vector2 PitSpawnPoint;
 
+		public GameManager gameManager;
+
 		// Animation control
 		[HideInInspector] public bool continueChain;
 
@@ -284,10 +286,28 @@ namespace com.ultimate2d.combat
 
 			ppv.SetActive(true);
 			// reset scene after timer
-			StartCoroutine("LoadScene");
+			StartCoroutine("ScoreScreen");
+
+			// save score properties to SO
+
+
+
 		}
 
-		IEnumerator LoadScene()
+		IEnumerator ScoreScreen()
+		{
+			// go to score screen
+			yield return new WaitForSeconds(2.5f);
+			SceneManager.LoadScene("ScoreScreen", LoadSceneMode.Single);
+
+
+
+
+
+			yield return null;
+		}
+
+		IEnumerator ReloadScene()
 		{
 			yield return new WaitForSeconds(2.5f);
 			SceneManager.LoadScene("CellChamber", LoadSceneMode.Single);
