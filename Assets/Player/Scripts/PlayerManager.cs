@@ -56,6 +56,7 @@ namespace com.ultimate2d.combat
 		public float range;
 		public float attackCooldownRate; // for attack - 0.21
 		public float attackCooldown;
+		public float lungeDistance;
 		public float jumpCooldownRate;
 		public float jumpCooldown;
 		public float JumpDistance;
@@ -208,7 +209,7 @@ namespace com.ultimate2d.combat
 			else if(facingDir >= -180 || facingDir < -90) 
 				pFacingDir = Direction.DownLeft;
 			
-			
+			jumpCooldown -= Time.deltaTime;
 		}
 
 		private void OnCollisionEnter2D(Collision2D col)

@@ -12,8 +12,7 @@ public class ScoreScreenManager : MonoBehaviour
 
     public void Start()
     {
-        //highScoreManager.DisplayScores();
-
+        highScoreManager.highScoreData.LoadScores();
     }
 
     public void HideInputField()
@@ -32,10 +31,11 @@ public class ScoreScreenManager : MonoBehaviour
         }
         catch(System.Exception e)
         {
-            Debug.Log("name not found in list.");
+            Debug.Log(e);
         }
 
         inputFieldGO.SetActive(false);
+        highScoreManager.highScoreData.SaveScores();
         highScoreManager.DisplayScores();
     }
 

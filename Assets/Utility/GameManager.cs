@@ -138,15 +138,13 @@ namespace com.ultimate2d.combat
             // {
             int i = 0;
             string temp = "";
-            while(bookDialogue.text.Length < levelDialogue.Length)
-            {
-                bookDialogue.text += levelDialogue[i];
-                i+=1;
-                yield return new WaitForSeconds(0.08f);
+            // while(bookDialogue.text.Length < levelDialogue.Length)
+            // {
+            //     bookDialogue.text += levelDialogue[i];
+            //     i+=1;
+            //     yield return new WaitForSeconds(0.08f);
             
-            }
-
-            Debug.Log("passed");
+            // }
 
             StartCoroutine(ToggleWavePrompt());
             // TBI: keep json file of enemies and positions they need to spawn
@@ -183,7 +181,6 @@ namespace com.ultimate2d.combat
                     // randomly pick between skelly and charger
 
                     int enemyChoice = rand.Next(1,3);
-                    Debug.Log(enemyChoice);
                     switch(enemyChoice)
                     {
                         case 1:
@@ -332,8 +329,9 @@ namespace com.ultimate2d.combat
             }
             
             // set score to be added to scriptable object
+            Debug.Log("adding blank score entry");
             highScoreData.AddScore("", currentPlayerScore);
-
+            highScoreData.SaveScores();
 
             yield return new WaitForSeconds(2.5f);
             

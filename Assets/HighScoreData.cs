@@ -34,6 +34,7 @@ public class HighScoreData : ScriptableObject
     // saving and loading scores
     public void SaveScores()
     {
+        Debug.Log(Application.persistentDataPath);
         string json = JsonUtility.ToJson(this, true);
         File.WriteAllText(Application.persistentDataPath + "/highscores.json", json);
     }

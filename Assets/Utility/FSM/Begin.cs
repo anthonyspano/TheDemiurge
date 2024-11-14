@@ -37,8 +37,15 @@ namespace com.ultimate2d.combat
             // }
             else if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Dash)
             {
-                Debug.Log("dash");
-                _playerStateMachine.SetState(new Jump(psm));
+                if(PlayerManager.Instance.jumpCooldown <= 0)
+                {
+                    PlayerManager.Instance.jumpCooldown = PlayerManager.Instance.jumpCooldownRate;
+                    _playerStateMachine.SetState(new Jump(psm));
+                    
+                }
+                else
+                    _playerStateMachine.SetState(new Begin(psm));
+                
             }
             else if(PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Ultimate)
             {

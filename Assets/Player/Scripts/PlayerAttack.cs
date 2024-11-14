@@ -22,9 +22,13 @@ namespace com.ultimate2d.combat
         }
         public override IEnumerator Start() 
         {
+            // move player a little bit in same direction
+            Transform player = PlayerManager.Instance.transform;
+            var playerManager = PlayerManager.Instance;
+            player.Translate(playerManager.LastMove * playerManager.lungeDistance);
+
             string attackAnimation = new AnimatorHashRef().GetFirstAttackState();
             playerAnim.Play(attackAnimation);
-            playerAudio.Play();
 
             //yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
             // check to see if player animator is currently playing the chosen attack animation

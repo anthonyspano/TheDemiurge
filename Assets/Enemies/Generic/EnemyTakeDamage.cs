@@ -32,12 +32,12 @@ public class EnemyTakeDamage : MonoBehaviour
 
 	private void OnDamage(object sender, System.EventArgs e) 
 	{
+        
     	if(healthSystem.GetHealth() <= 0)
 		{
 			// Death sequence
             // tbi: play explosion sound
 			anim.SetBool("isDead", true);
-            Debug.Log("dead");
             
 		}
         else 
