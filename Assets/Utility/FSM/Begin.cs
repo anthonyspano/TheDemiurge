@@ -22,6 +22,7 @@ namespace com.ultimate2d.combat
         {
             // wait until Input Buffer contains player input
             //yield return new WaitForSeconds(PlayerManager.Instance.attackCooldownRate);
+            Debug.Log("waiting for input since " + Time.timeSinceLevelLoad.ToString());
             yield return new WaitUntil(() => PlayerInputBuffer.Instance.GetCommand() != PlayerController.PlayerStatus.Neutral); 
 
             PlayerController.Instance.playerStatus = PlayerInputBuffer.Instance.GetCommand();
@@ -61,6 +62,7 @@ namespace com.ultimate2d.combat
                 else
                 {   
                     PlayerManager.Instance.isBusy = false;
+                    PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
                     _playerStateMachine.SetState(new Begin(psm));
                 }
 
