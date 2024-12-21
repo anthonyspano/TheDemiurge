@@ -12,6 +12,7 @@ public class ScoreScreenManager : MonoBehaviour
 
     public void Start()
     {
+        Debug.Log(Application.persistentDataPath);
         highScoreManager.highScoreData.LoadScores();
     }
 
@@ -24,7 +25,6 @@ public class ScoreScreenManager : MonoBehaviour
                 if(entry.playerName == "")
                 {
                     Debug.Log("found the placeholder");
-                    // change name to input name
                     entry.playerName = inputField.text;
                 }
             }

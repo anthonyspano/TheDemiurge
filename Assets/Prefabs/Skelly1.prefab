@@ -132,6 +132,7 @@ MonoBehaviour:
   throwSpeed: 0.00055
   leapingDistance: 0
   leapingSpeed: 0
+  playerHurtboxTag: PlayerAttack
   attackSound: {fileID: 8300000, guid: 32d363e2f1eb50f4b93ecd591ae1e078, type: 3}
   hurtSound: {fileID: 8300000, guid: d522b1f700e01e1499d091a1a6a64234, type: 3}
   explosionSound: {fileID: 8300000, guid: d8d3dedaad248d04a95d542639ebb578, type: 3}
@@ -380,7 +381,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.003032446, y: -0.16374934}

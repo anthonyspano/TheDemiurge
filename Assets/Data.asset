@@ -12,12 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef5a2249ab21e24ab494324ff728ffc, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  highScores:
-  - playerName: anthony
-    score: 40
-  - playerName: sandman
-    score: 40
-  - playerName: guy
-    score: 40
-  - playerName: test
-    score: 40
+  highScores: []

@@ -15,11 +15,5 @@ public class CameraFollowPlayer : MonoBehaviour
         Vector3 targetPosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         
-        
-        
-        // if(Vector2.Distance(transform.position, PlayerManager.Instance.transform.position) > 2f)
-        // {
-        //     transform.position = Vector3.MoveTowards(transform.position, new Vector3(PlayerManager.Instance.transform.position.x, PlayerManager.Instance.transform.position.y, transform.position.z), followSpeed * Time.deltaTime);
-        // }
     }
 }

@@ -25,6 +25,8 @@ namespace com.ultimate2d.combat
             // move player a little bit in same direction
             Transform player = PlayerManager.Instance.transform;
             var playerManager = PlayerManager.Instance;
+            var playerHitbox = playerManager.hitbox.GetComponent<BoxCollider2D>();
+            playerHitbox.enabled = false;
             player.Translate(playerManager.LastMove * playerManager.lungeDistance);
 
             string attackAnimation = new AnimatorHashRef().GetFirstAttackState();
@@ -32,9 +34,10 @@ namespace com.ultimate2d.combat
 
             //yield return new WaitUntil(() => PlayerController.Instance.playerStatus == PlayerController.PlayerStatus.Idle);
             // check to see if player animator is currently playing the chosen attack animation
+            yield return null;
             yield return new WaitUntil(() => !PlayerManager.Instance.anim.GetCurrentAnimatorStateInfo(0).IsName(attackAnimation));
 
-            yield return null;
+            playerHitbox.enabled = true;
             yield return null;
             yield return null;
             

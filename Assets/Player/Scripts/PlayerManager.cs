@@ -103,7 +103,8 @@ namespace com.ultimate2d.combat
 		[Range(0.01f, 0.99f)]
 		public float verticalRunMod;
 
-		private Transform hitbox;
+		[HideInInspector]
+		public Transform hitbox;
 		private BoxCollider2D boxCollider;
 
 		private Vector3 lastMove;
@@ -113,7 +114,7 @@ namespace com.ultimate2d.combat
 			set { lastMove = value; }
 		}
 
-		public enum Direction {DownLeft, DownRight, UpLeft, UpRight};
+		public enum Direction {DownLeft, DownRight, UpLeft, UpRight, Up, Down, Left, Right};
 		public Direction pFacingDir;
 
 		public AnimationClip clip;
@@ -164,6 +165,7 @@ namespace com.ultimate2d.combat
 			// collision
 			boxCollider = GetComponent<BoxCollider2D>();
 			hitbox = transform.GetChild(3);
+		
 
 			// animation
 			attackAnimLength = clip.length;
@@ -200,14 +202,24 @@ namespace com.ultimate2d.combat
 			anim.SetFloat("MoveY", LastMove.y);
 
 			float facingDir = Mathf.Atan2(LastMove.y, LastMove.x) * Mathf.Rad2Deg;
-			if(facingDir < 90 && facingDir >= 0) 
-				pFacingDir = Direction.UpRight; // player face
-			else if(facingDir >= 90 && facingDir <= 180) 
-				pFacingDir = Direction.UpLeft;
-			else if(facingDir >= -90 && facingDir < 0) 
-				pFacingDir = Direction.DownRight;
-			else if(facingDir >= -180 || facingDir < -90) 
-				pFacingDir = Direction.DownLeft;
+			// if(facingDir < 90 && facingDir >= 0) 
+			// 	pFacingDir = Direction.UpRight; // player face
+			// else if(facingDir >= 90 && facingDir <= 180) 
+			// 	pFacingDir = Direction.UpLeft;
+			// else if(facingDir >= -90 && facingDir < 0) 
+			// 	pFacingDir = Direction.DownRight;
+			// else if(facingDir >= -180 || facingDir < -90) 
+			// 	pFacingDir = Direction.DownLeft;
+
+
+			if(facingDir >= 25 && facingDir < 155) 
+				pFacingDir = Direction.Up;
+			else if(facingDir >= -155 && facingDir < -25) 
+				pFacingDir = Direction.Down;
+			else if(facingDir >= 135 || facingDir < -135) 
+				pFacingDir = Direction.Left;
+			else if(facingDir < 45 || facingDir <= -45) 
+				pFacingDir = Direction.Right; // player face
 			
 			jumpCooldown -= Time.deltaTime;
 		}
@@ -215,22 +227,23 @@ namespace com.ultimate2d.combat
 		private void OnCollisionEnter2D(Collision2D col)
 		{
 
-			if(col.transform.CompareTag("Charger"))
-			{
-					Instance.pHealth.Damage(70);
-					audioSource.PlayOneShot(hurt1, 0.7f);
 
-			}
+			// if(col.transform.CompareTag("Charger"))
+			// {
+			// 		Instance.pHealth.Damage(70);
+			// 		audioSource.PlayOneShot(hurt1, 0.7f);
 
-			if(col.transform.CompareTag("Projectile"))
-			{
-				//Debug.Log(col.GetContact(0).otherCollider.transform.name);
-				if(col.GetContact(0).otherCollider.transform.CompareTag("PlayerAttack"))
-				{
-					Instance.pHealth.Damage(40);
-					audioSource.PlayOneShot(hurt1, 0.7f);
-				}
-			}
+			// }
+
+			// if(col.transform.CompareTag("Projectile"))
+			// {
+			// 	//Debug.Log(col.GetContact(0).otherCollider.transform.name);
+			// 	if(col.GetContact(0).otherCollider.transform.CompareTag("PlayerAttack"))
+			// 	{
+			// 		Instance.pHealth.Damage(40);
+			// 		audioSource.PlayOneShot(hurt1, 0.7f);
+			// 	}
+			// }
 
 		}
 

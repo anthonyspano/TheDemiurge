@@ -24,6 +24,10 @@ namespace com.ultimate2d.combat
         public float leapingDistance;
         public float leapingSpeed;
 
+        [HideInInspector]
+        public string playerHurtboxTag = "PlayerAttack";
+
+
         // audio
         public AudioClip attackSound;
         public AudioClip hurtSound;
@@ -114,7 +118,7 @@ namespace com.ultimate2d.combat
 
         public void BlowUp()
         {
-            GameManager.Instance.currentPlayerScore += 10;
+            //GameManager.Instance.currentPlayerScore += 10;
             Destroy(gameObject);
         }
 

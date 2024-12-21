@@ -5,12 +5,15 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
 
+// there are 12 spawn positions
+// highest score is 240
+
 namespace com.ultimate2d.combat
 {
     public class GameManager : MonoBehaviour
     {
-        private int[] values;
-        private bool[] keys;
+        // private int[] values;
+        // private bool[] keys;
 
         public static KeyCode playerInput;
 
@@ -37,8 +40,10 @@ namespace com.ultimate2d.combat
         public Text waveInfo;
 
         // score
-        public int currentPlayerScore;
+        public string currentPlayerScore;
         public HighScoreData highScoreData;
+        public GameObject highScoreBook;
+        public InputField inputField;
 
 
         void Awake()
@@ -127,6 +132,19 @@ namespace com.ultimate2d.combat
 
         public void StartBeginLevel()
         {
+            // bring up leaderboard book object (book object brings up scores and input field, input field starts the level)
+            highScoreBook.SetActive(true);
+            
+        }
+
+        public void StartBeginLevelCoroutine()
+        {
+            // save string entry to be put into high score data
+            currentPlayerScore = inputField.text;
+
+            // disable book
+            highScoreBook.SetActive(false);
+
             StartCoroutine(BeginLevel());
         }
 
@@ -146,12 +164,11 @@ namespace com.ultimate2d.combat
             
             // }
 
-            StartCoroutine(ToggleWavePrompt());
             // TBI: keep json file of enemies and positions they need to spawn
 
             
             // spawn two skellies to left and right of player for now
-            StartCoroutine(EnemyWaveManager());
+            StartCoroutine(SpawnEnemies((int.Parse(currentPlayerScore) / 10)));
 
             yield return new WaitForSeconds(1f);
             bookDialogue.text = "";
@@ -172,10 +189,18 @@ namespace com.ultimate2d.combat
         private IEnumerator SpawnEnemies(int enemiesToSpawn)
         {
             System.Random rand = new System.Random();
-            
+            int index;
+            Debug.Log(enemiesToSpawn);
             // TBI: spawn on points bordering the screen?
             for(int i = 0; i < enemiesToSpawn; i++)
             {
+                
+                index = i;
+                
+                if(index >= spawnPositions.Count)
+                    index %= spawnPositions.Count;
+
+                Debug.Log(i);
                 try
                 {
                     // randomly pick between skelly and charger
@@ -184,10 +209,10 @@ namespace com.ultimate2d.combat
                     switch(enemyChoice)
                     {
                         case 1:
-                            GameObject.Instantiate(skelly, spawnPositions[i], Quaternion.identity);
+                            GameObject.Instantiate(skelly, spawnPositions[index], Quaternion.identity);
                             break;
                         case 2:
-                            GameObject.Instantiate(meleeEnemy, spawnPositions[i], Quaternion.identity);
+                            GameObject.Instantiate(meleeEnemy, spawnPositions[index], Quaternion.identity);
                             break;
                         default:
                             Debug.Log("Random function out of range");
@@ -197,7 +222,7 @@ namespace com.ultimate2d.combat
                 }
                 catch (Exception e)
                 {
-                    i = enemiesToSpawn - spawnPositions.Count;
+                    Debug.Log(e);
                 }
 
                 yield return new WaitForSeconds(0.3f);
@@ -219,6 +244,15 @@ namespace com.ultimate2d.combat
             //     yield return null;
             // }
             
+            yield return new WaitUntil(() => AllEnemiesAreDead());
+
+            Debug.Log("adding blank score entry");
+            highScoreData.AddScore("", int.Parse(currentPlayerScore));
+            highScoreData.SaveScores();
+
+            yield return new WaitForSeconds(2.5f);
+            
+            SceneManager.LoadScene("ScoreScreen");
 
         }
 
@@ -246,8 +280,9 @@ namespace com.ultimate2d.combat
 
         private bool AllEnemiesAreDead()
         {
-
+            
             var enemiesAliveCurrently = GameObject.FindGameObjectsWithTag("Enemy");
+            Debug.Log(enemiesAliveCurrently.Length);
             if(enemiesAliveCurrently.Length > 0)
                 return false;
 
@@ -330,7 +365,6 @@ namespace com.ultimate2d.combat
             
             // set score to be added to scriptable object
             Debug.Log("adding blank score entry");
-            highScoreData.AddScore("", currentPlayerScore);
             highScoreData.SaveScores();
 
             yield return new WaitForSeconds(2.5f);

@@ -145,6 +145,7 @@ MonoBehaviour:
   throwSpeed: 0
   leapingDistance: 0
   leapingSpeed: 0
+  playerHurtboxTag: PlayerAttack
   attackSound: {fileID: 0}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 8300000, guid: d8d3dedaad248d04a95d542639ebb578, type: 3}

@@ -10,7 +10,8 @@ public class PlayerInput : MonoBehaviour
     private static KeyCode k_jumpAttack = KeyCode.V;
     private static KeyCode c_shoot = KeyCode.JoystickButton3; // Y
     private static KeyCode k_shoot = KeyCode.J;
-    private static int c_ultimate = 355; // RB
+    //private static int c_ultimate = 355; // RB
+    private static KeyCode c_ultimate = KeyCode.JoystickButton5; //randy's controller
     private static KeyCode k_ultimate = KeyCode.Space;
     private static KeyCode c_slash = KeyCode.JoystickButton0; // A
     private static KeyCode k_slash = KeyCode.K;
@@ -19,7 +20,7 @@ public class PlayerInput : MonoBehaviour
     private static KeyCode k_interact = KeyCode.I;
 
     private static KeyCode c_dash = KeyCode.JoystickButton1; // B
-    private static KeyCode k_dash = KeyCode.B;
+    private static KeyCode k_dash = KeyCode.J;
 
     private static KeyCode c_promptControls = KeyCode.JoystickButton7;
 
@@ -55,7 +56,11 @@ public class PlayerInput : MonoBehaviour
     public static bool Ultimate() 
     {
         if(Input.GetKeyDown(k_ultimate) || Input.GetKeyDown((KeyCode)c_ultimate))
+        {
+            Debug.Log("firing");
             return true;
+        }
+            
         return false;
     }
     public static bool LightAttack()

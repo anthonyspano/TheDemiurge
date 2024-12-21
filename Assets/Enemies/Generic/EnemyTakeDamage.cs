@@ -76,9 +76,9 @@ public class EnemyTakeDamage : MonoBehaviour
     //     }
     // }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.transform.CompareTag("PlayerHitBox"))
+        if(col.transform.CompareTag(em.playerHurtboxTag))
         {
             healthSystem.Damage(PlayerManager.Instance.Attack);
             PlayerManager.Instance.ultBar.AddUlt(ultAddedOnHit); // consider source

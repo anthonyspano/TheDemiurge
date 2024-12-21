@@ -71,7 +71,7 @@ namespace com.ultimate2d.combat
             }
             else
             {
-                Debug.Log("resetting");
+                
                 PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
                 PlayerManager.Instance.isBusy = false;
                 _playerStateMachine.SetState(new Begin(psm));
