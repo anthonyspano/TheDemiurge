@@ -56,6 +56,7 @@ namespace com.ultimate2d.combat
                 yield return null;
             }
             
+            yield return new WaitUntil(() => !anim.GetBool("finishingStrike"));
             anim.SetBool("isLeaping", false);
             anim.SetBool("isRunning", false);
             Object.Destroy(attackPoint);

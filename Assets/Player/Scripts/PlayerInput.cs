@@ -57,7 +57,6 @@ public class PlayerInput : MonoBehaviour
     {
         if(Input.GetKeyDown(k_ultimate) || Input.GetKeyDown((KeyCode)c_ultimate))
         {
-            Debug.Log("firing");
             return true;
         }
             

@@ -282,7 +282,7 @@ namespace com.ultimate2d.combat
         {
             
             var enemiesAliveCurrently = GameObject.FindGameObjectsWithTag("Enemy");
-            Debug.Log(enemiesAliveCurrently.Length);
+            //Debug.Log(enemiesAliveCurrently.Length);
             if(enemiesAliveCurrently.Length > 0)
                 return false;
 
