@@ -24,7 +24,6 @@ public class ScoreScreenManager : MonoBehaviour
             {
                 if(entry.playerName == "")
                 {
-                    Debug.Log("found the placeholder");
                     entry.playerName = inputField.text;
                 }
             }
