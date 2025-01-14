@@ -202,24 +202,34 @@ namespace com.ultimate2d.combat
 			anim.SetFloat("MoveY", LastMove.y);
 
 			float facingDir = Mathf.Atan2(LastMove.y, LastMove.x) * Mathf.Rad2Deg;
-			// if(facingDir < 90 && facingDir >= 0) 
-			// 	pFacingDir = Direction.UpRight; // player face
-			// else if(facingDir >= 90 && facingDir <= 180) 
-			// 	pFacingDir = Direction.UpLeft;
-			// else if(facingDir >= -90 && facingDir < 0) 
-			// 	pFacingDir = Direction.DownRight;
-			// else if(facingDir >= -180 || facingDir < -90) 
-			// 	pFacingDir = Direction.DownLeft;
 
 
-			if(facingDir >= 25 && facingDir < 155) 
+			
+			// up
+			if(facingDir >= 67 && facingDir < 112) 
 				pFacingDir = Direction.Up;
-			else if(facingDir >= -155 && facingDir < -25) 
+			// up right
+			else if(facingDir >= 0 && facingDir < 67)
+				pFacingDir = Direction.UpRight;
+			// up left
+			else if(facingDir >= 112) // && facingDir < 157
+				pFacingDir = Direction.UpLeft;
+			// down left
+			else if(facingDir <= -157 && facingDir > -180)
+				pFacingDir = Direction.DownLeft;		
+			// down right
+			else if(facingDir < 0 && facingDir >= -67)
+				pFacingDir = Direction.DownRight;	
+			// down
+			else if(facingDir >= -112 && facingDir < -67) 
 				pFacingDir = Direction.Down;
-			else if(facingDir >= 135 || facingDir < -135) 
-				pFacingDir = Direction.Left;
-			else if(facingDir < 45 || facingDir <= -45) 
-				pFacingDir = Direction.Right; // player face
+			// // left
+			// else if(facingDir >= 157 || facingDir <-157) 
+			// 	pFacingDir = Direction.Left;
+			// // right
+			// else if(facingDir < 23 || facingDir >= -23) 
+			// 	pFacingDir = Direction.Right; 
+
 			
 			jumpCooldown -= Time.deltaTime;
 		}

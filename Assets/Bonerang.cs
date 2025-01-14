@@ -18,6 +18,15 @@ public class Bonerang : MonoBehaviour
     public Transform owner;
     public bool isReturning;
 
+    private DissolveEffect _dissolveEffect;
+
+    void Start()
+    {
+        _dissolveEffect = GetComponent<DissolveEffect>();    
+    }
+
+
+
     void Update()
     {
         transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
@@ -53,11 +62,9 @@ public class Bonerang : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        // if((enemyLayer.value & (1 << col.gameObject.layer)) > 0)
-        //     Destroy(gameObject);
-
-        // if((playerLayer.value & (1 << col.gameObject.layer)) > 0)
-        //     Destroy(gameObject);
+        // begin the dissolve effect
+        Debug.Log("works!");
+        _dissolveEffect.StartDissolve();
 
         
 

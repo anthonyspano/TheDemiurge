@@ -46,22 +46,23 @@ namespace com.ultimate2d.combat
                 case PlayerController.PlayerStatus.LightAttack:
                     switch(PlayerManager.Instance.pFacingDir)
                     {
-                        // case PlayerManager.Direction.DownRight:
-                        //     return "v-attack-dr-1";
-                        // case PlayerManager.Direction.DownLeft:
-                        //     return "v-attack-dl-1";
-                        // case PlayerManager.Direction.UpRight:
-                        //     return "v-attack-ur-1";
-                        // case PlayerManager.Direction.UpLeft:
-                        //     return "v-attack-ul-1";
-                        case PlayerManager.Direction.Right:
-                            return "Slash1_R";
-                        case PlayerManager.Direction.Left:
-                            return "Slash1_L";
+                        case PlayerManager.Direction.DownRight:
+                            return "v-attack-dr-1";
+                        case PlayerManager.Direction.DownLeft:
+                            return "v-attack-dl-1";
+                        case PlayerManager.Direction.UpRight:
+                            return "v-attack-ur-1";
+                        case PlayerManager.Direction.UpLeft:
+                            return "v-attack-ul-1";
                         case PlayerManager.Direction.Up:
-                            return "Slash1_U";
+                            return "v-attack-up-1";
                         case PlayerManager.Direction.Down:
-                            return "Slash1_D";
+                            return "v-attack-down-1";
+                        // case PlayerManager.Direction.Right:
+                        //     return "Slash1_R";
+                        // case PlayerManager.Direction.Left:
+                        //     return "Slash1_L";
+
 
                         default:
                             Debug.Log("Player direction null");

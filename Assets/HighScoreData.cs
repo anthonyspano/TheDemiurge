@@ -25,9 +25,9 @@ public class HighScoreData : ScriptableObject
     private void SortScores()
     {
         highScores.Sort((x, y) => y.score.CompareTo(x.score)); // Sort descending by score
-        if (highScores.Count > 10) // Limit to top 10 scores
+        if (highScores.Count > 8) // Limit to top 8 scores
         {
-            highScores.RemoveRange(10, highScores.Count - 10);
+            highScores.RemoveRange(8, highScores.Count - 8);
         }
     }
 
