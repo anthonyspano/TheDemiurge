@@ -209,26 +209,28 @@ namespace com.ultimate2d.combat
 			if(facingDir >= 67 && facingDir < 112) 
 				pFacingDir = Direction.Up;
 			// up right
-			else if(facingDir >= 0 && facingDir < 67)
+			else if(facingDir >= 23 && facingDir < 67)
 				pFacingDir = Direction.UpRight;
 			// up left
-			else if(facingDir >= 112) // && facingDir < 157
+			else if(facingDir >= 112 && facingDir < 157)
 				pFacingDir = Direction.UpLeft;
 			// down left
-			else if(facingDir <= -157 && facingDir > -180)
+			else if(facingDir <= -157 || facingDir < -112)
 				pFacingDir = Direction.DownLeft;		
 			// down right
-			else if(facingDir < 0 && facingDir >= -67)
+			else if(facingDir < -23 && facingDir >= -67)
 				pFacingDir = Direction.DownRight;	
 			// down
 			else if(facingDir >= -112 && facingDir < -67) 
 				pFacingDir = Direction.Down;
-			// // left
-			// else if(facingDir >= 157 || facingDir <-157) 
-			// 	pFacingDir = Direction.Left;
-			// // right
-			// else if(facingDir < 23 || facingDir >= -23) 
-			// 	pFacingDir = Direction.Right; 
+			// left
+			else if(facingDir >= 157 || facingDir <-157) 
+				pFacingDir = Direction.Left;
+			// right
+			else if(facingDir < 23 || facingDir >= -23) 
+				pFacingDir = Direction.Right; 
+
+			Debug.Log(pFacingDir);
 
 			
 			jumpCooldown -= Time.deltaTime;

@@ -58,10 +58,10 @@ namespace com.ultimate2d.combat
                             return "v-attack-up-1";
                         case PlayerManager.Direction.Down:
                             return "v-attack-down-1";
-                        // case PlayerManager.Direction.Right:
-                        //     return "Slash1_R";
-                        // case PlayerManager.Direction.Left:
-                        //     return "Slash1_L";
+                        case PlayerManager.Direction.Right:
+                            return "v-attack-right-1";
+                        case PlayerManager.Direction.Left:
+                            return "v-attack-left-1";
 
 
                         default:

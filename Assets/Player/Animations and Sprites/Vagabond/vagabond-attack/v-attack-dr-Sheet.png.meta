@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0a16bb3795e85034c8af5f349e594999
+guid: fbfec915c158a1b47b3ef43eabba134d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,333 +106,320 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: attack-down-left_0
+      name: v-attack-dr-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 80
-        width: 59
-        height: 46
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6b5bdf99374243409c3253f5c354919
-      internalID: 2004696371
+      spriteID: 62552a66375cbe94b81931c58ffa703f
+      internalID: -1701076814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_1
+      name: v-attack-dr-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cda82b0b8caf7c84790518ca35e0fc5a
-      internalID: 410695924
+      spriteID: 661025ca5231e27468549572111720b9
+      internalID: 329441636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_2
+      name: v-attack-dr-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 80
-        width: 59
-        height: 46
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1a0645895af5b34cbb4b4b16ac4d317
-      internalID: -1340381332
+      spriteID: ef36a21902643b7428097a63bd5e9fe9
+      internalID: 664306631
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_3
+      name: v-attack-dr-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 044653423b771dc469742967fccfecc4
-      internalID: 1969548034
+      spriteID: bed9cfc6a4f2698448919a7cdce9b1b7
+      internalID: 832881644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_4
+      name: v-attack-dr-Sheet_4
       rect:
         serializedVersion: 2
         x: 256
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e60cf0691d3e7f1449147a3528579485
-      internalID: 1338008129
+      spriteID: c302eea2a785c854498a078d582edca4
+      internalID: 1062778343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_5
+      name: v-attack-dr-Sheet_5
       rect:
         serializedVersion: 2
         x: 320
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6873c26aab4753d45946167b1e530891
-      internalID: -1738453540
+      spriteID: e6756de0d514a8147bed5dd23c686210
+      internalID: -491660069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_6
+      name: v-attack-dr-Sheet_6
       rect:
         serializedVersion: 2
         x: 384
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96c75d54de7fe3748aef62bcc3cfdaa9
-      internalID: -1506659700
+      spriteID: a6291d73b5aeca849911d17ab1fdc9de
+      internalID: 622133463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_7
+      name: v-attack-dr-Sheet_7
       rect:
         serializedVersion: 2
         x: 448
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e4f998b7d95b924ea0da48ab3cf81cb
-      internalID: 1764312372
+      spriteID: 95f3a12363eca7c4b84c0bf6b1aec366
+      internalID: -1349615113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_8
+      name: v-attack-dr-Sheet_8
       rect:
         serializedVersion: 2
         x: 512
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 481ad77ce5f0dea45acebb5326b90330
-      internalID: -1067533959
+      spriteID: 8d49f5c4469e5834f82fb9f00e167345
+      internalID: -1340714393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_9
+      name: v-attack-dr-Sheet_9
       rect:
         serializedVersion: 2
         x: 576
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebfc321baa6a7394094d71ebe372e027
-      internalID: 2039199906
+      spriteID: bf6ee3a320806614d989526c23b8588d
+      internalID: -1004106746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_10
+      name: v-attack-dr-Sheet_10
       rect:
         serializedVersion: 2
         x: 640
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffe6a771ff4164b44b43df6f2898a567
-      internalID: -2004507894
+      spriteID: 04d635282306577488c9155d6f16263b
+      internalID: -246310996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_11
+      name: v-attack-dr-Sheet_11
       rect:
         serializedVersion: 2
         x: 704
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8461bf5e2d3f0a84db6ef18cee409fd4
-      internalID: 1427200557
+      spriteID: 3babb7feaf61d30468bbf16e61c00041
+      internalID: -845120811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_12
+      name: v-attack-dr-Sheet_12
       rect:
         serializedVersion: 2
         x: 768
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05d38f5de0ebe9346b02bcc7c29adc59
-      internalID: -878802340
+      spriteID: 0c9cad6cf982a0e4591e05eec94cf3fe
+      internalID: 1756669842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_13
+      name: v-attack-dr-Sheet_13
       rect:
         serializedVersion: 2
         x: 832
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a24eebf51de8f64438107c12fcafbdd3
-      internalID: -1315054965
+      spriteID: afcc827952a4a344dbdfba4f3059d887
+      internalID: 717923229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack-down-left_14
+      name: v-attack-dr-Sheet_14
       rect:
         serializedVersion: 2
         x: 896
-        y: 80
-        width: 59
-        height: 48
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cfc5ad8e8c44651459f4df82d7e15d5a
-      internalID: -889825584
+      spriteID: afde7d2fcf845c24e86eac0fd60a4c4a
+      internalID: -1302291339
       vertices: []
       indices: 
       edges: []
@@ -448,21 +435,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      attack-down-left_0: 2004696371
-      attack-down-left_1: 410695924
-      attack-down-left_10: -2004507894
-      attack-down-left_11: 1427200557
-      attack-down-left_12: -878802340
-      attack-down-left_13: -1315054965
-      attack-down-left_14: -889825584
-      attack-down-left_2: -1340381332
-      attack-down-left_3: 1969548034
-      attack-down-left_4: 1338008129
-      attack-down-left_5: -1738453540
-      attack-down-left_6: -1506659700
-      attack-down-left_7: 1764312372
-      attack-down-left_8: -1067533959
-      attack-down-left_9: 2039199906
+      v-attack-dr-Sheet_0: -1701076814
+      v-attack-dr-Sheet_1: 329441636
+      v-attack-dr-Sheet_10: -246310996
+      v-attack-dr-Sheet_11: -845120811
+      v-attack-dr-Sheet_12: 1756669842
+      v-attack-dr-Sheet_13: 717923229
+      v-attack-dr-Sheet_14: -1302291339
+      v-attack-dr-Sheet_2: 664306631
+      v-attack-dr-Sheet_3: 832881644
+      v-attack-dr-Sheet_4: 1062778343
+      v-attack-dr-Sheet_5: -491660069
+      v-attack-dr-Sheet_6: 622133463
+      v-attack-dr-Sheet_7: -1349615113
+      v-attack-dr-Sheet_8: -1340714393
+      v-attack-dr-Sheet_9: -1004106746
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
