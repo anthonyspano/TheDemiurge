@@ -4869,7 +4869,7 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  Attack: 50
+  Attack: 500
   range: 1
   attackCooldownRate: 0.6
   attackCooldown: 0

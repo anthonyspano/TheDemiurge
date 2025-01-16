@@ -9,13 +9,13 @@ public class DamageOverTime : MonoBehaviour
     private void OnTriggerStay2D(Collider2D col)
     {
         try {
-        col.gameObject.GetComponentInChildren<BossTakeDamage>().healthSystem.Damage(5);
+        col.gameObject.GetComponentInChildren<BossTakeDamage>().healthSystem.Damage(15);
         } catch (System.Exception) {
             //Debug.Log("Not a boss");
         }
         
         try {
-           col.gameObject.GetComponentInChildren<EnemyTakeDamage>().healthSystem.Damage(5);
+           col.gameObject.GetComponentInChildren<EnemyTakeDamage>().healthSystem.Damage(15);
         } catch (System.Exception) {
             //Debug.Log("boss");
         } 
