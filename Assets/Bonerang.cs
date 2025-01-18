@@ -63,11 +63,20 @@ public class Bonerang : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         // begin the dissolve effect
-        Debug.Log("works!");
+        //Debug.Log("works!");
         _dissolveEffect.StartDissolve();
 
         
 
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+
+        if(col.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            _dissolveEffect.StartDissolve();
+        }
     }
 
 

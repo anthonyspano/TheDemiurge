@@ -9,11 +9,13 @@ public class ScoreScreenManager : MonoBehaviour
     public InputField inputField;
     public GameObject inputFieldGO;
     public HighScoreManager highScoreManager;
+    
 
     public void Start()
     {
         Debug.Log(Application.persistentDataPath);
         highScoreManager.highScoreData.LoadScores();
+
     }
 
     public void HideInputField()

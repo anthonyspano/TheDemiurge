@@ -129,6 +129,7 @@ namespace com.ultimate2d.combat
 
 		// for game manager
 		public int killCount = 0;
+		public int previousPlayerBid;
 
 		private void Start()
 		{
@@ -184,6 +185,8 @@ namespace com.ultimate2d.combat
 				_instance = this;
 			}
 
+			
+
 			// remove post effects
 			ppv.SetActive(false);
 
@@ -229,8 +232,6 @@ namespace com.ultimate2d.combat
 			// right
 			else if(facingDir < 23 || facingDir >= -23) 
 				pFacingDir = Direction.Right; 
-
-			Debug.Log(pFacingDir);
 
 			
 			jumpCooldown -= Time.deltaTime;
@@ -304,7 +305,7 @@ namespace com.ultimate2d.combat
 		{
 			// triggered after death animation
 			anim.enabled = false;
-			canMove = false;
+			PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Neutral;
 			isBusy = true;
 
 			var reticle = transform.Find("Reticle");

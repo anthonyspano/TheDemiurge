@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8302004420565478294}
   - component: {fileID: 6934088648974787622}
   - component: {fileID: 4122840155044258387}
+  - component: {fileID: -1729604047945741581}
   m_Layer: 9
   m_Name: Bonerang
   m_TagString: Projectile
@@ -210,3 +211,48 @@ MonoBehaviour:
   dissolveMaterial: {fileID: 2100000, guid: 845d597ed600a624c97395e8eb184604, type: 2}
   dissolveMaterialInstance: {fileID: 0}
   dissolveDuration: 0.3
+--- !u!61 &-1729604047945741581
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3359634747969674104}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0056928396, y: 0.07210922}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.72727275, y: 0.72727275}
+    newSize: {x: 0.01, y: 0.01}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.63998294, y: 0.30980682}
+  m_EdgeRadius: 0

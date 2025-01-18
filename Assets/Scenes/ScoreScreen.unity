@@ -1015,6 +1015,7 @@ MonoBehaviour:
   inputField: {fileID: 1699358019}
   inputFieldGO: {fileID: 1699358017}
   highScoreManager: {fileID: 1511392592}
+  previousPlayerBid: 0
 --- !u!1 &1562333529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,7 +1133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 80.9}
+  m_AnchoredPosition: {x: 0.6, y: 80.9}
   m_SizeDelta: {x: 160, y: 38.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1588860077

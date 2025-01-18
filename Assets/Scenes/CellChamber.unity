@@ -3033,7 +3033,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.3367033, y: -2.052494}
+  m_Offset: {x: 1.7230663, y: -0.42977142}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3044,7 +3044,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 26.043673, y: 5.104988}
+  m_Size: {x: 35.16183, y: 8.350433}
   m_EdgeRadius: 0
 --- !u!1 &262457570
 GameObject:
@@ -4863,7 +4863,7 @@ MonoBehaviour:
   ultCost: 20
   ultBar: {fileID: 464829523}
   invulnAfterHit: 1
-  ultAddedOnHit: 10
+  ultAddedOnHit: 5
   ultReady: 0
   anim: {fileID: 0}
   enemyLayerMask:
@@ -4901,6 +4901,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   continueChain: 0
   killCount: 0
+  previousPlayerBid: 0
 --- !u!114 &464829522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25332,7 +25333,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.82642174, y: -0.36183357}
+  m_Offset: {x: -0.7308836, y: -0.36183357}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -25343,7 +25344,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 25.88676, y: 8.486309}
+  m_Size: {x: 36.013817, y: 8.486309}
   m_EdgeRadius: 0
 --- !u!1 &564109367
 GameObject:
@@ -25983,6 +25984,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &592817409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 592817411}
+  - component: {fileID: 592817410}
+  m_Layer: 0
+  m_Name: LootLockerHTTPClient
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &592817410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592817409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b4735df3c936946a538c8a2acc6e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HostingGameObject: {fileID: 592817409}
+--- !u!4 &592817411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592817409}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &651711701
 GameObject:
   m_ObjectHideFlags: 0
@@ -26406,6 +26452,7 @@ GameObject:
   - component: {fileID: 709968311}
   - component: {fileID: 709968313}
   - component: {fileID: 709968314}
+  - component: {fileID: 709968315}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -26466,7 +26513,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 25a25532e92965e4f8de7ff60b8ac90b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -26565,6 +26612,63 @@ MonoBehaviour:
   highScoreData: {fileID: 11400000, guid: 5cf3168ece9f9314db5c61d4d16b3e50, type: 2}
   scoreListParent: {fileID: 582698253}
   scoreEntryPrefab: {fileID: 9008178192882905250, guid: 33d4298e34f19c1459cf6a0076c93b3c, type: 3}
+--- !u!114 &709968315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709968310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e7f639a0c3a414ab402adb3daada0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &720650922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 720650924}
+  - component: {fileID: 720650923}
+  m_Layer: 0
+  m_Name: ScoreRecorder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &720650923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720650922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaff90c6b7bbe144bbbf6b4b9b6cc3bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousPlayerBid: 0
+--- !u!4 &720650924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720650922}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 210.6, y: 312.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &743051573
 GameObject:
   m_ObjectHideFlags: 0
@@ -27190,6 +27294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScoreManager: {fileID: 0}
+  inputField: {fileID: 384516434}
 --- !u!1 &831849947
 GameObject:
   m_ObjectHideFlags: 0
@@ -30256,7 +30361,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.2290888, y: -7.262089}
+  m_Offset: {x: -1.7777166, y: -7.616741}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -30267,7 +30372,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.4581776, y: 15.524178}
+  m_Size: {x: 6.360922, y: 27.4533}
   m_EdgeRadius: 0
 --- !u!1 &1466940301
 GameObject:
@@ -31962,7 +32067,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -13.8190155, y: 2.6717777}
+  m_Offset: {x: -14.440014, y: 3.1494694}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -31973,7 +32078,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.641899, y: 15.622051}
+  m_Size: {x: 7.883896, y: 24.984798}
   m_EdgeRadius: 0
 --- !u!1 &1633957667
 GameObject:

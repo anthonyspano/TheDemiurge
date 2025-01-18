@@ -115,6 +115,9 @@ namespace com.ultimate2d.combat
             if(timerEnabled)
                 timerText.text = Time.timeSinceLevelLoad.ToString(); 
 
+
+            
+
                  
         }
 
@@ -134,13 +137,27 @@ namespace com.ultimate2d.combat
         {
             // bring up leaderboard book object (book object brings up scores and input field, input field starts the level)
             highScoreBook.SetActive(true);
+            if(ScoreRecorder.Instance.previousPlayerBid != 0)
+                highScoreBook.transform.GetChild(2).GetComponent<InputField>().text = ScoreRecorder.Instance.previousPlayerBid.ToString();
+
+//            StartCoroutine(SetInputField());
             
         }
+
+        IEnumerator SetInputField()
+        {
+            yield return new WaitForSeconds(0.2f);
+            if(ScoreRecorder.Instance.previousPlayerBid != 0)
+                highScoreBook.transform.GetChild(2).GetComponent<InputField>().text = ScoreRecorder.Instance.previousPlayerBid.ToString();
+        }
+
 
         public void StartBeginLevelCoroutine()
         {
             // save string entry to be put into high score data
             currentPlayerScore = inputField.text;
+
+            ScoreRecorder.Instance.previousPlayerBid = int.Parse(currentPlayerScore);
 
             // disable book
             highScoreBook.SetActive(false);
@@ -200,7 +217,6 @@ namespace com.ultimate2d.combat
                 if(index >= spawnPositions.Count)
                     index %= spawnPositions.Count;
 
-                Debug.Log(i);
                 try
                 {
                     // randomly pick between skelly and charger

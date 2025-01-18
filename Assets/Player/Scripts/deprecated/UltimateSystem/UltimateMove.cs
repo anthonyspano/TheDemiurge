@@ -34,7 +34,7 @@ namespace com.ultimate2d.combat
             // Debug Only
             if (Input.GetKeyDown(KeyCode.F))
             {
-                ultBar.AddUlt(100);
+                //ultBar.AddUlt(100);
             }
 
             if (ultReady && PlayerInput.Ultimate())
