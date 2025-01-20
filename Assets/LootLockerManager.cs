@@ -3,33 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 using LootLocker.Requests;
 
-public class GameManager : MonoBehaviour
+public class LootLockerManager : MonoBehaviour
 {
     void Start()
     {
+        //StartCoroutine(StartGuestSession());
+    }
+
+    IEnumerator StartGuestSession()
+    {
+        bool done = false;
+        // Initialize the LootLocker SDK with your game settings
         LootLockerSDKManager.StartGuestSession((response) =>
         {
             if (!response.success)
             {
                 Debug.Log("error starting LootLocker session");
 
-                return;
+                Debug.LogError($"Error starting LootLocker session: {response.statusCode}");
+
+            }
+            else
+            {
+                Debug.Log("successfully started LootLocker session");
+                done = true;
             }
 
-            Debug.Log("successfully started LootLocker session");
+            
+            
         });
 
-        LootLockerSDKManager.SetPlayerName("Some other name", (response) =>
+        yield return new WaitUntil(() => done); 
+        
+        StartCoroutine(GetPlayerName());
+
+    }
+
+    IEnumerator SetPlayerName()
+    {
+        bool done = false;
+        LootLockerSDKManager.SetPlayerName("test name", (response) =>
         {
             if (response.success)
             {
                 Debug.Log("Successfully set player name");
             } else
             {
-                Debug.Log("Error setting player name");
+                Debug.LogError($"Error starting LootLocker session: {response.errorData.ToString()}");
             }
+            done = true;
         });
 
+        yield return new WaitUntil(() => done);
+
+        GetPlayerName();
+
+    }
+
+    IEnumerator GetPlayerName()
+    {
+        bool done = false;
         LootLockerSDKManager.GetPlayerName((response) =>
         {
             if (response.success)
@@ -39,13 +72,22 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Error getting player name");
             }
+            done = true;
         });
 
+        yield return new WaitUntil(() => done);
 
+        StartCoroutine(SubmitScore());
+
+    }
+
+    IEnumerator SubmitScore()
+    {
+        bool done = false;
         // leaderboards
 
-        string leaderboardKey = "my_leaderboard";
-        int score = 1000;
+        string leaderboardKey = "savior";
+        int score = 10;
 
         LootLockerSDKManager.SubmitScore("", score, leaderboardKey, (response) =>
         {
@@ -54,13 +96,27 @@ public class GameManager : MonoBehaviour
                 Debug.Log(response.errorData.ToString());
                 return;
             } 
-            Debug.Log("Successfully submitted score!");
+            else {
+                done = true;
+                Debug.Log("Successfully submitted score!");
+            }
+            
         
         });
 
-        int count = 50;
+        yield return new WaitUntil(() => done);
 
-        LootLockerSDKManager.GetScoreList(leaderboardKey, count, 0, (response) =>
+        StartCoroutine(GetScoreList());
+    }
+
+    IEnumerator GetScoreList()
+    {
+        bool done = false;
+        int count = 10;
+        string leaderboardKey = "savior";
+
+        Debug.Log("Getting score list...");
+        LootLockerSDKManager.GetScoreList(leaderboardKey, count, (response) =>
         {
             if (!response.success) {
                 Debug.Log("Could not get score list!");
@@ -68,13 +124,23 @@ public class GameManager : MonoBehaviour
                 return;
             } 
             Debug.Log("Successfully got score list!");
+            foreach(var entries in response.items)
+            {
+                Debug.Log($"Player {entries.player.name} had a score of {entries.score} ranking them {entries.rank} on the Leaderboard");
+            }
+
         });
 
+        yield return new WaitUntil(() => done);
 
-
-
-
+        
     }
+
+
+
+
+
+    
 
 
 

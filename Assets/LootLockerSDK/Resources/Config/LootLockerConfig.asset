@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: LootLockerConfig
   m_EditorClassIdentifier: 
   apiKey: dev_93fad6fe99944afa9cafd7e31c6d2bd4
-  token: 
-  adminToken: 4778479f578ca44932d709a6d2d9f8c3751f6bb1
+  token: ae47694ef399acd6891866e872cc556aa1e2188d
+  adminToken: 85d3ae17b63ff466015acbb5cb75564b5716a61e
   refreshToken: 
   domainKey: eft4kiia
   gameID: 0
-  game_version: 0.0.1
+  game_version: 1.0
   sdk_version: 3.7.0
-  deviceID: defaultPlayerId
-  playerULID: 
+  deviceID: 05f569b2-c3d3-4df1-ab00-c6062cc525b4
+  playerULID: 01JJ04EN21TK1SSSXM1SDNH3CC
   url: https://api.lootlocker.com/v1
   adminUrl: https://eft4kiia.api.lootlocker.com/admin
   playerUrl: https://eft4kiia.api.lootlocker.com/player
@@ -29,4 +29,4 @@ MonoBehaviour:
   baseUrl: https://eft4kiia.api.lootlocker.com
   clientSideRequestTimeOut: 180
   currentDebugLevel: 3
-  allowTokenRefresh: 1
+  allowTokenRefresh: 0

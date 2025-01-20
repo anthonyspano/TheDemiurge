@@ -17,6 +17,9 @@ public class EnemyTakeDamage : MonoBehaviour
     private Animator anim;
     private EnemyManager em;
     private AudioSource enemyAudioManager;
+
+    public GameObject explosionPrefab;
+
     private void Awake() 
     {
         anim = transform.parent.GetComponent<Animator>();
@@ -28,6 +31,9 @@ public class EnemyTakeDamage : MonoBehaviour
         // health - death event
         healthSystem.OnHealthChanged += OnDamage;
         em = transform.parent.GetComponent<EnemyManager>();
+
+        /* explosionPrefab = Resources.Load<GameObject>("Resources/ExplosionEffect");
+        Debug.Log(explosionPrefab); */
     }
 
 	private void OnDamage(object sender, System.EventArgs e) 
@@ -36,8 +42,7 @@ public class EnemyTakeDamage : MonoBehaviour
     	if(healthSystem.GetHealth() <= 0)
 		{
 			// Death sequence
-            // tbi: play explosion sound
-			anim.SetBool("isDead", true);
+            Death();
             
 		}
         else 
@@ -51,6 +56,14 @@ public class EnemyTakeDamage : MonoBehaviour
         }
 
 	}
+
+    void Death()
+    {
+        // spawn object that plays explosion animation
+        var explosion = Instantiate(explosionPrefab, transform.parent.position, Quaternion.identity);
+        Destroy(transform.parent.gameObject);
+        
+    }
 
 
     public IEnumerator FlashRed()
