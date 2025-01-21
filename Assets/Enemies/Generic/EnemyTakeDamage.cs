@@ -60,6 +60,7 @@ public class EnemyTakeDamage : MonoBehaviour
     void Death()
     {
         // spawn object that plays explosion animation
+        PlayerManager.Instance.killCount++;
         var explosion = Instantiate(explosionPrefab, transform.parent.position, Quaternion.identity);
         Destroy(transform.parent.gameObject);
         

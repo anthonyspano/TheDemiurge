@@ -104,7 +104,7 @@ namespace com.ultimate2d.combat
 		public float verticalRunMod;
 
 		[HideInInspector]
-		public Transform hitbox;
+		public BoxCollider2D hitbox;
 		private BoxCollider2D boxCollider;
 
 		private Vector3 lastMove;
@@ -165,7 +165,7 @@ namespace com.ultimate2d.combat
 
 			// collision
 			boxCollider = GetComponent<BoxCollider2D>();
-			hitbox = transform.GetChild(3);
+			hitbox = transform.GetChild(3).GetComponent<BoxCollider2D>();
 		
 
 			// animation
@@ -235,6 +235,10 @@ namespace com.ultimate2d.combat
 
 			
 			jumpCooldown -= Time.deltaTime;
+
+			if(Input.GetKeyDown(KeyCode.H))
+				Instance.pHealth.Damage(-100);
+				
 		}
 
 		private void OnCollisionEnter2D(Collision2D col)

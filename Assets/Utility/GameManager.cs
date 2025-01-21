@@ -38,6 +38,8 @@ namespace com.ultimate2d.combat
         public Text timerText;
         private bool timerEnabled;
         public Text waveInfo;
+        public Text scoreText;
+        
 
         // score
         public string currentPlayerScore;
@@ -114,6 +116,8 @@ namespace com.ultimate2d.combat
 
             if(timerEnabled)
                 timerText.text = Time.timeSinceLevelLoad.ToString(); 
+
+            scoreText.text = (PlayerManager.Instance.killCount * 10).ToString();
 
 
             

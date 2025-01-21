@@ -27,14 +27,16 @@ namespace com.ultimate2d.combat
         public override IEnumerator Start()
         {
             PlayerManager.Instance.moveSpeed = PlayerManager.Instance.dashSpeed;
-            bc.enabled = false;
+            PlayerManager.Instance.hitbox.enabled = false;
             sr.color = new Color(255f, 255f, 255f, 0.25f);
 
             yield return new WaitForSeconds(PlayerManager.Instance.dashLength);
 
             PlayerManager.Instance.moveSpeed = PlayerManager.Instance.runSpeed;
-            bc.enabled = true;
             sr.color = new Color(255f, 255f, 255f, 1f);
+
+            //yield return new WaitForSeconds(1f);
+            PlayerManager.Instance.hitbox.enabled = true;
 
             // end jump endeavors
             PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
