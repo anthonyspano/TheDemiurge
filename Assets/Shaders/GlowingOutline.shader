@@ -3,7 +3,7 @@ Shader "Custom/SpriteOutline"
     Properties
     {
         _OutlineColor ("Outline Color", Color) = (1,0,0,1)
-        _OutlineThickness ("Outline Thickness", Range(0.001, 0.02)) = 0.005
+        _OutlineThickness ("Outline Thickness", Range(1, 10)) = 1
         _MainTex ("Sprite Texture", 2D) = "white" {}
     }
 
@@ -50,14 +50,14 @@ Shader "Custom/SpriteOutline"
             {
                 // Scale outline thickness based on texture resolution
                 float2 pixelSize = float2(_MainTex_TexelSize.x, _MainTex_TexelSize.y); 
-                float outlineThickness = pixelSize;
+                float2 outlineThickness = _OutlineThickness * pixelSize;
 
                 float2 uv = i.uv;
                 float alpha = tex2D(_MainTex, uv).a;
 
                 // Sample surrounding pixels to detect edges
-                float2 offsetX = float2(outlineThickness, 0);
-                float2 offsetY = float2(0, outlineThickness);
+                float2 offsetX = float2(outlineThickness.x, 0);
+                float2 offsetY = float2(0, outlineThickness.y);
 
                 float alphaL = tex2D(_MainTex, uv - offsetX).a;
                 float alphaR = tex2D(_MainTex, uv + offsetX).a;

@@ -27,6 +27,8 @@ public class PowerManager : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip soundEffect;
 
+    public Material outlineShader;
+
 
     private void Start()
     {
@@ -45,10 +47,14 @@ public class PowerManager : MonoBehaviour
         if(ultimateCharge.GetUlt() >= ultCost)
         {
             powerIcon.color = new Color(1,1,1, 1f);
+            // set aura around player
+            outlineShader.SetFloat("_OutlineThickness", 1);
+
         }
         else
         {
             powerIcon.color = new Color(0,0,0, .80f);
+            outlineShader.SetFloat("_OutlineThickness", 0);
 
             // do damage to area
             // var hits = Physics2D.OverlapCircleAll(transform.position, range, PlayerManager.Instance.enemyLayerMask);

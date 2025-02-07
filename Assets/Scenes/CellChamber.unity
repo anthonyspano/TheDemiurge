@@ -2765,6 +2765,7 @@ MonoBehaviour:
   ElevationOffset: 0
   RotationSpeed: 25
   soundEffect: {fileID: 8300000, guid: f882450c115235a42a47777f162437fa, type: 3}
+  outlineShader: {fileID: 2100000, guid: 368e26d32e3230b4fa9b9a736c808c78, type: 2}
 --- !u!212 &223515773
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26942,6 +26943,7 @@ MonoBehaviour:
   ElevationOffset: 0
   RotationSpeed: 1
   soundEffect: {fileID: 0}
+  outlineShader: {fileID: 0}
 --- !u!1 &753794795
 GameObject:
   m_ObjectHideFlags: 0
