@@ -23,6 +23,7 @@ public class PlayerInput : MonoBehaviour
     private static KeyCode k_dash = KeyCode.J;
 
     private static KeyCode c_promptControls = KeyCode.JoystickButton7;
+    private static KeyCode k_promptControls = KeyCode.LeftShift;
 
     public static bool JumpAttackDown() 
     {
@@ -78,7 +79,7 @@ public class PlayerInput : MonoBehaviour
 
     public static bool PromptControls()
     {
-        if(Input.GetKeyDown(c_promptControls))
+        if(Input.GetKeyDown(c_promptControls) || Input.GetKeyDown(k_promptControls))
             return true;
         return false;
     }
