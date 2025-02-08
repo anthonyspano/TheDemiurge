@@ -35,7 +35,7 @@ namespace com.ultimate2d.combat
 		// ultimate
 		[Header("Ultimate")]
 		public int maxUlt = 100;
-		public int ultCost = 20;
+		public int ultCost = 100;
 		public UltimateBar ultBar;
 		public float invulnAfterHit;
 		public int ultAddedOnHit;

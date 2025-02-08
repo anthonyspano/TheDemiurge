@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 namespace com.ultimate2d.combat
 {
@@ -26,8 +27,10 @@ public class PowerManager : MonoBehaviour
     // sound
     private AudioSource audioSource;
     public AudioClip soundEffect;
+    public AudioClip powerReadySound;
 
     public Material outlineShader;
+
 
 
     private void Start()
@@ -38,37 +41,24 @@ public class PowerManager : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         
+        ultimateCharge.OnUltReady += UltReady;
+        ultimateCharge.OnUltUsed += UltUsed;
     }
 
-    // make position of beam be position of RotateAroundPlayer
-    private void Update()
+    private void UltReady(object sender, EventArgs e)
     {
-        // move this to AddUlt
-        if(ultimateCharge.GetUlt() >= ultCost)
-        {
-            powerIcon.color = new Color(1,1,1, 1f);
-            // set aura around player
-            outlineShader.SetFloat("_OutlineThickness", 1);
+        powerIcon.color = new Color(1,1,1, 1f);
+        // set aura around player
+        outlineShader.SetFloat("_OutlineThickness", 1);
+        audioSource.PlayOneShot(powerReadySound, 1f);
 
-        }
-        else
-        {
-            powerIcon.color = new Color(0,0,0, .80f);
-            outlineShader.SetFloat("_OutlineThickness", 0);
+    }
 
-            // do damage to area
-            // var hits = Physics2D.OverlapCircleAll(transform.position, range, PlayerManager.Instance.enemyLayerMask);
-            // foreach(var col in hits)
-            // {
-            //     if(col.CompareTag("Projectile"))
-            //     {
-            //         Destroy(col.gameObject);
-            //     }
-            //     if(col.CompareTag("BigCultist"))
-            //         col.gameObject.GetComponent<BossTakeDamage>().healthSystem.Damage(SpecialDamage);
-            // }       
-        }
-
+    private void UltUsed(object sender, EventArgs e)
+    {
+        // use this to turn off bool
+        powerIcon.color = new Color(0,0,0, .80f);
+        outlineShader.SetFloat("_OutlineThickness", 0);
     }
 
     public void FireUltimate()

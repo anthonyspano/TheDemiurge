@@ -7,9 +7,13 @@ public class BlowUp : MonoBehaviour
 {
     Animator anim;
     public AudioClip explosionSound;
+    private AudioSource soundChannel;
+
     void Start()
     {
         anim = GetComponent<Animator>();
+
+        soundChannel = GameObject.Find("SoundChannel1").GetComponent<AudioSource>();
 
         // play explosion animation
         anim.Play("Explosive Death", 0);
@@ -18,8 +22,8 @@ public class BlowUp : MonoBehaviour
     public void PlayExplosionSound()
     {
         // play explosion sound
-        AudioSource audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(explosionSound);
+        if(!soundChannel.isPlaying)
+            soundChannel.PlayOneShot(explosionSound);
     }
 
     public void DestroySelf()

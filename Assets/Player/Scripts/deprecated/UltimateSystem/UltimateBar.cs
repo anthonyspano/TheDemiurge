@@ -14,7 +14,9 @@ namespace com.ultimate2d.combat
 		public Slider slider;
 		
 		public event EventHandler OnUltReady;
+		public event EventHandler OnUltUsed;
 		
+		private bool isTriggered;
 		
 
 		public void SetMaxUlt(float max)
@@ -27,13 +29,22 @@ namespace com.ultimate2d.combat
 		public void AddUlt(int charge)
 		{
 			slider.value += charge;
-			// if ((int) slider.value >= (int) slider.maxValue)
-			// {
-			// 	if (OnUltFull != null) OnUltFull(this, EventArgs.Empty);
-			// }
-			if((int) slider.value > PlayerManager.Instance.ultCost)
+			if ((int) slider.value >= (int) slider.maxValue)
 			{
+				slider.value = slider.maxValue;
+				//if (OnUltFull != null) OnUltFull(this, EventArgs.Empty);
+			}
+
+			if((int) slider.value > PlayerManager.Instance.ultCost && !isTriggered)
+			{
+				isTriggered = true;
 				if (OnUltReady != null) OnUltReady(this, EventArgs.Empty);
+			}
+
+			if((int) slider.value < PlayerManager.Instance.ultCost && isTriggered)
+			{
+				isTriggered = false;
+				if (OnUltUsed != null) OnUltUsed(this, EventArgs.Empty);
 			}
 
 		}
