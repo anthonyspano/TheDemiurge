@@ -34,9 +34,11 @@ public class HealthSystem
     {
         // if invuln is false, take damage
         if (invulnerability == false)
+        {
             health -= damageAmount;
-        if (health < 0) health = 0;
-        if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
+            if (health < 0) health = 0;
+            if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
+        }
     }
 
     public void Heal(int healAmount)

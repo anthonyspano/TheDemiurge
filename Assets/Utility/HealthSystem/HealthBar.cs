@@ -43,7 +43,9 @@ public class HealthBar : MonoBehaviour
                 once = false;
             }
             else
+            {
                 invulnTimer -= Time.deltaTime;
+            }
         }
 
         if (invulnTimer <= 0)

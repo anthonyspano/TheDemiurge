@@ -4898,13 +4898,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawMagnitude: 2
-  maxHealth: 3
+  maxHealth: 300000
   pfHealthBar: {fileID: 1726575013604697225, guid: e735742ab812228469c1101b5a48a022, type: 3}
   positionOffset: 1.8
   maxUlt: 100
   ultCost: 20
   ultBar: {fileID: 464829523}
-  invulnAfterHit: 1
+  invulnAfterHit: 11
   ultAddedOnHit: 5
   ultReady: 0
   anim: {fileID: 0}
@@ -5008,8 +5008,8 @@ BoxCollider2D:
   m_Offset: {x: 0.028600216, y: -0.13818741}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4181705, y: 0.2500885}
-    oldSize: {x: 2.909091, y: 2.909091}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.65625, y: 0.65625}
     newSize: {x: 0.46875, y: 0.6875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5393,8 +5393,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4181705, y: 0.2500885}
-    oldSize: {x: 2.909091, y: 2.909091}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.65625, y: 0.65625}
     newSize: {x: 0.46875, y: 0.6875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
