@@ -80,25 +80,27 @@ namespace com.ultimate2d.combat
                 jumpTime = Time.time - startTime;
             }
 
-            if(playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.InAir || playerStatus == PlayerStatus.Dash)
+            if(PlayerManager.Instance.CanMove) 
             {
-                Vector2 currentInputVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-                if(currentInputVector.magnitude > DeadZone)
+                if(playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.InAir || playerStatus == PlayerStatus.Dash)
                 {
-                    // movement dampering
-                    //currentInputVector = Vector2.SmoothDamp(currentInputVector, inputVector, ref smoothInputVelocity, acceleration);
-                    
-                    PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, 
-                                                                                    (Vector2)PlayerManager.Instance.transform.position + currentInputVector, 
-                                                                                    PlayerManager.Instance.moveSpeed * Time.deltaTime);
-                    PlayerManager.Instance.anim.SetBool("isMoving", true);
+                    Vector2 currentInputVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                    if(currentInputVector.magnitude > DeadZone)
+                    {
+                        // movement dampering
+                        //currentInputVector = Vector2.SmoothDamp(currentInputVector, inputVector, ref smoothInputVelocity, acceleration);
+                        
+                        PlayerManager.Instance.transform.position = Vector2.MoveTowards(PlayerManager.Instance.transform.position, 
+                                                                                        (Vector2)PlayerManager.Instance.transform.position + currentInputVector, 
+                                                                                        PlayerManager.Instance.moveSpeed * Time.deltaTime);
+                        PlayerManager.Instance.anim.SetBool("isMoving", true);
+
+                    }
+                    else
+                        PlayerManager.Instance.anim.SetBool("isMoving", false);
 
                 }
-                else
-                    PlayerManager.Instance.anim.SetBool("isMoving", false);
-
-            }
-                
+            }    
             if(PlayerInput.LightAttack())
             {
                 _playerInputBuffer.Add(new InputBufferMemory(Time.frameCount, PlayerStatus.LightAttack));

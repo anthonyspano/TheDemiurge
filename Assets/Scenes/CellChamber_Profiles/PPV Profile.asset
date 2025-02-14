@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 0
+    value: 1
   gradingMode:
     overrideState: 0
     value: 1
@@ -95,16 +95,16 @@ MonoBehaviour:
     value: 0
   mixerBlueOutRedIn:
     overrideState: 0
-    value: 0
+    value: -1
   mixerBlueOutGreenIn:
     overrideState: 0
-    value: 0
+    value: -1.03
   mixerBlueOutBlueIn:
     overrideState: 0
-    value: 100
+    value: -1
   lift:
     overrideState: 1
-    value: {x: 1, y: 0.046566784, z: 0.0658682, w: -1}
+    value: {x: 1, y: 0.19250542, z: 0.45950377, w: -0.61009175}
   gamma:
     overrideState: 0
     value: {x: 1, y: 0.7300265, z: 0.7071552, w: 0}
@@ -1341,7 +1341,7 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 0
+    value: 1
   mode:
     overrideState: 0
     value: 0

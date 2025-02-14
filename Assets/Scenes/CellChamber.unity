@@ -4259,6 +4259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe6dfe6972692e847bd4abe34cc7a682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurt1: {fileID: 8300000, guid: 3374377e45532b04d95d1c767cc42ff1, type: 3}
 --- !u!1 &428249895
 GameObject:
   m_ObjectHideFlags: 0
@@ -4897,7 +4898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawMagnitude: 2
-  maxHealth: 300
+  maxHealth: 3
   pfHealthBar: {fileID: 1726575013604697225, guid: e735742ab812228469c1101b5a48a022, type: 3}
   positionOffset: 1.8
   maxUlt: 100
@@ -5007,8 +5008,8 @@ BoxCollider2D:
   m_Offset: {x: 0.028600216, y: -0.13818741}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.65625, y: 0.65625}
+    pivot: {x: 0.4181705, y: 0.2500885}
+    oldSize: {x: 2.909091, y: 2.909091}
     newSize: {x: 0.46875, y: 0.6875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5392,8 +5393,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.65625, y: 0.65625}
+    pivot: {x: 0.4181705, y: 0.2500885}
+    oldSize: {x: 2.909091, y: 2.909091}
     newSize: {x: 0.46875, y: 0.6875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -26524,6 +26525,7 @@ MonoBehaviour:
   highScoreData: {fileID: 11400000, guid: 5cf3168ece9f9314db5c61d4d16b3e50, type: 2}
   highScoreBook: {fileID: 828326413}
   inputField: {fileID: 384516434}
+  outlineShader: {fileID: 2100000, guid: 368e26d32e3230b4fa9b9a736c808c78, type: 2}
   skelly: {fileID: 345762456135121310, guid: a933b9e9787d2094ab2f32a3e320cab6, type: 3}
   emptyskelly: {fileID: 3836489214419812792, guid: 3bada36827c81564b85e1f0f27fcf058, type: 3}
   meleeEnemy: {fileID: 749737715830336364, guid: b009f1aab095061488ab1b5695ec5f63, type: 3}

@@ -23,7 +23,8 @@ namespace com.ultimate2d.combat
             // wait until Input Buffer contains player input
             //yield return new WaitForSeconds(PlayerManager.Instance.attackCooldownRate);
             
-            yield return new WaitUntil(() => PlayerInputBuffer.Instance.GetCommand() != PlayerController.PlayerStatus.Neutral); 
+            yield return new WaitUntil(() => PlayerInputBuffer.Instance.GetCommand() != PlayerController.PlayerStatus.Neutral
+                                        && PlayerManager.Instance.CanMove == true); 
 
             PlayerController.Instance.playerStatus = PlayerInputBuffer.Instance.GetCommand();
             PlayerInputBuffer.Instance.SetCurrentFrame(PlayerController.PlayerStatus.Neutral);

@@ -279,37 +279,26 @@ namespace com.ultimate2d.combat
 			if(pHealth.GetHealth() <= 0)
 			{
 				// Death sequence
-				anim.SetBool("isDead", true);
+				// disable components
+				CanMove = false;
+				anim.SetTrigger("deathTrigger");
+				audioSource.PlayOneShot(hurt1, 0.82f);
 				Death();
 			}
-
 			else
 			{
-				StartCoroutine(FlashRed());
+				audioSource.PlayOneShot(hurt1, 0.7f);
+                anim.SetTrigger("hurtTrigger");
 			}
 
 
 
 		}
 
-		private IEnumerator FlashRed()
-		{
-			var timer = 0.28f;
-			sr.color = Color.red;
-			yield return new WaitForSeconds(timer);
-			sr.color = Color.white;
-			yield return new WaitForSeconds(timer);
-			sr.color = Color.red;
-			yield return new WaitForSeconds(timer);
-			sr.color = Color.white;
-
-		}
 
 		private void Death()
 		{
-			// triggered after death animation
-			anim.enabled = false;
-			PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Neutral;
+			//PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Neutral;
 			isBusy = true;
 
 			var reticle = transform.Find("Reticle");
@@ -426,6 +415,10 @@ namespace com.ultimate2d.combat
 			Debug.Log(anim.GetCurrentAnimatorStateInfo(0).shortNameHash);
 		}
 
+		public void DeathFinal()
+		{
+			anim.Play("deathFinal");
+		}
 
 	}
 }
