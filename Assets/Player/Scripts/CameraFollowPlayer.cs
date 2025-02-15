@@ -13,7 +13,7 @@ public class CameraFollowPlayer : MonoBehaviour
     void Update()
     {
         Vector3 targetPosition = target.position + offset;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, new Vector3(targetPosition.x, targetPosition.y, offset.z), ref velocity, smoothTime);
         
     }
 }

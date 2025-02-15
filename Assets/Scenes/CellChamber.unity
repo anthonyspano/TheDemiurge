@@ -4898,13 +4898,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawMagnitude: 2
-  maxHealth: 300000
+  maxHealth: 100
   pfHealthBar: {fileID: 1726575013604697225, guid: e735742ab812228469c1101b5a48a022, type: 3}
   positionOffset: 1.8
   maxUlt: 100
   ultCost: 20
   ultBar: {fileID: 464829523}
-  invulnAfterHit: 11
+  invulnAfterHit: 1
   ultAddedOnHit: 5
   ultReady: 0
   anim: {fileID: 0}
@@ -4931,6 +4931,8 @@ MonoBehaviour:
   hurt1: {fileID: 8300000, guid: 3374377e45532b04d95d1c767cc42ff1, type: 3}
   falling1: {fileID: 8300000, guid: 4916e345652367743a4bf4e5994017b8, type: 3}
   ppv: {fileID: 130940280}
+  mainCamera: {fileID: 700603695}
+  hurtCameraShakeMagnitude: 0.2
   wrongWayPanel: {fileID: 1796555654}
   pushBackIntensity: 0.7
   isBusy: 0
@@ -26165,6 +26167,7 @@ GameObject:
   - component: {fileID: 700603697}
   - component: {fileID: 700603699}
   - component: {fileID: 700603700}
+  - component: {fileID: 700603701}
   m_Layer: 1
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -26319,6 +26322,18 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &700603701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700603695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f5b3cc9229bb743ac83a669ba72d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &707374392
 GameObject:
   m_ObjectHideFlags: 0

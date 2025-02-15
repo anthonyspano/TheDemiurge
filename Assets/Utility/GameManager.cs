@@ -230,7 +230,9 @@ namespace com.ultimate2d.combat
                 {
                     // randomly pick between skelly and charger
 
-                    int enemyChoice = rand.Next(1,3);
+                    //int enemyChoice = rand.Next(1,3);
+                    int enemyChoice = 2;
+                    
                     switch(enemyChoice)
                     {
                         case 1:

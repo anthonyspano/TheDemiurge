@@ -23,8 +23,6 @@ namespace com.ultimate2d.combat
 
 		public static GameObject player;
 
-
-
 		// health
 		[Header("Health")]
 		[SerializeField] private int maxHealth;
@@ -85,6 +83,11 @@ namespace com.ultimate2d.combat
 		Vignette m_Vignette;
 		ColorGrading m_ColorGrading;
 		float w;
+
+		// camera
+		[Header("Camera")]
+		public GameObject mainCamera;
+		public float hurtCameraShakeMagnitude;
 
 		// etc
 		[Header("Etc")]
@@ -289,6 +292,8 @@ namespace com.ultimate2d.combat
 			{
 				audioSource.PlayOneShot(hurt1, 0.7f);
                 anim.SetTrigger("hurtTrigger");
+				// camera shake
+				mainCamera.GetComponent<CameraShake>().TriggerShake(hurtCameraShakeMagnitude);
 			}
 
 

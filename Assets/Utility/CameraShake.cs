@@ -26,26 +26,29 @@ public class CameraShake : MonoBehaviour
             transform = GetComponent(typeof(Transform)) as Transform;
         }
         
-        initialPosition = transform.position;
-
+        // initialPosition = main camera's position?
+        //initialPosition = initialPosition = transform.position;
     }
 
     private void OnEnable()
     {
-        initialPosition = transform.localPosition;
+        // set to main camera's position
+        //initialPosition = initialPosition = transform.localPosition;
     }
 
     private void Update()
     {
         if (shakeDuration > 0)
         {
-            transform.localPosition = (Vector3)(initialPosition + Random.insideUnitSphere * shakeMagnitude);
+            var newPosition = (Vector3)(com.ultimate2d.combat.PlayerManager.Instance.transform.localPosition + Random.insideUnitSphere * shakeMagnitude);
+            transform.localPosition = new Vector3(newPosition.x, newPosition.y, -6f);
             shakeDuration -= Time.deltaTime * dampingSpeed;
         }
         else
         {
             shakeDuration = 0f;
-            transform.localPosition = initialPosition;
+            transform.localPosition = new Vector3(com.ultimate2d.combat.PlayerManager.Instance.transform.localPosition.x,
+                                                  com.ultimate2d.combat.PlayerManager.Instance.transform.localPosition.y, -6f);
         }
     }
 
@@ -56,4 +59,5 @@ public class CameraShake : MonoBehaviour
         
         shakeDuration = 0.6f;
     }
+    
 }
