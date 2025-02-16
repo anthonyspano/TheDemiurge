@@ -80,7 +80,7 @@ namespace com.ultimate2d.combat
                 jumpTime = Time.time - startTime;
             }
 
-            if(PlayerManager.Instance.CanMove) 
+            if(!PlayerManager.Instance.isPlayerDead) 
             {
                 if(playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.InAir || playerStatus == PlayerStatus.Dash)
                 {
