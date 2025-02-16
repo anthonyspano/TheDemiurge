@@ -101,6 +101,7 @@ namespace com.ultimate2d.combat
 
         void Update()
         {
+            Debug.Log(PlayerInputBuffer.Instance.GetCommand());
 
             if(Input.GetKeyDown(KeyCode.Escape))
             {
@@ -142,12 +143,18 @@ namespace com.ultimate2d.combat
         public Text bookDialogue;
         private string levelDialogue = "I wonder if they still think about me...";
 
+        public InputField bidInputField;
+
         public void StartBeginLevel()
         {
             // bring up leaderboard book object (book object brings up scores and input field, input field starts the level)
             highScoreBook.SetActive(true);
             if(ScoreRecorder.Instance.previousPlayerBid != 0)
                 highScoreBook.transform.GetChild(2).GetComponent<InputField>().text = ScoreRecorder.Instance.previousPlayerBid.ToString();
+            else
+            {
+                bidInputField.Select();
+            }
 
 //            StartCoroutine(SetInputField());
             
@@ -230,8 +237,8 @@ namespace com.ultimate2d.combat
                 {
                     // randomly pick between skelly and charger
 
-                    //int enemyChoice = rand.Next(1,3);
-                    int enemyChoice = 2;
+                    int enemyChoice = rand.Next(1,3);
+                    //int enemyChoice = 2;
                     
                     switch(enemyChoice)
                     {

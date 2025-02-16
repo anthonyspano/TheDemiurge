@@ -5,10 +5,11 @@ using UnityEngine;
 public class Book : Interactable
 {
     public GameObject book;
+    
     protected override void Trigger()
     {
         book.SetActive(true);
-
+    
         StartCoroutine("CloseBook");
     }
 

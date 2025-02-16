@@ -4898,7 +4898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawMagnitude: 2
-  maxHealth: 100
+  maxHealth: 300000
   pfHealthBar: {fileID: 1726575013604697225, guid: e735742ab812228469c1101b5a48a022, type: 3}
   positionOffset: 1.8
   maxUlt: 100
@@ -26543,8 +26543,9 @@ MonoBehaviour:
   outlineShader: {fileID: 2100000, guid: 368e26d32e3230b4fa9b9a736c808c78, type: 2}
   skelly: {fileID: 345762456135121310, guid: a933b9e9787d2094ab2f32a3e320cab6, type: 3}
   emptyskelly: {fileID: 3836489214419812792, guid: 3bada36827c81564b85e1f0f27fcf058, type: 3}
-  meleeEnemy: {fileID: 749737715830336364, guid: b009f1aab095061488ab1b5695ec5f63, type: 3}
+  meleeEnemy: {fileID: 749737715830336364, guid: 7db9342787218e94db28b9ea417c6de7, type: 3}
   bookDialogue: {fileID: 1488392422}
+  bidInputField: {fileID: 384516434}
   waveTimeLimit: 15
 --- !u!4 &709968312
 Transform:

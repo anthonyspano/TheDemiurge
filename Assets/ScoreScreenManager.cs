@@ -16,6 +16,16 @@ public class ScoreScreenManager : MonoBehaviour
         Debug.Log(Application.persistentDataPath);
         highScoreManager.highScoreData.LoadScores();
 
+        inputField.Select();
+
+    }
+
+    void Update() 
+    {
+        if(PlayerInput.LightAttack())
+        {
+            RestartGame();
+        }
     }
 
     public void HideInputField()

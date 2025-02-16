@@ -96,6 +96,7 @@ namespace com.ultimate2d.combat
 		private int wrongWayCount = 0;
 		public float pushBackIntensity;
 		public bool isBusy;
+		public bool isPlayerDead;
 
 		public bool CanMove
 		{
@@ -283,7 +284,7 @@ namespace com.ultimate2d.combat
 			{
 				// Death sequence
 				// disable components
-				CanMove = false;
+				isPlayerDead = true;
 				anim.SetTrigger("deathTrigger");
 				audioSource.PlayOneShot(hurt1, 0.82f);
 				Death();
