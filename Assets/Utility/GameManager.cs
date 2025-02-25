@@ -101,7 +101,6 @@ namespace com.ultimate2d.combat
 
         void Update()
         {
-            Debug.Log(PlayerInputBuffer.Instance.GetCommand());
 
             if(Input.GetKeyDown(KeyCode.Escape))
             {

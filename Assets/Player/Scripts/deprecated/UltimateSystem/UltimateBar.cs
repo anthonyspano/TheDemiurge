@@ -35,7 +35,7 @@ namespace com.ultimate2d.combat
 				//if (OnUltFull != null) OnUltFull(this, EventArgs.Empty);
 			}
 
-			if((int) slider.value > PlayerManager.Instance.ultCost && !isTriggered)
+			if((int) slider.value >= PlayerManager.Instance.ultCost && !isTriggered)
 			{
 				isTriggered = true;
 				if (OnUltReady != null) OnUltReady(this, EventArgs.Empty);

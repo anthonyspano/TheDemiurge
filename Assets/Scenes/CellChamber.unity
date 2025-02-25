@@ -4936,6 +4936,7 @@ MonoBehaviour:
   wrongWayPanel: {fileID: 1796555654}
   pushBackIntensity: 0.7
   isBusy: 0
+  isPlayerDead: 0
   verticalRunMod: 0.4
   hitbox: {fileID: 0}
   pFacingDir: 0

@@ -23,11 +23,8 @@ namespace com.ultimate2d.combat
         public override IEnumerator Start() 
         {
             // move player a little bit in same direction
-            Transform player = PlayerManager.Instance.transform;
-            var playerManager = PlayerManager.Instance;
-            var playerHitbox = playerManager.hitbox.GetComponent<BoxCollider2D>();
+            var playerHitbox = PlayerManager.Instance.hitbox.GetComponent<BoxCollider2D>();
             playerHitbox.enabled = false;
-            player.Translate(playerManager.LastMove * playerManager.lungeDistance);
 
             string attackAnimation = new AnimatorHashRef().GetFirstAttackState();
             playerAnim.Play(attackAnimation);
@@ -38,6 +35,10 @@ namespace com.ultimate2d.combat
             yield return new WaitUntil(() => !PlayerManager.Instance.anim.GetCurrentAnimatorStateInfo(0).IsName(attackAnimation));
 
             playerHitbox.enabled = true;
+
+            // set status to idle so that player can move
+            PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
+
             yield return null;
             yield return null;
             
