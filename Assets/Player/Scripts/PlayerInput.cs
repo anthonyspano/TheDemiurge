@@ -65,7 +65,7 @@ public class PlayerInput : MonoBehaviour
     }
     public static bool LightAttack()
     {
-        if(Input.GetKeyDown(k_slash) || Input.GetKeyDown(c_slash))
+        if(Input.GetKeyDown(k_slash) || Input.GetKeyDown(c_slash) || Input.GetKeyDown(KeyCode.Mouse0))
             return true;
         return false;
     }

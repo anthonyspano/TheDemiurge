@@ -175,6 +175,13 @@ namespace com.ultimate2d.combat
 			// animation
 			attackAnimLength = clip.length;
 
+
+			// delete me
+			Debug.Log("Player " + transform.position);
+			Debug.Log("viewport " + Camera.main.ViewportToWorldPoint(new Vector3(1, 0, Camera.main.nearClipPlane)));
+			Debug.Log("stwp" + Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, -5f)));
+
+
 		}
 
 		private void Awake()
@@ -248,6 +255,7 @@ namespace com.ultimate2d.combat
 		private void OnCollisionEnter2D(Collision2D col)
 		{
 
+			// check collision here so that mana only refills once per attack rather than per enemy hit
 
 			// if(col.transform.CompareTag("Charger"))
 			// {
