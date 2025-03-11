@@ -8,7 +8,7 @@ Shader "Custom/ChangeAlpha"
     SubShader
     {
         Tags { "Queue"="Transparent" "RenderType"="Transparent" }
-        Blend SrcAlpha OneMinusSrcAlpha
+        Blend SrcAlpha OneMinusSrcAlpha, One OneMinusSrcAlpha
         Cull Off Lighting Off ZWrite Off
 
         Pass
@@ -43,8 +43,13 @@ Shader "Custom/ChangeAlpha"
 
             fixed4 frag (v2f i) : SV_Target
             {
+                // tex2D returns the color4 of the pixel
                 fixed4 col = tex2D(_MainTex, i.texcoord);
-                col.a = _Alpha; // Set alpha to variable
+                col.a *= _Alpha; // Set alpha to variable
+
+                // discard transparent pixels
+                if(col.a < 0.1) discard;
+
                 return col;
             }
             ENDCG
