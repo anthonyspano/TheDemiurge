@@ -11,6 +11,7 @@ namespace com.ultimate2d.combat
         private Rigidbody2D rb;
         private BoxCollider2D bc;
         private SpriteRenderer sr;
+        private Renderer _renderer;
 
         private PlayerStateMachine psm;
         private bool once;
@@ -22,10 +23,19 @@ namespace com.ultimate2d.combat
             rb = psm.GetComponent<Rigidbody2D>();
             bc = psm.GetComponent<BoxCollider2D>();
             sr = psm.GetComponent<SpriteRenderer>();
+            _renderer = psm.GetComponent<Renderer>();
         }
 
         public override IEnumerator Start()
         {
+            // change material of player to ChangeAlpha
+            _renderer.material = Resources.Load<Material>("ChangeAlpha");
+            Debug.Log("AlphaMaterial");
+
+            // set alpha to 0.25f
+            _renderer.material.SetFloat("_Alpha", 0.25f);
+
+
             PlayerManager.Instance.moveSpeed = PlayerManager.Instance.dashSpeed;
             PlayerManager.Instance.hitbox.enabled = false;
             sr.color = new Color(255f, 255f, 255f, 0.25f);
@@ -34,6 +44,12 @@ namespace com.ultimate2d.combat
 
             PlayerManager.Instance.moveSpeed = PlayerManager.Instance.runSpeed;
             sr.color = new Color(255f, 255f, 255f, 1f);
+
+            // set alpha to normal
+            _renderer.material.SetFloat("_Alpha", 1f);
+
+            // change mat back to SpriteOutline 
+            _renderer.material = Resources.Load<Material>("GlowingOutline");
 
             //yield return new WaitForSeconds(1f);
             PlayerManager.Instance.hitbox.enabled = true;

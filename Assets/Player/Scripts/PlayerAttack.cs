@@ -22,7 +22,6 @@ namespace com.ultimate2d.combat
         }
         public override IEnumerator Start() 
         {
-            // move player a little bit in same direction
             var playerHitbox = PlayerManager.Instance.hitbox.GetComponent<BoxCollider2D>();
             playerHitbox.enabled = false;
 

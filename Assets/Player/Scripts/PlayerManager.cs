@@ -176,12 +176,6 @@ namespace com.ultimate2d.combat
 			attackAnimLength = clip.length;
 
 
-			// delete me
-			Debug.Log("Player " + transform.position);
-			Debug.Log("viewport " + Camera.main.ViewportToWorldPoint(new Vector3(1, 0, Camera.main.nearClipPlane)));
-			Debug.Log("stwp" + Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, -5f)));
-
-
 		}
 
 		private void Awake()
@@ -349,16 +343,10 @@ namespace com.ultimate2d.combat
 			return animFinished;
 		}
 
-		public void FinishAttackAnimation()
+		public void SetPlayerToIdle()
 		{
 			PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;
 			anim.Play("Player Idle");
-		}
-
-
-		public void FinishJumpAnimation()
-		{
-			anim.SetBool("isJumping", false);
 		}
 
 		private bool jumping;
