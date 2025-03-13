@@ -50,6 +50,7 @@ namespace com.ultimate2d.combat
 
             // change mat back to SpriteOutline 
             _renderer.material = Resources.Load<Material>("GlowingOutline");
+            _renderer.material.SetFloat("_OutlineThickness", 1f);
 
             //yield return new WaitForSeconds(1f);
             PlayerManager.Instance.hitbox.enabled = true;
