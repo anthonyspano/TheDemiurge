@@ -61,7 +61,7 @@ public class PowerManager : MonoBehaviour
         outlineShader.SetFloat("_OutlineThickness", 0);
     }
 
-    public void FireUltimate()
+    public void FireUltimate() // performs all immediate actions on screen
     {
         //Debug.Log("firing!");
         ultimateCharge.AddUlt(-ultCost);
@@ -77,62 +77,6 @@ public class PowerManager : MonoBehaviour
 
         if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-
-/*             // get the angle of stick input
-            var stickAngle = Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
-
-            Debug.Log(stickAngle);
-            var vector1 = transform.position - PlayerManager.Instance.transform.position;
-            vector1.Normalize();
-
-            // BEGIN NEW CODE
-            // rotate beam around player based on stick angle
-            //  lerp the stick angle to smooth out the movement
-            var currentAngle = Mathf.Atan(vector1.y/vector1.x) * Mathf.Rad2Deg;
-            currentAngle = Mathf.Lerp(currentAngle, stickAngle, 0.01f); */
-            //transform.RotateAround(PlayerManager.Instance.transform.position, Vector3.forward, newAngle * Mathf.Rad2Deg);
-
-
-            // END NEW CODE
-            //Debug.Log(vector1);
-            //var currentAngle = Mathf.Atan(vector1.y/vector1.x) * Mathf.Rad2Deg;
-            //angle += Time.deltaTime * RotationSpeed;
-            
-            // convert Unity angles to range [0, 2pi]
-/*             if(angle < 0)
-            {
-                angle = NegToPosRad(angle);
-            }
-            if(stickAngle < 0)
-            {
-                stickAngle = NegToPosRad(stickAngle);
-            }
-            else if(stickAngle == 0)
-                stickAngle = Mathf.PI * 2; */
-
-            // if the difference between the angle and the stick angle > pi, adjust input angle
-            /* if(Mathf.Abs(angle - stickAngle) > Mathf.PI)
-                stickAngle -= (Mathf.PI * 2);
-
-            // use Lerp to have the beam approach the stick angle
-            angle = Mathf.Lerp(angle, stickAngle, 0.01f); // 0.01f
- */
-            // ca: current angle, sa: stick angle
-            //Debug.Log("ca: " + angle * Mathf.Rad2Deg + ", sa: " + stickAngle * Mathf.Rad2Deg);
-            // convert appropriately
-/*             if(angle > Mathf.PI * 2)
-                angle = angle - (Mathf.PI * 2);
-            angle = PosToNegRad(angle); */
-
-            // set the position of the beam object to the new angle
-/*             positionOffset.Set(Mathf.Cos(angle) * CircleRadius, Mathf.Sin(angle) * CircleRadius, ElevationOffset);
-            transform.position = positionOffset + PlayerManager.Instance.transform.position; */
-            
-
-            // rotation
-            // rotate that vector by 90 degrees around the Z axis
-/*             Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 90) * (transform.position - PlayerManager.Instance.transform.position);
-            transform.rotation = Quaternion.LookRotation(Vector3.forward, rotatedVectorToTarget); */
         
             // Get stick input
             float horizontal = Input.GetAxis("Horizontal");
