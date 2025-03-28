@@ -92,11 +92,11 @@ public class EnemyTakeDamage : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        //Debug.Log(col.transform.name);
+        
         if(col.GetContact(0).collider.transform.CompareTag(em.playerHurtboxTag))
         {
             healthSystem.Damage(PlayerManager.Instance.Attack);
-            PlayerManager.Instance.ultBar.AddUlt(ultAddedOnHit); // consider source
+            PlayerManager.Instance.ultBar.AddUlt(ultAddedOnHit); 
         }
     }
 }

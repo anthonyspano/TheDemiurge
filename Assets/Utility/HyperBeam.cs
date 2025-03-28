@@ -6,7 +6,7 @@ using System;
 
 namespace com.ultimate2d.combat
 {
-public class PowerManager : MonoBehaviour
+public class HyperBeam : MonoBehaviour
 {
     public float range;
     public int SpecialDamage;
@@ -49,7 +49,9 @@ public class PowerManager : MonoBehaviour
     {
         powerIcon.color = new Color(1,1,1, 1f);
         // set aura around player
-        outlineShader.SetFloat("_OutlineThickness", 1);
+        PlayerManager.Instance._renderer.material = Resources.Load<Material>("GlowingOutline");
+        PlayerManager.Instance.outlineThickness = 1;
+        PlayerManager.Instance._renderer.material.SetFloat("_OutlineThickness", PlayerManager.Instance.outlineThickness); 
         audioSource.PlayOneShot(powerReadySound, 1f);
 
     }
@@ -58,7 +60,9 @@ public class PowerManager : MonoBehaviour
     {
         // use this to turn off bool
         powerIcon.color = new Color(0,0,0, .80f);
-        outlineShader.SetFloat("_OutlineThickness", 0);
+        PlayerManager.Instance.outlineThickness = 0;
+        PlayerManager.Instance._renderer.material = Resources.Load<Material>("GlowingOutline");
+        PlayerManager.Instance._renderer.material.SetFloat("_OutlineThickness", PlayerManager.Instance.outlineThickness); 
     }
 
     public void FireUltimate() // performs all immediate actions on screen

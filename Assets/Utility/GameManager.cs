@@ -47,9 +47,6 @@ namespace com.ultimate2d.combat
         public GameObject highScoreBook;
         public InputField inputField;
 
-        // player management
-        public Material outlineShader;
-
 
         void Awake()
         {
@@ -69,7 +66,6 @@ namespace com.ultimate2d.combat
                 _instance = this;
             }
 
-            outlineShader.SetFloat("_OutlineThickness", 0);
 
         }
 
@@ -123,8 +119,6 @@ namespace com.ultimate2d.combat
                 timerText.text = Time.timeSinceLevelLoad.ToString(); 
 
             scoreText.text = (PlayerManager.Instance.killCount * 10).ToString();
-
-
             
 
                  

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 namespace com.ultimate2d.combat
 {
     // player controller using custom input system
+    // sends commands to PlayerInputBuffer with the appropriate PlayerStatus enum
     public class PlayerController : MonoBehaviour
     {
         // singleton

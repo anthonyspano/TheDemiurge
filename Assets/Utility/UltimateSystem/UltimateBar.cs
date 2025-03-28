@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-// subscribe event if multiple threshold triggers occur in separate places
+// UI element for the ultimate bar
+// handles no logic. Only sets value for UI element 
 namespace com.ultimate2d.combat
 {
-	[RequireComponent(typeof(UltimateMove))]
 	public class UltimateBar : MonoBehaviour
 	{
 		public Slider slider;

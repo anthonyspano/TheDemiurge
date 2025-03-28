@@ -6,13 +6,11 @@ namespace com.ultimate2d.combat
 {
     public class OnDeathFinal : StateMachineBehaviour
     {
-        private GameObject gameManagerObject;
+
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            gameManagerObject = GameObject.Find("GameManager");
-            var gameManager = gameManagerObject.GetComponent<GameManager>();
-            gameManager.outlineShader.SetFloat("_OutlineThickness", 0);
+            PlayerManager.Instance.outlineThickness = 0;
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

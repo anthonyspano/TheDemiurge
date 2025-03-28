@@ -43,6 +43,12 @@ namespace com.ultimate2d.combat
 		public Animator anim;
 		private bool animFinished;
 
+		// shaders
+		[Header("Shaders")]
+		public Material glowingOutlineShader;
+		public int outlineThickness = 0;
+		public Renderer _renderer;
+
 		// for damage
 		[Header("Damage")]
 		public LayerMask enemyLayerMask;
@@ -175,6 +181,10 @@ namespace com.ultimate2d.combat
 			// animation
 			attackAnimLength = clip.length;
 
+			// shaders
+			_renderer = GetComponent<Renderer>();
+			_renderer.material = Resources.Load<Material>("GlowingOutline");
+
 
 		}
 
@@ -243,6 +253,7 @@ namespace com.ultimate2d.combat
 
 			if(Input.GetKeyDown(KeyCode.H))
 				Instance.pHealth.Damage(-100);
+
 				
 		}
 
@@ -386,7 +397,7 @@ namespace com.ultimate2d.combat
 		public void PushBack()
 		{
 			// get position of beam 
-			var cursorPos = GetComponentInChildren<PowerManager>().transform.position;
+			var cursorPos = GetComponentInChildren<HyperBeam>().transform.position;
 			// translate in opposite direction in relation to player (take the difference)
 			transform.Translate((transform.position - cursorPos) * Time.deltaTime * pushBackIntensity);
 		}
@@ -404,7 +415,7 @@ namespace com.ultimate2d.combat
 
 		public void FireUltimate()
 		{
-			GetComponentInChildren<PowerManager>().FireUltimate();
+			GetComponentInChildren<HyperBeam>().FireUltimate();
 		}
 
 		public void FinishUltimateAnimation()

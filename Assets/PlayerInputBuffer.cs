@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static com.ultimate2d.combat.PlayerController;
 
-// test class that uses a list for the buffer
 namespace com.ultimate2d.combat
 {
+    // container class to be used in PlayerInputBuffer
     public class InputBufferMemory
     {
         public int frame;
@@ -18,7 +18,9 @@ namespace com.ultimate2d.combat
         }
     }
 
-    // record player inputs into a buffer and execute the nearest one available
+    // DESCRIPTION
+    // adds input buffer memory objects (frame, PlayerStatus) to input buffer (list)
+    // manages input buffer - hosts input buffer, returns current frame, sets how many frames back to read
     public class PlayerInputBuffer : MonoBehaviour
     {
         private static PlayerInputBuffer _instance;

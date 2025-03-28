@@ -29,11 +29,11 @@ namespace com.ultimate2d.combat
         public override IEnumerator Start()
         {
             // change material of player to ChangeAlpha
-            _renderer.material = Resources.Load<Material>("ChangeAlpha");
+            PlayerManager.Instance._renderer.material = Resources.Load<Material>("ChangeAlpha");
             Debug.Log("AlphaMaterial");
 
             // set alpha to 0.25f
-            _renderer.material.SetFloat("_Alpha", 0.25f);
+            PlayerManager.Instance._renderer.material.SetFloat("_Alpha", 0.25f);
 
 
             PlayerManager.Instance.moveSpeed = PlayerManager.Instance.dashSpeed;
@@ -46,11 +46,11 @@ namespace com.ultimate2d.combat
             sr.color = new Color(255f, 255f, 255f, 1f);
 
             // set alpha to normal
-            _renderer.material.SetFloat("_Alpha", 1f);
+            PlayerManager.Instance._renderer.material.SetFloat("_Alpha", 1f);
 
             // change mat back to SpriteOutline 
-            _renderer.material = Resources.Load<Material>("GlowingOutline");
-            _renderer.material.SetFloat("_OutlineThickness", 1f);
+            PlayerManager.Instance._renderer.material = Resources.Load<Material>("GlowingOutline");
+            PlayerManager.Instance._renderer.material.SetFloat("_OutlineThickness", PlayerManager.Instance.outlineThickness); 
 
             //yield return new WaitForSeconds(1f);
             PlayerManager.Instance.hitbox.enabled = true;
