@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 200
-  ultAddedOnHit: 20
+  ultAddedOnHit: 10
   explosionPrefab: {fileID: 7480796986315430637, guid: fae5cdfe9b7bb87489c20fcadf26f8c0, type: 3}
 --- !u!61 &1747185895460534735
 BoxCollider2D:

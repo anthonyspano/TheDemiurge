@@ -2425,6 +2425,8 @@ GameObject:
   - component: {fileID: 184673391}
   - component: {fileID: 184673393}
   - component: {fileID: 184673392}
+  - component: {fileID: 184673394}
+  - component: {fileID: 184673395}
   m_Layer: 8
   m_Name: Reticle
   m_TagString: Untagged
@@ -2454,7 +2456,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184673390}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2506,13 +2508,50 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184673390}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1e1e7928c0d12544a5af3c83eab8af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Z_offset: 0
   cursorDistanceFromPlayer: 0.77
+--- !u!114 &184673394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184673390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644b0c5a95d81274db4bd0af6cb27427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Z_offset: 0
+  cursorDistanceFromPlayer: 0.77
+  maxBufferSize: 4
+  minInputsForAction: 3
+--- !u!95 &184673395
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184673390}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 04956c313c1fcd140aab491a7935593c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &223290821
 GameObject:
   m_ObjectHideFlags: 0
@@ -4912,6 +4951,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   glowingOutlineShader: {fileID: 2100000, guid: 368e26d32e3230b4fa9b9a736c808c78, type: 2}
   outlineThickness: 0
+  _renderer: {fileID: 0}
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -26729,9 +26769,8 @@ MonoBehaviour:
   highScoreData: {fileID: 11400000, guid: 5cf3168ece9f9314db5c61d4d16b3e50, type: 2}
   highScoreBook: {fileID: 828326413}
   inputField: {fileID: 384516434}
-  skelly: {fileID: 345762456135121310, guid: a933b9e9787d2094ab2f32a3e320cab6, type: 3}
-  emptyskelly: {fileID: 3836489214419812792, guid: 3bada36827c81564b85e1f0f27fcf058, type: 3}
-  meleeEnemy: {fileID: 749737715830336364, guid: 7db9342787218e94db28b9ea417c6de7, type: 3}
+  skellyPlaceholderPrefab: {fileID: 5637255779810818001, guid: 887901b5ddad5f541be4bac8c913af37, type: 3}
+  meleePlaceHolderPrefab: {fileID: 5637255779810818001, guid: 08e446a0df8173b409ddf2fe9dbc7b90, type: 3}
   bookDialogue: {fileID: 1488392422}
   bidInputField: {fileID: 384516434}
   waveTimeLimit: 15
@@ -32270,7 +32309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601717000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.991, y: 67.986, z: 1.5947096}
+  m_LocalPosition: {x: 2.991, y: 68.39, z: 1.5947096}
   m_LocalScale: {x: 1.3785, y: 1.4891, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

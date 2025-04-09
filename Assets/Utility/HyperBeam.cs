@@ -129,6 +129,8 @@ public class HyperBeam : MonoBehaviour
         return a - Mathf.PI * 2;
     }
 
+    // TBI: enable reticle sprite renderer to show that the beam is priming for a second or so 
+    // then disable right before ult fires
     public void BeamSetup()
     {
         // set position and rotation same as cursor

@@ -79,18 +79,21 @@ namespace com.ultimate2d.combat
 
             // populate Spawn Positions list
             spawnPositions = new List<Vector3>();
-            spawnPositions.Add(new Vector3(3, 0, 0) + PlayerManager.Instance.transform.position);
-            spawnPositions.Add(new Vector3(-3, 0, 0) + PlayerManager.Instance.transform.position);
-            spawnPositions.Add(new Vector3(0, -3, 0) + PlayerManager.Instance.transform.position);
-            spawnPositions.Add(new Vector3(0, 3, 0) + PlayerManager.Instance.transform.position);
-            spawnPositions.Add(new Vector3(4, 0, 0) + PlayerManager.Instance.transform.position);
-            spawnPositions.Add(new Vector3(-4, 0, 0) + PlayerManager.Instance.transform.position);
-            spawnPositions.Add(new Vector3(0, -4, 0) + PlayerManager.Instance.transform.position);
-            spawnPositions.Add(new Vector3(0, 4, 0) + PlayerManager.Instance.transform.position);
-            spawnPositions.Add(new Vector3(2, 0, 0) + PlayerManager.Instance.transform.position);
-            spawnPositions.Add(new Vector3(-2, 0, 0) + PlayerManager.Instance.transform.position);
-            spawnPositions.Add(new Vector3(0, -2, 0) + PlayerManager.Instance.transform.position);
-            spawnPositions.Add(new Vector3(0, 2, 0) + PlayerManager.Instance.transform.position);
+            // make spawn positions mid distance between player and center of arena
+            // center of arena
+            Vector3 arenaCenter = new Vector3(3, 66, 0);
+            spawnPositions.Add(new Vector3(3, 0, 0) + arenaCenter);
+            spawnPositions.Add(new Vector3(-3, 0, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(0, -3, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(0, 3, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(4, 0, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(-4, 0, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(0, -4, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(0, 4, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(2, 0, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(-2, 0, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(0, -2, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(0, 2, 0)+ arenaCenter);
 
             
         }
@@ -129,9 +132,8 @@ namespace com.ultimate2d.combat
             SceneManager.LoadScene("CellChamber", LoadSceneMode.Single);
         }
 
-        public GameObject skelly;
-        public GameObject emptyskelly;
-        public GameObject meleeEnemy;
+        public GameObject skellyPlaceholderPrefab;
+        public GameObject meleePlaceHolderPrefab;
 
         public Text bookDialogue;
         private string levelDialogue = "I wonder if they still think about me...";
@@ -216,8 +218,8 @@ namespace com.ultimate2d.combat
         {
             System.Random rand = new System.Random();
             int index;
-            Debug.Log(enemiesToSpawn);
-            // TBI: spawn on points bordering the screen?
+            //Debug.Log(enemiesToSpawn);
+            
             for(int i = 0; i < enemiesToSpawn; i++)
             {
                 
@@ -236,10 +238,12 @@ namespace com.ultimate2d.combat
                     switch(enemyChoice)
                     {
                         case 1:
-                            GameObject.Instantiate(skelly, spawnPositions[index], Quaternion.identity);
+                            // tbi: spawn silhouette objects that spawn actual enemies in their place
+                            // spawn skelly at fixed pos
+                            GameObject.Instantiate(skellyPlaceholderPrefab, spawnPositions[index], Quaternion.identity);
                             break;
                         case 2:
-                            GameObject.Instantiate(meleeEnemy, spawnPositions[index], Quaternion.identity);
+                            GameObject.Instantiate(meleePlaceHolderPrefab, spawnPositions[index], Quaternion.identity);
                             break;
                         default:
                             Debug.Log("Random function out of range");
@@ -252,6 +256,7 @@ namespace com.ultimate2d.combat
                     Debug.Log(e);
                 }
 
+                // interval between spawns
                 yield return new WaitForSeconds(0.3f);
 
             }
