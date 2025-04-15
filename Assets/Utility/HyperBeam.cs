@@ -69,7 +69,10 @@ public class HyperBeam : MonoBehaviour
     {
         //Debug.Log("firing!");
         ultimateCharge.AddUlt(-ultCost);
+        // ensure beam object is in correct position
         BeamSetup();
+        // play beam sound
+        audioSource.PlayOneShot(soundEffect);
         anim.Play("BeamAttack");
         PlayerManager.Instance.anim.SetBool("isBeaming", true);
         PlayerManager.Instance.CanMove = false;
@@ -142,8 +145,7 @@ public class HyperBeam : MonoBehaviour
         transform.position = reticle.transform.position + r_vector;
         transform.rotation = reticle.transform.rotation;
 
-        // play beam sound
-        audioSource.PlayOneShot(soundEffect);
+
         
         
     }
@@ -161,6 +163,7 @@ public class HyperBeam : MonoBehaviour
 
         transform.parent.GetComponent<Animator>().SetBool("isBeaming", false);
     }
+
     public void StopAnimation()
     {
         PlayerManager.Instance.CanMove = true;

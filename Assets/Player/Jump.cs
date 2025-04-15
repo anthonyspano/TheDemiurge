@@ -35,9 +35,9 @@ namespace com.ultimate2d.combat
             // set alpha to 0.25f
             PlayerManager.Instance._renderer.material.SetFloat("_Alpha", 0.25f);
 
-
             PlayerManager.Instance.moveSpeed = PlayerManager.Instance.dashSpeed;
-            PlayerManager.Instance.hitbox.enabled = false;
+            PlayerManager.Instance.transform.GetChild(3).GetComponent<BoxCollider2D>().enabled = false;
+            Debug.Log(PlayerManager.Instance.transform.GetChild(3));
             sr.color = new Color(255f, 255f, 255f, 0.25f);
 
             yield return new WaitForSeconds(PlayerManager.Instance.dashLength);
@@ -53,7 +53,7 @@ namespace com.ultimate2d.combat
             PlayerManager.Instance._renderer.material.SetFloat("_OutlineThickness", PlayerManager.Instance.outlineThickness); 
 
             //yield return new WaitForSeconds(1f);
-            PlayerManager.Instance.hitbox.enabled = true;
+            PlayerManager.Instance.transform.GetChild(3).GetComponent<BoxCollider2D>().enabled = true;
 
             // end jump endeavors
             PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Idle;

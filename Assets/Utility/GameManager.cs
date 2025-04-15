@@ -243,7 +243,7 @@ namespace com.ultimate2d.combat
                             GameObject.Instantiate(skellyPlaceholderPrefab, spawnPositions[index], Quaternion.identity);
                             break;
                         case 2:
-                            GameObject.Instantiate(meleePlaceHolderPrefab, spawnPositions[index], Quaternion.identity);
+                            //GameObject.Instantiate(meleePlaceHolderPrefab, spawnPositions[index], Quaternion.identity);
                             break;
                         default:
                             Debug.Log("Random function out of range");

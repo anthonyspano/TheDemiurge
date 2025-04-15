@@ -4219,6 +4219,7 @@ GameObject:
   - component: {fileID: 414300544}
   - component: {fileID: 414300545}
   - component: {fileID: 414300546}
+  - component: {fileID: 414300547}
   m_Layer: 8
   m_Name: PlayerTakeDamageHitbox
   m_TagString: PlayerHurt
@@ -4299,6 +4300,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurt1: {fileID: 8300000, guid: 3374377e45532b04d95d1c767cc42ff1, type: 3}
+--- !u!114 &414300547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414300543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3485d200a848744b3a30ee0b9b4750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bc: {fileID: 414300545}
 --- !u!1 &428249895
 GameObject:
   m_ObjectHideFlags: 0
@@ -4924,8 +4938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd700b6772c53624db6d78656cc0b41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ultBar: {fileID: 0}
-  ultReady: 0
 --- !u!114 &464829520
 MonoBehaviour:
   m_ObjectHideFlags: 0
