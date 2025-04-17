@@ -14,7 +14,7 @@ namespace com.ultimate2d.combat
         public MeleeEnemyAttackLeap(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
         {
             esm = enemyStateMachine;
-            //hurtBox = esm.GetComponent<BoxCollider2D>();
+            hurtBox = esm.GetComponent<BoxCollider2D>();
             em = esm.GetComponent<EnemyManager>();
             anim = esm.GetComponent<Animator>();
         }
@@ -40,7 +40,7 @@ namespace com.ultimate2d.combat
             // plays leaping animation
             anim.SetBool("isLeaping", true);
             yield return null;
-            //hurtBox.enabled = true;
+            hurtBox.enabled = true;
 
             // moves slower? leaping speed
             while(Vector2.Distance(attackPoint.transform.position, esm.transform.position) > 1.5f)
@@ -63,7 +63,7 @@ namespace com.ultimate2d.combat
             yield return new WaitUntil(() => !anim.GetBool("finishingStrike"));
             anim.SetBool("isLeaping", false);
             yield return null;
-            //hurtBox.enabled = false;
+            hurtBox.enabled = false;
             anim.SetBool("isRunning", false);
             Object.Destroy(attackPoint);
             yield return new WaitForSeconds(2);

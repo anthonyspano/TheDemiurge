@@ -20,7 +20,11 @@ namespace com.ultimate2d.combat
             x = Input.GetAxis(PlayerInput.x);
             y = Input.GetAxis(PlayerInput.y);
             Vector3 moveDirection = new Vector3(x, y);
-            // create a buffer that saves direction inputs and changes position of reticle if x frames are in buffer
+
+            // if if not firing ult
+            // set position
+
+            // if firing ult   
             if (Mathf.Abs(moveDirection.x) > 0.1f || Mathf.Abs(moveDirection.y) > 0.1f)
             {
                 moveDirection.Normalize();

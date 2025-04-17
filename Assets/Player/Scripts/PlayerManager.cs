@@ -251,35 +251,18 @@ namespace com.ultimate2d.combat
 			
 			jumpCooldown -= Time.deltaTime;
 
+			// kill switch
 			if(Input.GetKeyDown(KeyCode.H))
 				Instance.pHealth.Damage(-100);
 
 				
+			// charge ultimate to max
+			if(Input.GetKeyDown(KeyCode.F))
+			{
+				Instance.ultBar.AddUlt(100);
+			}
 		}
 
-		private void OnCollisionEnter2D(Collision2D col)
-		{
-
-			// check collision here so that mana only refills once per attack rather than per enemy hit
-
-			// if(col.transform.CompareTag("Charger"))
-			// {
-			// 		Instance.pHealth.Damage(70);
-			// 		audioSource.PlayOneShot(hurt1, 0.7f);
-
-			// }
-
-			// if(col.transform.CompareTag("Projectile"))
-			// {
-			// 	//Debug.Log(col.GetContact(0).otherCollider.transform.name);
-			// 	if(col.GetContact(0).otherCollider.transform.CompareTag("PlayerAttack"))
-			// 	{
-			// 		Instance.pHealth.Damage(40);
-			// 		audioSource.PlayOneShot(hurt1, 0.7f);
-			// 	}
-			// }
-
-		}
 
 		private IEnumerator ToggleSpawnCollider(Collider2D col)
 		{
@@ -317,7 +300,7 @@ namespace com.ultimate2d.combat
 
 		private void Death()
 		{
-			//PlayerController.Instance.playerStatus = PlayerController.PlayerStatus.Neutral;
+			
 			isBusy = true;
 
 			var reticle = transform.Find("Reticle");

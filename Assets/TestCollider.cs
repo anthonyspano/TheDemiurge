@@ -17,4 +17,9 @@ public class TestCollider : MonoBehaviour
     {
         Debug.Log(bc.isActiveAndEnabled);
     }
+
+    void OnEnable()
+    {
+        Debug.Log("I just got enabled! ", this);
+    }
 }

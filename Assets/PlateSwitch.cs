@@ -38,7 +38,7 @@ public class PlateSwitch : MonoBehaviour
 
             // reaches shadow
             Destroy(shadow);
-            trap.GetComponent<BoxCollider2D>().enabled = true;
+            //trap.GetComponent<BoxCollider2D>().enabled = true;
 
 
 
