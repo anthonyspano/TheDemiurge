@@ -410,8 +410,11 @@ namespace com.ultimate2d.combat
 		{
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			GetComponentInChildren<PowerManager>().FireUltimate();
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 			StartCoroutine(GetComponentInChildren<HyperBeam>().FireUltimate());
