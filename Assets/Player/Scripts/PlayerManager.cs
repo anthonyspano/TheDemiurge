@@ -205,12 +205,9 @@ namespace com.ultimate2d.combat
 		private void OnCollisionEnter2D(Collision2D col)
 		{
 			
-<<<<<<< Updated upstream
 
-=======
 			if(invulnerable)
 				return;
->>>>>>> Stashed changes
 
 			if(col.transform.CompareTag("BigCultist"))
 			{
@@ -408,28 +405,13 @@ namespace com.ultimate2d.combat
 
 		public void FireUltimate()
 		{
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 			GetComponentInChildren<PowerManager>().FireUltimate();
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 			StartCoroutine(GetComponentInChildren<HyperBeam>().FireUltimate());
 		}
 
 		public void FinishUltimateAnimation()
 		{
 			anim.SetBool("isBeaming", false);
->>>>>>> Stashed changes
 		}
 		
 

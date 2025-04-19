@@ -18,11 +18,8 @@ public class EnemyTakeDamage : MonoBehaviour
 
     private Animator anim;
     private EnemyManager em;
-<<<<<<< Updated upstream
-=======
     private AudioSource enemyAudioManager;
 
->>>>>>> Stashed changes
     private void Awake() 
     {
         anim = transform.parent.GetComponent<Animator>();

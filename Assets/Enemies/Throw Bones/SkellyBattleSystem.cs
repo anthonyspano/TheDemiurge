@@ -8,12 +8,9 @@ namespace com.ultimate2d.combat
     {
         [HideInInspector]
         public EnemyManager em;
-<<<<<<< Updated upstream:Assets/Enemies/Throw Bones/SkellyBattleSystem.cs
-=======
         [HideInInspector]
         public GameObject attackPoint;
 
->>>>>>> Stashed changes:Assets/Enemies/Throw Bones/EnemyStateMachine.cs
         void Start()
         {
             em = GetComponent<EnemyManager>();
