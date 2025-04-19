@@ -405,7 +405,6 @@ namespace com.ultimate2d.combat
 
 		public void FireUltimate()
 		{
-			GetComponentInChildren<PowerManager>().FireUltimate();
 			StartCoroutine(GetComponentInChildren<HyperBeam>().FireUltimate());
 		}
 
