@@ -69,7 +69,7 @@ namespace com.ultimate2d.combat
             yield return new WaitForSeconds(2);
 
 
-            _enemyStateMachine.SetState(new ChargerStart(esm));
+            _enemyStateMachine.SetState(new MeleeStart(esm));
             
             yield return null;
         }

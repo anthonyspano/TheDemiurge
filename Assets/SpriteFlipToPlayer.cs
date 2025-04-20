@@ -9,7 +9,7 @@ namespace com.ultimate2d.combat
 
         void Update()
         {
-            GetComponent<SpriteRenderer>().flipX = PlayerManager.Instance.transform.position.x > transform.position.x;
+            GetComponent<SpriteRenderer>().flipX = PlayerManager.Instance.transform.position.x < transform.position.x;
         }
     }
 }

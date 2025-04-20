@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182cd195a28310e479cddf7ff82822f8, type: 3}
   m_Name: LootLockerConfig
   m_EditorClassIdentifier: 
-  apiKey: dev_93fad6fe99944afa9cafd7e31c6d2bd4
-  token: ae47694ef399acd6891866e872cc556aa1e2188d
-  adminToken: 85d3ae17b63ff466015acbb5cb75564b5716a61e
+  apiKey: 
+  token: 
+  adminToken: 
   refreshToken: 
-  domainKey: eft4kiia
+  domainKey: 
   gameID: 0
-  game_version: 1.0
-  sdk_version: 3.7.0
-  deviceID: 05f569b2-c3d3-4df1-ab00-c6062cc525b4
-  playerULID: 01JJ04EN21TK1SSSXM1SDNH3CC
+  game_version: 1.0.0.0
+  sdk_version: 
+  deviceID: defaultPlayerId
+  playerULID: 
   url: https://api.lootlocker.com/v1
-  adminUrl: https://eft4kiia.api.lootlocker.com/admin
-  playerUrl: https://eft4kiia.api.lootlocker.com/player
-  userUrl: https://eft4kiia.api.lootlocker.com/game
-  baseUrl: https://eft4kiia.api.lootlocker.com
+  adminUrl: https://api.lootlocker.com/admin
+  playerUrl: https://api.lootlocker.com/player
+  userUrl: https://api.lootlocker.com/game
+  baseUrl: https://api.lootlocker.com
   clientSideRequestTimeOut: 180
-  currentDebugLevel: 3
-  allowTokenRefresh: 0
+  currentDebugLevel: 0
+  allowTokenRefresh: 1

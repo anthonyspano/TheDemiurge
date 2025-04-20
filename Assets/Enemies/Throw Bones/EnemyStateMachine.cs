@@ -8,7 +8,9 @@ namespace com.ultimate2d.combat
     {
         [HideInInspector]
         public EnemyManager em;
-
+        [HideInInspector]
+        public GameObject attackPoint;
+        
         void Start()
         {
             em = GetComponent<EnemyManager>();

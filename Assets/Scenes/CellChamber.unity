@@ -26677,7 +26677,7 @@ MonoBehaviour:
   highScoreBook: {fileID: 828326413}
   inputField: {fileID: 384516434}
   skellyPlaceholderPrefab: {fileID: 5637255779810818001, guid: 887901b5ddad5f541be4bac8c913af37, type: 3}
-  meleePlaceHolderPrefab: {fileID: 5637255779810818001, guid: 08e446a0df8173b409ddf2fe9dbc7b90, type: 3}
+  meleePlaceHolderPrefab: {fileID: 749737715830336364, guid: 40d143b635f09dd4881d1d8ab0c8f5d6, type: 3}
   bookDialogue: {fileID: 1488392422}
   bidInputField: {fileID: 384516434}
   waveTimeLimit: 15
