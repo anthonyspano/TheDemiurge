@@ -128,6 +128,11 @@ namespace com.ultimate2d.combat
             GetComponent<Animator>().SetBool("isRunning", false);
         }
 
+        public void PlayAttackSound() 
+        {
+            GetComponent<AudioSource>().PlayOneShot(attackSound, 0.7f);
+        }
+
     }
 
 }

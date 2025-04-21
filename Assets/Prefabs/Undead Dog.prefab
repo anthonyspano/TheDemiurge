@@ -149,7 +149,7 @@ MonoBehaviour:
   leapingDistance: 4
   leapingSpeed: 10
   playerHurtboxTag: PlayerAttack
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 4094f171202e69249a75249a2c4889f2, type: 3}
   hurtSound: {fileID: 0}
   explosionSound: {fileID: 8300000, guid: d8d3dedaad248d04a95d542639ebb578, type: 3}
   timeToReact: 0
