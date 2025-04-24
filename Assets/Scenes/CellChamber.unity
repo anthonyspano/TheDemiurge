@@ -29765,7 +29765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6594334214264069504, guid: a933b9e9787d2094ab2f32a3e320cab6, type: 3}
       propertyPath: leapingDistance
-      value: 0.5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

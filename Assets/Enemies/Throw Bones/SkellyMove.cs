@@ -8,7 +8,6 @@ namespace com.ultimate2d.combat
     {
         private EnemyStateMachine esm;
         private EnemyManager em;
-        private Vector2 targetPos;
         private float distanceToTravel;
         
         public SkellyMove(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
@@ -41,18 +40,16 @@ namespace com.ultimate2d.combat
                 
 
                 // jump to location
-                float timer = 1.5f;
-                float step = em.moveSpeed * Time.deltaTime;
-                step = 0.013f;
-                //Debug.Log("starting spot: " + esm.transform.position);
-                //Debug.Log("ending spot: " + (esm.transform.XandY() + desiredJumpDirection * em.leapingDistance));
-                while(Vector2.Distance(esm.transform.position, em.leapingDistance * desiredJumpDirection + esm.transform.XandY()) > 0.15f && timer > 0)
+                float timer = 0;
+                Vector3 startPosition = esm.transform.position;
+                Vector3 targetPosition = em.leapingDistance * new Vector3(desiredJumpDirection.x, desiredJumpDirection.y, 0) + esm.transform.position;
+                float jumpDuration = 0.5f;
+                while(Vector2.Distance(esm.transform.position, (Vector2)targetPosition) > 0.15f && timer < jumpDuration)
                 {
                     
-                    esm.transform.position = Vector2.MoveTowards(esm.transform.position, em.leapingDistance * desiredJumpDirection + esm.transform.XandY(), step);
-                    Debug.Log(esm.transform.position);
-                    timer -= Time.deltaTime;
-                    Debug.Log(timer);
+                    esm.transform.position = Vector3.Lerp(startPosition, targetPosition, timer / jumpDuration); // timer / jumpDuration
+                    Debug.Log("Start Position: " + startPosition + " current position: " + esm.transform.position);
+                    timer += Time.deltaTime;
                     yield return null;
                 }
 
