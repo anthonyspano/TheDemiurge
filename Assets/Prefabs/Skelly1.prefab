@@ -130,7 +130,7 @@ MonoBehaviour:
   pursuitRange: 7
   attackRange: 1.5
   throwSpeed: 0.00055
-  leapingDistance: 0
+  leapingDistance: 1.5
   leapingSpeed: 0
   playerHurtboxTag: PlayerAttack
   attackSound: {fileID: 8300000, guid: 32d363e2f1eb50f4b93ecd591ae1e078, type: 3}
@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   em: {fileID: 0}
+  attackPoint: {fileID: 0}
 --- !u!50 &3736508423718750188
 Rigidbody2D:
   serializedVersion: 4

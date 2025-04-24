@@ -19,49 +19,43 @@ namespace com.ultimate2d.combat
 
         public override IEnumerator Start()
         {        
-            float distanceToPlayer = Vector2.Distance(esm.transform.position, PlayerManager.Instance.transform.position);
-            // if too close to player, move away
-            if(distanceToPlayer < 5)
-            {
-                Vector2 directionToPlayer = (PlayerManager.Instance.transform.position - esm.transform.position).normalized;
-                distanceToTravel = em.RetreatRange;
-                // if there is a wall, then cut target position short (raycast)
-                RaycastHit2D hit = Physics2D.Raycast(esm.transform.position, directionToPlayer * new Vector2(-1,-1), em.RetreatRange, 1 << 12);
+                // raycast a direction, if there is a wall pick new location
+                Vector2 desiredJumpDirection = new Vector2(Random.Range(-1f,1f), Random.Range(-1f,1f));
+                RaycastHit2D hit = Physics2D.Raycast(esm.transform.position, desiredJumpDirection, em.leapingDistance, 1 << 12);
+                Debug.Log(desiredJumpDirection * em.leapingDistance);
+                Debug.Log(hit.collider);
+
+                // if  wall, reroll
                 if(hit)
                 {
-                    if(hit.collider.CompareTag("Wall"))
+                    while(hit.collider.CompareTag("Wall"))
                     {
-                        distanceToTravel = hit.distance;
+                        Debug.Log("rerolling");
+                        desiredJumpDirection = new Vector2(Random.Range(-1,1), Random.Range(-1,1));
+                        hit = Physics2D.Raycast(esm.transform.position, desiredJumpDirection, em.leapingDistance, 1 << 12);
+                        yield return null;
+
                     }
                 }
 
-                // get target pos
-                targetPos =  (Vector2)esm.transform.position + distanceToTravel * directionToPlayer * new Vector2(-1,-1);
+                
 
-                // while not at target position 
-                while(Vector2.Distance(esm.transform.position, targetPos) > 1f)
+                // jump to location
+                float timer = 1.5f;
+                float step = em.moveSpeed * Time.deltaTime;
+                step = 0.013f;
+                //Debug.Log("starting spot: " + esm.transform.position);
+                //Debug.Log("ending spot: " + (esm.transform.XandY() + desiredJumpDirection * em.leapingDistance));
+                while(Vector2.Distance(esm.transform.position, em.leapingDistance * desiredJumpDirection + esm.transform.XandY()) > 0.15f && timer > 0)
                 {
-                    // Debug.Log("target: " + targetPos);
-                    // Debug.Log("current: " + esm.transform.position);
-                    // move to target
-                    esm.transform.position = Vector2.MoveTowards(esm.transform.position, targetPos, em.moveSpeed * Time.deltaTime);
+                    
+                    esm.transform.position = Vector2.MoveTowards(esm.transform.position, em.leapingDistance * desiredJumpDirection + esm.transform.XandY(), step);
+                    Debug.Log(esm.transform.position);
+                    timer -= Time.deltaTime;
+                    Debug.Log(timer);
                     yield return null;
                 }
 
-            }
-            // else if too far, move closer
-            else if(distanceToPlayer > 10)
-            {
-
-                // while not in range of player 
-                while(distanceToPlayer > 10)
-                {
-                    esm.transform.position = Vector2.MoveTowards(esm.transform.position, PlayerManager.Instance.transform.position, 0.1f);
-                    distanceToPlayer = Vector2.Distance(esm.transform.position, PlayerManager.Instance.transform.position);
-                    yield return null;
-                }
-
-            }
 
 
             _enemyStateMachine.SetState(new ThrowBone(esm));
