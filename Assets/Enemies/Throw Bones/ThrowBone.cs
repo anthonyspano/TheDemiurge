@@ -34,7 +34,7 @@ namespace com.ultimate2d.combat
             bonerang.GetComponent<Rigidbody2D>().AddForce(direction * esm.GetComponent<EnemyManager>().throwSpeed, ForceMode2D.Impulse);
             // have enemyaudiomanager play all enemy sounds to prevent clipping
 
-            e_audioManager.GetComponent<AudioSource>().PlayOneShot(esm.GetComponent<EnemyManager>().attackSound, 0.7f);
+            //e_audioManager.GetComponent<AudioSource>().PlayOneShot(esm.GetComponent<EnemyManager>().attackSound, 0.7f);
 
             // launch bone directly behind player
             // var myBonerang = bonerang.GetComponent<Bonerang>();

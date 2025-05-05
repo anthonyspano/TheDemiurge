@@ -21,21 +21,18 @@ namespace com.ultimate2d.combat
                 // raycast a direction, if there is a wall pick new location
                 Vector2 desiredJumpDirection = new Vector2(Random.Range(-1f,1f), Random.Range(-1f,1f));
                 RaycastHit2D hit = Physics2D.Raycast(esm.transform.position, desiredJumpDirection, em.leapingDistance, 1 << 12);
-                Debug.Log(desiredJumpDirection * em.leapingDistance);
-                Debug.Log(hit.collider);
+                //Debug.Log(desiredJumpDirection * em.leapingDistance);
+                //Debug.Log(hit.collider);
 
                 // if  wall, reroll
-                if(hit)
+                while(hit && hit.collider.CompareTag("Wall"))
                 {
-                    while(hit.collider.CompareTag("Wall"))
-                    {
-                        Debug.Log("rerolling");
-                        desiredJumpDirection = new Vector2(Random.Range(-1,1), Random.Range(-1,1));
-                        hit = Physics2D.Raycast(esm.transform.position, desiredJumpDirection, em.leapingDistance, 1 << 12);
-                        yield return null;
+                    desiredJumpDirection = new Vector2(Random.Range(-1,1), Random.Range(-1,1));
+                    hit = Physics2D.Raycast(esm.transform.position, desiredJumpDirection, em.leapingDistance, 1 << 12);
+                    yield return null;
 
-                    }
                 }
+                
 
                 
 
@@ -48,10 +45,12 @@ namespace com.ultimate2d.combat
                 {
                     
                     esm.transform.position = Vector3.Lerp(startPosition, targetPosition, timer / jumpDuration); // timer / jumpDuration
-                    Debug.Log("Start Position: " + startPosition + " current position: " + esm.transform.position);
+                    //Debug.Log("Start Position: " + startPosition + " current position: " + esm.transform.position);
                     timer += Time.deltaTime;
                     yield return null;
                 }
+
+                esm.transform.position = targetPosition;
 
 
 

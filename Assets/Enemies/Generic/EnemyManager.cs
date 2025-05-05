@@ -113,7 +113,7 @@ namespace com.ultimate2d.combat
 
         public void ExplosionSound()
         {
-            GetComponent<AudioSource>().PlayOneShot(explosionSound, 0.7f);
+            GetComponent<AudioSource>().PlayOneShot(explosionSound, 0.55f);
         }
 
         public void BlowUp()
@@ -130,7 +130,15 @@ namespace com.ultimate2d.combat
 
         public void PlayAttackSound() 
         {
-            GetComponent<AudioSource>().PlayOneShot(attackSound, 0.7f);
+            // distance coefficient for getting volume within range: (max volume coefficient / arena size)
+            float maxVolume = 0.7f;
+            float maxDistance = 21f;
+            float maxCoefficient = maxVolume / maxDistance;
+            float currentDistance = Vector3.Distance(transform.position, PlayerManager.Instance.transform.position);
+            float volumeCoefficient = maxDistance - currentDistance;
+            float volume = maxCoefficient * volumeCoefficient;  
+            Debug.Log(volume);
+            GetComponent<AudioSource>().PlayOneShot(attackSound, volume);
         }
 
     }

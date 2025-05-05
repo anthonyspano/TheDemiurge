@@ -5080,7 +5080,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464829516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.07, y: 65.3, z: 0}
+  m_LocalPosition: {x: 3.57, y: 63.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -29718,6 +29718,10 @@ PrefabInstance:
     - target: {fileID: 345762456135121310, guid: a933b9e9787d2094ab2f32a3e320cab6, type: 3}
       propertyPath: m_Name
       value: Skelly1
+      objectReference: {fileID: 0}
+    - target: {fileID: 345762456135121310, guid: a933b9e9787d2094ab2f32a3e320cab6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6375651952191150332, guid: a933b9e9787d2094ab2f32a3e320cab6, type: 3}
       propertyPath: m_RootOrder
