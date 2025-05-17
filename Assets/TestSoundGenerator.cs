@@ -16,11 +16,6 @@ public class TestSoundGenerator : MonoBehaviour
         StartCoroutine(RunTest());
     }
 
-    void Update()
-    {
-        
-    }
-
     IEnumerator RunTest() {
         // play six times
         audioSource.PlayOneShot(audioClip, 0.75f);

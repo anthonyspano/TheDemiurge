@@ -10,6 +10,25 @@ public class EnemySoundQueue : MonoBehaviour
 
     private List<SoundRequest> soundRequestQueue;
 
+    private static EnemySoundQueue _instance;
+
+    public static EnemySoundQueue Instance 
+    {
+        get { return _instance; }
+    }
+
+    void Awake()
+    {
+        if(_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();

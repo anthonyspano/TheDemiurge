@@ -85,15 +85,15 @@ namespace com.ultimate2d.combat
             spawnPositions.Add(new Vector3(3, 0, 0) + arenaCenter);
             spawnPositions.Add(new Vector3(-3, 0, 0)+ arenaCenter);
             spawnPositions.Add(new Vector3(0, -3, 0)+ arenaCenter);
-            spawnPositions.Add(new Vector3(0, 3, 0)+ arenaCenter);
-            spawnPositions.Add(new Vector3(4, 0, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(0, 3, 0) + arenaCenter);
+            spawnPositions.Add(new Vector3(4, 0, 0) + arenaCenter);
             spawnPositions.Add(new Vector3(-4, 0, 0)+ arenaCenter);
             spawnPositions.Add(new Vector3(0, -4, 0)+ arenaCenter);
-            spawnPositions.Add(new Vector3(0, 4, 0)+ arenaCenter);
-            spawnPositions.Add(new Vector3(2, 0, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(0, 4, 0) + arenaCenter);
+            spawnPositions.Add(new Vector3(2, 0, 0) + arenaCenter);
             spawnPositions.Add(new Vector3(-2, 0, 0)+ arenaCenter);
             spawnPositions.Add(new Vector3(0, -2, 0)+ arenaCenter);
-            spawnPositions.Add(new Vector3(0, 2, 0)+ arenaCenter);
+            spawnPositions.Add(new Vector3(0, 2, 0) + arenaCenter);
 
             
         }
@@ -145,21 +145,25 @@ namespace com.ultimate2d.combat
             // bring up leaderboard book object (book object brings up scores and input field, input field starts the level)
             highScoreBook.SetActive(true);
             if(ScoreRecorder.Instance.previousPlayerBid != 0)
-                highScoreBook.transform.GetChild(2).GetComponent<InputField>().text = ScoreRecorder.Instance.previousPlayerBid.ToString();
-            else
             {
+                //highScoreBook.transform.GetChild(2).GetComponent<InputField>().text = ScoreRecorder.Instance.previousPlayerBid.ToString();
+                StartCoroutine(DelayInputFieldSetText());
                 bidInputField.Select();
             }
-
-//            StartCoroutine(SetInputField());
-            
+            else
+            {
+                // here
+                bidInputField.text = "Place your bid...";
+                bidInputField.Select();
+            }
+        
         }
 
-        IEnumerator SetInputField()
+        IEnumerator DelayInputFieldSetText() 
         {
-            yield return new WaitForSeconds(0.2f);
-            if(ScoreRecorder.Instance.previousPlayerBid != 0)
-                highScoreBook.transform.GetChild(2).GetComponent<InputField>().text = ScoreRecorder.Instance.previousPlayerBid.ToString();
+            yield return null;
+
+            bidInputField.text = ScoreRecorder.Instance.previousPlayerBid.ToString();
         }
 
 

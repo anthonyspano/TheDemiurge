@@ -138,7 +138,9 @@ namespace com.ultimate2d.combat
             float volumeCoefficient = maxDistance - currentDistance;
             float volume = maxCoefficient * volumeCoefficient;  
             Debug.Log(volume);
-            GetComponent<AudioSource>().PlayOneShot(attackSound, volume);
+            // queue sound
+            EnemySoundQueue.Instance.AddRequest(attackSound, volume);
+            //GetComponent<AudioSource>().PlayOneShot(attackSound, volume);
         }
 
     }
